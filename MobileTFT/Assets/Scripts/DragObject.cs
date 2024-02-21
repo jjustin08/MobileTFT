@@ -35,22 +35,22 @@ public class DragObject : MonoBehaviour
     {
         //if (!isDraging)
         //    return;
-        Plane plane = new Plane(Vector3.up, Vector3.one * height);
-        Ray ray = Camera.main.ScreenPointToRay(inputActions.InGame.PressPos.ReadValue<Vector2>());
+        //Plane plane = new Plane(Vector3.up, Vector3.one * height);
+        //Ray ray = Camera.main.ScreenPointToRay(inputActions.InGame.PressPos.ReadValue<Vector2>());
 
-        float entry;
+        //float entry;
 
-        plane.Raycast(ray, out entry);
+        //plane.Raycast(ray, out entry);
         
 
-        Vector3 mouseWorldPos = ray.GetPoint(entry);
-        Vector3 newWorldPos = new Vector3(mouseWorldPos.x, height, mouseWorldPos.z);
+        //Vector3 mouseWorldPos = ray.GetPoint(entry);
+        //Vector3 newWorldPos = new Vector3(mouseWorldPos.x, height, mouseWorldPos.z);
 
-        Vector3 difference = newWorldPos - transform.position;
+        //Vector3 difference = newWorldPos - transform.position;
 
-        rb.velocity = difference * speed;
-        Quaternion rotate = Quaternion.Euler(rb.velocity.z, 0, -rb.velocity.x) * Camera.main.transform.rotation;
-        rb.rotation = rotate;
+        //rb.velocity = difference * speed;
+        //Quaternion rotate = Quaternion.Euler(rb.velocity.z, 0, -rb.velocity.x) * Camera.main.transform.rotation;
+        //rb.rotation = rotate;
 
     }
 
