@@ -25,14 +25,9 @@ public class PlayerInput : MonoBehaviour
 
         inputActions.Player.Press.performed += Press_performed;
         
-
-        //inputActions.Player.Drag.started += Drag_started;
-        //inputActions.Player.Drag.performed += Drag_performed;
-        //inputActions.Player.Drag.canceled += Drag_canceled; ;
-
-        //inputActions.Player.DragAlt.started += DragAlt_started;
-        //inputActions.Player.DragAlt.performed += DragAlt_performed;
-        //inputActions.Player.DragAlt.canceled += DragAlt_canceled;
+        inputActions.Player.Drag.started += Drag_started;
+        inputActions.Player.Drag.performed += Drag_performed;
+        inputActions.Player.Drag.canceled += Drag_canceled; ;
 
         timer = timerMax;
         }
@@ -73,14 +68,14 @@ public class PlayerInput : MonoBehaviour
             isClicked = false;
         }
 
-        private void Drag_started()
+        private void Drag_started(InputAction.CallbackContext obj)
         {
             isDragStarted = true;
         }
 
 
 
-        private void Drag_canceled()
+        private void Drag_canceled(InputAction.CallbackContext obj)
         {
             if (isDragging)
             {
@@ -89,7 +84,7 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
-        private void Drag_performed()
+        private void Drag_performed(InputAction.CallbackContext obj)
         {
             isDragging = true;
         }
@@ -97,14 +92,13 @@ public class PlayerInput : MonoBehaviour
     private void Press_performed(InputAction.CallbackContext obj)
     {
         isClicked = true;
-        print("bruh");
     }
 
 
     public bool IsClick()
-        {
-            return isClicked;
-        }
+    {
+       return isClicked;
+    }
 
         public bool IsDragStarted()
         {

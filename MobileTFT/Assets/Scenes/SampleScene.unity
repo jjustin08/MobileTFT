@@ -311,7 +311,7 @@ MonoBehaviour:
   m_EventMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_MaxRayIntersections: 1
+  m_MaxRayIntersections: 0
 --- !u!1 &337353934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1146,7 +1146,7 @@ Transform:
   m_GameObject: {fileID: 1962908728}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03, y: 0, z: 0.91}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []

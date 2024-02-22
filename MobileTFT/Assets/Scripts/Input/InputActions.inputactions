@@ -11,7 +11,16 @@
                     "id": "0f0bc52b-0c11-4f49-bdbb-d940ecd24e46",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Hold(duration=1.401298E-45)",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Drag",
+                    "type": "Button",
+                    "id": "26440aa7-98a2-47ed-8a9d-57f6402afc3d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.1)",
                     "initialStateCheck": false
                 },
                 {
@@ -66,6 +75,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "PressPos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abab0b3b-2883-4db1-9df4-18098c411d94",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "34b3d287-c893-4083-bf03-8f73aced8b6a",
+                    "path": "<Touchscreen>/Press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Drag",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -25,9 +25,9 @@ public class Interaction : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         isClicking = false;
-
         if (Player.Instance.PlayerInput.IsClick())
         {
+
             OnClick();
         }
 

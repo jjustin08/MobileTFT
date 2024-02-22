@@ -33,7 +33,16 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""id"": ""0f0bc52b-0c11-4f49-bdbb-d940ecd24e46"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=1.401298E-45)"",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drag"",
+                    ""type"": ""Button"",
+                    ""id"": ""26440aa7-98a2-47ed-8a9d-57f6402afc3d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Hold(duration=0.1)"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -90,6 +99,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""PressPos"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""abab0b3b-2883-4db1-9df4-18098c411d94"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""34b3d287-c893-4083-bf03-8f73aced8b6a"",
+                    ""path"": ""<Touchscreen>/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drag"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -99,6 +130,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Press = m_Player.FindAction("Press", throwIfNotFound: true);
+        m_Player_Drag = m_Player.FindAction("Drag", throwIfNotFound: true);
         m_Player_PressPos = m_Player.FindAction("PressPos", throwIfNotFound: true);
     }
 
@@ -162,12 +194,14 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Press;
+    private readonly InputAction m_Player_Drag;
     private readonly InputAction m_Player_PressPos;
     public struct PlayerActions
     {
         private @InputActions m_Wrapper;
         public PlayerActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Press => m_Wrapper.m_Player_Press;
+        public InputAction @Drag => m_Wrapper.m_Player_Drag;
         public InputAction @PressPos => m_Wrapper.m_Player_PressPos;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -181,6 +215,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Press.started += instance.OnPress;
             @Press.performed += instance.OnPress;
             @Press.canceled += instance.OnPress;
+            @Drag.started += instance.OnDrag;
+            @Drag.performed += instance.OnDrag;
+            @Drag.canceled += instance.OnDrag;
             @PressPos.started += instance.OnPressPos;
             @PressPos.performed += instance.OnPressPos;
             @PressPos.canceled += instance.OnPressPos;
@@ -191,6 +228,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Press.started -= instance.OnPress;
             @Press.performed -= instance.OnPress;
             @Press.canceled -= instance.OnPress;
+            @Drag.started -= instance.OnDrag;
+            @Drag.performed -= instance.OnDrag;
+            @Drag.canceled -= instance.OnDrag;
             @PressPos.started -= instance.OnPressPos;
             @PressPos.performed -= instance.OnPressPos;
             @PressPos.canceled -= instance.OnPressPos;
@@ -214,6 +254,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnPress(InputAction.CallbackContext context);
+        void OnDrag(InputAction.CallbackContext context);
         void OnPressPos(InputAction.CallbackContext context);
     }
 }
