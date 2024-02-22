@@ -11,6 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
 
 
+    [SerializeField] private GameObject testObject;
+
+    public GameObject GetTestObject() { return testObject; }
+
     private void Awake()
     {
         Instance = this;

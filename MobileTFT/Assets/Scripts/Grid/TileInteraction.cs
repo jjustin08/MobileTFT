@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TileInteraction : Interaction
 {
+    [SerializeField] private Tile tile;
     override protected void OnClick() 
     {
-        print("hello");
+        tile.FillSlot(Player.Instance.GetTestObject());
     }
 }
