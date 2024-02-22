@@ -5,8 +5,19 @@ using UnityEngine;
 public class TileInteraction : Interaction
 {
     [SerializeField] private Tile tile;
-    override protected void OnClick() 
+
+    protected override void OnDragCanceled()
     {
-        print("hello");
+        
+    }
+
+    public void PawnInteraction()
+    {
+        GameObject tempPawn = Player.Instance.GetHoldingPawn();
+        if (tempPawn != null)
+        {
+            tile.PlacePawn(tempPawn);
+            Player.Instance.SetHoldingPawn(null);
+        }
     }
 }

@@ -131,5 +131,35 @@ public class PlayerInput : MonoBehaviour
         {
             return mainCamera.ScreenPointToRay(GetMousePosition());
         }
-    
+
+
+    public GameObject TestCardTileIntercept()
+    {
+        Ray ray = mainCamera.ScreenPointToRay(GetMousePosition());
+        Physics.Raycast(ray, out RaycastHit hit, 100f, mainCamera.cullingMask, QueryTriggerInteraction.Ignore);
+
+        if (hit.collider != null)
+        {
+            return hit.collider.gameObject;
+        }
+        return null;
+
+    }
+
+    public Vector3 GetCursorWorldPos(float height)
+    {
+        Plane plane = new Plane(Vector3.up, Vector3.one * height);
+        Ray ray = GetMouseToScreenRay();
+
+        float entry;
+
+        if (plane.Raycast(ray, out entry))
+        {
+
+            return ray.GetPoint(entry);
+        }
+
+        return Vector3.zero;
+    }
+
 }

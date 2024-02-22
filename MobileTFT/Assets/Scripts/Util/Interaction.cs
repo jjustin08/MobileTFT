@@ -10,7 +10,7 @@ public class Interaction : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         if (isClicking)
         {
-            if (Player.Instance.PlayerInput.IsDrag())
+            if (Player.Instance.GetPlayerInput().IsDrag())
             {
                 OnDrag();
             }
@@ -25,14 +25,14 @@ public class Interaction : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public void OnPointerUp(PointerEventData eventData)
     {
         isClicking = false;
-        if (Player.Instance.PlayerInput.IsClick())
+        if (Player.Instance.GetPlayerInput().IsClick())
         {
 
             OnClick();
         }
 
 
-        if (Player.Instance.PlayerInput.IsDragCanceled())
+        if (Player.Instance.GetPlayerInput().IsDragCanceled())
         {
             OnDragCanceled();
         }

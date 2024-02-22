@@ -9,10 +9,9 @@ public class Tile : MonoBehaviour
 
 
 
-    public void FillSlot(GameObject gameObject)
+    public void PlacePawn(GameObject gameObject)
     {
-        GameObject g = Instantiate(gameObject);
-        g.transform.SetParent(transform, false);
-        slot = g;
+        gameObject.transform.SetParent(transform, false);
+        slot = gameObject;
     }
 }

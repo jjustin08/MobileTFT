@@ -41,7 +41,7 @@ public class FollowCursor : MonoBehaviour
     {
         if (!isDraging)
             return;
-        Vector3 mouseWorldPos = GetCursorWorldPos();
+        Vector3 mouseWorldPos = Player.Instance.GetPlayerInput().GetCursorWorldPos(height);
 
         Vector3 newWorldPos = new Vector3(mouseWorldPos.x, height, mouseWorldPos.z);
 
@@ -51,24 +51,6 @@ public class FollowCursor : MonoBehaviour
         Quaternion rotate = Quaternion.Euler(rb.velocity.z, 0, -rb.velocity.x);
         rb.rotation = rotate;
 
-    }
-
-
-
-    private Vector3 GetCursorWorldPos()
-    {
-        Plane plane = new Plane(Vector3.up, Vector3.one * height);
-        Ray ray = Player.Instance.GetPlayerInput().GetMouseToScreenRay();
-
-        float entry;
-
-        if (plane.Raycast(ray, out entry))
-        {
-
-            return ray.GetPoint(entry);
-        }
-
-        return Vector3.zero;
     }
 
     public bool IsDraging()
