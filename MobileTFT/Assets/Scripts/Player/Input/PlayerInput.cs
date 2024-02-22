@@ -29,6 +29,8 @@ public class PlayerInput : MonoBehaviour
         inputActions.Player.Drag.performed += Drag_performed;
         inputActions.Player.Drag.canceled += Drag_canceled; ;
 
+        inputActions.Player.PressPos.performed += Position_performed;
+
         timer = timerMax;
         }
 
@@ -120,9 +122,9 @@ public class PlayerInput : MonoBehaviour
             return mousePos;
         }
 
-        private void Position_performed(Vector2 value)
+        private void Position_performed(InputAction.CallbackContext obj)
         {
-            mousePos = value;
+            mousePos = obj.ReadValue<Vector2>();
         }
 
         public Ray GetMouseToScreenRay()

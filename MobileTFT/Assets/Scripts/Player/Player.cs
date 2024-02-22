@@ -10,10 +10,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private PlayerInput playerInput;
 
-
-    [SerializeField] private GameObject testObject;
-
-    public GameObject GetTestObject() { return testObject; }
+    public PlayerInput GetPlayerInput() { return playerInput; }
 
     private void Awake()
     {

@@ -7,6 +7,6 @@ public class TileInteraction : Interaction
     [SerializeField] private Tile tile;
     override protected void OnClick() 
     {
-        tile.FillSlot(Player.Instance.GetTestObject());
+        print("hello");
     }
 }
