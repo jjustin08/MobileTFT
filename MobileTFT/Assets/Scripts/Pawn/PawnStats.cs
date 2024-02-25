@@ -9,4 +9,16 @@ public class PawnStats : MonoBehaviour
     [SerializeField] private float damage;
     [SerializeField] private float attackTime;
     [SerializeField] private int range;
+
+
+
+    public float GetAttackTime(){return attackTime;}
+    public float GetHealth() { return health;}
+    public float GetDamage() { return damage;}
+    public int GetRange() { return range; }
+
+    public void SetHealth(float newHealth)
+    {
+        health = newHealth;
+    }
 }
