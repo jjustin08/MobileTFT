@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileInteraction : Interaction
 {
-    [SerializeField] private Tile tile;
+    [SerializeField] private Slot tile;
 
     protected override void OnDragCanceled()
     {

@@ -4,15 +4,7 @@ using UnityEngine;
 
 public class Pawn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private bool isEnemy;
+    [SerializeField] private PawnStats stats;
+    [SerializeField] private PawnMovement movement;
 }
