@@ -290,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d5bdc89f964a84ca9e97d4521e2633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pawnList: []
 --- !u!4 &95400343
 Transform:
   m_ObjectHideFlags: 0
@@ -1279,6 +1280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 337353936}
   - component: {fileID: 337353935}
+  - component: {fileID: 337353937}
   m_Layer: 0
   m_Name: HexGrid
   m_TagString: Untagged
@@ -1315,6 +1317,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1473088730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &337353937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337353934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ade5f66cd19fb4fa3f086f287d407c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &363549765
 GameObject:
   m_ObjectHideFlags: 0

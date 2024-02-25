@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HexGridLayout : MonoBehaviour
 {
+    private AStar aStar;
+
+
+
     [SerializeField] private GameObject emptyTile;
 
 
@@ -13,6 +18,7 @@ public class HexGridLayout : MonoBehaviour
 
     private void Start()
     {
+        aStar = GetComponent<AStar>();
         LayoutGrid(6,8);
     }
 

@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(PawnStats))]
+[RequireComponent(typeof(PawnMovement))]
+[RequireComponent(typeof(PawnCombat))]
 public class Pawn : MonoBehaviour
 {
     [SerializeField] private bool isEnemy;
