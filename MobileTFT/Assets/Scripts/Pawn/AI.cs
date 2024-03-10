@@ -56,15 +56,17 @@ public class AI : MonoBehaviour
         if (Timer(ref moveTimerMax, ref moveTimerCurrent))
             return;
 
-        print("move update");
+
         TilePosition tileToMove;
         tileToMove = MovementUtil.Instance.GetNextMovementTile(parentPawn.GetMovement().GetSlot().GetTilePos()); // to long
 
+
+        
         // move
         if (tileToMove != null)
         {
             parentPawn.GetMovement().MoveToSlot(tileToMove.GetSlot());
-            print("move");
+
         }
     }
 

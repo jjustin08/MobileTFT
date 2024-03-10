@@ -29,11 +29,13 @@ public class MovementUtil : MonoBehaviour
 
     public TilePosition GetTargetInRange(int range, TilePosition tile)
     {
+        
         TilePosition nearestTarget = FindNearestTarget(tile);
         int distance = tile.GetTileDistanceAway(nearestTarget, range);
 
         if (distance != 0) 
         {
+  
             return nearestTarget;
         }
 
@@ -50,14 +52,12 @@ public class MovementUtil : MonoBehaviour
 
         foreach(TilePosition nei in tile.GetNeighbours())
         {
-            if(nei != null)
-            {
-                if (nei.GetSlot().HasPawn())
-                    continue;
-            }
-           
-
-            int neiDistance = tile.GetTileDistanceAway(nei, 15);
+            if (nei == null)
+                continue;
+            if (nei.GetSlot().HasPawn())
+                continue;
+            
+            int neiDistance = nearestTarget.GetTileDistanceAway(nei, 15);
             if (neiDistance < nearestDistance)
             {
                 nearestNeigbourToTarget = nei;
@@ -65,7 +65,7 @@ public class MovementUtil : MonoBehaviour
             }
         }
 
-        if (nearestTarget != null)
+        if (nearestNeigbourToTarget != null)
         {
             return nearestNeigbourToTarget;
         }
