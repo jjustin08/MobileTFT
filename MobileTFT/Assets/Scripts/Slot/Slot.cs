@@ -8,6 +8,12 @@ public class Slot : MonoBehaviour
    private bool hasPawn;
     public void PlacePawn(Pawn p)
     {
+        if (p.GetMovement().GetSlot()!= null)
+        {
+            p.GetMovement().GetSlot().RemovePawn();
+        }
+        
+
         p.transform.SetParent(transform, false);
         placedPawn = p;
         p.GetComponent<PawnMovement>().SetSlot(this);
