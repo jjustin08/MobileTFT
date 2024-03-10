@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+    [SerializeField] private PawnShop pawnShop;
+    private List<Pawn> pawns = new List<Pawn>();
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.W))
@@ -20,17 +22,29 @@ public class Combat : MonoBehaviour
     {
         foreach (Pawn p in MovementUtil.Instance.GetAllPawns()) 
         {
+            pawns.Add(p);
             p.GetAI().ToggleCombatMode(true);
         }
-        // disable input from player
-        // activate all pawns
+        //TODO disable input from player
+  
     }
 
     private void EndCombat()
     {
-        foreach (Pawn p in MovementUtil.Instance.GetAllPawns())
+        foreach (Pawn p in pawns)
         {
-            p.GetAI().ToggleCombatMode(false);
+            if(p.gameObject.activeSelf)
+            {
+                p.GetAI().ToggleCombatMode(false);
+            }
+            else
+            {
+                
+                pawnShop.AddPawnToDeck();
+                Destroy(p.gameObject);
+            }
+            
         }
+        pawns.Clear();
     }
 }

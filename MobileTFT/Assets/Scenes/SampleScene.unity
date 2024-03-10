@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d5bdc89f964a84ca9e97d4521e2633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pawnShop: {fileID: 278468140}
 --- !u!4 &95400343
 Transform:
   m_ObjectHideFlags: 0
@@ -950,6 +951,8 @@ MonoBehaviour:
   - {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
   - {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
   pawnStorage: {fileID: 452259398}
+  tempDeadPawn: {fileID: 478290466736516452, guid: bcd7d114522e4a14fa4f6e807559fc0c,
+    type: 3}
 --- !u!1 &278922253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,7 +3285,7 @@ RectTransform:
   m_Children:
   - {fileID: 2060392013}
   - {fileID: 278468139}
-  m_Father: {fileID: 1301282832}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4299,7 +4302,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1929416552}
-  - {fileID: 874269183}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1346140725
@@ -6825,5 +6827,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1301282832}
   - {fileID: 1766279746}
+  - {fileID: 874269183}
   - {fileID: 524864592}
   - {fileID: 1473088730}

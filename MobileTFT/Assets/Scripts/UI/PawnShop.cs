@@ -10,6 +10,8 @@ public class PawnShop : MonoBehaviour
 
     [SerializeField] private PawnStorage pawnStorage;
 
+    [SerializeField] private ShopPawn tempDeadPawn;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -29,5 +31,12 @@ public class PawnShop : MonoBehaviour
     public void BuyPawn(ShopPawn shopPawn)
     {
         pawnStorage.FillSlot(shopPawn.GetPawn());
+    }
+
+
+    public void AddPawnToDeck()
+    {
+        shopPawnsDeck.Add(tempDeadPawn);
+        //temp value
     }
 }

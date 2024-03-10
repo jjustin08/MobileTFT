@@ -21,6 +21,7 @@ public class PawnCombat : MonoBehaviour
         {
             GetComponent<Pawn>().GetMovement().GetSlot().RemovePawn();
             this.gameObject.SetActive(false);
+            // add to dead deck
         }
     }
 
