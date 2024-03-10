@@ -9,6 +9,14 @@ public class TilePosition : MonoBehaviour
     [SerializeField]
     private TilePosition[] tileNeighbours = new TilePosition[6];
 
+    private Slot slot;
+
+    private void Start()
+    {
+        slot = GetComponent<Slot>();
+    }
+    public Slot GetSlot() { return slot; }
+
     public void SetHexCoordinate(Vector2Int hexCoordinate)
     {
         this.hexCoordinate = hexCoordinate;

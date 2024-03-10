@@ -9,7 +9,7 @@ public class PawnInteraction : Interaction
 
     protected override void OnDrag()
     {
-        Player.Instance.SetHoldingPawn(pawn.gameObject);
+        Player.Instance.SetHoldingPawn(pawn);
         followCursor.ToggleDraggin(true);
     }
 

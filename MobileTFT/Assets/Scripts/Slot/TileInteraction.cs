@@ -13,7 +13,7 @@ public class TileInteraction : Interaction
 
     public void PawnInteraction()
     {
-        GameObject tempPawn = Player.Instance.GetHoldingPawn();
+        Pawn tempPawn = Player.Instance.GetHoldingPawn();
         if (tempPawn != null)
         {
             tile.PlacePawn(tempPawn);

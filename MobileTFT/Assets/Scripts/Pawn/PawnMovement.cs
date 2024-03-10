@@ -15,6 +15,11 @@ public class PawnMovement : MonoBehaviour
     public void MoveToSlot(Slot s)
     {
         currentSlot.RemovePawn();
-        s.PlacePawn(gameObject);
+        s.PlacePawn(GetComponent<Pawn>());
+    }
+
+    public Slot GetSlot()
+    {
+        return currentSlot;
     }
 }

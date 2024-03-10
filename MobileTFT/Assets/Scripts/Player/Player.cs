@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
 {
     public static Player Instance { get; private set; }
 
-    private GameObject holdingPawn;
+    private Pawn holdingPawn;
     [SerializeField] private PlayerInput playerInput;
 
     public PlayerInput GetPlayerInput() { return playerInput; }
@@ -18,6 +18,6 @@ public class Player : MonoBehaviour
 
 
 
-    public void SetHoldingPawn(GameObject Pawn) { holdingPawn = Pawn; }
-    public GameObject GetHoldingPawn() { return holdingPawn; }
+    public void SetHoldingPawn(Pawn Pawn) { holdingPawn = Pawn; }
+    public Pawn GetHoldingPawn() { return holdingPawn; }
 }
