@@ -48,7 +48,7 @@ public class AI : MonoBehaviour
                 return true;
 
             
-            //parentPawn.GetCombat().DealDamage(tileToAttack.GetSlot().GetPawn());
+            parentPawn.GetCombat().DealDamage(tileToAttack.GetSlot().GetPawn());
             //print("attack");
             return true;
         }

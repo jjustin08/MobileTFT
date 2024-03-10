@@ -20,16 +20,18 @@ public class AStar
         searchers = new List<Searcher>();
         newSearchers = new List<Searcher>();
 
-        foreach (TilePosition tile in startTile.GetNeighbours())
+        foreach (TilePosition nei in startTile.GetNeighbours())
         {
-            if (tile != null)
-                searchers.Add(new Searcher(this, targetTile, tile, null));
+            if (nei != null)
+                if(!nei.GetSlot().HasPawn())
+                    searchers.Add(new Searcher(this, targetTile, nei, null));
         }
 
         while(!isFound && searchers.Count > 0)
         {
             foreach (Searcher s in searchers)
             {
+                if(!isFound)
                 s.MoveToNeighbour();
             }
             searchers.Clear();
@@ -51,7 +53,7 @@ public class AStar
     }
 
     public bool GetIsSolved() { return isFound; }
-    //TODO make private somehow
+    
     public List<TilePosition> GetAllVisitedTiles() { return allVisitedTiles; }
     public List<Searcher> GetAllSearchers() { return newSearchers; }
 }
@@ -65,7 +67,6 @@ public class Searcher
     private AStar aStar;
     public Searcher(AStar aStar, TilePosition targetTile, TilePosition spawnTile, List<TilePosition> visitedTiles)
     {
-        Debug.Log(spawnTile.GetSlot().HasPawn());
         if(spawnTile.GetSlot().HasPawn())
         {
             aStar.GetAllSearchers().Remove(this);
@@ -86,34 +87,27 @@ public class Searcher
 
     public void MoveToNeighbour()
     {
-        if(aStar.GetIsSolved())
-        {
-            return;
-        }
         foreach (TilePosition nei in spawnTile.GetNeighbours())
         {
-            if (nei == null)
-                continue;
-            if (!aStar.GetAllVisitedTiles().Contains(nei))
+            if (nei != null)
             {
-                if(nei == targetTile)
+                if (!aStar.GetAllVisitedTiles().Contains(nei))
                 {
-                    
-                    aStar.Bingo(this);
-                }
-                else
-                {
+                    if (nei == targetTile)
+                    {
+                        aStar.Bingo(this);
+                        return;
+                    }
+                   
                     if (!nei.GetSlot().HasPawn())
                     {
-                        Debug.Log(nei.GetSlot().HasPawn());
                         aStar.GetAllSearchers().Add(new Searcher(aStar, targetTile, nei, visitedTiles));
                     }
+                    
                 }
             }
-           
         }
-        // destroy self
-        aStar.GetAllSearchers().Remove(this);
+        
     }
 
     public List<TilePosition> GetVisitedTiles()
