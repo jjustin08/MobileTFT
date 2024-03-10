@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Slot : MonoBehaviour
 {
-    private Pawn placedPawn;
-    private bool hasPawn;
+   private Pawn placedPawn;
+   private bool hasPawn;
     public void PlacePawn(Pawn p)
     {
         p.transform.SetParent(transform, false);

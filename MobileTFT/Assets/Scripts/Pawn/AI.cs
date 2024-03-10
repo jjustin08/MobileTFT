@@ -48,8 +48,8 @@ public class AI : MonoBehaviour
                 return true;
 
             
-            parentPawn.GetCombat().DealDamage(tileToAttack.GetSlot().GetPawn());
-            print("attack");
+            //parentPawn.GetCombat().DealDamage(tileToAttack.GetSlot().GetPawn());
+            //print("attack");
             return true;
         }
         return false;
@@ -62,7 +62,8 @@ public class AI : MonoBehaviour
 
 
         TilePosition tileToMove;
-        tileToMove = MovementUtil.Instance.GetNextMovementTile(parentPawn.GetMovement().GetSlot().GetTilePos()); // to long
+        //tileToMove = MovementUtil.Instance.GetNextMovementTile(parentPawn.GetMovement().GetSlot().GetTilePos()); // to long
+        tileToMove = MovementUtil.Instance.AStarNextMoveTile(parentPawn.GetMovement().GetSlot().GetTilePos()); // to long
 
 
         

@@ -44,11 +44,11 @@ public class MovementUtil : MonoBehaviour
 
     public TilePosition GetNextMovementTile(TilePosition tile)
     {
-        TilePosition nearestTarget = FindNearestTarget(tile);
-        if(nearestTarget == null) 
+        TilePosition targetTile = FindNearestTarget(tile);
+        if(targetTile == null) 
             return null;
 
-        TilePosition nearestNeigbourToTarget = null;
+        TilePosition nextMoveTIle = null;
         int nearestDistance = 2000;
 
         foreach(TilePosition nei in tile.GetNeighbours())
@@ -58,23 +58,31 @@ public class MovementUtil : MonoBehaviour
             if (nei.GetSlot().HasPawn())
                 continue;
             
-            int neiDistance = nearestTarget.GetTileDistanceAway(nei, 15);
+            int neiDistance = targetTile.GetTileDistanceAway(nei, 15);
             if (neiDistance < nearestDistance)
             {
-                nearestNeigbourToTarget = nei;
+                nextMoveTIle = nei;
                 nearestDistance = neiDistance;
             }
         }
 
-        if (nearestNeigbourToTarget != null)
-        {
-            return nearestNeigbourToTarget;
-        }
-
-        return null;
+        return nextMoveTIle;
     }
 
-    public TilePosition FindNearestTarget(TilePosition tile)
+    public TilePosition AStarNextMoveTile(TilePosition tile)
+    {
+        TilePosition targetTile = FindNearestTarget(tile);
+        if (targetTile == null)
+            return null;
+
+        TilePosition nextMoveTile = null;
+        AStar aStar = new AStar();
+        nextMoveTile = aStar.DoThing(GetComponent<HexGridLayout>().GetAllTiles(), tile, targetTile);
+
+        return nextMoveTile;
+    }
+
+        public TilePosition FindNearestTarget(TilePosition tile)
     {
         List<TilePosition> tilesWithEnemeyPawns = new List<TilePosition>();
         foreach(TilePosition nei in tile.GetNeighboursInRange(15))
