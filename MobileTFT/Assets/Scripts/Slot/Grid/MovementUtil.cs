@@ -35,7 +35,6 @@ public class MovementUtil : MonoBehaviour
 
         if (distance != 0) 
         {
-  
             return nearestTarget;
         }
 
@@ -46,6 +45,8 @@ public class MovementUtil : MonoBehaviour
     public TilePosition GetNextMovementTile(TilePosition tile)
     {
         TilePosition nearestTarget = FindNearestTarget(tile);
+        if(nearestTarget == null) 
+            return null;
 
         TilePosition nearestNeigbourToTarget = null;
         int nearestDistance = 2000;

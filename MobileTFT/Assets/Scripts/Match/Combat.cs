@@ -8,8 +8,11 @@ public class Combat : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.W))
         {
-
             StartCombat();
+        }
+        if(Input.GetKeyDown(KeyCode.S)) 
+        {
+            EndCombat();
         }
     }
 
@@ -17,7 +20,7 @@ public class Combat : MonoBehaviour
     {
         foreach (Pawn p in MovementUtil.Instance.GetAllPawns()) 
         {
-            p.GetAI().ActivateCombatMode();
+            p.GetAI().ToggleCombatMode(true);
         }
         // disable input from player
         // activate all pawns
@@ -25,6 +28,9 @@ public class Combat : MonoBehaviour
 
     private void EndCombat()
     {
-        //reset all pawns except dead ones?
+        foreach (Pawn p in MovementUtil.Instance.GetAllPawns())
+        {
+            p.GetAI().ToggleCombatMode(false);
+        }
     }
 }

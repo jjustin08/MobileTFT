@@ -6,6 +6,8 @@ public class AI : MonoBehaviour
 {
     private Pawn parentPawn;
 
+    private Slot startingSlot;
+
     private bool isCombatMode = false;
 
 
@@ -45,6 +47,8 @@ public class AI : MonoBehaviour
             if (Timer(ref attackTimerMax, ref attackTimerCurrent))
                 return true;
 
+            
+            parentPawn.GetCombat().DealDamage(tileToAttack.GetSlot().GetPawn());
             print("attack");
             return true;
         }
@@ -70,9 +74,22 @@ public class AI : MonoBehaviour
         }
     }
 
-    public void ActivateCombatMode()
+    public void ToggleCombatMode(bool toggle)
     {
-        isCombatMode = true;
+        isCombatMode = toggle;
+
+        if(toggle)
+        {
+            startingSlot = parentPawn.GetMovement().GetSlot();
+        }
+        else
+        {
+            parentPawn.GetMovement().MoveToSlot(startingSlot);
+
+            attackTimerCurrent = 0;
+            moveTimerCurrent = 0;
+        }
+        
     }
 
     public bool Timer(ref float max,ref float current)
