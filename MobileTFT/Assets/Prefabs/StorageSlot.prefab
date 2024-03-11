@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65dc793223df1424482b04350d3e0fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotInteraction: {fileID: 4480296245656406685}
 --- !u!1 &9147713190587921963
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +161,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9147713190587921963}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e34c359a07d1a294b98cabcd3a7fd8dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 95542f2596c165d47aa746ae383b5050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 3091852378997378601}

@@ -6,20 +6,33 @@ public class PawnMovement : MonoBehaviour
 {
     private Slot currentSlot;
 
+    private Slot startingSlot;
+
+    public void ToggleCombat(bool toggle)
+    {
+        if (toggle)
+        {
+            startingSlot = GetSlot();
+        }
+        else
+        {
+            MoveToSlot(startingSlot);
+        }
+    }
+    public void MoveToSlot(Slot s)
+    {
+        s.PlacePawn(GetComponent<Pawn>());
+    }
     public void SetSlot(Slot s)
     {
         currentSlot = s;
-    }
-
-
-    public void MoveToSlot(Slot s)
-    {
-        currentSlot.RemovePawn();
-        s.PlacePawn(GetComponent<Pawn>());
     }
 
     public Slot GetSlot()
     {
         return currentSlot;
     }
+   
+
+   
 }

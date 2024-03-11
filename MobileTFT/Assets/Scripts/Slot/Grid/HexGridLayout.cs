@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[RequireComponent(typeof(MovementUtil))]
+[RequireComponent(typeof(GridUtil))]
 public class HexGridLayout : MonoBehaviour
 {
     [SerializeField] private GameObject emptyTile;
 
 
-    private TilePosition[] m_allTiles;
+    private SlotPosition[] m_allTiles;
 
     private float outerSize = 1;
 
@@ -18,9 +18,9 @@ public class HexGridLayout : MonoBehaviour
         LayoutGrid(6,8);
     }
 
-    public TilePosition[] LayoutGrid(int sizeX, int sizeY)
+    public SlotPosition[] LayoutGrid(int sizeX, int sizeY)
     {
-        m_allTiles = new TilePosition[sizeX * sizeY];
+        m_allTiles = new SlotPosition[sizeX * sizeY];
         int num = 0;
         for (int y = 0; y < sizeY; y++)
         {
@@ -32,10 +32,10 @@ public class HexGridLayout : MonoBehaviour
 
                 // transform
                 tileGameObject.transform.position = GetPositionForHexFromCoordinate(new Vector2Int(x, y));
-                tileGameObject.GetComponent<TilePosition>().SetHexCoordinate(new Vector2Int(x, y));
+                tileGameObject.GetComponent<SlotPosition>().SetHexCoordinate(new Vector2Int(x, y));
 
                 // for neighbors
-                m_allTiles[num] = tileGameObject.GetComponent<TilePosition>();
+                m_allTiles[num] = tileGameObject.GetComponent<SlotPosition>();
                 num++;
 
             }
@@ -83,7 +83,7 @@ public class HexGridLayout : MonoBehaviour
         }
 
         //add first tile
-        foreach (TilePosition obj in m_allTiles[0].GetNeighbours())
+        foreach (SlotPosition obj in m_allTiles[0].GetNeighbours())
         {
             if (obj != null)
                 obj.AddNeighbour(m_allTiles[0], 5);
@@ -122,7 +122,7 @@ public class HexGridLayout : MonoBehaviour
         return new Vector3(xPosition, 0, -yPosition);
     }
 
-    public TilePosition[] GetAllTiles()
+    public SlotPosition[] GetAllTiles()
     {
         return m_allTiles;
     }

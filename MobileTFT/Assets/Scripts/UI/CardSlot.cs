@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopPawnSlot : MonoBehaviour
+public class CardSlot : MonoBehaviour
 {
-    [SerializeField] private PawnShop pawnShop;
-    private ShopPawn shopPawn;
+    [SerializeField] private CardManager pawnShop;
+    private Card shopPawn;
     private void Awake()
     {
         GetComponent<Button>().onClick.AddListener(() => {
@@ -19,7 +19,7 @@ public class ShopPawnSlot : MonoBehaviour
         });
     }
 
-    public void PlaceShopPawn(ShopPawn newShopPawn)
+    public void PlaceShopPawn(Card newShopPawn)
     {
         shopPawn = Instantiate(newShopPawn, transform);
     }

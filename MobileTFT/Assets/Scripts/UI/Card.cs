@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopPawn : MonoBehaviour
+public class Card : MonoBehaviour
 {
     [SerializeField] private Pawn pawn;
 

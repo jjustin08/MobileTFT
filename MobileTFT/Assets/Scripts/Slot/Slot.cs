@@ -2,21 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Slot : MonoBehaviour
 {
+   private SlotInteraction slotInteraction;
    private Pawn placedPawn;
    private bool hasPawn;
+
+    private void Start()
+    {
+        slotInteraction = GetComponentInChildren<SlotInteraction>();
+        
+    }
     public void PlacePawn(Pawn p)
     {
         if (p.GetMovement().GetSlot()!= null)
         {
             p.GetMovement().GetSlot().RemovePawn();
         }
-        
+        p.GetComponent<PawnMovement>().SetSlot(this);
 
         p.transform.SetParent(transform, false);
         placedPawn = p;
-        p.GetComponent<PawnMovement>().SetSlot(this);
+        
         hasPawn = true;
     }
 
@@ -30,9 +38,15 @@ public class Slot : MonoBehaviour
         return placedPawn;
     }
 
-    public TilePosition GetTilePos()
+    public SlotPosition GetSlotPos()
     {
-        return GetComponent<TilePosition>();
+        // doesnt always have this
+        return GetComponent<SlotPosition>();
+    }
+
+    public SlotInteraction GetSlotInteraction()
+    {
+        return slotInteraction;
     }
 
     public bool HasPawn()

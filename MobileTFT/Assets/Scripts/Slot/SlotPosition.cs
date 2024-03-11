@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TilePosition : MonoBehaviour
+public class SlotPosition : MonoBehaviour
 {
     private Vector2Int hexCoordinate;
     [SerializeField]
-    private TilePosition[] tileNeighbours = new TilePosition[6];
+    private SlotPosition[] tileNeighbours = new SlotPosition[6];
 
     private Slot slot;
 
@@ -27,19 +27,19 @@ public class TilePosition : MonoBehaviour
         return this.hexCoordinate;
     }
 
-    public void AddNeighbour(TilePosition neighbour, int slot)
+    public void AddNeighbour(SlotPosition neighbour, int slot)
     {
         tileNeighbours[slot] = neighbour;
     }
 
-    public TilePosition[] GetNeighbours()
+    public SlotPosition[] GetNeighbours()
     {
         return tileNeighbours;
     }
 
-    public int GetTileDistanceAway(TilePosition tilePos, int maxRange)
+    public int GetTileDistanceAway(SlotPosition tilePos, int maxRange)
     {
-        if (tileNeighbours.Contains<TilePosition>(tilePos))
+        if (tileNeighbours.Contains<SlotPosition>(tilePos))
         {
             return 1;
         }
@@ -47,7 +47,7 @@ public class TilePosition : MonoBehaviour
         {
             for (int i = 2; i <= maxRange; i++)
             {
-                if (GetNeighboursInRange(i).Contains<TilePosition>(tilePos))
+                if (GetNeighboursInRange(i).Contains<SlotPosition>(tilePos))
                 {
                     return i;
                 }
@@ -59,29 +59,29 @@ public class TilePosition : MonoBehaviour
     }
 
 
-    public TilePosition[] GetNeighboursInRange(int range)
+    public SlotPosition[] GetNeighboursInRange(int range)
     {
-        List<TilePosition> realNeighbours = new List<TilePosition>();
+        List<SlotPosition> realNeighbours = new List<SlotPosition>();
 
         AddNeighboursInRange(tileNeighbours, range, realNeighbours);
 
         return realNeighbours.ToArray();
     }
 
-    private void AddNeighboursInRange(IEnumerable<TilePosition> neighbours, int range, List<TilePosition> realNeighbours)
+    private void AddNeighboursInRange(IEnumerable<SlotPosition> neighbours, int range, List<SlotPosition> realNeighbours)
     {
         if (range <= 0)
             return;
 
-        List<TilePosition> nextNeighbours = new List<TilePosition>();
+        List<SlotPosition> nextNeighbours = new List<SlotPosition>();
 
-        foreach (TilePosition currentNeighbour in neighbours)
+        foreach (SlotPosition currentNeighbour in neighbours)
         {
             if (currentNeighbour != null && !realNeighbours.Contains(currentNeighbour))
             {
                 realNeighbours.Add(currentNeighbour);
 
-                foreach (TilePosition nextNeighbour in currentNeighbour.GetNeighbours())
+                foreach (SlotPosition nextNeighbour in currentNeighbour.GetNeighbours())
                 {
                     if (!realNeighbours.Contains(nextNeighbour) && !nextNeighbours.Contains(nextNeighbour))
                         nextNeighbours.Add(nextNeighbour);

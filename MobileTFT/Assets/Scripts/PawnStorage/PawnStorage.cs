@@ -14,6 +14,7 @@ public class PawnStorage : MonoBehaviour
     }
     private void Update()
     {
+        // debug input
         if(Input.GetKeyDown(KeyCode.E))
         {
             FillSlot(tempPawn);

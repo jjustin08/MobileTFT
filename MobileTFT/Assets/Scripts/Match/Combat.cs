@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    [SerializeField] private PawnShop pawnShop;
+    [SerializeField] private CardManager cardManager;
     private List<Pawn> pawns = new List<Pawn>();
     void Update()
     {
+        //debug input
         if(Input.GetKeyDown(KeyCode.W))
         {
             StartCombat();
@@ -20,12 +21,18 @@ public class Combat : MonoBehaviour
 
     private void StartCombat()
     {
-        foreach (Pawn p in MovementUtil.Instance.GetAllPawns()) 
+        
+        foreach (Pawn p in GridUtil.Instance.GetAllPawns()) 
         {
             pawns.Add(p);
-            p.GetAI().ToggleCombatMode(true);
+            p.ToggleCombat(true);
         }
-        //TODO disable input from player
+
+        foreach(Slot s in GridUtil.Instance.GetAllSlots())
+        {
+            s.GetSlotInteraction().ToggleInteraction(false);
+        }
+        
   
     }
 
@@ -35,16 +42,26 @@ public class Combat : MonoBehaviour
         {
             if(p.gameObject.activeSelf)
             {
-                p.GetAI().ToggleCombatMode(false);
+                p.ToggleCombat(false);
             }
             else
             {
-                
-                pawnShop.AddPawnToDeck();
-                Destroy(p.gameObject);
+                // what happens to destroyed pawns
+                //reset like normal game
+                p.gameObject.SetActive(true);
+                p.ToggleCombat(false);
+
+                // remove from place and put back into deck or dead deck
+                //cardManager.AddPawnToDeck();
+                //Destroy(p.gameObject);
             }
             
         }
         pawns.Clear();
+
+        foreach (Slot s in GridUtil.Instance.GetAllSlots())
+        {
+            s.GetSlotInteraction().ToggleInteraction(true);
+        }
     }
 }

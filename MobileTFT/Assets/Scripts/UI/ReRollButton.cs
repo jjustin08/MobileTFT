@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ReRollButton : MonoBehaviour
 {
-    [SerializeField] private PawnShop pawnShop;
+    [SerializeField] private CardManager pawnShop;
 
     private void Awake()
     {

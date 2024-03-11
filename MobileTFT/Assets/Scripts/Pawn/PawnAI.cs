@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AI : MonoBehaviour
+public class PawnAI : MonoBehaviour
 {
     private Pawn parentPawn;
 
-    private Slot startingSlot;
+  
 
     private bool isCombatMode = false;
 
-
-    private float moveTimerMax = 2;
+    // Timers
+    private float moveTimerMax = 0.5f;
     private float moveTimerCurrent = 0;
     
     private float attackTimerMax = 1;
@@ -30,26 +30,24 @@ public class AI : MonoBehaviour
         if (AttackUpdate())
             return;
 
-        MovementUpdate();
-            
+        MovementUpdate();   
     }
 
     private bool AttackUpdate()
     {
-        // check if target to attack
-        TilePosition tileToAttack;
-        tileToAttack = MovementUtil.Instance.GetTargetInRange(
-            parentPawn.GetStats().GetRange(),
-            parentPawn.GetMovement().GetSlot().GetTilePos()); // to long
+        SlotPosition slotToAttack;
+        
+        slotToAttack = 
+            GridUtil.Instance.GetTargetInRange(
+            parentPawn.GetStats().GetRange()
+            ,parentPawn.GetMovement().GetSlot()); 
 
-        if (tileToAttack != null)
+        if (slotToAttack != null)
         {
             if (Timer(ref attackTimerMax, ref attackTimerCurrent))
                 return true;
 
-            
-            parentPawn.GetCombat().DealDamage(tileToAttack.GetSlot().GetPawn());
-            //print("attack");
+            parentPawn.GetCombat().DealDamage(slotToAttack.GetSlot().GetPawn());
             return true;
         }
         return false;
@@ -60,37 +58,24 @@ public class AI : MonoBehaviour
         if (Timer(ref moveTimerMax, ref moveTimerCurrent))
             return;
 
+        SlotPosition tileToMove;
+        tileToMove = GridUtil.Instance.AStarNextMoveTile(parentPawn.GetMovement().GetSlot());
 
-        TilePosition tileToMove;
-        //tileToMove = MovementUtil.Instance.GetNextMovementTile(parentPawn.GetMovement().GetSlot().GetTilePos()); // to long
-        tileToMove = MovementUtil.Instance.AStarNextMoveTile(parentPawn.GetMovement().GetSlot().GetTilePos()); // to long
-
-
-        
-        // move
         if (tileToMove != null)
         {
             parentPawn.GetMovement().MoveToSlot(tileToMove.GetSlot());
-
         }
     }
 
-    public void ToggleCombatMode(bool toggle)
+    public void ToggleCombat(bool toggle)
     {
         isCombatMode = toggle;
 
-        if(toggle)
+        if(!toggle)
         {
-            startingSlot = parentPawn.GetMovement().GetSlot();
-        }
-        else
-        {
-            parentPawn.GetMovement().MoveToSlot(startingSlot);
-
             attackTimerCurrent = 0;
             moveTimerCurrent = 0;
         }
-        
     }
 
     public bool Timer(ref float max,ref float current)
@@ -103,8 +88,4 @@ public class AI : MonoBehaviour
         }
         return true;
     }
-
-
-
-
 }

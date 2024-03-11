@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 public class Interaction : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private bool isClicking = false;
+
+    protected bool allowInteraction = true;
     private void Update()
     {
         if (isClicking)
@@ -15,6 +17,10 @@ public class Interaction : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
                 OnDrag();
             }
         }
+    }
+    public void ToggleInteraction(bool toggle)
+    {
+        allowInteraction = toggle;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -48,10 +54,10 @@ public class Interaction : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
         OnHoverCanceled();
     }
 
-    virtual protected void OnClick() { }
-    virtual protected void OnDrag() { }
-    virtual protected void OnDragCanceled() { }
-    virtual protected void OnHover() { }
-    virtual protected void OnHoverCanceled() { }
+    virtual protected void OnClick() {  }
+    virtual protected void OnDrag() {  }
+    virtual protected void OnDragCanceled() {  }
+    virtual protected void OnHover() {  }
+    virtual protected void OnHoverCanceled() {  }
 
 }

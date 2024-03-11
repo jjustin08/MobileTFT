@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PawnShop : MonoBehaviour
+public class CardManager : MonoBehaviour
 {
-    [SerializeField] private List<ShopPawnSlot> shopPawnsSlots;
+    [SerializeField] private List<CardSlot> shopPawnsSlots;
 
-    [SerializeField] private List<ShopPawn> shopPawnsDeck;
+    [SerializeField] private List<Card> shopPawnsDeck;
 
     [SerializeField] private PawnStorage pawnStorage;
 
-    [SerializeField] private ShopPawn tempDeadPawn;
+    [SerializeField] private Card tempDeadPawn;
 
     private void Update()
     {
@@ -22,13 +22,13 @@ public class PawnShop : MonoBehaviour
 
     public void ReRollPawns()
     {
-        foreach(ShopPawnSlot slot in shopPawnsSlots)
+        foreach(CardSlot slot in shopPawnsSlots)
         {
             slot.PlaceShopPawn(shopPawnsDeck[Random.Range(0, shopPawnsDeck.Count-1)]);
         }
     }
 
-    public void BuyPawn(ShopPawn shopPawn)
+    public void BuyPawn(Card shopPawn)
     {
         pawnStorage.FillSlot(shopPawn.GetPawn());
     }

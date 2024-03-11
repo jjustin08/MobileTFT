@@ -8,19 +8,19 @@ using UnityEngine;
 
 public class AStar
 {
-    private  List<TilePosition> allVisitedTiles;
+    private  List<SlotPosition> allVisitedTiles;
     private  List<Searcher> searchers;
     private  List<Searcher> newSearchers;
 
     private  bool isFound;
     private  Searcher foundSearcher;
-    public TilePosition DoThing(TilePosition[] m_allTiles, TilePosition startTile, TilePosition targetTile)
+    public SlotPosition DoThing(SlotPosition[] m_allTiles, SlotPosition startTile, SlotPosition targetTile)
     {
-        allVisitedTiles = new List<TilePosition>();
+        allVisitedTiles = new List<SlotPosition>();
         searchers = new List<Searcher>();
         newSearchers = new List<Searcher>();
 
-        foreach (TilePosition nei in startTile.GetNeighbours())
+        foreach (SlotPosition nei in startTile.GetNeighbours())
         {
             if (nei != null)
                 if(!nei.GetSlot().HasPawn())
@@ -54,18 +54,18 @@ public class AStar
 
     public bool GetIsSolved() { return isFound; }
     
-    public List<TilePosition> GetAllVisitedTiles() { return allVisitedTiles; }
+    public List<SlotPosition> GetAllVisitedTiles() { return allVisitedTiles; }
     public List<Searcher> GetAllSearchers() { return newSearchers; }
 }
 
 
 public class Searcher
 {
-    private List<TilePosition> visitedTiles;
-    private TilePosition spawnTile;
-    private TilePosition targetTile;
+    private List<SlotPosition> visitedTiles;
+    private SlotPosition spawnTile;
+    private SlotPosition targetTile;
     private AStar aStar;
-    public Searcher(AStar aStar, TilePosition targetTile, TilePosition spawnTile, List<TilePosition> visitedTiles)
+    public Searcher(AStar aStar, SlotPosition targetTile, SlotPosition spawnTile, List<SlotPosition> visitedTiles)
     {
         if(spawnTile.GetSlot().HasPawn())
         {
@@ -75,7 +75,7 @@ public class Searcher
         this.targetTile = targetTile;
         this.spawnTile = spawnTile;
 
-        this.visitedTiles = new List<TilePosition>();
+        this.visitedTiles = new List<SlotPosition>();
         if (visitedTiles != null)
         {
             this.visitedTiles.AddRange(visitedTiles);
@@ -87,7 +87,7 @@ public class Searcher
 
     public void MoveToNeighbour()
     {
-        foreach (TilePosition nei in spawnTile.GetNeighbours())
+        foreach (SlotPosition nei in spawnTile.GetNeighbours())
         {
             if (nei != null)
             {
@@ -110,7 +110,7 @@ public class Searcher
         
     }
 
-    public List<TilePosition> GetVisitedTiles()
+    public List<SlotPosition> GetVisitedTiles()
     {
         return visitedTiles;
     }

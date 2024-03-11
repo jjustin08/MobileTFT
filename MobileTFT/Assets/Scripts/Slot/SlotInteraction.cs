@@ -2,17 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileInteraction : Interaction
+public class SlotInteraction : Interaction
 {
     [SerializeField] private Slot tile;
 
-    protected override void OnDragCanceled()
-    {
-        
-    }
-
     public void PawnInteraction()
     {
+        if (!allowInteraction) return;
+
         Pawn tempPawn = Player.Instance.GetHoldingPawn();
         if (tempPawn != null)
         {

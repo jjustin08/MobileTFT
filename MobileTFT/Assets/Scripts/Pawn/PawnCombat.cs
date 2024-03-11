@@ -11,17 +11,20 @@ public class PawnCombat : MonoBehaviour
         stats = GetComponent<PawnStats>();
     }
 
+    private void OnDeath()
+    {
+        GetComponent<Pawn>().GetMovement().GetSlot().RemovePawn();
+        this.gameObject.SetActive(false);
+    }
 
     public void RecieveDamage(float amount)
     {
-        float newHealth = stats.GetHealth() - amount;
-        stats.SetHealth(newHealth);
+        float newHealth = stats.GetCurrentHealth() - amount;
+        stats.SetCurrentHealth(newHealth);
         
         if(newHealth <= 0)
         {
-            GetComponent<Pawn>().GetMovement().GetSlot().RemovePawn();
-            this.gameObject.SetActive(false);
-            // add to dead deck
+            OnDeath();
         }
     }
 
