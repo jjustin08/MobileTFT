@@ -6,6 +6,8 @@ public class Combat : MonoBehaviour
 {
     [SerializeField] private CardManager cardManager;
     private List<Pawn> pawns = new List<Pawn>();
+
+    private bool inCombat;
     void Update()
     {
         //debug input
@@ -17,11 +19,44 @@ public class Combat : MonoBehaviour
         {
             EndCombat();
         }
+
+        // instead of update could do whenever a pawn dies. event maybe?
+        if(inCombat)
+        {
+            CheckCombatState();
+        }
+        
+    }
+
+    private void CheckCombatState()
+    {
+        int aliveFriendly = 0;
+        int aliveEnemy = 0;
+
+        if (pawns.Count <= 0)
+            return;
+
+        foreach(Pawn p in pawns) 
+        { 
+            if(p.IsEnemy() && p.gameObject.activeSelf)
+            {
+                aliveFriendly++;
+            }
+            if(!p.IsEnemy() && p.gameObject.activeSelf)
+            {
+                aliveEnemy++;
+            }
+        }
+
+        if (aliveFriendly == 0 || aliveEnemy == 0)
+        {
+            EndCombat();
+        }
     }
 
     private void StartCombat()
     {
-        
+        inCombat = true;
         foreach (Pawn p in GridUtil.Instance.GetAllPawns()) 
         {
             pawns.Add(p);
@@ -38,6 +73,7 @@ public class Combat : MonoBehaviour
 
     private void EndCombat()
     {
+        inCombat = false;
         foreach (Pawn p in pawns)
         {
             if(p.gameObject.activeSelf)
