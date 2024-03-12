@@ -400,7 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5d5bdc89f964a84ca9e97d4521e2633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pawnShop: {fileID: 278468140}
+  cardManager: {fileID: 0}
 --- !u!4 &95400343
 Transform:
   m_ObjectHideFlags: 0
@@ -944,11 +944,13 @@ MonoBehaviour:
   - {fileID: 426521000}
   - {fileID: 959806877}
   - {fileID: 744899167}
-  shopPawnsDeck:
+  sharedPool:
+  - {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
+  - {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
+  - {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
+  - {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
   - {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
   pawnStorage: {fileID: 452259398}
-  tempDeadPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035,
-    type: 3}
 --- !u!1 &278922253
 GameObject:
   m_ObjectHideFlags: 0

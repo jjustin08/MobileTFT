@@ -6,11 +6,10 @@ public class CardManager : MonoBehaviour
 {
     [SerializeField] private List<CardSlot> shopPawnsSlots;
 
-    [SerializeField] private List<Card> shopPawnsDeck;
+    [SerializeField] private List<Card> sharedPool;
 
     [SerializeField] private PawnStorage pawnStorage;
 
-    [SerializeField] private Card tempDeadPawn;
 
     private void Update()
     {
@@ -24,7 +23,12 @@ public class CardManager : MonoBehaviour
     {
         foreach(CardSlot slot in shopPawnsSlots)
         {
-            slot.PlaceShopPawn(shopPawnsDeck[Random.Range(0, shopPawnsDeck.Count-1)]);
+            if(sharedPool.Count > 0)
+            {
+                Card newCard = sharedPool[Random.Range(0, sharedPool.Count - 1)];
+                slot.PlaceShopPawn(newCard);
+                sharedPool.Remove(newCard);
+            }
         }
     }
 
@@ -36,7 +40,6 @@ public class CardManager : MonoBehaviour
 
     public void AddPawnToDeck()
     {
-        shopPawnsDeck.Add(tempDeadPawn);
-        //temp value
+        // need to add pawn to card functions
     }
 }
