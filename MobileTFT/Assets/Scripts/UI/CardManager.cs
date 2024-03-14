@@ -25,6 +25,12 @@ public class CardManager : MonoBehaviour
         {
             if(sharedPool.Count > 0)
             {
+                PawnSO removedPawnSO = slot.RemovePawn();
+                if(removedPawnSO != null)
+                {
+                    AddPawnToDeck(removedPawnSO);
+                }
+               
                 PawnSO newPawnSO = sharedPool[Random.Range(0, sharedPool.Count - 1)];
 
                 slot.PlaceShopPawn(newPawnSO);

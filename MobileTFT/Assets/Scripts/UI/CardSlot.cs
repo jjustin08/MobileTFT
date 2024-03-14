@@ -27,4 +27,19 @@ public class CardSlot : MonoBehaviour
         card = Instantiate(newPawnSO.cardPawn, transform);
         card.SetPawnSO(newPawnSO);
     }
+
+    public PawnSO RemovePawn()
+    {
+        if(card != null ) 
+        {
+            PawnSO tempSO = card.GetPawnSO();
+
+            Destroy(card.gameObject);
+            card = null;
+            return tempSO;
+        }
+
+
+        return null;
+    }
 }
