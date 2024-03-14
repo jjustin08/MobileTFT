@@ -48,8 +48,15 @@ public class Combat : MonoBehaviour
             }
         }
 
-        if (aliveFriendly == 0 || aliveEnemy == 0)
+        if (aliveFriendly == 0)
         {
+            // make cash variable amount
+            CashManager.Instance.GainCash(5);
+            EndCombat();
+        }
+        else if(aliveEnemy == 0)
+        {
+            CashManager.Instance.GainCash(2);
             EndCombat();
         }
     }
