@@ -10,7 +10,10 @@ public class CardManager : MonoBehaviour
 
     [SerializeField] private PawnStorage pawnStorage;
 
-
+    private void Start()
+    {
+        ReRollPawns();
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -35,8 +38,11 @@ public class CardManager : MonoBehaviour
 
                 slot.PlaceShopPawn(newPawnSO);
                 sharedPool.Remove(newPawnSO);
+
+                
             }
         }
+        CashManager.Instance.RemoveCash(1);
     }
 
     public bool BuyPawn(Card shopPawn)

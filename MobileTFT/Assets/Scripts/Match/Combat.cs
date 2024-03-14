@@ -34,29 +34,32 @@ public class Combat : MonoBehaviour
         int aliveEnemy = 0;
 
         if (pawns.Count <= 0)
+        {
+            EndCombat();
             return;
+        }
+            
 
         foreach(Pawn p in pawns) 
         { 
             if(p.IsEnemy() && p.gameObject.activeSelf)
             {
-                aliveFriendly++;
+                aliveEnemy++;
             }
             if(!p.IsEnemy() && p.gameObject.activeSelf)
             {
-                aliveEnemy++;
+                aliveFriendly++;
             }
         }
 
         if (aliveFriendly == 0)
         {
-            // make cash variable amount
-            CashManager.Instance.GainCash(5);
+            CashManager.Instance.GainCash(1);
             EndCombat();
         }
         else if(aliveEnemy == 0)
         {
-            CashManager.Instance.GainCash(2);
+            CashManager.Instance.GainCash(5);
             EndCombat();
         }
     }
@@ -81,6 +84,7 @@ public class Combat : MonoBehaviour
     private void EndCombat()
     {
         inCombat = false;
+        
         foreach (Pawn p in pawns)
         {
             if(p.gameObject.activeSelf)
