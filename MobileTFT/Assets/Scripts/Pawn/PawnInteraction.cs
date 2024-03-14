@@ -18,7 +18,7 @@ public class PawnInteraction : Interaction
 
     protected override void OnDragCanceled()
     {
-        if (!allowInteraction) return;
+        //if (!allowInteraction) return;
 
         followCursor.ToggleDraggin(false);
 
@@ -30,12 +30,13 @@ public class PawnInteraction : Interaction
             {
                 hoverObject.GetComponent<SlotInteraction>().PawnInteraction();
             }
+            if(hoverObject.GetComponent<SellInteraction>() != null)
+            {
+                hoverObject.GetComponent<SellInteraction>().SellPawn();
+            }
         }
-        else
-        {
-            Player.Instance.SetHoldingPawn(null);
-        }
-       
+
+        Player.Instance.SetHoldingPawn(null);
     }
 
 }
