@@ -15,8 +15,9 @@ public class Pawn : MonoBehaviour
     private PawnCombat combat;
     private PawnInteraction interaction;
     private PawnAI aI;
-    
 
+    // temp
+    public int cost = 1;
     private void Awake()
     {
         stats = GetComponent<PawnStats>();

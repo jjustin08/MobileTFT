@@ -34,12 +34,15 @@ public class CardManager : MonoBehaviour
 
     public void BuyPawn(Card shopPawn)
     {
-        pawnStorage.FillSlot(shopPawn.GetPawn());
+        Pawn pawn = shopPawn.GetPawn();
+        CashManager.Instance.RemoveCash(pawn.cost);
+        pawnStorage.FillSlot(pawn);
     }
 
 
     public void AddPawnToDeck()
     {
         // need to add pawn to card functions
+        // for selling as well
     }
 }
