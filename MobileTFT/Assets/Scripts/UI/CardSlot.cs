@@ -12,9 +12,12 @@ public class CardSlot : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(() => {
             if(shopPawn != null) 
             {
-                pawnShop.BuyPawn(shopPawn);
-                Destroy(shopPawn.gameObject);
-                shopPawn = null;
+                if(pawnShop.BuyPawn(shopPawn))
+                {
+                    Destroy(shopPawn.gameObject);
+                    shopPawn = null;
+                }
+
             }
         });
     }

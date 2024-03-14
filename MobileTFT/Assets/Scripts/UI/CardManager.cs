@@ -32,11 +32,17 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    public void BuyPawn(Card shopPawn)
+    public bool BuyPawn(Card shopPawn)
     {
         Pawn pawn = shopPawn.GetPawn();
-        CashManager.Instance.RemoveCash(pawn.cost);
-        pawnStorage.FillSlot(pawn);
+        if (CashManager.Instance.RemoveCash(pawn.cost))
+        {
+            Destroy(shopPawn.gameObject);
+            pawnStorage.FillSlot(pawn);
+            return true;
+        }
+       return false;
+        
     }
 
 

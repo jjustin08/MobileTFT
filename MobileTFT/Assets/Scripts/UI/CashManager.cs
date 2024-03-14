@@ -29,10 +29,19 @@ public class CashManager : MonoBehaviour
         currentCash += amount;
         CashUIUpdate();
     }
-    public void RemoveCash(int amount)
+    public bool RemoveCash(int amount)
     {
-        currentCash -= amount;
-        CashUIUpdate();
+        if(currentCash >= amount)
+        {
+            currentCash -= amount;
+            CashUIUpdate();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+       
     }
 
     public int GetCash()

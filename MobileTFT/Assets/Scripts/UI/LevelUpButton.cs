@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class LevelUpButton : MonoBehaviour
 {
     [SerializeField] private CardManager pawnShop;
+    [SerializeField] private LevelManager levelManager;
 
     private void Awake()
     {
         GetComponent<Button>().onClick.AddListener(() => {
-            //TODO add leveling up system
-            CashManager.Instance.RemoveCash(4);
+            levelManager.GainExp(4);
         });
     }
 }
