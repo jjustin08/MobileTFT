@@ -2,13 +2,25 @@ using UnityEngine;
 
 public class PawnStats : MonoBehaviour
 {
-    // TODO get base stats from scriptible object
-    [SerializeField] private float health;
-    [SerializeField] private float currentHealth;
-    [SerializeField] private float damage;
-    [SerializeField] private float attackTime;
-    [SerializeField] private int range;
+    private Pawn parentPawn;
 
+    private float health;
+    private float currentHealth;
+    private float damage;
+    private float attackTime;
+    private int range;
+
+    private void Start()
+    {
+        parentPawn = GetComponent<Pawn>();
+        PawnSO SO = parentPawn.GetPawnSO();
+  
+        health = SO.health;
+        currentHealth = SO.health;
+        damage = SO.damage;
+        attackTime = SO.attackTime;
+        range = SO.range;
+    }
 
 
     public float GetAttackTime(){return attackTime;}

@@ -6,24 +6,25 @@ using UnityEngine.UI;
 public class CardSlot : MonoBehaviour
 {
     [SerializeField] private CardManager pawnShop;
-    private Card shopPawn;
+    private Card card;
     private void Awake()
     {
         GetComponent<Button>().onClick.AddListener(() => {
-            if(shopPawn != null) 
+            if(card != null) 
             {
-                if(pawnShop.BuyPawn(shopPawn))
+                if(pawnShop.BuyPawn(card))
                 {
-                    Destroy(shopPawn.gameObject);
-                    shopPawn = null;
+                    Destroy(card.gameObject);
+                    card = null;
                 }
 
             }
         });
     }
 
-    public void PlaceShopPawn(Card newShopPawn)
+    public void PlaceShopPawn(PawnSO newPawnSO)
     {
-        shopPawn = Instantiate(newShopPawn, transform);
+        card = Instantiate(newPawnSO.cardPawn, transform);
+        card.SetPawnSO(newPawnSO);
     }
 }

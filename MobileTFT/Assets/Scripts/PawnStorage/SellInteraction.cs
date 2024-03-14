@@ -28,7 +28,7 @@ public class SellInteraction : MonoBehaviour
         p.GetMovement().GetSlot().RemovePawn();
 
         //TODO sell actions
-        CashManager.Instance.GainCash(p.cost);
+        CashManager.Instance.GainCash(p.GetPawnSO().cost);
         Destroy(p.gameObject);
     }
 }

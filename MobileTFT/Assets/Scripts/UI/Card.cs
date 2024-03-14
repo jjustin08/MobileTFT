@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    [SerializeField] private Pawn pawn;
+    private PawnSO pawnSO;
 
+    public void SetPawnSO(PawnSO SO)
+    {
+        pawnSO = SO;
+    }
 
-    public Pawn GetPawn() { return pawn; }
+    public PawnSO GetPawnSO() { return pawnSO; }
 }

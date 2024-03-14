@@ -7,7 +7,7 @@ public class PawnStorage : MonoBehaviour
 {
     private List<Slot> slots = new List<Slot>();
 
-    public Pawn tempPawn;
+    public PawnSO tempPawnSO;
     void Start()
     {
         slots.AddRange(GetComponentsInChildren<Slot>());
@@ -17,17 +17,18 @@ public class PawnStorage : MonoBehaviour
         // debug input
         if(Input.GetKeyDown(KeyCode.E))
         {
-            FillSlot(tempPawn);
+            FillSlot(tempPawnSO);
         }
     }
 
-    public bool FillSlot(Pawn pawn)
+    public bool FillSlot(PawnSO SO)
     {
         foreach (Slot slot in slots) 
         { 
             if(!slot.HasPawn())
             {
-                Pawn newPawn = Instantiate(pawn);
+                Pawn newPawn = Instantiate(SO.placedPawn);
+                newPawn.SetPawnSO(SO);
                 slot.PlacePawn(newPawn);
                 return true;
             }

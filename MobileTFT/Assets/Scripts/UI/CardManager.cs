@@ -6,7 +6,7 @@ public class CardManager : MonoBehaviour
 {
     [SerializeField] private List<CardSlot> shopPawnsSlots;
 
-    [SerializeField] private List<Card> sharedPool;
+    [SerializeField] private List<PawnSO> sharedPool;
 
     [SerializeField] private PawnStorage pawnStorage;
 
@@ -25,20 +25,19 @@ public class CardManager : MonoBehaviour
         {
             if(sharedPool.Count > 0)
             {
-                Card newCard = sharedPool[Random.Range(0, sharedPool.Count - 1)];
-                slot.PlaceShopPawn(newCard);
-                sharedPool.Remove(newCard);
+                PawnSO newPawnSO = sharedPool[Random.Range(0, sharedPool.Count - 1)];
+
+                slot.PlaceShopPawn(newPawnSO);
+                sharedPool.Remove(newPawnSO);
             }
         }
     }
 
     public bool BuyPawn(Card shopPawn)
     {
-        Pawn pawn = shopPawn.GetPawn();
-        if (CashManager.Instance.RemoveCash(pawn.cost))
+        if (CashManager.Instance.RemoveCash(shopPawn.GetPawnSO().cost))
         {
-            Destroy(shopPawn.gameObject);
-            pawnStorage.FillSlot(pawn);
+            pawnStorage.FillSlot(shopPawn.GetPawnSO());
             return true;
         }
        return false;

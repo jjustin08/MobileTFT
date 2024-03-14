@@ -9,6 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(PawnAI))]
 public class Pawn : MonoBehaviour
 {
+    private PawnSO pawnSO;
     [SerializeField] private bool isEnemy;
     private PawnStats stats;
     private PawnMovement movement;
@@ -16,8 +17,10 @@ public class Pawn : MonoBehaviour
     private PawnInteraction interaction;
     private PawnAI aI;
 
-    // temp
-    public int cost = 1;
+    public void SetPawnSO(PawnSO SO)
+    {
+        pawnSO = SO;
+    }
     private void Awake()
     {
         stats = GetComponent<PawnStats>();
@@ -40,6 +43,7 @@ public class Pawn : MonoBehaviour
     public PawnCombat GetCombat() { return combat; }
     public PawnAI GetAI() { return aI; }
     public PawnInteraction GetInteraction() { return interaction; }
+    public PawnSO GetPawnSO() { return pawnSO; }
     public bool IsEnemy() { return isEnemy; }
 
 
