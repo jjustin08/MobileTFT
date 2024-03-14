@@ -5,15 +5,13 @@ using UnityEngine;
 public class SellInteraction : MonoBehaviour
 {
     [SerializeField] private GameObject SellUi;
-
+    [SerializeField] private CardManager CardManager;
     private void Update()
     {
         // probably should not put this in update
         GameObject interceptObj = Player.Instance.GetPlayerInput().TestCardTileIntercept();
         if (interceptObj == this.gameObject && Player.Instance.GetHoldingPawn() != null)
         {
-            // this is broke
-            if(SellUi != null) 
             SellUi.SetActive(true);
         }
         else
@@ -27,7 +25,8 @@ public class SellInteraction : MonoBehaviour
         Pawn p = Player.Instance.GetHoldingPawn();
         p.GetMovement().GetSlot().RemovePawn();
 
-        //TODO sell actions
+
+        CardManager.AddPawnToDeck(p.GetPawnSO());
         CashManager.Instance.GainCash(p.GetPawnSO().cost);
         Destroy(p.gameObject);
     }

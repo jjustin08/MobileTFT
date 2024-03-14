@@ -7553,6 +7553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SellUi: {fileID: 233393307}
+  CardManager: {fileID: 278468140}
 --- !u!1 &1874561666
 GameObject:
   m_ObjectHideFlags: 0

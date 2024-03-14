@@ -45,9 +45,8 @@ public class CardManager : MonoBehaviour
     }
 
 
-    public void AddPawnToDeck()
+    public void AddPawnToDeck(PawnSO SO)
     {
-        // need to add pawn to card functions
-        // for selling as well
+        sharedPool.Add(SO);
     }
 }
