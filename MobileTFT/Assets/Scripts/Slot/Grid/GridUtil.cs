@@ -8,26 +8,51 @@ public class GridUtil : MonoBehaviour
 {
     public static GridUtil Instance;
 
+    private HexGridLayout hexGrid;
     private void Awake()
     {
         Instance = this;
-        
+        hexGrid= GetComponent<HexGridLayout>();
+
+
+    }
+    public SlotPosition GetOppositeSlot(SlotPosition p)
+    {
+       for (int i = 0; i < hexGrid.GetAllTiles().Length; i++)
+        {
+            if (hexGrid.GetAllTiles()[i] == p)
+            {
+                return (hexGrid.GetAllTiles()[hexGrid.GetAllTiles().Length - i  - 1]);
+            }
+        }
+       
+
+        return null;
     }
 
-
-    public void ToggleGridInteraction(bool friendly, bool toggle)
+    public List<Slot> GetOneSideOfSlots(bool friendly)
     {
+        List<Slot> halfSlots = new List<Slot>();
         int startCount = 0;
-        int maxCount = GetAllSlots().Count/2;
-        
-        if(friendly) 
+        int maxCount = GetAllSlots().Count / 2;
+
+        if (friendly)
         {
             startCount = GetAllSlots().Count / 2;
             maxCount = GetAllSlots().Count;
         }
         for (int i = startCount; i < maxCount; i++)
         {
-            GetAllSlots()[i].GetSlotInteraction().gameObject.SetActive(toggle);
+            halfSlots.Add(GetAllSlots()[i]);
+        }
+        return halfSlots;
+    }
+
+    public void ToggleGridInteraction(bool friendly, bool toggle)
+    {
+        foreach (Slot s in GetOneSideOfSlots(friendly))
+        {
+            s.GetSlotInteraction().gameObject.SetActive(toggle);
         }
 
     }
@@ -35,7 +60,7 @@ public class GridUtil : MonoBehaviour
     {
         List<Slot> allSlots = new List<Slot>();
 
-        foreach (SlotPosition tile in GetComponent<HexGridLayout>().GetAllTiles())
+        foreach (SlotPosition tile in hexGrid.GetAllTiles())
         {
             if (tile.GetSlot() != null)
             {
@@ -83,7 +108,7 @@ public class GridUtil : MonoBehaviour
 
         SlotPosition nextMoveTile = null;
         AStar aStar = new AStar();
-        nextMoveTile = aStar.DoThing(GetComponent<HexGridLayout>().GetAllTiles(), currentTile, targetTile);
+        nextMoveTile = aStar.DoThing(hexGrid.GetAllTiles(), currentTile, targetTile);
 
         return nextMoveTile;
     }

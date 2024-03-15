@@ -9,7 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(PawnAI))]
 public class Pawn : MonoBehaviour
 {
-    private PawnSO pawnSO;
+    [SerializeField] private PawnSO pawnSO;
     private GameObject visual;
     [SerializeField] private bool isEnemy;
     private PawnStats stats;

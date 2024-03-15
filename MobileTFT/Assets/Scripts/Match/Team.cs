@@ -5,8 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Team : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> pawns = new List<GameObject>();
+    //[SerializeField] private List<GameObject> pawns = new List<GameObject>();
     [SerializeField] private List<GameObject> savedPawns = new List<GameObject>();
+    [SerializeField] private List<SlotPosition> savedSlotPositions = new List<SlotPosition>();
     // list of pawns
     // also want know there location
     // will load team into battle field
@@ -18,23 +19,37 @@ public class Team : MonoBehaviour
         
     }
 
-    public void SaveTeam()
+    public void SaveTeam(bool friendly)
     {
-        foreach(GameObject p in pawns)
+        foreach (Slot slot in GridUtil.Instance.GetOneSideOfSlots(friendly))
         {
-            GameObject newPawn = Instantiate(p,transform);
-            savedPawns.Add(newPawn);
-            newPawn.SetActive(false);
+            if (slot.GetPawn() != null)
+            {
+                GameObject newPawn = Instantiate(slot.GetPawn().gameObject, transform);
+                savedPawns.Add(newPawn);
+                savedSlotPositions.Add(slot.GetSlotPos());
+                newPawn.SetActive(false);
+            }
         }
     }
 
-    public void LoadTeam() 
+    public void LoadTeam(bool friendly) 
     {
-        foreach (GameObject p in savedPawns)
+        for (int i = 0; i< savedPawns.Count; i++)
         {
             //GameObject newPawn = Instantiate(p, transform);
             //savedPawns.Add(newPawn);
-            p.SetActive(true);
+            savedPawns[i].SetActive(true);
+            Pawn pawn = savedPawns[i].GetComponent<Pawn>();
+            if(friendly)
+            {
+                pawn.GetMovement().MoveToSlot(savedSlotPositions[i].GetSlot());
+            }
+            else
+            {
+                pawn.GetMovement().MoveToSlot(GridUtil.Instance.GetOppositeSlot(savedSlotPositions[i]).GetSlot());
+            }
+            
         }
 
     }

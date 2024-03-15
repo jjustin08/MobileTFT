@@ -10,19 +10,20 @@ public class TeamSaver : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.P))
         {
-            SwitchEnemie();
+            teams[0].LoadTeam(false);
         }
-        if (Input.GetKey(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             //create and save team
-            Team newTeam = Instantiate<Team>(new Team());
-            teams.Add(newTeam);
-            newTeam.SaveTeam();
+            GameObject newTeam = Instantiate(new GameObject());
+            Team team = newTeam.AddComponent<Team>();
+            teams.Add(team);
+            team.SaveTeam(true);
         }
     }
 
 
-    private void SwitchEnemie()
+    private void SwitchEnemy()
     {
 
     }
