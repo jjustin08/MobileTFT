@@ -6,7 +6,9 @@ using UnityEngine;
 public class PawnSO : ScriptableObject
 {
     public Pawn placedPawn;
+
     public Card cardPawn;
+    public GameObject placedVisual;
 
     public int cost;
 

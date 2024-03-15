@@ -10,6 +10,7 @@ using UnityEngine;
 public class Pawn : MonoBehaviour
 {
     private PawnSO pawnSO;
+    private GameObject visual;
     [SerializeField] private bool isEnemy;
     private PawnStats stats;
     private PawnMovement movement;
@@ -20,6 +21,8 @@ public class Pawn : MonoBehaviour
     public void SetPawnSO(PawnSO SO)
     {
         pawnSO = SO;
+        //set visual
+        visual = Instantiate(SO.placedVisual, transform);
     }
     private void Awake()
     {
