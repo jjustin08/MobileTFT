@@ -9,7 +9,7 @@ public class Slot : MonoBehaviour
    private Pawn placedPawn;
    private bool hasPawn;
 
-    private void Start()
+    private void Awake()
     {
         slotInteraction = GetComponentInChildren<SlotInteraction>();
         

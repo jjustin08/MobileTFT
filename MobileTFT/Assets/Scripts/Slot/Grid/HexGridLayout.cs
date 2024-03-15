@@ -13,9 +13,10 @@ public class HexGridLayout : MonoBehaviour
 
     private float outerSize = 1;
 
-    private void Start()
+
+    private void Awake()
     {
-        LayoutGrid(6,8);
+        LayoutGrid(6, 8);
     }
 
     public SlotPosition[] LayoutGrid(int sizeX, int sizeY)
@@ -89,7 +90,7 @@ public class HexGridLayout : MonoBehaviour
                 obj.AddNeighbour(m_allTiles[0], 5);
         }
 
-
+        
         return m_allTiles;
     }
 

@@ -11,7 +11,7 @@ public class SlotPosition : MonoBehaviour
 
     private Slot slot;
 
-    private void Start()
+    private void Awake()
     {
         slot = GetComponent<Slot>();
     }
