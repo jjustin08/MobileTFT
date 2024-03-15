@@ -8,6 +8,11 @@ public class Combat : MonoBehaviour
     private List<Pawn> pawns = new List<Pawn>();
 
     private bool inCombat;
+
+    private void Start()
+    {
+        GridUtil.Instance.ToggleGridInteraction(false, false);
+    }
     void Update()
     {
         //debug input
@@ -73,10 +78,11 @@ public class Combat : MonoBehaviour
             p.ToggleCombat(true);
         }
 
-        foreach(Slot s in GridUtil.Instance.GetAllSlots())
-        {
-            s.GetSlotInteraction().ToggleInteraction(false);
-        }
+        GridUtil.Instance.ToggleGridInteraction(true, false);
+        //foreach (Slot s in GridUtil.Instance.GetAllSlots())
+        //{
+        //    s.GetSlotInteraction().ToggleInteraction(false);
+        //}
         
   
     }
@@ -106,9 +112,6 @@ public class Combat : MonoBehaviour
         }
         pawns.Clear();
 
-        foreach (Slot s in GridUtil.Instance.GetAllSlots())
-        {
-            s.GetSlotInteraction().ToggleInteraction(true);
-        }
+        GridUtil.Instance.ToggleGridInteraction(true, true);
     }
 }

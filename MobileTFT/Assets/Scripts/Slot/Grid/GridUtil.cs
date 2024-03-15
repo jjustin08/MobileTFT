@@ -11,9 +11,26 @@ public class GridUtil : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        
     }
 
 
+    public void ToggleGridInteraction(bool friendly, bool toggle)
+    {
+        int startCount = 0;
+        int maxCount = GetAllSlots().Count/2;
+        
+        if(friendly) 
+        {
+            startCount = GetAllSlots().Count / 2;
+            maxCount = GetAllSlots().Count;
+        }
+        for (int i = startCount; i < maxCount; i++)
+        {
+            GetAllSlots()[i].GetSlotInteraction().gameObject.SetActive(toggle);
+        }
+
+    }
     public List<Slot> GetAllSlots()
     {
         List<Slot> allSlots = new List<Slot>();
