@@ -38,7 +38,7 @@ public class Pawn : MonoBehaviour
         GetAI().ToggleCombat(toggle);
         GetStats().ToggleCombat(toggle);
         GetMovement().ToggleCombat(toggle);
-        GetInteraction().ToggleInteraction(!toggle);
+        GetInteraction().ToggleInteraction(!isEnemy);
     }
 
     public PawnStats GetStats() { return stats; }
@@ -48,6 +48,7 @@ public class Pawn : MonoBehaviour
     public PawnInteraction GetInteraction() { return interaction; }
     public PawnSO GetPawnSO() { return pawnSO; }
     public bool IsEnemy() { return isEnemy; }
+    public void SetEnemy(bool enemy) { isEnemy = enemy; interaction.ToggleInteraction(!enemy); }
 
 
 }

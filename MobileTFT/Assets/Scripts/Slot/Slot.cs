@@ -6,7 +6,7 @@ using UnityEngine;
 public class Slot : MonoBehaviour
 {
    private SlotInteraction slotInteraction;
-   private Pawn placedPawn;
+   [SerializeField]private Pawn placedPawn;
    private bool hasPawn;
 
     private void Awake()

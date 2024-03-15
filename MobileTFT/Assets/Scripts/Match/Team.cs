@@ -41,12 +41,15 @@ public class Team : MonoBehaviour
             //savedPawns.Add(newPawn);
             savedPawns[i].SetActive(true);
             Pawn pawn = savedPawns[i].GetComponent<Pawn>();
-            if(friendly)
+            
+            if (friendly)
             {
+                pawn.SetEnemy(friendly);
                 pawn.GetMovement().MoveToSlot(savedSlotPositions[i].GetSlot());
             }
             else
             {
+                pawn.SetEnemy(!friendly);
                 pawn.GetMovement().MoveToSlot(GridUtil.Instance.GetOppositeSlot(savedSlotPositions[i]).GetSlot());
             }
             
