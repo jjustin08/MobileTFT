@@ -3,21 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Team : MonoBehaviour
+public class PlayerSavedTeam : MonoBehaviour
 {
-    //[SerializeField] private List<GameObject> pawns = new List<GameObject>();
     [SerializeField] private List<GameObject> savedPawns = new List<GameObject>();
-    [SerializeField] private List<SlotPosition> savedSlotPositions = new List<SlotPosition>();
-    // list of pawns
-    // also want know there location
-    // will load team into battle field
-    // probably set it to enemy
-    // for multiplayer positions cant be same need to reverse
-
-    private void Update()
-    {
-        
-    }
+    [SerializeField] private List<Vector2Int> savedSlotPositions = new List<Vector2Int>();
+    
 
     public void SaveTeam(bool friendly)
     {
@@ -27,7 +17,7 @@ public class Team : MonoBehaviour
             {
                 GameObject newPawn = Instantiate(slot.GetPawn().gameObject, transform);
                 savedPawns.Add(newPawn);
-                savedSlotPositions.Add(slot.GetSlotPos());
+                savedSlotPositions.Add(slot.GetSlotPos().GetHexCoordinate());
                 newPawn.SetActive(false);
             }
         }
@@ -45,12 +35,12 @@ public class Team : MonoBehaviour
             if (friendly)
             {
                 pawn.SetEnemy(friendly);
-                pawn.GetMovement().MoveToSlot(savedSlotPositions[i].GetSlot());
+                pawn.GetMovement().MoveToSlot(GridUtil.Instance.GetSlotPositionFromVector2(savedSlotPositions[i]).GetSlot());
             }
             else
             {
                 pawn.SetEnemy(!friendly);
-                pawn.GetMovement().MoveToSlot(GridUtil.Instance.GetOppositeSlot(savedSlotPositions[i]).GetSlot());
+                pawn.GetMovement().MoveToSlot(GridUtil.Instance.GetOppositeSlot(GridUtil.Instance.GetSlotPositionFromVector2(savedSlotPositions[i])).GetSlot());
             }
             
         }

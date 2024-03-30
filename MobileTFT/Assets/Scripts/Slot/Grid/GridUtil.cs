@@ -16,6 +16,21 @@ public class GridUtil : MonoBehaviour
 
 
     }
+
+    public SlotPosition GetSlotPositionFromVector2(Vector2Int pos)
+    {
+        for (int i = 0; i < hexGrid.GetAllTiles().Length; i++)
+        {
+            if (hexGrid.GetAllTiles()[i].GetHexCoordinate() == pos)
+            {
+                return (hexGrid.GetAllTiles()[i]);
+            }
+        }
+
+
+        return null;
+    }
+
     public SlotPosition GetOppositeSlot(SlotPosition p)
     {
        for (int i = 0; i < hexGrid.GetAllTiles().Length; i++)

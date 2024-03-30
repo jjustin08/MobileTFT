@@ -91,4 +91,5 @@ public class SlotPosition : MonoBehaviour
 
         AddNeighboursInRange(nextNeighbours, range - 1, realNeighbours);
     }
+
 }
