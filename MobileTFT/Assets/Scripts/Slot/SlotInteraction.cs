@@ -10,14 +10,23 @@ public class SlotInteraction : Interaction
     {
         if (!allowInteraction) return;
 
-        if(tile.GetComponent<SlotPosition>() != null)
-        {
 
+        Pawn tempPawn = Player.Instance.GetHoldingPawn();
+        if (tempPawn != null)
+        {
+            if (tempPawn.GetMovement().GetSlot() != null)
+            {
+                tempPawn.GetMovement().GetSlot().RemovePawn();
+            }
+        }
+        
+
+        if (tile.GetComponent<SlotPosition>() != null)
+        {
             if (Player.Instance.GetPlayerStats().IsPawnAmountFull()) return;
         }
 
 
-        Pawn tempPawn = Player.Instance.GetHoldingPawn();
         if (tempPawn != null)
         {
             tile.PlacePawn(tempPawn);
