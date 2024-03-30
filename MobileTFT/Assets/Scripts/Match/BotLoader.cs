@@ -8,6 +8,7 @@ public class BotLoader : MonoBehaviour
 
     private void Update()
     {
+        //TODO: create checks
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             teams[0].LoadTeam();
