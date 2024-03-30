@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     [SerializeField] private Image HealthBarImage;
+    [SerializeField] private float reducespeed = 1;
 
+    private float target;
     private Camera cam;
     private void Start()
     {
         cam = Camera.main;
+        target = 1;
     }
 
 
@@ -20,12 +23,15 @@ public class HealthBar : MonoBehaviour
                                    transform.position.y - cam.transform.position.y,
                                    transform.position.z - cam.transform.position.z);
         transform.rotation = Quaternion.LookRotation(direction);
-        // transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);   
+
+
+        HealthBarImage.fillAmount = Mathf.MoveTowards(HealthBarImage.fillAmount, target, reducespeed *Time.deltaTime);
     }
 
 
     public void UpdateHealthBar(float max, float current)
     {
-        HealthBarImage.fillAmount = current / max;
+        target = current / max;
+        //HealthBarImage.fillAmount = current / max;
     }
 }
