@@ -7,6 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(PawnMovement))]
 [RequireComponent(typeof(PawnCombat))]
 [RequireComponent(typeof(PawnAI))]
+[RequireComponent(typeof(PawnVisual))]
 public class Pawn : MonoBehaviour
 {
     [SerializeField] private PawnSO pawnSO;
@@ -17,6 +18,7 @@ public class Pawn : MonoBehaviour
     private PawnCombat combat;
     private PawnInteraction interaction;
     private PawnAI aI;
+    private PawnVisual pVisual;
 
     public void SetPawnSO(PawnSO SO)
     {
@@ -31,6 +33,7 @@ public class Pawn : MonoBehaviour
         combat = GetComponent<PawnCombat>();
         aI = GetComponent<PawnAI>();
         interaction = GetComponentInChildren<PawnInteraction>();
+        pVisual = GetComponentInChildren<PawnVisual>();
     }
 
     public void ToggleCombat(bool toggle)
@@ -45,6 +48,7 @@ public class Pawn : MonoBehaviour
     public PawnMovement GetMovement() { return movement; }
     public PawnCombat GetCombat() { return combat; }
     public PawnAI GetAI() { return aI; }
+    public PawnVisual GetVisual() { return pVisual; }
     public PawnInteraction GetInteraction() { return interaction; }
     public PawnSO GetPawnSO() { return pawnSO; }
     public bool IsEnemy() { return isEnemy; }

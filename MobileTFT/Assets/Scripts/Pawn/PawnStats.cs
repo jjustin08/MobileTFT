@@ -33,11 +33,14 @@ public class PawnStats : MonoBehaviour
     {
         if (!toggle)
         {
-            currentHealth = health;
+            SetCurrentHealth(health);
         }
     }
     public void SetCurrentHealth(float newHealth)
     {
         currentHealth = newHealth;
+
+
+        parentPawn.GetVisual().UpdateHealthBar(health,currentHealth);
     }
 }
