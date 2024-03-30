@@ -8,15 +8,17 @@ public class Player : MonoBehaviour
 
     private Pawn holdingPawn;
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private PlayerStats playerStats;
 
     public PlayerInput GetPlayerInput() { return playerInput; }
 
     private void Awake()
     {
         Instance = this;
+        playerStats = GetComponent<PlayerStats>();
     }
 
-
+    public PlayerStats GetPlayerStats() { return playerStats; }
 
     public void SetHoldingPawn(Pawn Pawn) { holdingPawn = Pawn; }
     public Pawn GetHoldingPawn() { return holdingPawn; }

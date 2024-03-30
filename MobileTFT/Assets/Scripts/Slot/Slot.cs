@@ -26,12 +26,15 @@ public class Slot : MonoBehaviour
         placedPawn = p;
         
         hasPawn = true;
+
+        GridUtil.Instance.UpdateMaxPawnsOnBoard();
     }
 
     public void RemovePawn()
     {
         placedPawn = null;
         hasPawn = false;
+        GridUtil.Instance.UpdateMaxPawnsOnBoard();
     }
     public Pawn GetPawn()
     {

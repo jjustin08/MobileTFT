@@ -17,6 +17,23 @@ public class GridUtil : MonoBehaviour
 
     }
 
+
+
+    public void UpdateMaxPawnsOnBoard()
+    {
+        int count = 0;
+        foreach (Slot slot in GetOneSideOfSlots(true))
+        { 
+            if(slot.HasPawn()) 
+            {
+                count++;
+            }
+        }
+
+        Player.Instance.GetPlayerStats().ChangeCurrentPawnAmount(count);
+    }
+
+
     public SlotPosition GetSlotPositionFromVector2(Vector2Int pos)
     {
         for (int i = 0; i < hexGrid.GetAllTiles().Length; i++)

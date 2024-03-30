@@ -10,6 +10,13 @@ public class SlotInteraction : Interaction
     {
         if (!allowInteraction) return;
 
+        if(tile.GetComponent<SlotPosition>() != null)
+        {
+
+            if (Player.Instance.GetPlayerStats().IsPawnAmountFull()) return;
+        }
+
+
         Pawn tempPawn = Player.Instance.GetHoldingPawn();
         if (tempPawn != null)
         {
