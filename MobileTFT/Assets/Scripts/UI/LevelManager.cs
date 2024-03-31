@@ -30,6 +30,8 @@ public class LevelManager : MonoBehaviour
         }
         levelIcon.text = level.ToString();
         levelSlider.value = (tempExp/maxExp);
+
+        Player.Instance.GetPlayerStats().ChangeMaxPawnAmount(level);
     }
 
     public void GainExp(int amount)

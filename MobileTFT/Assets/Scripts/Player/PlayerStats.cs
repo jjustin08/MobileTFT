@@ -8,6 +8,11 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] private int currentPawnAmount = 0;
 
 
+    public void ChangeMaxPawnAmount(int newMax)
+    {
+        maxPawnAmount = newMax;
+    }
+
     public void ChangeCurrentPawnAmount(int newAmount)
     {
         currentPawnAmount = newAmount;
