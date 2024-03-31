@@ -11,6 +11,7 @@ using UnityEngine;
 public class Pawn : MonoBehaviour
 {
     [SerializeField] private PawnSO pawnSO;
+    //TODO move to PawnVisual
     private GameObject visual;
     [SerializeField] private bool isEnemy;
     private PawnStats stats;
@@ -25,6 +26,12 @@ public class Pawn : MonoBehaviour
         pawnSO = SO;
         //set visual
         visual = Instantiate(SO.placedVisual, transform);
+    }
+
+    public void SelfDestruct()
+    {
+        movement.GetSlot().RemovePawn();
+        Destroy(gameObject);
     }
     private void Awake()
     {

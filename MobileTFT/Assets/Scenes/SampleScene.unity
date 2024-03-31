@@ -1258,7 +1258,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9588eedf0f03b4848ba4cdcb9baed937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempPawnSO: {fileID: 11400000, guid: 498250135ed2c084eba682ec606d5507, type: 2}
 --- !u!1 &233393307
 GameObject:
   m_ObjectHideFlags: 0
@@ -1412,6 +1411,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d337db361db92154c85e4c4fd9b28b14, type: 2}
   - {fileID: 11400000, guid: 4d808a2c4b41ccd4492caa31ac3eca59, type: 2}
   - {fileID: 11400000, guid: 4d808a2c4b41ccd4492caa31ac3eca59, type: 2}
+  - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
+  - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
+  - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
+  - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
   - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
   - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
   pawnStorage: {fileID: 452259398}
@@ -2746,7 +2749,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9588eedf0f03b4848ba4cdcb9baed937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempPawnSO: {fileID: 11400000, guid: 01e43bbe2d0632b4c88629005e31dfef, type: 2}
 --- !u!1 &452303240
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Pawn")]
 public class PawnSO : ScriptableObject
 {
+    public PawnSO TwoStarPawnSO;
+
     public Pawn placedPawn;
 
     public Card cardPawn;

@@ -16,7 +16,20 @@ public class GridUtil : MonoBehaviour
 
 
     }
+    public List<Pawn> GetAllPawns(bool friendly)
+    {
+        List<Pawn> allPawns = new List<Pawn>();
 
+        foreach(Slot slot in GetOneSideOfSlots(friendly))
+        {
+            if(slot.HasPawn())
+            {
+                allPawns.Add(slot.GetPawn());
+            }
+        }
+
+        return allPawns;
+    }
 
 
     public void UpdateMaxPawnsOnBoard()
