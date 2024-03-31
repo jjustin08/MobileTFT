@@ -11,10 +11,12 @@ public class BotLoader : MonoBehaviour
         //TODO: create checks
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
+            ClearEnemyPawns();
             teams[0].LoadTeam();
         }
         else if(Input.GetKeyDown(KeyCode.Alpha2))
         {
+            ClearEnemyPawns();
             teams[1].LoadTeam();
         }
 
@@ -26,6 +28,16 @@ public class BotLoader : MonoBehaviour
         //    teams.Add(team);
         //    team.SaveTeam(true);
         //}
+    }
+
+    //temp function
+    private void ClearEnemyPawns()
+    {
+        foreach(Pawn pawn in GridUtil.Instance.GetAllPawns(false))
+        {
+            pawn.SelfDestruct();
+        }
+      
     }
 
 }
