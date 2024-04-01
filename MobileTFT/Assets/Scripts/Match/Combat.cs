@@ -60,11 +60,13 @@ public class Combat : MonoBehaviour
         if (aliveFriendly == 0)
         {
             CashManager.Instance.GainCash(1);
+            print("Lose");
             EndCombat();
         }
         else if(aliveEnemy == 0)
         {
             CashManager.Instance.GainCash(5);
+            print("Win");
             EndCombat();
         }
     }

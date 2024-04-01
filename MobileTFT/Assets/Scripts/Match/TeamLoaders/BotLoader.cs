@@ -8,7 +8,7 @@ public class BotLoader : MonoBehaviour
 
     private void Update()
     {
-        //TODO: create checks
+        //TODO: this is temp stuff
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             ClearEnemyPawns();

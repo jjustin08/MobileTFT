@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f62a931dae8628468f962890714c17b, type: 3}
   m_Name: Normal
   m_EditorClassIdentifier: 
+  TwoStarPawnSO: {fileID: 0}
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
   placedVisual: {fileID: 6073632614680335115, guid: eef17352bd7b8bf428e94613c77760c6,
     type: 3}
   cost: 1
-  health: 10
+  health: 50
   damage: 1
   attackTime: 1
   range: 1
