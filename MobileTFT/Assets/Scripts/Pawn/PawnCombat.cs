@@ -17,7 +17,7 @@ public class PawnCombat : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void RecieveDamage(float amount)
+    public bool RecieveDamage(float amount)
     {
         float newHealth = stats.GetCurrentHealth() - amount;
         stats.SetCurrentHealth(newHealth);
@@ -25,11 +25,17 @@ public class PawnCombat : MonoBehaviour
         if(newHealth <= 0)
         {
             OnDeath();
+            return true;
         }
+        return false;
     }
 
     public void DealDamage(Pawn targetPawn)
     {
-        targetPawn.GetCombat().RecieveDamage(stats.GetDamage());
+        if(targetPawn.GetCombat().RecieveDamage(stats.GetDamage()))
+        {
+            // killed
+            stats.AddKillToCount();
+        }
     }
 }
