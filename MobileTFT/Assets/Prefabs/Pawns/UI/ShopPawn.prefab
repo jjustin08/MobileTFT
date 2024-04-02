@@ -409,6 +409,7 @@ GameObject:
   - component: {fileID: 2607323866077877209}
   - component: {fileID: 5221044487266462279}
   - component: {fileID: 478290466736516452}
+  - component: {fileID: 5898407670471786517}
   m_Layer: 5
   m_Name: ShopPawn
   m_TagString: Untagged
@@ -489,7 +490,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80379e1c3d0917045ac115b7ce78788f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea, type: 3}
+--- !u!114 &5898407670471786517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466693482454023349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937efa31364060348964e193a7c8c600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pawnName: {fileID: 7709705764271745446}
+  cost: {fileID: 3984527616879418925}
+  art: {fileID: 7233098176826933278}
+  background: {fileID: 5221044487266462279}
 --- !u!1 &7827205637121279523
 GameObject:
   m_ObjectHideFlags: 0
