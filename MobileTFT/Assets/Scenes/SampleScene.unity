@@ -1399,18 +1399,47 @@ MonoBehaviour:
   - {fileID: 426521000}
   - {fileID: 959806877}
   - {fileID: 744899167}
-  sharedPool:
-  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
-  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
-  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
+  OneCostPool:
   - {fileID: 11400000, guid: 01e43bbe2d0632b4c88629005e31dfef, type: 2}
   - {fileID: 11400000, guid: 01e43bbe2d0632b4c88629005e31dfef, type: 2}
-  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
-  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
+  - {fileID: 11400000, guid: 01e43bbe2d0632b4c88629005e31dfef, type: 2}
+  - {fileID: 11400000, guid: 01e43bbe2d0632b4c88629005e31dfef, type: 2}
+  - {fileID: 11400000, guid: 01e43bbe2d0632b4c88629005e31dfef, type: 2}
+  - {fileID: 11400000, guid: 01e43bbe2d0632b4c88629005e31dfef, type: 2}
   - {fileID: 11400000, guid: d337db361db92154c85e4c4fd9b28b14, type: 2}
   - {fileID: 11400000, guid: d337db361db92154c85e4c4fd9b28b14, type: 2}
+  - {fileID: 11400000, guid: d337db361db92154c85e4c4fd9b28b14, type: 2}
+  - {fileID: 11400000, guid: d337db361db92154c85e4c4fd9b28b14, type: 2}
+  - {fileID: 11400000, guid: d337db361db92154c85e4c4fd9b28b14, type: 2}
+  - {fileID: 11400000, guid: d337db361db92154c85e4c4fd9b28b14, type: 2}
+  TwoCostPool:
+  - {fileID: 11400000, guid: 498250135ed2c084eba682ec606d5507, type: 2}
+  - {fileID: 11400000, guid: 498250135ed2c084eba682ec606d5507, type: 2}
+  - {fileID: 11400000, guid: 498250135ed2c084eba682ec606d5507, type: 2}
+  - {fileID: 11400000, guid: 498250135ed2c084eba682ec606d5507, type: 2}
+  - {fileID: 11400000, guid: 498250135ed2c084eba682ec606d5507, type: 2}
+  - {fileID: 11400000, guid: 498250135ed2c084eba682ec606d5507, type: 2}
+  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
+  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
+  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
+  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
+  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
+  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
+  ThreeCostPool:
+  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
+  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
+  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
+  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
+  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
+  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
+  FourCostPool:
   - {fileID: 11400000, guid: 4d808a2c4b41ccd4492caa31ac3eca59, type: 2}
   - {fileID: 11400000, guid: 4d808a2c4b41ccd4492caa31ac3eca59, type: 2}
+  - {fileID: 11400000, guid: 4d808a2c4b41ccd4492caa31ac3eca59, type: 2}
+  - {fileID: 11400000, guid: 4d808a2c4b41ccd4492caa31ac3eca59, type: 2}
+  - {fileID: 11400000, guid: 4d808a2c4b41ccd4492caa31ac3eca59, type: 2}
+  - {fileID: 11400000, guid: 4d808a2c4b41ccd4492caa31ac3eca59, type: 2}
+  FiveCostPool:
   - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
   - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
   - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
@@ -5633,7 +5662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 1301282830}
-  playerStats: {fileID: 0}
+  playerStats: {fileID: 1301282833}
 --- !u!4 &1301282832
 Transform:
   m_ObjectHideFlags: 0

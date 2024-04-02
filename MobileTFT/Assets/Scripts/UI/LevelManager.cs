@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 
     
     private int maxExp = 10;
-    private int maxMaxExp = 90;
+    private int maxMaxExp = 60;
     private int currentExp = 0;
 
     private void Start()
@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
         levelIcon.text = level.ToString();
         levelSlider.value = (tempExp/maxExp);
 
-        Player.Instance.GetPlayerStats().ChangeMaxPawnAmount(level);
+        Player.Instance.GetPlayerStats().SetPlayerLevel(level);
     }
 
     public void GainExp(int amount)

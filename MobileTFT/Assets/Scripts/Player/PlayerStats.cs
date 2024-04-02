@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    private int level = 1;
+
     [SerializeField] private int maxPawnAmount = 3;
     [SerializeField] private int currentPawnAmount = 0;
 
@@ -29,5 +31,19 @@ public class PlayerStats : MonoBehaviour
     public void RemovePawnAmount() 
     { 
         currentPawnAmount -= maxPawnAmount;
+    }
+
+    public void SetPlayerLevel(int lvl)
+    {
+        level = lvl;
+
+
+        //move this somewhere else
+        ChangeMaxPawnAmount(lvl);
+    }
+
+    public int GetPlayerLevel() 
+    { 
+        return level;
     }
 }
