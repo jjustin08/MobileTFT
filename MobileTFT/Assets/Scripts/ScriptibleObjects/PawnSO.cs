@@ -18,4 +18,7 @@ public class PawnSO : ScriptableObject
     public float damage;
     public float attackTime;
     public int range;
+
+
+    public List<Type> types;
 }

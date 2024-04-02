@@ -62,6 +62,21 @@ public class PawnStats : MonoBehaviour
     {
         PawnSO SO = parentPawn.GetPawnSO();
 
+        foreach(Type type in SO.types)
+        {
+            //get how many of this type
+            int amount = 0;
+            foreach(Pawn p in GridUtil.Instance.GetAllPawns(true))
+            {
+                if(p.GetPawnSO().types.Contains(type))
+                {
+                    amount++;
+                }
+            }
+            
+            type.Effect(parentPawn, amount);
+        }
+
         health = SO.health;
         currentHealth = SO.health;
         damage = SO.damage;
