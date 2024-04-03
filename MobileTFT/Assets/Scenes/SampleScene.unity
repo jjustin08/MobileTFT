@@ -522,6 +522,10 @@ MonoBehaviour:
   teams:
   - {fileID: 2453357019020264537, guid: a1be59dd08e4fd54f9819a7bad8ce401, type: 3}
   - {fileID: 2453357019020264537, guid: 80326bbcc3dda904399a5c969f8627a8, type: 3}
+  - {fileID: 2453357019020264537, guid: 0fdb224a8355bf847b1e56abc07758a4, type: 3}
+  - {fileID: 2453357019020264537, guid: a244a1e4b67557d4181a6f005e4a6831, type: 3}
+  - {fileID: 2453357019020264537, guid: 2f23a916dec26f8468d8646b1e8e0726, type: 3}
+  - {fileID: 2453357019020264537, guid: 8a87ce72c25f441489a742f8d0c7566d, type: 3}
 --- !u!1 &99171895
 GameObject:
   m_ObjectHideFlags: 0
@@ -3898,6 +3902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combat: {fileID: 95400342}
   cardManager: {fileID: 278468140}
+  botLoader: {fileID: 95400344}
 --- !u!1 &844157319
 GameObject:
   m_ObjectHideFlags: 0

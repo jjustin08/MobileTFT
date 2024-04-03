@@ -35,7 +35,7 @@ public class PawnStats : MonoBehaviour
     {
         currentHealth = newHealth;
 
-
+        // error here
         parentPawn.GetVisual().UpdateHealthBar(health,currentHealth);
     }
 

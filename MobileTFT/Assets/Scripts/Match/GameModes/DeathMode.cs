@@ -1,17 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DeathMode : GameMode
 {
     [SerializeField] private Combat combat;
     [SerializeField] private CardManager cardManager;
+    [SerializeField] private BotLoader botLoader;
 
-    private float Timer = 0;
-    private float TimerMax = 15;
+    private float timer = 0;
+    private float timerMax = 15;
 
     private int step = 1;
-    private int StepMax = 4;
+    private int stepMax = 4;
+
+    private int round = 0;
 
     private void Start()
     {
@@ -31,14 +35,14 @@ public class DeathMode : GameMode
 
     protected override void UpdateGame()
     {
-        Timer += Time.deltaTime;
+        timer += Time.deltaTime;
 
-        if(Timer > TimerMax)
+        if(timer > timerMax)
         {
-            Timer = 0;
+            timer = 0;
             // Activate next step
             step++;
-            if(step > StepMax)
+            if(step > stepMax)
             {
                 step = 1;
             }
@@ -47,19 +51,19 @@ public class DeathMode : GameMode
             {
                 case 1:
                     StartTurn();
-                    TimerMax = 20;
+                    timerMax = 20;
                     break; 
                 case 2:
                     EndTurn();
-                    TimerMax = 2;
+                    timerMax = 2;
                     break;
                 case 3:
                     StartCombat();
-                    TimerMax = 15;
+                    timerMax = 15;
                     break;
                 case 4:
                     EndCombat();
-                    TimerMax = 2;
+                    timerMax = 2;
                     break;
             }
         }
@@ -67,6 +71,7 @@ public class DeathMode : GameMode
 
     protected override void StartTurn()
     {
+        round++;
         GridUtil.Instance.ToggleGridInteraction(true, true);
         cardManager.ReRollPawns();
     }
@@ -74,10 +79,41 @@ public class DeathMode : GameMode
     protected override void EndTurn()
     {
         GridUtil.Instance.ToggleGridInteraction(true, false);
+
+        switch (round)
+        {
+            case 1:
+                botLoader.LoadBotTeam(0);
+                break;
+            case 2:
+                botLoader.LoadBotTeam(1);
+                break;
+            case 3:
+                botLoader.LoadBotTeam(2);
+                break;
+            case 4:
+                botLoader.LoadBotTeam(3);
+                break;
+            case 5:
+                botLoader.LoadBotTeam(4);
+                break;
+            case 6:
+                botLoader.LoadBotTeam(2);
+                break;
+            case 7:
+                botLoader.LoadBotTeam(5);
+                break;
+        }
     }
 
     protected override void StartCombat()
     {
+        // load in enemy team
+        // different each round
+
+        //temp switch case TODO find a better way to do this
+        
+
         combat.StartCombat();
     }
 

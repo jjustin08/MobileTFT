@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class BotLoader : MonoBehaviour
@@ -9,16 +10,16 @@ public class BotLoader : MonoBehaviour
     private void Update()
     {
         //TODO: this is temp stuff
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            ClearEnemyPawns();
-            teams[0].LoadTeam();
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ClearEnemyPawns();
-            teams[1].LoadTeam();
-        }
+        //if(Input.GetKeyDown(KeyCode.Alpha1))
+        //{
+        //    ClearEnemyPawns();
+        //    teams[0].LoadTeam();
+        //}
+        //else if(Input.GetKeyDown(KeyCode.Alpha2))
+        //{
+        //    ClearEnemyPawns();
+        //    teams[1].LoadTeam();
+        //}
 
         //if (Input.GetKeyDown(KeyCode.O))
         //{
@@ -37,7 +38,12 @@ public class BotLoader : MonoBehaviour
         {
             pawn.SelfDestruct();
         }
-      
+    }
+
+    public void LoadBotTeam(int index)
+    {
+        ClearEnemyPawns();
+        teams[index].LoadTeam();
     }
 
 }
