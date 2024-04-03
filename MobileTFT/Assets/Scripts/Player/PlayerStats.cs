@@ -4,10 +4,25 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] private HealthUI healthUI;
     private int level = 1;
+    private int health = 30;
 
     [SerializeField] private int maxPawnAmount = 3;
     [SerializeField] private int currentPawnAmount = 0;
+
+
+    public void SetPlayerHealth(int h)
+    {
+        health = h;
+        healthUI.SetHealthText(health);
+    }
+
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        healthUI.SetHealthText(health);
+    }
 
 
     public void ChangeMaxPawnAmount(int newMax)
