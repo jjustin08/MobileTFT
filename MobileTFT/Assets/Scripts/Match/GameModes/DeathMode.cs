@@ -8,6 +8,7 @@ public class DeathMode : GameMode
     [SerializeField] private Combat combat;
     [SerializeField] private CardManager cardManager;
     [SerializeField] private BotLoader botLoader;
+    [SerializeField] private RoundDisplay UI;
 
     private float timer = 0;
     private float timerMax = 15;
@@ -41,6 +42,7 @@ public class DeathMode : GameMode
     protected override void UpdateGame()
     {
         timer += Time.deltaTime;
+        UI.UpdateTimer(timer, timerMax);
 
         if(timer > timerMax)
         {
@@ -79,48 +81,59 @@ public class DeathMode : GameMode
         round++;
         GridUtil.Instance.ToggleGridInteraction(true, true);
         cardManager.ReRollPawns();
+
+        switch (round)
+        {
+            case 1:
+                UI.UpdateText("Bot Round");
+                botLoader.LoadBotTeam(0);
+                break;
+            case 2:
+                UI.UpdateText("Bot Round");
+                botLoader.LoadBotTeam(1);
+                break;
+            case 3:
+                //player round
+                UI.UpdateText("Player Round      Pawns will die");
+                break;
+            case 4:
+                UI.UpdateText("Bot Round");
+                botLoader.LoadBotTeam(3);
+                break;
+            case 5:
+                UI.UpdateText("Bot Round");
+                botLoader.LoadBotTeam(4);
+                break;
+            case 6:
+                // player round
+                UI.UpdateText("Player Round      Pawns will die");
+                break;
+            case 7:
+                UI.UpdateText("Bot Round");
+                botLoader.LoadBotTeam(5);
+                break;
+        }
     }
 
     protected override void EndTurn()
     {
         GridUtil.Instance.ToggleGridInteraction(true, false);
-
+        UI.UpdateText("");
         switch (round)
         {
-            case 1:
-                botLoader.LoadBotTeam(0);
-                break;
-            case 2:
-                botLoader.LoadBotTeam(1);
-                break;
             case 3:
                 //player round
                 botLoader.LoadBotTeam(2);
                 break;
-            case 4:
-                botLoader.LoadBotTeam(3);
-                break;
-            case 5:
-                botLoader.LoadBotTeam(4);
-                break;
             case 6:
                 // player round
                 botLoader.LoadBotTeam(2);
-                break;
-            case 7:
-                botLoader.LoadBotTeam(5);
                 break;
         }
     }
 
     protected override void StartCombat()
     {
-        // load in enemy team
-        // different each round
-
-        //temp switch case TODO find a better way to do this
-        
-
         combat.StartCombat();
     }
 
@@ -130,14 +143,17 @@ public class DeathMode : GameMode
         {
             //win
             case 1:
+                UI.UpdateText("Win");
                 CashManager.Instance.GainCash(10);
                 break;
             //lose
             case 2:
+                UI.UpdateText("Lose");
                 CashManager.Instance.GainCash(5);
                 break;
             //tie
             case 3:
+                UI.UpdateText("Tie");
                 CashManager.Instance.GainCash(5);
                 break;
             default: 
