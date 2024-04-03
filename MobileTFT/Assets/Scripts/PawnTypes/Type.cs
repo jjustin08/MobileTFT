@@ -10,6 +10,6 @@ public class Type : ScriptableObject
 
     public virtual void Effect(Pawn pawn, int amount)
     {
-        Debug.Log(name + " Amount: "+amount);
+        //Debug.Log(name + " Amount: "+amount);
     }
 }

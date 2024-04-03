@@ -7,41 +7,15 @@ public class Combat : MonoBehaviour
     [SerializeField] private CardManager cardManager;
     private List<Pawn> pawns = new List<Pawn>();
 
-    private bool inCombat;
-
-    private void Start()
-    {
-        GridUtil.Instance.ToggleGridInteraction(false, false);
-    }
-    void Update()
-    {
-        //debug input
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            StartCombat();
-        }
-        if(Input.GetKeyDown(KeyCode.S)) 
-        {
-            EndCombat();
-        }
-
-        // instead of update could do whenever a pawn dies. event maybe?
-        if(inCombat)
-        {
-            CheckCombatState();
-        }
-        
-    }
-
-    private void CheckCombatState()
+    public int CheckCombatState()
     {
         int aliveFriendly = 0;
         int aliveEnemy = 0;
 
         if (pawns.Count <= 0)
         {
-            EndCombat();
-            return;
+            print("no pawns??");
+            return -1;
         }
             
 
@@ -59,61 +33,80 @@ public class Combat : MonoBehaviour
 
         if (aliveFriendly == 0)
         {
-            CashManager.Instance.GainCash(1);
             print("Lose");
-            EndCombat();
+            return 2;
         }
         else if(aliveEnemy == 0)
         {
-            CashManager.Instance.GainCash(5);
             print("Win");
-            EndCombat();
+            return 1;
+        }
+        else
+        {
+            print("Tie");
+            return 3;
         }
     }
 
-    private void StartCombat()
+    public void StartCombat()
     {
-        inCombat = true;
         foreach (Pawn p in GridUtil.Instance.GetAllPawns()) 
         {
             pawns.Add(p);
             p.ToggleCombat(true);
         }
-
-        GridUtil.Instance.ToggleGridInteraction(true, false);
-        //foreach (Slot s in GridUtil.Instance.GetAllSlots())
-        //{
-        //    s.GetSlotInteraction().ToggleInteraction(false);
-        //}
-        
-  
     }
 
-    private void EndCombat()
+    public void EndCombat()
     {
-        inCombat = false;
-        
         foreach (Pawn p in pawns)
         {
+            //clear enemies
+            if(p.IsEnemy()) 
+            {
+                p.SelfDestruct();
+                continue;
+            }
+
+            //reset player's pawns
             if(p.gameObject.activeSelf)
             {
                 p.ToggleCombat(false);
             }
             else
             {
-                // what happens to destroyed pawns
-                //reset like normal game
                 p.gameObject.SetActive(true);
                 p.ToggleCombat(false);
-
-                // remove from place and put back into deck or dead deck
-                //cardManager.AddPawnToDeck();
-                //Destroy(p.gameObject);
             }
             
         }
         pawns.Clear();
+    }
 
-        GridUtil.Instance.ToggleGridInteraction(true, true);
+    public void EndCombatDeath()
+    {
+        foreach (Pawn p in pawns)
+        {
+            //clear enemies
+            if (p.IsEnemy())
+            {
+                p.SelfDestruct();
+                continue;
+            }
+
+            //reset player's pawns
+            if (p.gameObject.activeSelf)
+            {
+                p.ToggleCombat(false);
+            }
+            else
+            {
+                cardManager.AddPawnToDeck(p.GetPawnSO());
+                CashManager.Instance.GainCash(p.GetPawnSO().cost);
+                p.SelfDestruct();
+            }
+
+        }
+        pawns.Clear();
     }
 }

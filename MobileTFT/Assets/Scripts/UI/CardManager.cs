@@ -15,25 +15,9 @@ public class CardManager : MonoBehaviour
 
     [SerializeField] private PawnStorage pawnStorage;
 
-    private void Start()
-    {
-        ReRollPawns();
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReRollPawns();
-        }
-    }
-
     public void ReRollPawns()
     {
-        // get player level
-        // each pool has a different chance depending on level
-        // roll for each slot
         int level = Player.Instance.GetPlayerStats().GetPlayerLevel();
-        CashManager.Instance.RemoveCash(1);
 
 
         foreach (CardSlot slot in shopPawnsSlots)

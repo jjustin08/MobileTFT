@@ -8,7 +8,7 @@ public class CashManager : MonoBehaviour
     public static CashManager Instance;
     [SerializeField] private TextMeshProUGUI cashText;
 
-    private int currentCash = 11;
+    private int currentCash = 10;
     private void Awake()
     {
         Instance = this;
