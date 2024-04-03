@@ -23,6 +23,7 @@ public class Pawn : MonoBehaviour
     {
         pawnSO = SO;
         pVisual.SetVisual(Instantiate(SO.placedVisual, transform));
+        pVisual.SetStarCountImage(SO.starCount);
     }
 
     public void SelfDestruct()

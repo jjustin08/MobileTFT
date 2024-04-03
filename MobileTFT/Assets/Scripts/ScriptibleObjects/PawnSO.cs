@@ -5,7 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Pawn")]
 public class PawnSO : ScriptableObject
 {
-    public PawnSO TwoStarPawnSO;
+    public int starCount = 1;
+    public PawnSO NextStarPawnSO;
 
     public Pawn placedPawn;
 

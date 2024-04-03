@@ -32,6 +32,5 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealthBar(float max, float current)
     {
         target = current / max;
-        //HealthBarImage.fillAmount = current / max;
     }
 }

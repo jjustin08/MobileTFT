@@ -43,6 +43,7 @@ public class PawnStats : MonoBehaviour
     {
         killCount++;
         CalculateStats();
+        parentPawn.GetVisual().SetKillCountText(killCount);
     }
 
     public int GetKillCount()
@@ -53,7 +54,7 @@ public class PawnStats : MonoBehaviour
     public void SetKillCount(int k)
     {
         killCount = k;
-        CalculateStats();
+        GetComponent<Pawn>().GetVisual().SetKillCountText(killCount);
     }
 
 
@@ -61,7 +62,6 @@ public class PawnStats : MonoBehaviour
     private void CalculateStats()
     {
         PawnSO SO = parentPawn.GetPawnSO();
-
         foreach(Type type in SO.types)
         {
             //get how many of this type
