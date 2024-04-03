@@ -24,6 +24,11 @@ public class DeathMode : GameMode
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+            timer = timerMax;
+        }
+
         UpdateGame();
     }
 
@@ -89,6 +94,7 @@ public class DeathMode : GameMode
                 botLoader.LoadBotTeam(1);
                 break;
             case 3:
+                //player round
                 botLoader.LoadBotTeam(2);
                 break;
             case 4:
@@ -98,6 +104,7 @@ public class DeathMode : GameMode
                 botLoader.LoadBotTeam(4);
                 break;
             case 6:
+                // player round
                 botLoader.LoadBotTeam(2);
                 break;
             case 7:
@@ -140,6 +147,32 @@ public class DeathMode : GameMode
         }
 
         // depends on what kind of battle player or minion
-        combat.EndCombatDeath();
+        switch (round)
+        {
+            case 1:
+                combat.EndCombat();
+                break;
+            case 2:
+                combat.EndCombat();
+                break;
+            case 3:
+                //player round
+                combat.EndCombatDeath();
+                break;
+            case 4:
+                combat.EndCombat();
+                break;
+            case 5:
+                combat.EndCombat();
+                break;
+            case 6:
+                // player round
+                combat.EndCombatDeath();
+                break;
+            case 7:
+                combat.EndCombat();
+                break;
+        }
+       
     }
 }
