@@ -98,6 +98,7 @@ public class GridUtil : MonoBehaviour
         foreach (Slot s in GetOneSideOfSlots(friendly))
         {
             s.GetSlotInteraction().gameObject.SetActive(toggle);
+            
         }
 
     }

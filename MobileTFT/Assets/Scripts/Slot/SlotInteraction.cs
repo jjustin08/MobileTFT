@@ -8,7 +8,6 @@ public class SlotInteraction : Interaction
 
     public void PawnInteraction()
     {
-        
         if (!allowInteraction) return;
 
         Pawn tempPawn = Player.Instance.GetHoldingPawn();

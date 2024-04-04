@@ -25,7 +25,6 @@ public class Slot : MonoBehaviour
         p.transform.SetParent(transform, false);
         placedPawn = p;
         
-        hasPawn = true;
 
         GridUtil.Instance.UpdateMaxPawnsOnBoard();
     }
@@ -33,7 +32,6 @@ public class Slot : MonoBehaviour
     public void RemovePawn()
     {
         placedPawn = null;
-        hasPawn = false;
         GridUtil.Instance.UpdateMaxPawnsOnBoard();
     }
     public Pawn GetPawn()
@@ -54,6 +52,6 @@ public class Slot : MonoBehaviour
 
     public bool HasPawn()
     {
-        return hasPawn;
+        return placedPawn != null;
     }
 }

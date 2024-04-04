@@ -18,7 +18,7 @@ public class PawnInteraction : Interaction
 
     protected override void OnDragCanceled()
     {
-        //if (!allowInteraction) return;
+        if (!allowInteraction) return;
 
         followCursor.ToggleDraggin(false);
 
