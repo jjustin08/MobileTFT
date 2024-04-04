@@ -14,7 +14,7 @@ public class PawnStats : MonoBehaviour
     private void Start()
     {
         parentPawn = GetComponent<Pawn>();
-        CalculateStats();
+        CalculateStats(true);
     }
 
 
@@ -42,7 +42,7 @@ public class PawnStats : MonoBehaviour
     public void AddKillToCount()
     {
         killCount++;
-        CalculateStats();
+        CalculateStats(false);
         parentPawn.GetVisual().SetKillCountText(killCount);
     }
 
@@ -59,7 +59,7 @@ public class PawnStats : MonoBehaviour
 
 
     // will need to refactor this later
-    private void CalculateStats()
+    private void CalculateStats(bool affectCurrentHealth)
     {
         PawnSO SO = parentPawn.GetPawnSO();
         foreach(Type type in SO.types)
@@ -78,6 +78,7 @@ public class PawnStats : MonoBehaviour
         }
 
         health = SO.health;
+       
         damage = SO.damage;
         attackTime = SO.attackTime;
         range = SO.range;
@@ -87,6 +88,12 @@ public class PawnStats : MonoBehaviour
             // this will change depending on what type etc
             damage += 1;
             health += 2;
+        }
+
+
+        if(affectCurrentHealth)
+        {
+            currentHealth = health;
         }
     }
 }
