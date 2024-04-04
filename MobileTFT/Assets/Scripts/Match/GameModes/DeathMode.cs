@@ -8,7 +8,7 @@ public class DeathMode : GameMode
     [SerializeField] private Combat combat;
     [SerializeField] private CardManager cardManager;
     [SerializeField] private BotLoader botLoader;
-    [SerializeField] private RoundDisplay UI;
+    [SerializeField] private RoundDisplayUI UI;
     [SerializeField] private LevelManager levelManager;
 
     private float timer = 0;

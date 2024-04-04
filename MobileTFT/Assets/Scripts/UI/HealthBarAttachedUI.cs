@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarAttached : MonoBehaviour
+public class HealthBarAttachedUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI killCountText;
     [SerializeField] private Image starImage1;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelUpButton : MonoBehaviour
+public class LevelUpButtonUI : MonoBehaviour
 {
     [SerializeField] private CardManager pawnShop;
     [SerializeField] private LevelManager levelManager;

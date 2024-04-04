@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardSlot : MonoBehaviour
+public class CardSlotUI : MonoBehaviour
 {
     [SerializeField] private CardManager pawnShop;
     private Card card;

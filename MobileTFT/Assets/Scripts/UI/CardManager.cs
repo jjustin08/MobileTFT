@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    [SerializeField] private List<CardSlot> shopPawnsSlots;
+    [SerializeField] private List<CardSlotUI> shopPawnsSlots;
 
     //shared pool of pawns
     [SerializeField] private List<PawnSO> OneCostPool;
@@ -20,7 +20,7 @@ public class CardManager : MonoBehaviour
         int level = Player.Instance.GetPlayerStats().GetPlayerLevel();
 
 
-        foreach (CardSlot slot in shopPawnsSlots)
+        foreach (CardSlotUI slot in shopPawnsSlots)
         {
             PawnSO removedPawnSO = slot.RemovePawn();
             if (removedPawnSO != null)
@@ -152,7 +152,7 @@ public class CardManager : MonoBehaviour
         
     }
 
-    private void DrawCardFromPool(List<PawnSO> pool, CardSlot slot)
+    private void DrawCardFromPool(List<PawnSO> pool, CardSlotUI slot)
     {
         if (pool.Count > 0)
         {

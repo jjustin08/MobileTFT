@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PawnVisual : MonoBehaviour
 {
-    [SerializeField] private HealthBar healthBar;
-    [SerializeField] private HealthBarAttached healthBarAttached;
+    [SerializeField] private HealthBarUI healthBar;
+    [SerializeField] private HealthBarAttachedUI healthBarAttached;
     private GameObject visual;
     public void UpdateHealthBar(float max, float current)
     {

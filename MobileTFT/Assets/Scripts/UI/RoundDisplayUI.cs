@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoundDisplay : MonoBehaviour
+public class RoundDisplayUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textDisplay;
     [SerializeField] private Slider timerSlider;

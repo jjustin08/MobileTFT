@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReRollButton : MonoBehaviour
+public class ReRollButtonUI : MonoBehaviour
 {
     [SerializeField] private CardManager pawnShop;
 
