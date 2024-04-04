@@ -8,29 +8,46 @@ public class SlotInteraction : Interaction
 
     public void PawnInteraction()
     {
+        
         if (!allowInteraction) return;
 
-
         Pawn tempPawn = Player.Instance.GetHoldingPawn();
+        Slot oldSlot = tempPawn.GetMovement().GetSlot();
         if (tempPawn != null)
         {
-            if (tempPawn.GetMovement().GetSlot() != null)
+            if (oldSlot != null)
             {
-                tempPawn.GetMovement().GetSlot().RemovePawn();
+                oldSlot.RemovePawn();
             }
         }
-        
-
+        if (tile.HasPawn())
+        {
+            // switch pawns spots
+            
+            oldSlot.PlacePawn(tile.GetPawn());
+            tempPawn.GetMovement().SetSlot(null);
+            tile.PlacePawn(tempPawn);
+            Player.Instance.SetHoldingPawn(null);
+            return;
+        }
         if (tile.GetComponent<SlotPosition>() != null)
         {
-            if (Player.Instance.GetPlayerStats().IsPawnAmountFull()) return;
+            if (Player.Instance.GetPlayerStats().IsPawnAmountFull())
+            {
+               
+                oldSlot.PlacePawn(tempPawn);
+                Player.Instance.SetHoldingPawn(null);
+                return;
+
+            }
+
         }
-
-
         if (tempPawn != null)
         {
             tile.PlacePawn(tempPawn);
             Player.Instance.SetHoldingPawn(null);
         }
+
+       
     }
 }
