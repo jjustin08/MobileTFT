@@ -78,7 +78,6 @@ public class PawnStats : MonoBehaviour
         }
 
         health = SO.health;
-        currentHealth = SO.health;
         damage = SO.damage;
         attackTime = SO.attackTime;
         range = SO.range;
