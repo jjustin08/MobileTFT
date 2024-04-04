@@ -48,8 +48,15 @@ public class DeathMode : GameMode
 
     protected override void UpdateGame()
     {
+        if (combat.IsCombatOver())
+        {
+            timer = timerMax;
+        }
         timer += Time.deltaTime;
+
         UI.UpdateTimer(timer, timerMax);
+
+
 
         if(timer > timerMax)
         {

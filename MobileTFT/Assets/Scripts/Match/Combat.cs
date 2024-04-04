@@ -7,6 +7,34 @@ public class Combat : MonoBehaviour
     [SerializeField] private CardManager cardManager;
     private List<Pawn> pawns = new List<Pawn>();
 
+
+    public bool IsCombatOver()
+    {
+        if(pawns.Count == 0) return false;
+
+        int aliveFriendly = 0;
+        int aliveEnemy = 0;
+
+        foreach (Pawn p in pawns)
+        {
+            if (p.IsEnemy() && p.gameObject.activeSelf)
+            {
+                aliveEnemy++;
+            }
+            if (!p.IsEnemy() && p.gameObject.activeSelf)
+            {
+                aliveFriendly++;
+            }
+        }
+
+        if(aliveFriendly == 0 || aliveEnemy == 0) 
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public int CheckCombatState()
     {
         int aliveFriendly = 0;
