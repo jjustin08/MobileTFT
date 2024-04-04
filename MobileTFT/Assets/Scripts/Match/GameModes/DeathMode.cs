@@ -9,6 +9,7 @@ public class DeathMode : GameMode
     [SerializeField] private CardManager cardManager;
     [SerializeField] private BotLoader botLoader;
     [SerializeField] private RoundDisplay UI;
+    [SerializeField] private LevelManager levelManager;
 
     private float timer = 0;
     private float timerMax = 15;
@@ -139,6 +140,8 @@ public class DeathMode : GameMode
 
     protected override void EndCombat()
     {
+        levelManager.GainExp(2);
+
         switch (combat.CheckCombatState())
         {
             //win
