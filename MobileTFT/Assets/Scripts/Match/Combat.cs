@@ -33,18 +33,15 @@ public class Combat : MonoBehaviour
 
         if (aliveFriendly == 0)
         {
-            print("Lose");
             Player.Instance.GetPlayerStats().TakeDamage(aliveEnemy);
             return 2;
         }
         else if(aliveEnemy == 0)
         {
-            print("Win");
             return 1;
         }
         else
         {
-            print("Tie");
             return 3;
         }
     }

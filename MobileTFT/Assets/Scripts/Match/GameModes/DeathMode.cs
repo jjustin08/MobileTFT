@@ -19,6 +19,8 @@ public class DeathMode : GameMode
 
     private int round = 0;
 
+    private bool isGameRunning = false;
+
     private void Start()
     {
         StartGame();
@@ -30,12 +32,16 @@ public class DeathMode : GameMode
         {
             timer = timerMax;
         }
-
-        UpdateGame();
+        if(isGameRunning)
+        {
+            UpdateGame();
+        }
+       
     }
 
     protected override void StartGame()
     {
+        isGameRunning = true;
         GridUtil.Instance.ToggleGridInteraction(false, false);
         StartTurn();
     }
@@ -59,19 +65,19 @@ public class DeathMode : GameMode
             {
                 case 1:
                     StartTurn();
-                    timerMax = 20;
+                    timerMax = 10;
                     break; 
                 case 2:
                     EndTurn();
-                    timerMax = 2;
+                    timerMax = 1;
                     break;
                 case 3:
                     StartCombat();
-                    timerMax = 15;
+                    timerMax = 20;
                     break;
                 case 4:
                     EndCombat();
-                    timerMax = 2;
+                    timerMax = 1;
                     break;
             }
         }
@@ -99,7 +105,7 @@ public class DeathMode : GameMode
                 break;
             case 4:
                 UI.UpdateText("Bot Round");
-                botLoader.LoadBotTeam(3);
+                botLoader.LoadBotTeam(2);
                 break;
             case 5:
                 UI.UpdateText("Bot Round");
@@ -113,6 +119,13 @@ public class DeathMode : GameMode
                 UI.UpdateText("Bot Round");
                 botLoader.LoadBotTeam(5);
                 break;
+            case 8:
+                UI.UpdateText("Bot Round");
+                botLoader.LoadBotTeam(6);
+                break;
+            case 9:
+                UI.UpdateText("Player Round      Pawns will die");
+                break;
         }
     }
 
@@ -124,11 +137,15 @@ public class DeathMode : GameMode
         {
             case 3:
                 //player round
-                botLoader.LoadBotTeam(2);
+                botLoader.LoadBotTeam(3);
                 break;
             case 6:
                 // player round
-                botLoader.LoadBotTeam(2);
+                botLoader.LoadBotTeam(7);
+                break;
+            case 9:
+                // player round
+                botLoader.LoadBotTeam(7);
                 break;
         }
     }
@@ -159,13 +176,13 @@ public class DeathMode : GameMode
                 UI.UpdateText("Tie");
                 CashManager.Instance.GainCash(5);
                 break;
-            default: 
+            default:
                 break;
 
 
         }
 
-        // depends on what kind of battle player or minion
+
         switch (round)
         {
             case 1:
@@ -190,8 +207,45 @@ public class DeathMode : GameMode
                 break;
             case 7:
                 combat.EndCombat();
+                break; 
+            case 8:
+                combat.EndCombat();
+                break; 
+            case 9:
+                combat.EndCombatDeath();
+                EndGame();
                 break;
         }
-       
+
+
+        if (Player.Instance.GetPlayerStats().GetPlayerHealth() <= 0)
+        {
+            EndGame();
+            return;
+        }
+
+        
     }
+
+
+
+    public override void EndGame()
+    {
+        isGameRunning = false;
+        //end the game somehow
+        if (Player.Instance.GetPlayerStats().GetPlayerHealth() > 0)
+        {
+            //win
+            UI.UpdateText("You Won the Game");
+        }
+        else
+        {
+            //lose??
+            UI.UpdateText("You Lost the Game");
+        }
+    }
+
 }
+
+
+

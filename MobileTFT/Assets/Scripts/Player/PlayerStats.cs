@@ -6,11 +6,15 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] private HealthUI healthUI;
     private int level = 1;
-    private int health = 30;
+    private int health = 15;
 
     [SerializeField] private int maxPawnAmount = 3;
     [SerializeField] private int currentPawnAmount = 0;
 
+    private void Start()
+    {
+        healthUI.SetHealthText(health);
+    }
 
     public void SetPlayerHealth(int h)
     {
@@ -60,5 +64,10 @@ public class PlayerStats : MonoBehaviour
     public int GetPlayerLevel() 
     { 
         return level;
+    }
+
+    public int GetPlayerHealth()
+    {
+        return health;
     }
 }

@@ -19,5 +19,5 @@ public class GameMode : MonoBehaviour
 
     virtual protected void EndCombat(){}
 
-    virtual protected void EndGame(){}
+    virtual public void EndGame(){}
 }

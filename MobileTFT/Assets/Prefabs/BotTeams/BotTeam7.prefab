@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6796147042186589408}
   - component: {fileID: 2453357019020264537}
   m_Layer: 0
-  m_Name: BotTeam4
+  m_Name: BotTeam7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savedPawnSOs:
+  - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
+  - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
   - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
   - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
   savedSlotPositions:
   - {x: 1, y: 3}
   - {x: 2, y: 1}
+  - {x: 4, y: 3}
+  - {x: 5, y: 1}
