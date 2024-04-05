@@ -176,30 +176,44 @@ public class CardManager : MonoBehaviour
 
     public void AddPawnToDeck(PawnSO SO)
     {
-        int cost = SO.cost;
-
-        switch (cost)
+        PawnSO realSO = SO;
+        int amount = 1;
+        if(SO.starCount == 3)
         {
-            case 1:
-                OneCostPool.Add(SO);
-
-            break; case 2:
-                TwoCostPool.Add(SO);
-
-            break; case 3:
-                ThreeCostPool.Add(SO);
-
-            break; case 4:
-                FourCostPool.Add(SO);
-
-            break; case 5: 
-                FiveCostPool.Add(SO);
-
-            break;
-        
-        
+            realSO = SO.prevStarPawnSO.prevStarPawnSO;
+            amount = 9;
         }
+        else if(SO.starCount == 2)
+        {
+            realSO = SO.prevStarPawnSO;
+            amount = 3;
+        }
+        int cost = realSO.cost;
+        for(int i = 0; i < amount; i++) 
+        {
+            switch (cost)
+            {
+                case 1:
+                    OneCostPool.Add(realSO);
 
-        
+                    break;
+                case 2:
+                    TwoCostPool.Add(realSO);
+
+                    break;
+                case 3:
+                    ThreeCostPool.Add(realSO);
+
+                    break;
+                case 4:
+                    FourCostPool.Add(realSO);
+
+                    break;
+                case 5:
+                    FiveCostPool.Add(realSO);
+
+                    break;
+            }
+        }
     }
 }

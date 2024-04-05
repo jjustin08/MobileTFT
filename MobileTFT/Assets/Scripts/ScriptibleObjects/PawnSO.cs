@@ -6,7 +6,8 @@ using UnityEngine;
 public class PawnSO : ScriptableObject
 {
     public int starCount = 1;
-    public PawnSO NextStarPawnSO;
+    public PawnSO prevStarPawnSO;
+    public PawnSO nextStarPawnSO;
 
     public Pawn placedPawn;
 

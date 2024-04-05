@@ -57,7 +57,7 @@ public class PawnStorage : MonoBehaviour
             }
         }
 
-        if(counter == 3 && SO.NextStarPawnSO != null)
+        if(counter == 3 && SO.nextStarPawnSO != null)
         {
             int killCount = 0;
             foreach(Pawn pawn in countedPawns)
@@ -66,7 +66,7 @@ public class PawnStorage : MonoBehaviour
                 pawn.SelfDestruct();
 
             }
-            FillSlot(SO.NextStarPawnSO, killCount);
+            FillSlot(SO.nextStarPawnSO, killCount);
         }
 
     }

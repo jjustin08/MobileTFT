@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Wizard
   m_EditorClassIdentifier: 
   starCount: 1
-  NextStarPawnSO: {fileID: 11400000, guid: 30f132344a3ddb943bb11ef76a2b049a, type: 2}
+  prevStarPawnSO: {fileID: 0}
+  nextStarPawnSO: {fileID: 11400000, guid: 30f132344a3ddb943bb11ef76a2b049a, type: 2}
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
