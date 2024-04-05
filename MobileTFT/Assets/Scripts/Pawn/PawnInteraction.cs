@@ -39,4 +39,10 @@ public class PawnInteraction : Interaction
         Player.Instance.SetHoldingPawn(null);
     }
 
+
+    public void CancelDrag()
+    {
+        followCursor.ToggleDraggin(false);
+        Player.Instance.SetHoldingPawn(null);
+    }
 }

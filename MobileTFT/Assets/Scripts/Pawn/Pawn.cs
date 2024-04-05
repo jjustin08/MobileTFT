@@ -47,7 +47,7 @@ public class Pawn : MonoBehaviour
         GetStats().ToggleCombat(toggle);
         GetMovement().ToggleCombat(toggle);
         GetInteraction().ToggleInteraction(!toggle);
-
+        GetInteraction().CancelDrag();
     }
 
     public PawnStats GetStats() { return stats; }

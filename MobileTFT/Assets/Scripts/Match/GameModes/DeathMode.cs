@@ -156,12 +156,16 @@ public class DeathMode : GameMode
                 botLoader.LoadBotTeam(7);
                 break;
         }
+
+        
     }
 
     protected override void StartCombat()
     {
         combat.StartCombat();
         GridUtil.Instance.SetInCombat(true);
+
+
     }
 
     protected override void EndCombat()
