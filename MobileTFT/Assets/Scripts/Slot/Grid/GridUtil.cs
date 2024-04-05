@@ -22,7 +22,12 @@ public class GridUtil : MonoBehaviour
     private void Update()
     {
         if (inCombat)
+        {
+            ToggleGridInteraction(true, false);
             return;
+        }
+            
+
         if (Player.Instance.GetHoldingPawn() != null)
         {
             ToggleGridInteraction(true,true);
