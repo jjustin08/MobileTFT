@@ -12,6 +12,9 @@ public class CardVisual : MonoBehaviour
     [SerializeField] private Image background;
 
 
+    [SerializeField] private List<Image> types;
+
+
 
     public void UpdateVisual(PawnSO SO)
     {
@@ -23,5 +26,12 @@ public class CardVisual : MonoBehaviour
             co += "*";
         }
         cost.text = co;
+
+        for(int i = 0;i < SO.types.Count;i++)
+        {
+            types[i].gameObject.SetActive(true);
+            types[i].sprite = SO.types[i].icon;
+        }
+
     }
 }
