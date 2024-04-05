@@ -93,6 +93,7 @@ public class DeathMode : GameMode
     protected override void StartTurn()
     {
         round++;
+        GridUtil.Instance.SetInCombat(false);
         GridUtil.Instance.ToggleGridInteraction(true, true);
         cardManager.ReRollPawns();
 
@@ -160,10 +161,12 @@ public class DeathMode : GameMode
     protected override void StartCombat()
     {
         combat.StartCombat();
+        GridUtil.Instance.SetInCombat(true);
     }
 
     protected override void EndCombat()
     {
+        
         levelManager.GainExp(2);
 
         switch (combat.CheckCombatState())

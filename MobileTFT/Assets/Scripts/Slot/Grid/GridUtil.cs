@@ -9,6 +9,8 @@ public class GridUtil : MonoBehaviour
     public static GridUtil Instance;
 
     private HexGridLayout hexGrid;
+
+    private bool inCombat = false;
     private void Awake()
     {
         Instance = this;
@@ -19,6 +21,8 @@ public class GridUtil : MonoBehaviour
 
     private void Update()
     {
+        if (inCombat)
+            return;
         if (Player.Instance.GetHoldingPawn() != null)
         {
             ToggleGridInteraction(true,true);
@@ -27,6 +31,11 @@ public class GridUtil : MonoBehaviour
         {
             ToggleGridInteraction(true, false);
         }
+    }
+
+    public void SetInCombat(bool toggle)
+    {
+        inCombat = toggle;
     }
     public List<Pawn> GetAllPawns(bool friendly)
     {
