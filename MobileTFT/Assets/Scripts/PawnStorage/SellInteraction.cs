@@ -9,8 +9,8 @@ public class SellInteraction : MonoBehaviour
     private void Update()
     {
         // probably should not put this in update
-        GameObject interceptObj = Player.Instance.GetPlayerInput().TestCardTileIntercept();
-        if (interceptObj == this.gameObject && Player.Instance.GetHoldingPawn() != null)
+        //GameObject interceptObj = Player.Instance.GetPlayerInput().TestCardTileIntercept();
+        if (Player.Instance.GetHoldingPawn() != null)
         {
             SellUi.SetActive(true);
         }

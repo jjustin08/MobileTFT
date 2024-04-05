@@ -16,6 +16,18 @@ public class GridUtil : MonoBehaviour
 
 
     }
+
+    private void Update()
+    {
+        if (Player.Instance.GetHoldingPawn() != null)
+        {
+            ToggleGridInteraction(true,true);
+        }
+        else
+        {
+            ToggleGridInteraction(true, false);
+        }
+    }
     public List<Pawn> GetAllPawns(bool friendly)
     {
         List<Pawn> allPawns = new List<Pawn>();
