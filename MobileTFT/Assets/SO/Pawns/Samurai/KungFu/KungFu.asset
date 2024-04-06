@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f62a931dae8628468f962890714c17b, type: 3}
-  m_Name: Skeleton
+  m_Name: KungFu
   m_EditorClassIdentifier: 
   starCount: 1
   prevStarPawnSO: {fileID: 0}
-  nextStarPawnSO: {fileID: 11400000, guid: 591435ea29aeb734fa41890b1a42e878, type: 2}
+  nextStarPawnSO: {fileID: 11400000, guid: 00f988770f578134786bc2a4b5841a59, type: 2}
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
-  placedVisual: {fileID: 6073632614680335115, guid: ee99d2ff3fb4e1241b2ef14434743e96,
+  placedVisual: {fileID: 6073632614680335115, guid: ca03941e12be533478a61c4f2575bea8,
     type: 3}
   cost: 1
   health: 25
