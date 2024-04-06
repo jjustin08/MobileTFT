@@ -39,6 +39,22 @@ public class PawnStats : MonoBehaviour
         parentPawn.GetVisual().UpdateHealthBar(health,currentHealth);
     }
 
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
+
+    public void SetDamageTime(float newDamageTime)
+    {
+        attackTime = newDamageTime;
+    }
+    public void SetAttackRange(int newAttackRange)
+    {
+        range = newAttackRange;
+    }
+
+    public int GetAttackRange() { return range;}    
+
     public void AddKillToCount()
     {
         killCount++;
