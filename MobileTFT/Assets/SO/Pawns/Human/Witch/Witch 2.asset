@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Witch 2
   m_EditorClassIdentifier: 
   starCount: 2
-  prevStarPawnSO: {fileID: 11400000, guid: b8e77996c877e0e42acbd03be3251e67, type: 2}
-  nextStarPawnSO: {fileID: 11400000, guid: de5d59a35b2eb024485da2b7c2f24e65, type: 2}
+  prevStarPawnSO: {fileID: 11400000, guid: f746b56d7681c7548abf2c8dad78f971, type: 2}
+  nextStarPawnSO: {fileID: 11400000, guid: 41753b9c7dea5f54a9df00fa4695c77a, type: 2}
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}

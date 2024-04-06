@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f62a931dae8628468f962890714c17b, type: 3}
-  m_Name: WizardDouble
+  m_Name: Skeleton Warrior 2
   m_EditorClassIdentifier: 
-  starCount: 2
-  prevStarPawnSO: {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
-  nextStarPawnSO: {fileID: 0}
+  starCount: 1
+  prevStarPawnSO: {fileID: 11400000, guid: 3c351ea2096904b4face080ece16d418, type: 2}
+  nextStarPawnSO: {fileID: 11400000, guid: eafd12ae8644ce54fb2de0a77e99619d, type: 2}
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
-  placedVisual: {fileID: 6073632614680335115, guid: 8bd76a365b2cfa144b13f159b63895fd,
+  placedVisual: {fileID: 6073632614680335115, guid: 30c595c900457df49a4915b945ff1f33,
     type: 3}
-  cost: 3
-  health: 60
-  damage: 10
-  attackTime: 1.5
-  range: 4
+  cost: 1
+  health: 25
+  damage: 2
+  attackTime: 1
+  range: 1
   types:
   - {fileID: 11400000, guid: e0934c9bd07fa6342925df07f0f7161d, type: 2}
+  - {fileID: 11400000, guid: fc815b520ed44da44affea08dbfb0bc5, type: 2}

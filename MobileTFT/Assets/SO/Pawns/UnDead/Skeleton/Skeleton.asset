@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f62a931dae8628468f962890714c17b, type: 3}
-  m_Name: Peasent 2
+  m_Name: Skeleton
   m_EditorClassIdentifier: 
-  starCount: 2
-  prevStarPawnSO: {fileID: 11400000, guid: 1ebd16dbb4aa1454ab6cbd53c87fde09, type: 2}
-  nextStarPawnSO: {fileID: 11400000, guid: 7352469093ccda24a96cd3896c339133, type: 2}
+  starCount: 1
+  prevStarPawnSO: {fileID: 0}
+  nextStarPawnSO: {fileID: 11400000, guid: 591435ea29aeb734fa41890b1a42e878, type: 2}
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
-  placedVisual: {fileID: 6073632614680335115, guid: 23659d066e04df44db1d9fb788750f72,
+  placedVisual: {fileID: 6073632614680335115, guid: ee99d2ff3fb4e1241b2ef14434743e96,
     type: 3}
-  cost: 3
-  health: 30
-  damage: 8
-  attackTime: 2
+  cost: 1
+  health: 25
+  damage: 2
+  attackTime: 1
   range: 1
   types:
   - {fileID: 11400000, guid: e0934c9bd07fa6342925df07f0f7161d, type: 2}
+  - {fileID: 11400000, guid: fc815b520ed44da44affea08dbfb0bc5, type: 2}

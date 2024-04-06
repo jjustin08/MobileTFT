@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: Peasent 3
   m_EditorClassIdentifier: 
   starCount: 3
-  prevStarPawnSO: {fileID: 11400000, guid: 302d8d5740722c14eb08e392c08f8b77, type: 2}
+  prevStarPawnSO: {fileID: 11400000, guid: 28d3d5447006c6042b24f8edc97a6d3b, type: 2}
   nextStarPawnSO: {fileID: 0}
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
-  placedVisual: {fileID: 6073632614680335115, guid: 98ce341bd48d7b149950979881c845a2,
+  placedVisual: {fileID: 6073632614680335115, guid: 23659d066e04df44db1d9fb788750f72,
     type: 3}
-  cost: 18
+  cost: 9
   health: 60
   damage: 10
   attackTime: 1.8
-  range: 3
+  range: 1
   types:
   - {fileID: 11400000, guid: e0934c9bd07fa6342925df07f0f7161d, type: 2}
