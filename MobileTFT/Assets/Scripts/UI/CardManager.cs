@@ -8,11 +8,11 @@ public class CardManager : MonoBehaviour
 
     //shared pool of pawns
     [SerializeField] private List<PawnSO> pawnPool;
-    private List<PawnSO> OneCostPool;
-    private List<PawnSO> TwoCostPool;
-    private List<PawnSO> ThreeCostPool;
-    private List<PawnSO> FourCostPool;
-    private List<PawnSO> FiveCostPool;
+    private List<PawnSO> OneCostPool = new List<PawnSO>();
+    private List<PawnSO> TwoCostPool = new List<PawnSO>();
+    private List<PawnSO> ThreeCostPool = new List<PawnSO>();
+    private List<PawnSO> FourCostPool = new List<PawnSO>();
+    private List<PawnSO> FiveCostPool = new List<PawnSO>();
 
     [SerializeField] private PawnStorage pawnStorage;
 
@@ -198,6 +198,7 @@ public class CardManager : MonoBehaviour
             realSO = SO.prevStarPawnSO;
             amount = 3;
         }
+
         int cost = realSO.cost;
         for(int i = 0; i < amount; i++) 
         {

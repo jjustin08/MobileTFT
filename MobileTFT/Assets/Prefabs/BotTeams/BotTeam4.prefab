@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savedPawnSOs:
-  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
-  - {fileID: 11400000, guid: 79f0a560111c748419a0f260edd2fd47, type: 2}
+  - {fileID: 11400000, guid: 583a093b811032c40ae217bdcb6ad62a, type: 2}
+  - {fileID: 11400000, guid: 583a093b811032c40ae217bdcb6ad62a, type: 2}
   savedSlotPositions:
   - {x: 1, y: 3}
   - {x: 2, y: 1}

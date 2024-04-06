@@ -47,8 +47,8 @@ MonoBehaviour:
   savedPawnSOs:
   - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
   - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
-  - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
-  - {fileID: 11400000, guid: 750cb2ff1e552ee458a1c88aaed94ae6, type: 2}
+  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
+  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
   savedSlotPositions:
   - {x: 1, y: 3}
   - {x: 2, y: 1}
