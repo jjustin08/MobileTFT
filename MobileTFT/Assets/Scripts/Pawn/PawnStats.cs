@@ -101,7 +101,7 @@ public class PawnStats : MonoBehaviour
                 }
             }
 
-            type.Effect(parentPawn, amount);
+            type.AffectStats(parentPawn, amount);
         }
     }
 }

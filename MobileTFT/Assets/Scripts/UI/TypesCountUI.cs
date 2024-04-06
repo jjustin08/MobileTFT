@@ -7,8 +7,10 @@ using UnityEngine.UI;
 
 public class TypesCountUI : MonoBehaviour
 {
+    // probably should make this a script
     [SerializeField] private List<Image> typeIcons;
     [SerializeField] private List<TextMeshProUGUI> typeCount;
+    [SerializeField] private List<TextMeshProUGUI> typeDescription;
 
 
 
@@ -54,6 +56,7 @@ public class TypesCountUI : MonoBehaviour
         {
             typeIcons[i].gameObject.SetActive(true);
             typeIcons[i].sprite = types[i].icon;
+            typeDescription[i].text = types[i].description;
             this.typeCount[i].text = tCount[i].ToString();
         }
 
