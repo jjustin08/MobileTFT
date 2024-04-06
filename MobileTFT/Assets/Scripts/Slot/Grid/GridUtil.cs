@@ -46,11 +46,15 @@ public class GridUtil : MonoBehaviour
     {
         List<Pawn> allPawns = new List<Pawn>();
 
-        foreach(Slot slot in GetOneSideOfSlots(friendly))
+        foreach(Slot slot in GetAllSlots())
         {
             if(slot.HasPawn())
             {
-                allPawns.Add(slot.GetPawn());
+                if(slot.GetPawn().IsEnemy() != friendly)
+                {
+                    allPawns.Add(slot.GetPawn());
+                }
+                
             }
         }
 

@@ -42,7 +42,13 @@ public class PawnStats : MonoBehaviour
     public void AddKillToCount()
     {
         killCount++;
-        CalculateStats(false);
+        for (int i = 0; i < killCount; i++)
+        {
+            // this will change depending on what type etc
+            damage += 1;
+            health += 2;
+            currentHealth += 2;
+        }
         parentPawn.GetVisual().SetKillCountText(killCount);
     }
 
@@ -58,24 +64,11 @@ public class PawnStats : MonoBehaviour
     }
 
 
-    // will need to refactor this later
-    private void CalculateStats(bool affectCurrentHealth)
+    public void CalculateStats(bool affectCurrentHealth)
     {
+        print("stats calculate");
         PawnSO SO = parentPawn.GetPawnSO();
-        foreach(Type type in SO.types)
-        {
-            //get how many of this type
-            int amount = 0;
-            foreach(Pawn p in GridUtil.Instance.GetAllPawns(true))
-            {
-                if(p.GetPawnSO().types.Contains(type))
-                {
-                    amount++;
-                }
-            }
-            
-            type.Effect(parentPawn, amount);
-        }
+        
 
         health = SO.health;
        
@@ -94,6 +87,21 @@ public class PawnStats : MonoBehaviour
         if(affectCurrentHealth)
         {
             currentHealth = health;
+        }
+
+        foreach (Type type in SO.types)
+        {
+            //get how many of this type
+            int amount = 0;
+            foreach (Pawn p in GridUtil.Instance.GetAllPawns(true))
+            {
+                if (p.GetPawnSO().types.Contains(type))
+                {
+                    amount++;
+                }
+            }
+
+            type.Effect(parentPawn, amount);
         }
     }
 }

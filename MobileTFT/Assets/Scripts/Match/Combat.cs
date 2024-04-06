@@ -5,12 +5,14 @@ using UnityEngine;
 public class Combat : MonoBehaviour
 {
     [SerializeField] private CardManager cardManager;
+    [SerializeField] private PawnManager pawnManager;
     private List<Pawn> pawns = new List<Pawn>();
 
 
     public bool IsCombatOver()
     {
-        if(pawns.Count == 0) return false;
+        
+        if (pawns.Count == 0) return false;
 
         int aliveFriendly = 0;
         int aliveEnemy = 0;
@@ -76,6 +78,7 @@ public class Combat : MonoBehaviour
 
     public void StartCombat()
     {
+        pawnManager.ToggleCombat(true);
         foreach (Pawn p in GridUtil.Instance.GetAllPawns()) 
         {
             pawns.Add(p);
@@ -107,6 +110,9 @@ public class Combat : MonoBehaviour
             
         }
         pawns.Clear();
+
+        pawnManager.ToggleCombat(false);
+        pawnManager.UpdatePawns();
     }
 
     public void EndCombatDeath()

@@ -472,6 +472,7 @@ GameObject:
   - component: {fileID: 95400343}
   - component: {fileID: 95400342}
   - component: {fileID: 95400344}
+  - component: {fileID: 95400345}
   m_Layer: 0
   m_Name: Combat
   m_TagString: Untagged
@@ -492,6 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cardManager: {fileID: 278468140}
+  pawnManager: {fileID: 95400345}
 --- !u!4 &95400343
 Transform:
   m_ObjectHideFlags: 0
@@ -528,6 +530,19 @@ MonoBehaviour:
   - {fileID: 2453357019020264537, guid: 8a87ce72c25f441489a742f8d0c7566d, type: 3}
   - {fileID: 2453357019020264537, guid: 9596417b327535d4eb1af3b7c3e09510, type: 3}
   - {fileID: 2453357019020264537, guid: 75c3b8664a27c924c94ec6fecf80f79a, type: 3}
+--- !u!114 &95400345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95400341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e84b84fe2ec8149b8ccf3565f1c5b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typesCountUI: {fileID: 1470142926}
 --- !u!1 &99171895
 GameObject:
   m_ObjectHideFlags: 0

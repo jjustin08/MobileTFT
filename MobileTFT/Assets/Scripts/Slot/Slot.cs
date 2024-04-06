@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,12 +8,13 @@ public class Slot : MonoBehaviour
 {
    private SlotInteraction slotInteraction;
    [SerializeField]private Pawn placedPawn;
-   private bool hasPawn;
+
+    public event EventHandler OnPawnChange;
+
 
     private void Awake()
     {
         slotInteraction = GetComponentInChildren<SlotInteraction>();
-        
     }
     public void PlacePawn(Pawn p)
     {
@@ -25,14 +27,14 @@ public class Slot : MonoBehaviour
         p.transform.SetParent(transform, false);
         placedPawn = p;
         
-
-        GridUtil.Instance.UpdateMaxPawnsOnBoard();
+        OnPawnChange?.Invoke(this, EventArgs.Empty);
     }
 
     public void RemovePawn()
     {
         placedPawn = null;
-        GridUtil.Instance.UpdateMaxPawnsOnBoard();
+       
+        OnPawnChange?.Invoke(this, EventArgs.Empty);
     }
     public Pawn GetPawn()
     {

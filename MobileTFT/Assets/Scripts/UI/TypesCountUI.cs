@@ -20,12 +20,6 @@ public class TypesCountUI : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        //TODO only do this when adding or removing pawn from board
-        UpdateUI();
-    }
-
     public void UpdateUI()
     {
         
