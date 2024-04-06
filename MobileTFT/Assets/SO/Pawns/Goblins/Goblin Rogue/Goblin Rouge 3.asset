@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f62a931dae8628468f962890714c17b, type: 3}
-  m_Name: E_Goblin
+  m_Name: Goblin Rouge 3
   m_EditorClassIdentifier: 
-  starCount: 1
-  NextStarPawnSO: {fileID: 0}
+  starCount: 3
+  prevStarPawnSO: {fileID: 11400000, guid: 42c6dc9c71f01d842899422124567330, type: 2}
+  nextStarPawnSO: {fileID: 0}
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
-  placedVisual: {fileID: 6073632614680335115, guid: 9a36db1ec54771a4f9fa1e85e4fe314b,
+  placedVisual: {fileID: 6073632614680335115, guid: c00ba0864bcf0ff478a8baba63bf4012,
     type: 3}
-  cost: 2
-  health: 10
-  damage: 2
-  attackTime: 1
+  cost: 18
+  health: 30
+  damage: 6
+  attackTime: 0.3
   range: 1
   types:
   - {fileID: 11400000, guid: e0934c9bd07fa6342925df07f0f7161d, type: 2}

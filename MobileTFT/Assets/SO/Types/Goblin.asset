@@ -10,6 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8be2abe425a9c7b4faf643087c49b1ca, type: 3}
-  m_Name: TestType
+  m_Name: Goblin
   m_EditorClassIdentifier: 
-  icon: {fileID: -851031316, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  typeName: Goblin
+  description: Increases Attack Speed
+  icon: {fileID: 2037556719, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
