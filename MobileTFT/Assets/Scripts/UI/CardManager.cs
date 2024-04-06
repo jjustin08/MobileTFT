@@ -7,14 +7,24 @@ public class CardManager : MonoBehaviour
     [SerializeField] private List<CardSlotUI> shopPawnsSlots;
 
     //shared pool of pawns
-    [SerializeField] private List<PawnSO> OneCostPool;
-    [SerializeField] private List<PawnSO> TwoCostPool;
-    [SerializeField] private List<PawnSO> ThreeCostPool;
-    [SerializeField] private List<PawnSO> FourCostPool;
-    [SerializeField] private List<PawnSO> FiveCostPool;
+    [SerializeField] private List<PawnSO> pawnPool;
+    private List<PawnSO> OneCostPool;
+    private List<PawnSO> TwoCostPool;
+    private List<PawnSO> ThreeCostPool;
+    private List<PawnSO> FourCostPool;
+    private List<PawnSO> FiveCostPool;
 
     [SerializeField] private PawnStorage pawnStorage;
 
+
+    private void Start()
+    {
+        foreach(PawnSO so in pawnPool) 
+        {
+            for(int i = 0; i < 9; i++)
+            AddPawnToDeck(so);
+        }
+    }
     public void ReRollPawns()
     {
         int level = Player.Instance.GetPlayerStats().GetPlayerLevel();

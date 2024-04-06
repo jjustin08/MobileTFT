@@ -26,4 +26,4 @@ MonoBehaviour:
   attackTime: 2
   range: 3
   types:
-  - {fileID: 11400000, guid: e0934c9bd07fa6342925df07f0f7161d, type: 2}
+  - {fileID: 11400000, guid: aca9a19760c51804cae7e87f60e78c6c, type: 2}
