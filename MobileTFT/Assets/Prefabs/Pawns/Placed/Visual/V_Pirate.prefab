@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7131459343043647301}
   m_Layer: 0
-  m_Name: V_Viking
+  m_Name: V_Pirate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7131459343043647301}
     m_Modifications:
-    - target: {fileID: 1305684964186944, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+    - target: {fileID: 1013737826271254, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1047016109614464, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1071270332270290, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -48,13 +56,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1488738206112888, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+    - target: {fileID: 1349363182298598, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370874537198502, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412795779120574, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526160673751802, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1555118852727586, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1686637636331642, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1764494430541478, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1880296544152820, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
       propertyPath: m_Name
       value: Chr_Dungeon_GoblinShaman_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918665049927464, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4218065369974760, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
       propertyPath: m_LocalScale.x

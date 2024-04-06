@@ -66,7 +66,7 @@ public class PawnStats : MonoBehaviour
 
     public void CalculateStats(bool affectCurrentHealth)
     {
-        print("stats calculate");
+        //print("stats calculate");
         PawnSO SO = parentPawn.GetPawnSO();
         
 

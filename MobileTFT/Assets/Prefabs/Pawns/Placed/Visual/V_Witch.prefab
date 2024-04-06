@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7131459343043647301}
   m_Layer: 0
-  m_Name: V_Viking
+  m_Name: V_Witch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,21 +40,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7131459343043647301}
     m_Modifications:
-    - target: {fileID: 1305684964186944, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+    - target: {fileID: 1122053045469596, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1207585682047336, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1325970122556104, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1488738206112888, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+    - target: {fileID: 1546860418980204, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1675888701433398, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1880296544152820, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
       propertyPath: m_Name
       value: Chr_Dungeon_GoblinShaman_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915109503872858, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4218065369974760, guid: 7cba755559c5ca34da07bd8d24eeba60, type: 3}
       propertyPath: m_LocalScale.x
