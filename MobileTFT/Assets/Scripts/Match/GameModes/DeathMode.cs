@@ -133,6 +133,7 @@ public class DeathMode : GameMode
                 break;
             case 9:
                 UI.UpdateText("Player Round      Pawns will die");
+                round = 0;
                 break;
         }
     }

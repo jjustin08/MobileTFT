@@ -628,6 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardManager: {fileID: 278468140}
   pawnManager: {fileID: 95400345}
+  undeadType: {fileID: 11400000, guid: 1850639c82dc1124c8354a82df22f29e, type: 2}
 --- !u!4 &95400343
 Transform:
   m_ObjectHideFlags: 0

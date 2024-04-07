@@ -8,7 +8,8 @@ public class Combat : MonoBehaviour
     [SerializeField] private PawnManager pawnManager;
     private List<Pawn> pawns = new List<Pawn>();
 
-
+    //temp
+    [SerializeField] private Type undeadType;
     public bool IsCombatOver()
     {
         
@@ -134,9 +135,9 @@ public class Combat : MonoBehaviour
             else
             {
                 //hard coding this
-                if(p.GetPawnSO().types.Contains(new UndeadType()))
+                if(p.GetPawnSO().types.Contains(undeadType))
                 {
-                    print("undead died");
+                    p.gameObject.SetActive(true);
                     p.ToggleCombat(false);
                     p.GetStats().SetDeathCount(p.GetStats().GetDeathCount() + 1);
                 }
