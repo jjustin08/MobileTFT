@@ -42,6 +42,9 @@ public class GridUtil : MonoBehaviour
     {
         inCombat = toggle;
     }
+
+    public bool GetInCombat()
+    { return inCombat; }
     public List<Pawn> GetAllPawns(bool friendly)
     {
         List<Pawn> allPawns = new List<Pawn>();

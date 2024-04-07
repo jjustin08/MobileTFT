@@ -45,11 +45,27 @@ public class PawnAI : MonoBehaviour
 
         if (slotToAttack != null)
         {
+            
+
             if (Timer(ref attackTimerMax, ref attackTimerCurrent))
                 return true;
 
+
+            // its a bit funky would be nice to add lerp here too
+            Vector3 direction = (slotToAttack.transform.position - transform.position).normalized;
+
+            if (direction != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(direction);
+            }
+
+
             parentPawn.GetCombat().DealDamage(slotToAttack.GetSlot().GetPawn());
             return true;
+        }
+        else
+        {
+            attackTimerCurrent = attackTimerMax;
         }
         return false;
     }
@@ -65,6 +81,10 @@ public class PawnAI : MonoBehaviour
         if (tileToMove != null)
         {
             parentPawn.GetMovement().MoveToSlot(tileToMove.GetSlot());
+        }
+        else
+        {
+            moveTimerCurrent = moveTimerMax;
         }
     }
 

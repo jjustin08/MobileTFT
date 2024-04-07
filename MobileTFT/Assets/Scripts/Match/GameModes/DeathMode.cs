@@ -93,7 +93,7 @@ public class DeathMode : GameMode
     protected override void StartTurn()
     {
         round++;
-        GridUtil.Instance.SetInCombat(false);
+        
         GridUtil.Instance.ToggleGridInteraction(true, true);
         cardManager.ReRollPawns();
 
@@ -104,35 +104,35 @@ public class DeathMode : GameMode
                 botLoader.LoadBotTeam(0);
                 break;
             case 2:
-                UI.UpdateText("Bot Round");
+                UI.UpdateText("Safe Round");
                 botLoader.LoadBotTeam(1);
                 break;
             case 3:
                 //player round
-                UI.UpdateText("Player Round      Pawns will die");
+                UI.UpdateText("Death Round");
                 break;
             case 4:
-                UI.UpdateText("Bot Round");
+                UI.UpdateText("Safe Round");
                 botLoader.LoadBotTeam(2);
                 break;
             case 5:
-                UI.UpdateText("Bot Round");
+                UI.UpdateText("Safe Round");
                 botLoader.LoadBotTeam(4);
                 break;
             case 6:
                 // player round
-                UI.UpdateText("Player Round      Pawns will die");
+                UI.UpdateText("Death Round");
                 break;
             case 7:
-                UI.UpdateText("Bot Round");
+                UI.UpdateText("Safe Round");
                 botLoader.LoadBotTeam(5);
                 break;
             case 8:
-                UI.UpdateText("Bot Round");
+                UI.UpdateText("Safe Round");
                 botLoader.LoadBotTeam(6);
                 break;
             case 9:
-                UI.UpdateText("Player Round      Pawns will die");
+                UI.UpdateText("Death Round");
                 round = 0;
                 break;
         }
@@ -197,7 +197,7 @@ public class DeathMode : GameMode
 
         }
 
-
+        GridUtil.Instance.SetInCombat(false);
         switch (round)
         {
             case 1:

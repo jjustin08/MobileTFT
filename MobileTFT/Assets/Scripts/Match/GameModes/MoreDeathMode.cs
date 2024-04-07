@@ -93,7 +93,7 @@ public class MoreDeathMode : GameMode
     protected override void StartTurn()
     {
         round++;
-        GridUtil.Instance.SetInCombat(false);
+        
         GridUtil.Instance.ToggleGridInteraction(true, true);
         cardManager.ReRollPawns();
 
@@ -209,7 +209,7 @@ public class MoreDeathMode : GameMode
 
 
         }
-
+        GridUtil.Instance.SetInCombat(false);
 
         switch (round)
         {
@@ -252,7 +252,7 @@ public class MoreDeathMode : GameMode
             return;
         }
 
-
+        
     }
 
 

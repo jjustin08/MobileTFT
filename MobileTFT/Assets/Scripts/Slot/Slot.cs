@@ -18,13 +18,29 @@ public class Slot : MonoBehaviour
     }
     public void PlacePawn(Pawn p)
     {
+        Slot oldSlot = null;
+        Transform newSlot = transform;
+        
+
         if (p.GetMovement().GetSlot()!= null)
         {
+            oldSlot = p.GetMovement().GetSlot();
             p.GetMovement().GetSlot().RemovePawn();
         }
         p.GetComponent<PawnMovement>().SetSlot(this);
 
-        p.transform.SetParent(transform, false);
+        //move this somewhere else
+        if(oldSlot != null && GridUtil.Instance.GetAllSlots().Contains(oldSlot) && GridUtil.Instance.GetAllSlots().Contains(this) && GridUtil.Instance.GetInCombat()) 
+        {
+            LerpingMovement lerpingMovement = p.gameObject.AddComponent<LerpingMovement>();
+            lerpingMovement.oldSlot = oldSlot.transform;
+            lerpingMovement.newSlot = newSlot;
+            lerpingMovement.pawn = p.transform;
+        }
+        else
+        {
+            p.transform.SetParent(transform, false);
+        }
         placedPawn = p;
         
         OnPawnChange?.Invoke(this, EventArgs.Empty);
