@@ -39,6 +39,12 @@ public class PawnInteraction : Interaction
         Player.Instance.SetHoldingPawn(null);
     }
 
+    protected override void OnClick()
+    {
+        PawnInfoUI.Instance.ToggleUI();
+        PawnInfoUI.Instance.UpdateUI(pawn.GetStats());
+    }
+
 
     public void CancelDrag()
     {

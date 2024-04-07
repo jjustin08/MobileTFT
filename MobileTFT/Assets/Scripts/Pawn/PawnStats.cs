@@ -76,9 +76,6 @@ public class PawnStats : MonoBehaviour
     {
         range = newAttackRange;
     }
-
-    public int GetAttackRange() { return range;}    
-
     public void AddKillToCount()
     {
         killCount++;
