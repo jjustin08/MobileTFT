@@ -27,3 +27,4 @@ MonoBehaviour:
   range: 1
   types:
   - {fileID: 11400000, guid: 6d75ae35da5b51f4c8662b3b08fc11df, type: 2}
+  - {fileID: 11400000, guid: 5c0f6d157413b0b4eab7303dd62b7aeb, type: 2}

@@ -25,4 +25,6 @@ MonoBehaviour:
   damage: 6
   attackTime: 0.3
   range: 1
-  types: []
+  types:
+  - {fileID: 11400000, guid: 5c0f6d157413b0b4eab7303dd62b7aeb, type: 2}
+  - {fileID: 11400000, guid: 933e6b63e26ced4449643614fb3e9a7f, type: 2}

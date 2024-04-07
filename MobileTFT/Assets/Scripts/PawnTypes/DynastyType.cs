@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Type", menuName = "Types/DynastyType")]
 public class DynastyType : Type
 {
-   //im not sure yet
+   //gain more per kill
 }
