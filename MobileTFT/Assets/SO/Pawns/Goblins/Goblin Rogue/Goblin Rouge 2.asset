@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   cost: 6
   health: 20
-  damage: 4
+  damage: 3
   attackTime: 0.4
   range: 1
   types:
