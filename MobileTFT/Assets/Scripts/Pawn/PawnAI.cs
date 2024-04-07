@@ -20,6 +20,7 @@ public class PawnAI : MonoBehaviour
     {
         parentPawn = GetComponent<Pawn>();
         attackTimerMax = parentPawn.GetStats().GetAttackTime();
+        moveTimerMax = parentPawn.GetStats().GetMoveTime();
     }
 
     private void Update()
@@ -76,6 +77,9 @@ public class PawnAI : MonoBehaviour
             attackTimerCurrent = 0;
             moveTimerCurrent = 0;
         }
+
+        attackTimerMax = parentPawn.GetStats().GetAttackTime();
+        moveTimerMax = parentPawn.GetStats().GetMoveTime();
     }
 
     public bool Timer(ref float max,ref float current)

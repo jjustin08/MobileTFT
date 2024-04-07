@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: DynastyType
   m_EditorClassIdentifier: 
   typeName: Dynasty
-  description: Default
+  description: 'Gain more kill bonus 3: 50% 5: 100%'
   icon: {fileID: 1440901455, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  AttackTimePerc3: 1.5
+  AttackTimePerc5: 2

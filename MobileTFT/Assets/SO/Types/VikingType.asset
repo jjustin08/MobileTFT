@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: VikingType
   m_EditorClassIdentifier: 
   typeName: Viking
-  description: Default
+  description: 'Chance to gain gold on kill 3: 20% 5: 50%'
   icon: {fileID: 819695100, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  AttackPerc3: 20
+  AttackPerc5: 50

@@ -133,9 +133,20 @@ public class Combat : MonoBehaviour
             }
             else
             {
-                cardManager.AddPawnToDeck(p.GetPawnSO());
-                CashManager.Instance.GainCash(p.GetPawnSO().cost);
-                p.SelfDestruct();
+                //hard coding this
+                if(p.GetPawnSO().types.Contains(new UndeadType()))
+                {
+                    print("undead died");
+                    p.ToggleCombat(false);
+                    p.GetStats().SetDeathCount(p.GetStats().GetDeathCount() + 1);
+                }
+                else
+                {
+                    cardManager.AddPawnToDeck(p.GetPawnSO());
+                    CashManager.Instance.GainCash(p.GetPawnSO().cost);
+                    p.SelfDestruct();
+                }
+               
             }
 
         }

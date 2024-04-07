@@ -11,6 +11,15 @@ public class PawnStats : MonoBehaviour
     private float attackTime;
     private int range;
 
+    private float moveTime = 1.0f;
+
+    private int deathCount;
+
+    private float killCountDamageModifier = 1.0f;
+    private float killCountHealthModifier = 1.0f;
+
+    private int killCountCashBonus = 0;
+
     private void Start()
     {
         parentPawn = GetComponent<Pawn>();
@@ -22,7 +31,22 @@ public class PawnStats : MonoBehaviour
     public float GetCurrentHealth() { return currentHealth;}
     public float GetDamage() { return damage;}
     public int GetRange() { return range; }
+    public float GetMoveTime() { return moveTime;}
 
+    public int GetDeathCount() {  return deathCount; }
+
+    public void SetKillCountCashBonus(int p)
+    {
+        killCountCashBonus = p;
+    }
+    public void SetDeathCount(int count)
+    {
+        deathCount = count;
+    }
+    public void SetMoveTime(float t)
+    {
+        moveTime = t;
+    }
 
     public void ToggleCombat(bool toggle)
     {
@@ -61,11 +85,20 @@ public class PawnStats : MonoBehaviour
         for (int i = 0; i < killCount; i++)
         {
             // this will change depending on what type etc
-            damage += 1;
-            health += 2;
-            currentHealth += 2;
+            damage += 1 * killCountDamageModifier;
+            health += 1 * killCountHealthModifier;
+            currentHealth += 1 * killCountHealthModifier;
         }
         parentPawn.GetVisual().SetKillCountText(killCount);
+
+
+        // viking kill cash bonus
+        int ran = Random.Range(0, 100);
+
+        if(ran < killCountCashBonus)
+        {
+            CashManager.Instance.GainCash(1);
+        }
     }
 
     public int GetKillCount()
@@ -77,6 +110,15 @@ public class PawnStats : MonoBehaviour
     {
         killCount = k;
         GetComponent<Pawn>().GetVisual().SetKillCountText(killCount);
+    }
+
+    public void SetKillCountDamageModifier(float m)
+    {
+        killCountDamageModifier = m;
+    }
+    public void SetKillCountHealthModifier(float m)
+    {
+        killCountHealthModifier = m;
     }
 
 
@@ -92,15 +134,15 @@ public class PawnStats : MonoBehaviour
         attackTime = SO.attackTime;
         range = SO.range;
 
-        for (int i = 0; i < killCount; i++) 
+        for (int i = 0; i < killCount; i++)
         {
             // this will change depending on what type etc
-            damage += 1;
-            health += 2;
+            damage += 1 * killCountDamageModifier;
+            health += 1 * killCountHealthModifier;
         }
 
 
-        if(affectCurrentHealth)
+        if (affectCurrentHealth)
         {
             currentHealth = health;
         }

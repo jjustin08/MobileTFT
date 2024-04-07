@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: LeaderType
   m_EditorClassIdentifier: 
   typeName: Leader
-  description: Default
+  description: Give stats to everyone
   icon: {fileID: -404710228, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
