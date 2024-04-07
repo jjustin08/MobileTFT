@@ -5360,6 +5360,7 @@ GameObject:
   m_Component:
   - component: {fileID: 839062300}
   - component: {fileID: 839062301}
+  - component: {fileID: 839062302}
   m_Layer: 0
   m_Name: GameMode
   m_TagString: Untagged
@@ -5392,6 +5393,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e742c9a5c6f745418d9752f5511a21d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combat: {fileID: 95400342}
+  cardManager: {fileID: 278468140}
+  botLoader: {fileID: 95400344}
+  UI: {fileID: 1404277616}
+  levelManager: {fileID: 278468142}
+--- !u!114 &839062302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839062299}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78a46e9add3bd464bb197da6a33ff7f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   combat: {fileID: 95400342}
