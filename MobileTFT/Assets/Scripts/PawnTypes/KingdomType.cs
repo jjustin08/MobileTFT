@@ -5,5 +5,29 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Type", menuName = "Types/KingdomType")]
 public class KingdomType : Type
 {
-    //im not sure yet
+    //more gold the more stats
+
+    public float AttackPerc2 = 1.05f;
+    public float AttackPerc4 = 1.1f;
+    public float AttackPerc6 = 1.15f;
+
+    public override void AffectStats(Pawn pawn, int amount)
+    {
+        int gold = CashManager.Instance.GetCash();
+        if (amount >= 6)
+        {
+            for (int i = 10; i <= gold && i <= 50; i +=10)
+            pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() * AttackPerc6);
+        }
+        else if (amount >= 4)
+        {
+            for (int i = 10; i <= gold && i <=50; i += 10)
+                pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() * AttackPerc4);
+        }
+        else if (amount >= 2)
+        {
+            for (int i = 10; i <= gold && i <= 50; i += 10)
+                pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() * AttackPerc2);
+        }
+    }
 }

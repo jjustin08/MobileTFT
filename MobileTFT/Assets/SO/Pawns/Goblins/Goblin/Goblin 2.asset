@@ -21,7 +21,7 @@ MonoBehaviour:
   placedVisual: {fileID: 6073632614680335115, guid: 9a36db1ec54771a4f9fa1e85e4fe314b,
     type: 3}
   cost: 3
-  health: 20
+  health: 25
   damage: 4
   attackTime: 1
   range: 1
