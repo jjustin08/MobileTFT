@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: LeaderType
   m_EditorClassIdentifier: 
   typeName: Leader
-  description: Give stats to everyone
+  description: 'Give health to team 4: 60% 2: 40% 1: 20%'
   icon: {fileID: -404710228, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  bonusStatPerc1: 1.2
+  bonusStatPerc2: 1.4
+  bonusStatPerc4: 1.6
