@@ -105,8 +105,22 @@ public class Combat : MonoBehaviour
             }
             else
             {
-                p.gameObject.SetActive(true);
-                p.ToggleCombat(false);
+
+                //hard coding this
+                if (p.GetPawnSO().types.Contains(undeadType))
+                {
+                    p.gameObject.SetActive(true);
+                    p.ToggleCombat(false);
+                    p.GetStats().SetDeathCount(p.GetStats().GetDeathCount() + 1);
+                }
+                else
+                {
+                    p.gameObject.SetActive(true);
+                    p.ToggleCombat(false);
+                }
+
+
+                
             }
             
         }
@@ -135,11 +149,12 @@ public class Combat : MonoBehaviour
             else
             {
                 //hard coding this
-                if(p.GetPawnSO().types.Contains(undeadType))
+                if (p.GetPawnSO().types.Contains(undeadType))
                 {
                     p.gameObject.SetActive(true);
                     p.ToggleCombat(false);
                     p.GetStats().SetDeathCount(p.GetStats().GetDeathCount() + 1);
+ 
                 }
                 else
                 {

@@ -22,6 +22,7 @@ public class UndeadType : Type
         else if (amount >= 2)
         {
             pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() + (deathCount * deathBonusPerc2));
+            Debug.Log(deathCount);
         }
     }
 }

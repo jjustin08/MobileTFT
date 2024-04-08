@@ -17,6 +17,8 @@ public class PawnInfoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI atkSpdText;
     [SerializeField] private TextMeshProUGUI rangeText;
 
+    [SerializeField] private List<Image> types;
+
     private void Awake()
     {
         Instance = this;
@@ -37,5 +39,17 @@ public class PawnInfoUI : MonoBehaviour
         damageText.text = pStats.GetDamage().ToString();
         atkSpdText.text = pStats.GetAttackTime().ToString();
         rangeText.text = pStats.GetRange().ToString() ;
+
+
+        foreach (Image type in types) 
+        { 
+            type.gameObject.SetActive(false);
+        }
+
+        for (int i = 0; i < pStats.GetComponent<Pawn>().GetPawnSO().types.Count; i++)
+        {
+            types[i].gameObject.SetActive(true);
+            types[i].sprite = pStats.GetComponent<Pawn>().GetPawnSO().types[i].icon;
+        }
     }
 }
