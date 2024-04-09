@@ -87,12 +87,29 @@ public class PawnStats : MonoBehaviour
             CashManager.Instance.GainCash(1);
         }
 
-        if (killCount >= 10)
+        if (parentPawn.GetPawnSO().starCount == 3)
         {
-            return;
+            if (killCount >= 15)
+            {
+                return;
+            }
         }
-
-        killCount++;
+        else if (parentPawn.GetPawnSO().starCount == 2)
+        {
+            if (killCount >= 10)
+            {
+                return;
+            }
+        }
+        else
+        {
+            if (killCount >= 5)
+            {
+                return;
+            }
+        }
+        
+            killCount++;
         for (int i = 0; i < killCount; i++)
         {
             // this will change depending on what type etc
@@ -113,14 +130,40 @@ public class PawnStats : MonoBehaviour
 
     public void SetKillCount(int k)
     {
-        if(k >= 10)
+        if(parentPawn.GetPawnSO().starCount == 3)
         {
-            killCount = 10;
+            if (k >= 15)
+            {
+                killCount = 15;
+            }
+            else
+            {
+                killCount = k;
+            }
+        }
+        else if(parentPawn.GetPawnSO().starCount == 2)
+        {
+            if (k >= 10)
+            {
+                killCount = 10;
+            }
+            else
+            {
+                killCount = k;
+            }
         }
         else
         {
-            killCount = k;
+            if (k >= 5)
+            {
+                killCount = 5;
+            }
+            else
+            {
+                killCount = k;
+            }
         }
+        
 
         for (int i = 0; i < killCount; i++)
         {

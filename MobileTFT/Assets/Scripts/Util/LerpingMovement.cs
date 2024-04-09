@@ -15,7 +15,13 @@ public class LerpingMovement :MonoBehaviour
 
     private void Update()
     {
+        if(!GridUtil.Instance.GetInCombat())
+        {
+            
+            Destroy(this);
 
+            return;
+        }
         currentLerpTime += Time.deltaTime * lerpSpeed;
 
 

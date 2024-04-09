@@ -115,7 +115,7 @@ public class MoreDeathMode : GameMode
                 UI.UpdateText("Death Round");
                 break;
             case 5:
-                UI.UpdateText("Bot Round");
+                UI.UpdateText("Safe Round");
                 botLoader.LoadBotTeam(4);
                 break;
             case 6:
@@ -126,12 +126,11 @@ public class MoreDeathMode : GameMode
                 UI.UpdateText("Death Round");
                 break;
             case 8:
-                UI.UpdateText("Bot Round");
+                UI.UpdateText("Safe Round");
                 botLoader.LoadBotTeam(6);
                 break;
             case 9:
                 UI.UpdateText("Death Round");
-                round = 0;
                 break;
         }
     }
@@ -159,7 +158,7 @@ public class MoreDeathMode : GameMode
             case 5:
                 break;
             case 6:
-                botLoader.LoadBotTeam(7);
+                botLoader.LoadBotTeam(5);
                 break;
             case 7:
                 botLoader.LoadBotTeam(5);
@@ -240,7 +239,8 @@ public class MoreDeathMode : GameMode
                 break;
             case 9:
                 combat.EndCombatDeath();
-                EndGame();
+                round = 1;
+                //EndGame();
                 break;
         }
 

@@ -12,7 +12,6 @@ public class Combat : MonoBehaviour
     [SerializeField] private Type undeadType;
     public bool IsCombatOver()
     {
-        
         if (pawns.Count == 0) return false;
 
         int aliveFriendly = 0;
@@ -167,5 +166,7 @@ public class Combat : MonoBehaviour
 
         }
         pawns.Clear();
+        pawnManager.ToggleCombat(false);
+        pawnManager.UpdatePawns();
     }
 }

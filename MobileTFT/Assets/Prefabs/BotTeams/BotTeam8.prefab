@@ -45,12 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   savedPawnSOs:
-  - {fileID: 11400000, guid: 2c7d15597a01065489124e8d6783b593, type: 2}
-  - {fileID: 11400000, guid: 2c7d15597a01065489124e8d6783b593, type: 2}
-  - {fileID: 11400000, guid: 2c7d15597a01065489124e8d6783b593, type: 2}
-  - {fileID: 11400000, guid: 2c7d15597a01065489124e8d6783b593, type: 2}
+  - {fileID: 11400000, guid: 792cae24bee932642bd3d93d1d6a9a2b, type: 2}
+  - {fileID: 11400000, guid: 61172f84ca642f648959a8aad4ae53f0, type: 2}
+  - {fileID: 11400000, guid: abcc6bfbe74138948b1eea99382939a0, type: 2}
   savedSlotPositions:
-  - {x: 1, y: 3}
-  - {x: 2, y: 1}
-  - {x: 4, y: 3}
-  - {x: 5, y: 1}
+  - {x: 3, y: 3}
+  - {x: 0, y: 0}
+  - {x: 3, y: 0}
