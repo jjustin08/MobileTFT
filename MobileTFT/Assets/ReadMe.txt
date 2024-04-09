@@ -8,7 +8,7 @@ Getting 3 of same pawn will combine them
 each pawn has different types
 having multiple of same type will give bonus stats
 
-leveling up will give you more pawns slot of board
+leveling up will give you more pawns slot of board (max pawns = level)
 and will show different pawns in the shop
 
 Losing a fight will damage your player health

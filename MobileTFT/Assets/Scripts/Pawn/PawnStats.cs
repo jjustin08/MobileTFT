@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PawnStats : MonoBehaviour
@@ -148,8 +149,15 @@ public class PawnStats : MonoBehaviour
         {
             //get how many of this type
             int amount = 0;
+            List<PawnSO> countedPawns = new List<PawnSO>();
             foreach (Pawn p in GridUtil.Instance.GetAllPawns(true))
             {
+                if (countedPawns.Contains(p.GetPawnSO()))
+                {
+                    continue;
+                }
+
+                countedPawns.Add(p.GetPawnSO());
                 if (p.GetPawnSO().types.Contains(type))
                 {
                     amount++;

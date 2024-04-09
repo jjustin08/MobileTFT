@@ -28,10 +28,19 @@ public class TypesCountUI : MonoBehaviour
         List<Type> types = new List<Type>();
         List<int> tCount = new List<int>();
 
-        
-        foreach(Pawn p in GridUtil.Instance.GetAllPawns(true))
+
+        List<PawnSO> countedPawns = new List<PawnSO>();
+
+        foreach (Pawn p in GridUtil.Instance.GetAllPawns(true))
         {
-            foreach(Type t in p.GetPawnSO().types)
+            if (countedPawns.Contains(p.GetPawnSO()))
+            {
+
+                continue;
+            }
+
+            countedPawns.Add(p.GetPawnSO());
+            foreach (Type t in p.GetPawnSO().types)
             {
                 if (!types.Contains(t))
                 {
