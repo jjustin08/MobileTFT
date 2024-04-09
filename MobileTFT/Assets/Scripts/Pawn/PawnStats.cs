@@ -122,7 +122,15 @@ public class PawnStats : MonoBehaviour
 
     public void SetKillCount(int k)
     {
-        killCount = k;
+        if(k >= 10)
+        {
+            killCount = 10;
+        }
+        else
+        {
+            killCount = k;
+        }
+       
         GetComponent<Pawn>().GetVisual().SetKillCountText(killCount);
     }
 

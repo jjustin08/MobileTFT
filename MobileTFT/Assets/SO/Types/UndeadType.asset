@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: UndeadType
   m_EditorClassIdentifier: 
   typeName: Undead
-  description: 'Will always respawn and gain attack each time undead die 2: 1 dam/death
-    4: 2 dam/death'
+  description: 'Will always respawn and gain a kill each time undead die 2: 1 4:
+    2'
   icon: {fileID: -1031698347, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
   deathBonusPerc2: 1
   deathBonusPerc4: 2

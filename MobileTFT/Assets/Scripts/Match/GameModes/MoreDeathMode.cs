@@ -80,7 +80,7 @@ public class MoreDeathMode : GameMode
                     break;
                 case 3:
                     StartCombat();
-                    timerMax = 60;
+                    timerMax = 30;
                     break;
                 case 4:
                     EndCombat();
@@ -184,7 +184,6 @@ public class MoreDeathMode : GameMode
 
     protected override void EndCombat()
     {
-
         levelManager.GainExp(2);
 
         switch (combat.CheckCombatState())
