@@ -40,6 +40,7 @@ public class PlayerStats : MonoBehaviour
     }
     public bool IsPawnAmountFull()
     {
+        GridUtil.Instance.UpdateMaxPawnsOnBoard();
         return currentPawnAmount >= maxPawnAmount;
     }
     public void AddPawnAmount()
