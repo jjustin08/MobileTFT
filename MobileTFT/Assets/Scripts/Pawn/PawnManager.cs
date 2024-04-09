@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PawnManager : MonoBehaviour
@@ -53,19 +54,19 @@ public class PawnManager : MonoBehaviour
 
     private void CountTypes()
     {
-        List<PawnSO> countedPawns = new List<PawnSO>();
+        // temp fix required visual to be same
+        List<GameObject> countedPawns = new List<GameObject>();
         types.Clear();
         typeCount.Clear();
         foreach (Pawn p in pawnList)
         {
             
-            if(countedPawns.Contains(p.GetPawnSO()))
+            if(countedPawns.Contains(p.GetPawnSO().placedVisual))
             {
-
                 continue;
             }
 
-            countedPawns.Add(p.GetPawnSO());
+            countedPawns.Add(p.GetPawnSO().placedVisual);
 
             foreach (Type t in p.GetPawnSO().types)
             {

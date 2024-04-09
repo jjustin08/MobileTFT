@@ -42,7 +42,16 @@ public class PawnStats : MonoBehaviour
     }
     public void SetDeathCount(int count)
     {
-        deathCount = count;
+        // idk if i want a max or not
+        if(count>= 10)
+        {
+            deathCount = 10;
+        }
+        else
+        {
+            deathCount = count;
+        }
+        
     }
     public void SetMoveTime(float t)
     {
