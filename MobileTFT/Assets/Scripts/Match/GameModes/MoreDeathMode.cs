@@ -117,12 +117,12 @@ public class MoreDeathMode : GameMode
                 break;
             case 5:
                 UI.UpdateText("Safe Round");
-                botLoader.LoadBotTeam(2);
+                botLoader.LoadBotTeam(4);
                 break;
             case 6:
                 // player round
-                UI.UpdateText("safe Round");
-                botLoader.LoadBotTeam(3);
+                UI.UpdateText("Safe Round");
+                botLoader.LoadBotTeam(5);
                 break;
             case 7:
                 UI.UpdateText("Death Round");
@@ -152,10 +152,10 @@ public class MoreDeathMode : GameMode
 
                 break;
             case 3:
-                botLoader.LoadBotTeam(4);
+                botLoader.LoadBotTeam(2);
                 break;
             case 4:
-                botLoader.LoadBotTeam(5);
+                botLoader.LoadBotTeam(3);
                 break;
             case 5:
                 break;
@@ -169,7 +169,6 @@ public class MoreDeathMode : GameMode
                 break;
             case 9:
                 botLoader.LoadBotTeam(8);
-                round = 0;
                 break;
         }
     }
@@ -194,12 +193,12 @@ public class MoreDeathMode : GameMode
             //lose
             case 2:
                 UI.UpdateText("Lose");
-                CashManager.Instance.GainCash(5);
+                CashManager.Instance.GainCash(6);
                 break;
             //tie
             case 3:
                 UI.UpdateText("Tie");
-                CashManager.Instance.GainCash(5);
+                CashManager.Instance.GainCash(8);
                 break;
             default:
                 break;
@@ -217,29 +216,28 @@ public class MoreDeathMode : GameMode
                 combat.EndCombat();
                 break;
             case 3:
-                //player round
-                combat.EndCombat();
+   
+                combat.EndCombatDeath();
                 break;
             case 4:
-                combat.EndCombat();
+                combat.EndCombatDeath();
                 break;
             case 5:
                 combat.EndCombat();
                 break;
             case 6:
-                // player round
+                
                 combat.EndCombat();
                 break;
             case 7:
-                combat.EndCombat();
+                combat.EndCombatDeath();
                 break;
             case 8:
-                combat.EndCombat();
+                combat.EndCombatDeath();
                 break;
             case 9:
-                combat.EndCombat();
-                round = 1;
-                //EndGame();
+                combat.EndCombatDeath();
+                round = 0;
                 break;
         }
 
