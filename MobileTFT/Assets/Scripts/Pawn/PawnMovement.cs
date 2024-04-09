@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PawnMovement : MonoBehaviour
 {
-    private Slot currentSlot;
+    [SerializeField]private Slot currentSlot;
 
     private Slot startingSlot;
 
@@ -19,6 +19,8 @@ public class PawnMovement : MonoBehaviour
             MoveToSlot(startingSlot);
             startingSlot = null;
             transform.rotation = Quaternion.identity;
+
+            MoveToSlot(currentSlot);
         }
     }
     public void MoveToSlot(Slot s)
