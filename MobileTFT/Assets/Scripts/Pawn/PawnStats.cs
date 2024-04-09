@@ -21,9 +21,12 @@ public class PawnStats : MonoBehaviour
 
     private int killCountCashBonus = 0;
 
-    private void Start()
+    private void Awake()
     {
         parentPawn = GetComponent<Pawn>();
+    }
+    private void Start()
+    {
         CalculateStats(true);
     }
 

@@ -12,9 +12,9 @@ public class MoreDeathMode : GameMode
     [SerializeField] private LevelManager levelManager;
 
     private float timer = 0;
-    private float timerMax = 35;
+    private float timerMax = 0;
 
-    private int step = 1;
+    private int step = 0;
     private int stepMax = 4;
 
     private int round = 0;
@@ -43,17 +43,19 @@ public class MoreDeathMode : GameMode
     {
         isGameRunning = true;
         GridUtil.Instance.ToggleGridInteraction(false, false);
-        StartTurn();
+        GridUtil.Instance.ToggleGridInteraction(true, false);
     }
 
     protected override void UpdateGame()
     {
+        // only run in combat
         if (combat.IsCombatOver())
         {
             timer = timerMax;
         }
-        timer += Time.deltaTime;
 
+
+        timer += Time.deltaTime;
         UI.UpdateTimer(timer, timerMax);
 
 
@@ -63,7 +65,7 @@ public class MoreDeathMode : GameMode
             timer = 0;
             // Activate next step
             step++;
-            if (step > stepMax)
+            if (step > stepMax || step == 0)
             {
                 step = 1;
             }
@@ -94,7 +96,6 @@ public class MoreDeathMode : GameMode
     {
         round++;
         
-        GridUtil.Instance.ToggleGridInteraction(true, true);
         cardManager.ReRollPawns();
 
         switch (round)
@@ -116,18 +117,19 @@ public class MoreDeathMode : GameMode
                 break;
             case 5:
                 UI.UpdateText("Safe Round");
-                botLoader.LoadBotTeam(4);
+                botLoader.LoadBotTeam(2);
                 break;
             case 6:
                 // player round
-                UI.UpdateText("Death Round");
+                UI.UpdateText("safe Round");
+                botLoader.LoadBotTeam(3);
                 break;
             case 7:
                 UI.UpdateText("Death Round");
                 break;
             case 8:
-                UI.UpdateText("Safe Round");
-                botLoader.LoadBotTeam(6);
+                UI.UpdateText("Death Round");
+                
                 break;
             case 9:
                 UI.UpdateText("Death Round");
@@ -150,24 +152,23 @@ public class MoreDeathMode : GameMode
 
                 break;
             case 3:
-                botLoader.LoadBotTeam(3);
+                botLoader.LoadBotTeam(4);
                 break;
             case 4:
-                botLoader.LoadBotTeam(2);
+                botLoader.LoadBotTeam(5);
                 break;
             case 5:
                 break;
             case 6:
-                botLoader.LoadBotTeam(5);
                 break;
             case 7:
-                botLoader.LoadBotTeam(5);
+                botLoader.LoadBotTeam(6);
                 break;
             case 8:
-   
+                botLoader.LoadBotTeam(7);
                 break;
             case 9:
-                botLoader.LoadBotTeam(7);
+                botLoader.LoadBotTeam(8);
                 round = 0;
                 break;
         }
@@ -177,8 +178,6 @@ public class MoreDeathMode : GameMode
     {
         combat.StartCombat();
         GridUtil.Instance.SetInCombat(true);
-
-
     }
 
     protected override void EndCombat()
@@ -219,26 +218,26 @@ public class MoreDeathMode : GameMode
                 break;
             case 3:
                 //player round
-                combat.EndCombatDeath();
+                combat.EndCombat();
                 break;
             case 4:
-                combat.EndCombatDeath();
+                combat.EndCombat();
                 break;
             case 5:
                 combat.EndCombat();
                 break;
             case 6:
                 // player round
-                combat.EndCombatDeath();
+                combat.EndCombat();
                 break;
             case 7:
-                combat.EndCombatDeath();
+                combat.EndCombat();
                 break;
             case 8:
                 combat.EndCombat();
                 break;
             case 9:
-                combat.EndCombatDeath();
+                combat.EndCombat();
                 round = 1;
                 //EndGame();
                 break;

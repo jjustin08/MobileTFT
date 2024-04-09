@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotSavedTeam : MonoBehaviour
+[CreateAssetMenu(fileName = "BotTeam", menuName = "BotTeam/BotTeam")]
+public class BotSavedTeam : ScriptableObject
 {
-    [SerializeField] private List<PawnSO> savedPawnSOs = new List<PawnSO>();
-    [SerializeField] private List<Vector2Int> savedSlotPositions = new List<Vector2Int>();
+    public List<PawnSO> savedPawnSOs = new List<PawnSO>();
+    public List<Vector2Int> savedSlotPositions = new List<Vector2Int>();
 
     public void LoadTeam()
     {

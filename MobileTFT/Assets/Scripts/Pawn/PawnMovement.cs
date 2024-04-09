@@ -17,6 +17,7 @@ public class PawnMovement : MonoBehaviour
         else
         {
             MoveToSlot(startingSlot);
+            startingSlot = null;
             transform.rotation = Quaternion.identity;
         }
     }

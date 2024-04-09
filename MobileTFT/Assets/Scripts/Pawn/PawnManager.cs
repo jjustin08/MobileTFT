@@ -90,4 +90,7 @@ public class PawnManager : MonoBehaviour
         //disable counting of pawns
         inCombat = toggle;
     }
+
+
+    public bool InCombat { get { return inCombat;} }
 }

@@ -12,6 +12,7 @@ public class Combat : MonoBehaviour
     [SerializeField] private Type undeadType;
     public bool IsCombatOver()
     {
+        if (!pawnManager.InCombat) return false;
         if (pawns.Count == 0) return false;
 
         int aliveFriendly = 0;
