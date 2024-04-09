@@ -13,7 +13,7 @@ public class PawnStorage : MonoBehaviour
     }
 
 
-    public bool FillSlot(PawnSO SO, int killCount)
+    public bool FillSlot(PawnSO SO, int killCount, int deathCount)
     {
         foreach (Slot slot in slots) 
         { 
@@ -23,6 +23,7 @@ public class PawnStorage : MonoBehaviour
                 newPawn.SetPawnSO(SO);
                 slot.PlacePawn(newPawn);
                 newPawn.GetStats().SetKillCount(killCount);
+                newPawn.GetStats().SetDeathCount(deathCount);
                 CheckForTriple(SO);
                 return true;
             }
@@ -60,13 +61,15 @@ public class PawnStorage : MonoBehaviour
         if(counter == 3 && SO.nextStarPawnSO != null)
         {
             int killCount = 0;
+            int deathCount = 0;
             foreach(Pawn pawn in countedPawns)
             {
                 killCount += pawn.GetStats().GetKillCount();
+                deathCount += pawn.GetStats().GetDeathCount();
                 pawn.SelfDestruct();
 
             }
-            FillSlot(SO.nextStarPawnSO, killCount);
+            FillSlot(SO.nextStarPawnSO, killCount, deathCount);
         }
 
     }

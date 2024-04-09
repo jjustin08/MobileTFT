@@ -176,7 +176,7 @@ public class CardManager : MonoBehaviour
     {
         if (CashManager.Instance.RemoveCash(shopPawn.GetPawnSO().cost))
         {
-            pawnStorage.FillSlot(shopPawn.GetPawnSO(), 0);
+            pawnStorage.FillSlot(shopPawn.GetPawnSO(), 0, 0);
             return true;
         }
        return false;

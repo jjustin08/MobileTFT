@@ -12,7 +12,7 @@ public class PawnStats : MonoBehaviour
     private float attackTime;
     private int range;
 
-    private float moveTime = 1.0f;
+    private float moveTime = 0.5f;
 
     private int deathCount;
 
@@ -79,6 +79,19 @@ public class PawnStats : MonoBehaviour
     }
     public void AddKillToCount()
     {
+        // viking kill cash bonus
+        int ran = Random.Range(0, 100);
+
+        if (ran < killCountCashBonus)
+        {
+            CashManager.Instance.GainCash(1);
+        }
+
+        if (killCount >= 10)
+        {
+            return;
+        }
+
         killCount++;
         for (int i = 0; i < killCount; i++)
         {
@@ -90,13 +103,7 @@ public class PawnStats : MonoBehaviour
         parentPawn.GetVisual().SetKillCountText(killCount);
 
 
-        // viking kill cash bonus
-        int ran = Random.Range(0, 100);
-
-        if(ran < killCountCashBonus)
-        {
-            CashManager.Instance.GainCash(1);
-        }
+        
     }
 
     public int GetKillCount()

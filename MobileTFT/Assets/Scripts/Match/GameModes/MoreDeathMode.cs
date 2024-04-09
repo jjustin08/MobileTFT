@@ -12,7 +12,7 @@ public class MoreDeathMode : GameMode
     [SerializeField] private LevelManager levelManager;
 
     private float timer = 0;
-    private float timerMax = 60;
+    private float timerMax = 35;
 
     private int step = 1;
     private int stepMax = 4;
@@ -72,11 +72,11 @@ public class MoreDeathMode : GameMode
             {
                 case 1:
                     StartTurn();
-                    timerMax = 60;
+                    timerMax = 30;
                     break;
                 case 2:
                     EndTurn();
-                    timerMax = 1;
+                    timerMax = 1.0f;
                     break;
                 case 3:
                     StartCombat();
@@ -84,7 +84,7 @@ public class MoreDeathMode : GameMode
                     break;
                 case 4:
                     EndCombat();
-                    timerMax = 1;
+                    timerMax = 2.0f;
                     break;
             }
         }

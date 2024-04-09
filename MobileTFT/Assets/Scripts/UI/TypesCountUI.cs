@@ -35,11 +35,10 @@ public class TypesCountUI : MonoBehaviour
         {
             if (countedPawns.Contains(p.GetPawnSO()))
             {
-
                 continue;
             }
-
             countedPawns.Add(p.GetPawnSO());
+
             foreach (Type t in p.GetPawnSO().types)
             {
                 if (!types.Contains(t))

@@ -7,8 +7,8 @@ public class GoblinType : Type
 {
     // make them move faster
 
-    public float moveTimePerc3 = 0.8f;
-    public float moveTimePerc5 = 0.5f;
+    public float moveTimePerc3 = 0.4f;
+    public float moveTimePerc5 = 0.3f;
 
     public override void AffectStats(Pawn pawn, int amount)
     {

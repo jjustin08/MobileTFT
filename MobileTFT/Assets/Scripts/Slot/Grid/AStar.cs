@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using Unity.VisualScripting.FullSerializer;
-using UnityEditor.Searcher;
 using UnityEngine;
 
 public class AStar

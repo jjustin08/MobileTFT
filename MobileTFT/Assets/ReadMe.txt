@@ -18,6 +18,10 @@ create different combinations of pawns for different winning strategies
 Win my outlasting the other player // not in game yet
 
 
+you can click on left side icons to get type info
+
+you can click on pawns to get info
+
 Debug commands
 
 W - goes to next step in gamemode
