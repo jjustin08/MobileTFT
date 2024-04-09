@@ -42,16 +42,7 @@ public class PawnStats : MonoBehaviour
     }
     public void SetDeathCount(int count)
     {
-        // idk if i want a max or not
-        if(count>= 10)
-        {
-            deathCount = 10;
-        }
-        else
-        {
-            deathCount = count;
-        }
-        
+        deathCount = count;
     }
     public void SetMoveTime(float t)
     {
@@ -130,7 +121,15 @@ public class PawnStats : MonoBehaviour
         {
             killCount = k;
         }
-       
+
+        for (int i = 0; i < killCount; i++)
+        {
+            // this will change depending on what type etc
+            damage += 1 * killCountDamageModifier;
+            health += 1 * killCountHealthModifier;
+            currentHealth += 1 * killCountHealthModifier;
+        }
+
         GetComponent<Pawn>().GetVisual().SetKillCountText(killCount);
     }
 
