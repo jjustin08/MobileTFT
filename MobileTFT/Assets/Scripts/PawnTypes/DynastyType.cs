@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Type", menuName = "Types/DynastyType")]
 public class DynastyType : Type
 {
-    public float AttackTimePerc3 = 1.5f;
-    public float AttackTimePerc5 = 2.0f;
+    public float AttackTimePerc3 = 1.0f;
+    public float AttackTimePerc5 = 1.5f;
 
     public override void AffectStats(Pawn pawn, int amount)
     {

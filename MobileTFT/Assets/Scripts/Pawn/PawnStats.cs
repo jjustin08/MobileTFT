@@ -16,8 +16,8 @@ public class PawnStats : MonoBehaviour
 
     private int deathCount;
 
-    private float killCountDamageModifier = 1.0f;
-    private float killCountHealthModifier = 1.0f;
+    private float killCountDamageModifier = 0.5f;
+    private float killCountHealthModifier = 0.5f;
 
     private int killCountCashBonus = 0;
 
