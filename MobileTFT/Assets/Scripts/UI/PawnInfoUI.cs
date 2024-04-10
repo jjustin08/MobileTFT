@@ -17,6 +17,9 @@ public class PawnInfoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI atkSpdText;
     [SerializeField] private TextMeshProUGUI rangeText;
 
+
+    [SerializeField] private Image background;
+
     [SerializeField] private List<Image> types;
 
     private void Awake()
@@ -38,11 +41,11 @@ public class PawnInfoUI : MonoBehaviour
         healthText.text = pStats.GetCurrentHealth().ToString();
         damageText.text = pStats.GetDamage().ToString();
         atkSpdText.text = pStats.GetAttackTime().ToString();
-        rangeText.text = pStats.GetRange().ToString() ;
+        rangeText.text = pStats.GetRange().ToString();
 
 
-        foreach (Image type in types) 
-        { 
+        foreach (Image type in types)
+        {
             type.gameObject.SetActive(false);
         }
 
@@ -50,6 +53,48 @@ public class PawnInfoUI : MonoBehaviour
         {
             types[i].gameObject.SetActive(true);
             types[i].sprite = pStats.GetComponent<Pawn>().GetPawnSO().types[i].icon;
+        }
+
+
+        PawnSO SO = pStats.GetComponent<Pawn>().GetPawnSO();
+        int pCost = 1;
+
+        if (SO.starCount >= 2)
+        {
+            if (SO.prevStarPawnSO.starCount >= 2)
+            {
+                pCost = SO.prevStarPawnSO.prevStarPawnSO.cost;
+            }
+            else
+            {
+                pCost = SO.prevStarPawnSO.cost;
+            }
+        }
+        else
+        {
+            pCost = SO.cost;
+        }
+
+
+        switch (pCost)
+        {
+            case 1:
+                background.color = Color.grey;
+                break;
+            case 2:
+                background.color = Color.green;
+                break;
+            case 3:
+                background.color = Color.blue;
+                break;
+            case 4:
+                background.color = Color.red;
+                break;
+            case 5:
+                background.color = Color.yellow;
+                break;
+
+
         }
     }
 }

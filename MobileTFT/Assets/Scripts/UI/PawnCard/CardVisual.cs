@@ -33,5 +33,45 @@ public class CardVisual : MonoBehaviour
             types[i].sprite = SO.types[i].icon;
         }
 
+        int pCost = 1;
+
+        if(SO.starCount >= 2)
+        {
+            if(SO.prevStarPawnSO.starCount >= 2)
+            {
+                pCost = SO.prevStarPawnSO.prevStarPawnSO.cost;
+            }
+            else
+            {
+                pCost = SO.prevStarPawnSO.cost;
+            }
+        }
+        else
+        {
+            pCost = SO.cost;
+        }
+
+
+        switch (pCost) 
+        {
+            case 1:
+                background.color = Color.grey;
+                break;
+            case 2:
+                background.color = Color.green;
+                break;
+            case 3:
+                background.color = Color.blue;
+                break;
+            case 4:
+                background.color = Color.red;
+                break;
+            case 5:
+                background.color = Color.yellow;
+                break;
+        
+        
+        }
+
     }
 }

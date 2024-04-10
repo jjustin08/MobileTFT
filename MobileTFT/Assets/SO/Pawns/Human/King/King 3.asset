@@ -20,10 +20,10 @@ MonoBehaviour:
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
   placedVisual: {fileID: 6073632614680335115, guid: 044559b271cc8ff40b4223b3498446b3,
     type: 3}
-  cost: 54
+  cost: 45
   health: 100
   damage: 20
-  attackTime: 3
+  attackTime: 2
   range: 3
   types:
   - {fileID: 11400000, guid: 9ff7684c47c50f1488a8ad474e81117b, type: 2}
