@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BotTeam 7
   m_EditorClassIdentifier: 
   savedPawnSOs:
-  - {fileID: 11400000, guid: 56b3d2609c3ecf84db3e7b031fc2d94b, type: 2}
+  - {fileID: 11400000, guid: b88412f5934261949bf25b428a1fcaee, type: 2}
   - {fileID: 11400000, guid: acf6b205350ab964faf539d7a0e7a597, type: 2}
   - {fileID: 11400000, guid: acf6b205350ab964faf539d7a0e7a597, type: 2}
   savedSlotPositions:

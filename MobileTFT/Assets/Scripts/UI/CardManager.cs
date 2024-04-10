@@ -21,7 +21,7 @@ public class CardManager : MonoBehaviour
     {
         foreach(PawnSO so in pawnPool) 
         {
-            for(int i = 0; i < 9; i++)
+            for(int i = 0; i < 12; i++)
             AddPawnToDeck(so);
         }
     }

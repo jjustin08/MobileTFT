@@ -28,7 +28,7 @@ public class MoreDeathMode : GameMode
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && step == 1)
         {
             timer = timerMax;
         }
@@ -74,7 +74,7 @@ public class MoreDeathMode : GameMode
             {
                 case 1:
                     StartTurn();
-                    timerMax = 30;
+                    timerMax = 40;
                     break;
                 case 2:
                     EndTurn();
@@ -82,7 +82,7 @@ public class MoreDeathMode : GameMode
                     break;
                 case 3:
                     StartCombat();
-                    timerMax = 30;
+                    timerMax = 25;
                     break;
                 case 4:
                     EndCombat();

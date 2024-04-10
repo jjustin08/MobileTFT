@@ -15,8 +15,8 @@ Losing a fight will damage your player health
 
 create different combinations of pawns for different winning strategies
 
-Win my outlasting the other player // not in game yet
-
+Win by outlasting the other player // not in game yet
+lose by losing all your player health
 
 you can click on left side icons to get type info
 
@@ -24,4 +24,4 @@ you can click on pawns to get info
 
 Debug commands
 
-W - goes to next step in gamemode
+W - skips the planning stage

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ninja 3
   m_EditorClassIdentifier: 
   starCount: 3
-  prevStarPawnSO: {fileID: 11400000, guid: abcc6bfbe74138948b1eea99382939a0, type: 2}
+  prevStarPawnSO: {fileID: 11400000, guid: 6e33cde40aa175d45bfe0a9b74162021, type: 2}
   nextStarPawnSO: {fileID: 0}
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
