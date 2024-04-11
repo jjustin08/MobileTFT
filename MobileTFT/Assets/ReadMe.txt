@@ -22,6 +22,8 @@ you can click on left side icons to get type info
 
 you can click on pawns to get info
 
+
+
 Debug commands
 
 W - skips the planning stage

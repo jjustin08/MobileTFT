@@ -9,7 +9,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI levelIcon;
     [SerializeField] private Slider levelSlider;
 
-    
+
+    bool inCombat = false;
+
     private int maxExp = 10;
     private int maxMaxExp = 60;
     private int currentExp = 0;
@@ -19,7 +21,7 @@ public class LevelManager : MonoBehaviour
         UIUpdate();
     }
 
-    private void UIUpdate()
+    public void UIUpdate()
     {
         int level = 1;
         float tempExp = currentExp;
@@ -28,10 +30,24 @@ public class LevelManager : MonoBehaviour
             level++;
             tempExp -= maxExp;
         }
-        levelIcon.text = level.ToString();
+        
         levelSlider.value = (tempExp/maxExp);
 
         Player.Instance.GetPlayerStats().SetPlayerLevel(level);
+
+        //levelIcon.text = level.ToString();
+        // lets do it for how many pawns you can have/
+        // also need to turn off while in combat...
+
+        if(!inCombat)
+        {
+            int pawnCount = GridUtil.Instance.GetAllPawns(true).Count;
+
+            string levelIconText = pawnCount +"/" + level;
+
+            levelIcon.text = levelIconText;
+        }
+
     }
 
     public void GainExp(int amount)
@@ -53,6 +69,21 @@ public class LevelManager : MonoBehaviour
                 UIUpdate();
             }
         }
-        
     }
+
+    public void ToggleCombat(bool toggle)
+    {
+        inCombat = toggle;
+        if (!toggle)
+        {
+            levelIcon.gameObject.SetActive(true);
+            UIUpdate();
+        }
+        else
+        {
+            levelIcon.gameObject.SetActive(false);
+        }
+    }
+
+
 }

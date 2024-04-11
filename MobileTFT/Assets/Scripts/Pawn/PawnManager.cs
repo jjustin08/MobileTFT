@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PawnManager : MonoBehaviour
 {
+    [SerializeField] private LevelManager levelManager;
     [SerializeField] private TypesCountUI typesCountUI;
     //have all friendly pawns
     private List<Pawn> pawnList = new List<Pawn>();
@@ -29,6 +30,7 @@ public class PawnManager : MonoBehaviour
         { return; }
 
         UpdatePawns();
+        levelManager.UIUpdate();
     }
     public void UpdatePawns()
     {
@@ -88,6 +90,7 @@ public class PawnManager : MonoBehaviour
     public void ToggleCombat(bool toggle)
     {
         //disable counting of pawns
+        levelManager.ToggleCombat(toggle);
         inCombat = toggle;
     }
 

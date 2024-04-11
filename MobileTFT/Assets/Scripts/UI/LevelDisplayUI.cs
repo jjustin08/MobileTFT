@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class LevelDisplayUI : MonoBehaviour
 {
+    // there is stuff in level manager
     [SerializeField] private TextMeshProUGUI pawnChancesText;
     private bool toggle = false;
     private void Awake()
