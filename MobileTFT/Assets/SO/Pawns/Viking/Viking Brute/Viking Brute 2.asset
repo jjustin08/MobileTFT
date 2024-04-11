@@ -18,7 +18,7 @@ MonoBehaviour:
   placedPawn: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
     type: 3}
   cardPawn: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035, type: 3}
-  placedVisual: {fileID: 6073632614680335115, guid: fe6cfa79aebf01d4b82869342d46f24f,
+  placedVisual: {fileID: 6073632614680335115, guid: 5b44204b268d7264a83ce64dbc1352fd,
     type: 3}
   cost: 9
   health: 60

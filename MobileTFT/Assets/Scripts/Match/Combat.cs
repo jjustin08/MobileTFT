@@ -121,6 +121,7 @@ public class Combat : MonoBehaviour
     {
         foreach (Pawn p in pawns)
         {
+          
             //clear enemies
             if (p.IsEnemy())
             {

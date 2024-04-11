@@ -19,6 +19,15 @@ public class Pawn : MonoBehaviour
     private PawnAI aI;
     private PawnVisual pVisual;
 
+
+    private void Update()
+    {
+        if (GetMovement().GetSlot().GetPawn() == null)
+        {
+            print("huh");
+            GetMovement().GetSlot().PlacePawn(this);
+        }
+    }
     public void SetPawnSO(PawnSO SO)
     {
         pawnSO = SO;
@@ -48,6 +57,7 @@ public class Pawn : MonoBehaviour
         GetMovement().ToggleCombat(toggle);
         GetInteraction().ToggleInteraction(!toggle);
         GetInteraction().CancelDrag();
+
     }
 
     public PawnStats GetStats() { return stats; }
