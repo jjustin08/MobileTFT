@@ -12,6 +12,27 @@ public class PawnStorage : MonoBehaviour
         slots.AddRange(GetComponentsInChildren<Slot>());
     }
 
+    private void Update()
+    {
+
+        if (Player.Instance.GetHoldingPawn() != null)
+        {
+            foreach (Slot s in slots)
+            {
+                s.GetSlotInteraction().gameObject.SetActive(true);
+
+            }
+        }
+        else
+        {
+            foreach (Slot s in slots)
+            {
+                s.GetSlotInteraction().gameObject.SetActive(false);
+
+            }
+        }
+    }
+
 
     public bool FillSlot(PawnSO SO, int killCount, int deathCount)
     {
