@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Type", menuName = "Types/LeaderType")]
-public class LeaderType : Type
+public class LeaderType : TypeSO
 {
     // give stats to everyone or something
     public float bonusStatPerc1 = 1.2f;

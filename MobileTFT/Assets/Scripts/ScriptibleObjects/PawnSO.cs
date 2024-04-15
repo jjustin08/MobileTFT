@@ -22,5 +22,5 @@ public class PawnSO : ScriptableObject
     public int range;
 
 
-    public List<Type> types;
+    public List<TypeSO> types;
 }

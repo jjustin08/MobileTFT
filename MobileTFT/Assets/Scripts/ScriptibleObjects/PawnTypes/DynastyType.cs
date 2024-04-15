@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Type", menuName = "Types/DynastyType")]
-public class DynastyType : Type
+public class DynastyType : TypeSO
 {
     public float AttackTimePerc3 = 1.0f;
     public float AttackTimePerc5 = 1.5f;

@@ -27,7 +27,7 @@ public class SellInteraction : MonoBehaviour
 
 
         CardManager.AddPawnToDeck(p.GetPawnSO());
-        CashManager.Instance.GainCash(p.GetPawnSO().cost);
+        Player.Instance.GetPlayerStats().GainCash(p.GetPawnSO().cost);
         Destroy(p.gameObject);
     }
 }

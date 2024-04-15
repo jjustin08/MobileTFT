@@ -11,7 +11,7 @@ public class ReRollButtonUI : MonoBehaviour
     {
         GetComponent<Button>().onClick.AddListener(() => {
             pawnShop.ReRollPawns();
-            CashManager.Instance.RemoveCash(1);
+            Player.Instance.GetPlayerStats().RemoveCash(1);
         });
     }
 

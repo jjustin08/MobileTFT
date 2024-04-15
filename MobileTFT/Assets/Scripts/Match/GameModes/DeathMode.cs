@@ -9,12 +9,12 @@ public class DeathMode : GameMode
     [SerializeField] private CardManager cardManager;
     [SerializeField] private BotLoader botLoader;
     [SerializeField] private RoundDisplayUI UI;
-    [SerializeField] private LevelManager levelManager;
+    [SerializeField] private LevelUI levelManager;
 
     private float timer = 0;
-    private float timerMax = 60;
+    private float timerMax = 0;
 
-    private int step = 1;
+    private int step = 0;
     private int stepMax = 4;
 
     private int round = 0;
@@ -28,42 +28,44 @@ public class DeathMode : GameMode
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W) && step == 1)
         {
             timer = timerMax;
         }
-        if(isGameRunning)
+        if (isGameRunning)
         {
             UpdateGame();
         }
-       
+
     }
 
     protected override void StartGame()
     {
         isGameRunning = true;
         GridUtil.Instance.ToggleGridInteraction(false, false);
-        StartTurn();
+        GridUtil.Instance.ToggleGridInteraction(true, false);
     }
 
     protected override void UpdateGame()
     {
+        // only run in combat
         if (combat.IsCombatOver())
         {
             timer = timerMax;
         }
-        timer += Time.deltaTime;
 
+
+        timer += Time.deltaTime;
         UI.UpdateTimer(timer, timerMax);
 
 
 
-        if(timer > timerMax)
+        if (timer > timerMax)
         {
             timer = 0;
             // Activate next step
             step++;
-            if(step > stepMax)
+            if (step > stepMax || step == 0)
             {
                 step = 1;
             }
@@ -72,19 +74,19 @@ public class DeathMode : GameMode
             {
                 case 1:
                     StartTurn();
-                    timerMax = 60;
-                    break; 
+                    timerMax = 40;
+                    break;
                 case 2:
                     EndTurn();
-                    timerMax = 1;
+                    timerMax = 1.0f;
                     break;
                 case 3:
                     StartCombat();
-                    timerMax = 60;
+                    timerMax = 25;
                     break;
                 case 4:
                     EndCombat();
-                    timerMax = 1;
+                    timerMax = 2.0f;
                     break;
             }
         }
@@ -94,13 +96,12 @@ public class DeathMode : GameMode
     {
         round++;
         
-        GridUtil.Instance.ToggleGridInteraction(true, true);
         cardManager.ReRollPawns();
 
         switch (round)
         {
             case 1:
-                UI.UpdateText("Bot Round");
+                UI.UpdateText("Safe Round");
                 botLoader.LoadBotTeam(0);
                 break;
             case 2:
@@ -112,8 +113,7 @@ public class DeathMode : GameMode
                 UI.UpdateText("Death Round");
                 break;
             case 4:
-                UI.UpdateText("Safe Round");
-                botLoader.LoadBotTeam(2);
+                UI.UpdateText("Death Round");
                 break;
             case 5:
                 UI.UpdateText("Safe Round");
@@ -121,19 +121,18 @@ public class DeathMode : GameMode
                 break;
             case 6:
                 // player round
-                UI.UpdateText("Death Round");
-                break;
-            case 7:
                 UI.UpdateText("Safe Round");
                 botLoader.LoadBotTeam(5);
                 break;
+            case 7:
+                UI.UpdateText("Death Round");
+                break;
             case 8:
-                UI.UpdateText("Safe Round");
-                botLoader.LoadBotTeam(6);
+                UI.UpdateText("Death Round");
+                
                 break;
             case 9:
                 UI.UpdateText("Death Round");
-                round = 0;
                 break;
         }
     }
@@ -142,36 +141,46 @@ public class DeathMode : GameMode
     {
         GridUtil.Instance.ToggleGridInteraction(true, false);
         UI.UpdateText("");
+
+
         switch (round)
         {
+            case 1:
+
+                break;
+            case 2:
+
+                break;
             case 3:
-                //player round
+                botLoader.LoadBotTeam(2);
+                break;
+            case 4:
                 botLoader.LoadBotTeam(3);
                 break;
+            case 5:
+                break;
             case 6:
-                // player round
+                break;
+            case 7:
+                botLoader.LoadBotTeam(6);
+                break;
+            case 8:
                 botLoader.LoadBotTeam(7);
                 break;
             case 9:
-                // player round
-                botLoader.LoadBotTeam(7);
+                botLoader.LoadBotTeam(8);
                 break;
         }
-
-        
     }
 
     protected override void StartCombat()
     {
         combat.StartCombat();
         GridUtil.Instance.SetInCombat(true);
-
-
     }
 
     protected override void EndCombat()
     {
-        
         levelManager.GainExp(2);
 
         switch (combat.CheckCombatState())
@@ -179,25 +188,25 @@ public class DeathMode : GameMode
             //win
             case 1:
                 UI.UpdateText("Win");
-                CashManager.Instance.GainCash(10);
+                Player.Instance.GetPlayerStats().GainCash(10);
                 break;
             //lose
             case 2:
                 UI.UpdateText("Lose");
-                CashManager.Instance.GainCash(5);
+                Player.Instance.GetPlayerStats().GainCash(6);
                 break;
             //tie
             case 3:
                 UI.UpdateText("Tie");
-                CashManager.Instance.GainCash(5);
+                Player.Instance.GetPlayerStats().GainCash(8);
                 break;
             default:
                 break;
 
 
         }
-
         GridUtil.Instance.SetInCombat(false);
+
         switch (round)
         {
             case 1:
@@ -207,28 +216,28 @@ public class DeathMode : GameMode
                 combat.EndCombat();
                 break;
             case 3:
-                //player round
+   
                 combat.EndCombatDeath();
                 break;
             case 4:
-                combat.EndCombat();
+                combat.EndCombatDeath();
                 break;
             case 5:
                 combat.EndCombat();
                 break;
             case 6:
-                // player round
-                combat.EndCombatDeath();
+                
+                combat.EndCombat();
                 break;
             case 7:
-                combat.EndCombat();
-                break; 
+                combat.EndCombatDeath();
+                break;
             case 8:
-                combat.EndCombat();
-                break; 
+                combat.EndCombatDeath();
+                break;
             case 9:
                 combat.EndCombatDeath();
-                EndGame();
+                round = 0;
                 break;
         }
 

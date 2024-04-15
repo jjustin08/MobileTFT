@@ -9,7 +9,7 @@ public class Combat : MonoBehaviour
     private List<Pawn> pawns = new List<Pawn>();
 
     //temp
-    [SerializeField] private Type undeadType;
+    [SerializeField] private TypeSO undeadType;
     public bool IsCombatOver()
     {
         if (!pawnManager.InCombat) return false;
@@ -147,7 +147,7 @@ public class Combat : MonoBehaviour
                 else
                 {
                     cardManager.AddPawnToDeck(p.GetPawnSO());
-                    CashManager.Instance.GainCash(p.GetPawnSO().cost);
+                    Player.Instance.GetPlayerStats().GainCash(p.GetPawnSO().cost);
                     p.SelfDestruct();
                 }
                

@@ -24,7 +24,7 @@ public class Pawn : MonoBehaviour
     {
         if (GetMovement().GetSlot().GetPawn() == null)
         {
-            print("huh");
+            print("This should not happen");
             GetMovement().GetSlot().PlacePawn(this);
         }
     }

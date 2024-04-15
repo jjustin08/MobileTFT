@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class LevelUpButtonUI : MonoBehaviour
 {
     [SerializeField] private CardManager pawnShop;
-    [SerializeField] private LevelManager levelManager;
+    [SerializeField] private LevelUI levelManager;
 
     private void Awake()
     {

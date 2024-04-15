@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Type", menuName = "Types/GoblinType")]
-public class GoblinType : Type
+public class GoblinType : TypeSO
 {
     // make them move faster
 

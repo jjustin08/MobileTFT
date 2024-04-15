@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "Type", menuName = "Types/TankType")]
-public class TankType : Type
+public class TankType : TypeSO
 {
     public float HealthPerc2 = 1.3f;
     public float HealthPerc4 = 1.6f;

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Type", menuName = "Types/MagicType")]
-public class MagicType : Type
+[CreateAssetMenu(fileName = "Type", menuName = "Types/SwordsManType")]
+public class SwordsManType : TypeSO
 {
-    public float AttackPerc2 = 1.5f;
-    public float AttackPerc4 = 2.0f;
-    public float AttackPerc6 = 2.5f;
+    public float AttackPerc2 = 1.3f;
+    public float AttackPerc4 = 1.6f;
+    public float AttackPerc6 = 2.0f;
 
     public override void AffectStats(Pawn pawn, int amount)
     {

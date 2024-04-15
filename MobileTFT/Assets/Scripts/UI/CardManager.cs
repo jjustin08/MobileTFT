@@ -174,7 +174,7 @@ public class CardManager : MonoBehaviour
 
     public bool BuyPawn(Card shopPawn)
     {
-        if (CashManager.Instance.RemoveCash(shopPawn.GetPawnSO().cost))
+        if (Player.Instance.GetPlayerStats().RemoveCash(shopPawn.GetPawnSO().cost))
         {
             pawnStorage.FillSlot(shopPawn.GetPawnSO(), 0, 0);
             return true;

@@ -5,7 +5,7 @@ public class PawnStats : MonoBehaviour
 {
     private Pawn parentPawn;
 
-    [SerializeField]private int killCount;
+    private int killCount;
     private float health;
     private float currentHealth;
     private float damage;
@@ -87,7 +87,7 @@ public class PawnStats : MonoBehaviour
 
         if (ran < killCountCashBonus)
         {
-            CashManager.Instance.GainCash(1);
+            Player.Instance.GetPlayerStats().GainCash(1);
         }
 
         if (parentPawn.GetPawnSO().starCount == 3)
@@ -170,7 +170,7 @@ public class PawnStats : MonoBehaviour
 
         for (int i = 0; i < killCount; i++)
         {
-            // this will change depending on what type etc
+            // this will change depending on what type
             damage += 1 * killCountDamageModifier;
             health += 1 * killCountHealthModifier;
             currentHealth += 1 * killCountHealthModifier;
@@ -214,7 +214,7 @@ public class PawnStats : MonoBehaviour
             currentHealth = health;
         }
 
-        foreach (Type type in SO.types)
+        foreach (TypeSO type in SO.types)
         {
             //get how many of this type
             int amount = 0;

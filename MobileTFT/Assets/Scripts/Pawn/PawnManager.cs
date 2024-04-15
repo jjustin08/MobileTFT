@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class PawnManager : MonoBehaviour
 {
-    [SerializeField] private LevelManager levelManager;
+    [SerializeField] private LevelUI levelManager;
     [SerializeField] private TypesCountUI typesCountUI;
     //have all friendly pawns
     private List<Pawn> pawnList = new List<Pawn>();
     // have count of all types
-    private List<Type> types = new List<Type>();
+    private List<TypeSO> types = new List<TypeSO>();
     private List<int> typeCount = new List<int>();
     // only update stats outside of combat
     private bool inCombat = false;
@@ -70,7 +70,7 @@ public class PawnManager : MonoBehaviour
 
             countedPawns.Add(p.GetPawnSO().placedVisual);
 
-            foreach (Type t in p.GetPawnSO().types)
+            foreach (TypeSO t in p.GetPawnSO().types)
             {
                 if (!types.Contains(t))
                 {

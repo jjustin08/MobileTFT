@@ -4,17 +4,54 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    
     [SerializeField] private HealthUI healthUI;
-    private int level = 1;
-    private int health = 15;
+    [SerializeField] private CashUI cashUI;
 
     [SerializeField] private int maxPawnAmount = 3;
     [SerializeField] private int currentPawnAmount = 0;
 
+
+
+    private int level = 1;
+    private int health = 15;
+    private int currentCash = 10;
+
+    
+
     private void Start()
     {
+        cashUI.CashUIUpdate(currentCash);
         healthUI.SetHealthText(health);
     }
+
+
+
+    public void GainCash(int amount)
+    {
+        currentCash += amount;
+        cashUI.CashUIUpdate(currentCash);
+    }
+    public bool RemoveCash(int amount)
+    {
+        if (currentCash >= amount)
+        {
+            currentCash -= amount;
+            cashUI.CashUIUpdate(currentCash);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+    public int GetCash()
+    {
+        return currentCash;
+    }
+
 
     public void SetPlayerHealth(int h)
     {

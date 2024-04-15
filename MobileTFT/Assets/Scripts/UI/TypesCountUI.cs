@@ -25,7 +25,7 @@ public class TypesCountUI : MonoBehaviour
     public void UpdateUI()
     {
         
-        List<Type> types = new List<Type>();
+        List<TypeSO> types = new List<TypeSO>();
         List<int> tCount = new List<int>();
 
 
@@ -39,7 +39,7 @@ public class TypesCountUI : MonoBehaviour
             }
             countedPawns.Add(p.GetPawnSO().placedVisual);
 
-            foreach (Type t in p.GetPawnSO().types)
+            foreach (TypeSO t in p.GetPawnSO().types)
             {
                 if (!types.Contains(t))
                 {

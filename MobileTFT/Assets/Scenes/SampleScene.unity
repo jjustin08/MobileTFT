@@ -2180,8 +2180,8 @@ GameObject:
   m_Component:
   - component: {fileID: 278468139}
   - component: {fileID: 278468140}
-  - component: {fileID: 278468141}
   - component: {fileID: 278468142}
+  - component: {fileID: 278468143}
   m_Layer: 5
   m_Name: Shop
   m_TagString: Untagged
@@ -2270,19 +2270,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57553dfb3261fc94f8f3c1d6fd76e510, type: 2}
   - {fileID: 11400000, guid: 89901cc064c9e384e9c398e5dfd38e1c, type: 2}
   pawnStorage: {fileID: 452259398}
---- !u!114 &278468141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 278468138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ce6f7ab340e54144af0c8cf604b7f56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cashText: {fileID: 1243364279}
 --- !u!114 &278468142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2297,6 +2284,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelIcon: {fileID: 171124196}
   levelSlider: {fileID: 43216769}
+--- !u!114 &278468143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278468138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10dce415172eb024d8c968975ae9664e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cashText: {fileID: 1243364279}
 --- !u!1 &278922253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2888,7 +2888,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -6634,7 +6634,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 839062300}
-  - component: {fileID: 839062301}
   - component: {fileID: 839062302}
   m_Layer: 0
   m_Name: GameMode
@@ -6658,23 +6657,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 524864592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &839062301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 839062299}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e742c9a5c6f745418d9752f5511a21d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combat: {fileID: 95400342}
-  cardManager: {fileID: 278468140}
-  botLoader: {fileID: 95400344}
-  UI: {fileID: 1404277616}
-  levelManager: {fileID: 278468142}
 --- !u!114 &839062302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10531,6 +10513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthUI: {fileID: 1866664396}
+  cashUI: {fileID: 278468143}
   maxPawnAmount: 3
   currentPawnAmount: 0
 --- !u!1 &1333856515

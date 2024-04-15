@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LevelManager : MonoBehaviour
+public class LevelUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI levelIcon;
     [SerializeField] private Slider levelSlider;
@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
 
     bool inCombat = false;
 
+
+    // put this inside player instead
     private int maxExp = 10;
     private int maxMaxExp = 60;
     private int currentExp = 0;
@@ -54,7 +56,7 @@ public class LevelManager : MonoBehaviour
     {
         if(currentExp + amount <= maxMaxExp)
         {
-            if(CashManager.Instance.RemoveCash(amount))
+            if (Player.Instance.GetPlayerStats().RemoveCash(amount))
             {
                 currentExp += amount;
                 UIUpdate();
@@ -63,7 +65,7 @@ public class LevelManager : MonoBehaviour
         else
         {
             int tempCash = maxMaxExp - currentExp;
-            if (CashManager.Instance.RemoveCash(tempCash))
+            if (Player.Instance.GetPlayerStats().RemoveCash(tempCash))
             {
                 currentExp += tempCash;
                 UIUpdate();

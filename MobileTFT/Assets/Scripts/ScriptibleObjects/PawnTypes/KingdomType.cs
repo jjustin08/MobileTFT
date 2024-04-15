@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Type", menuName = "Types/KingdomType")]
-public class KingdomType : Type
+public class KingdomType : TypeSO
 {
     //more gold the more stats
 
@@ -13,7 +13,7 @@ public class KingdomType : Type
 
     public override void AffectStats(Pawn pawn, int amount)
     {
-        int gold = CashManager.Instance.GetCash();
+        int gold = Player.Instance.GetPlayerStats().GetCash();
         if (amount >= 6)
         {
             for (int i = 10; i <= gold && i <= 50; i +=10)

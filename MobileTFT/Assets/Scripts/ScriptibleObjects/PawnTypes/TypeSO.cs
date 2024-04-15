@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Type : ScriptableObject
+public class TypeSO : ScriptableObject
 {
     // teired amount of pawns needed to activate this 
     public string typeName = "Default";
