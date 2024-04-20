@@ -34,7 +34,7 @@ public class PawnStorage : MonoBehaviour
     }
 
 
-    public bool FillSlot(PawnSO SO, int killCount, int deathCount)
+    public bool FillSlot(PawnSO SO, int killCount, int deathCount, int starCount)
     {
         foreach (Slot slot in slots) 
         { 
@@ -45,7 +45,7 @@ public class PawnStorage : MonoBehaviour
                 slot.PlacePawn(newPawn);
                 newPawn.GetStats().SetKillCount(killCount);
                 newPawn.GetStats().SetDeathCount(deathCount);
-                CheckForTriple(SO);
+                CheckForTriple(SO, newPawn.GetStats().GetStarCount());
                 return true;
             }
         }
@@ -53,7 +53,7 @@ public class PawnStorage : MonoBehaviour
         return false;
     }
 
-    private void CheckForTriple(PawnSO SO)
+    private void CheckForTriple(PawnSO SO, int starCount)
     {
         int counter = 0;
         List<Pawn> countedPawns = new List<Pawn>();
@@ -64,8 +64,11 @@ public class PawnStorage : MonoBehaviour
             { 
                 if(slot.GetPawn().GetPawnSO() == SO)
                 {
-                    counter++;
-                    countedPawns.Add(slot.GetPawn());
+                    if(slot.GetPawn().GetStats().GetStarCount() == starCount)
+                    {
+                        counter++;
+                        countedPawns.Add(slot.GetPawn());
+                    } 
                 }
             }
         }
@@ -79,7 +82,7 @@ public class PawnStorage : MonoBehaviour
             }
         }
 
-        if(counter == 3 && SO.nextStarPawnSO != null)
+        if(counter == 3)
         {
             int killCount = 0;
             int deathCount = 0;
@@ -87,10 +90,15 @@ public class PawnStorage : MonoBehaviour
             {
                 killCount += pawn.GetStats().GetKillCount();
                 deathCount += pawn.GetStats().GetDeathCount();
-                pawn.SelfDestruct();
-
             }
-            FillSlot(SO.nextStarPawnSO, killCount, deathCount);
+
+            countedPawns[0].GetStats().SetStarCount(starCount + 1);
+            countedPawns[0].GetStats().SetDeathCount(deathCount);
+            countedPawns[0].GetStats().SetKillCount(killCount);
+            
+
+            countedPawns[1].SelfDestruct();
+            countedPawns[2].SelfDestruct();
         }
 
     }

@@ -24,7 +24,7 @@ public class CardSlotUI : MonoBehaviour
 
     public void PlaceShopPawn(PawnSO newPawnSO)
     {
-        card = Instantiate(newPawnSO.cardPawn, transform);
+        card = Instantiate(newPawnSO.cardVisual, transform);
         card.SetPawnSO(newPawnSO);
     }
 

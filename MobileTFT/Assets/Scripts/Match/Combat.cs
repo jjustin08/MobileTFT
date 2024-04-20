@@ -136,7 +136,7 @@ public class Combat : MonoBehaviour
                 }
                 else
                 {
-                    cardManager.AddPawnToDeck(p.GetPawnSO());
+                    cardManager.AddPawnToDeck(p.GetPawnSO(), p.GetStats().GetStarCount());
                     Player.Instance.GetPlayerStats().GainCash(p.GetPawnSO().cost);
                     p.SelfDestruct();
                 }

@@ -915,7 +915,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5e84b84fe2ec8149b8ccf3565f1c5b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 278468142}
+  levelUi: {fileID: 278468142}
   typesCountUI: {fileID: 1470142926}
 --- !u!1 &99171895
 GameObject:
@@ -6673,7 +6673,6 @@ MonoBehaviour:
   cardManager: {fileID: 278468140}
   botLoader: {fileID: 95400344}
   UI: {fileID: 1404277616}
-  levelManager: {fileID: 278468142}
 --- !u!1 &844157319
 GameObject:
   m_ObjectHideFlags: 0
@@ -10514,6 +10513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthUI: {fileID: 1866664396}
   cashUI: {fileID: 278468143}
+  levelUI: {fileID: 0}
   maxPawnAmount: 3
   currentPawnAmount: 0
 --- !u!1 &1333856515

@@ -5,6 +5,8 @@ public class PawnStats : MonoBehaviour
 {
     private Pawn parentPawn;
 
+    private int starCount = 1;
+
     private int killCount;
     private float health;
     private float currentHealth;
@@ -30,7 +32,7 @@ public class PawnStats : MonoBehaviour
         CalculateStats(true);
     }
 
-
+    public int GetStarCount() {  return starCount; }
     public float GetAttackTime(){return attackTime;}
     public float GetCurrentHealth() { return currentHealth;}
     public float GetDamage() { return damage;}
@@ -39,6 +41,12 @@ public class PawnStats : MonoBehaviour
 
     public int GetDeathCount() {  return deathCount; }
 
+    public void SetStarCount(int c)
+    {
+        starCount = c;
+        parentPawn.GetVisual().SetStarCountImage(c);
+        CalculateStats(true);
+    }
     public void SetKillCountCashBonus(int p)
     {
         killCountCashBonus = p;
@@ -90,14 +98,14 @@ public class PawnStats : MonoBehaviour
             Player.Instance.GetPlayerStats().GainCash(1);
         }
 
-        if (parentPawn.GetPawnSO().starCount == 3)
+        if (starCount == 3)
         {
             if (killCount >= 15)
             {
                 return;
             }
         }
-        else if (parentPawn.GetPawnSO().starCount == 2)
+        else if (starCount == 2)
         {
             if (killCount >= 10)
             {
@@ -133,7 +141,7 @@ public class PawnStats : MonoBehaviour
 
     public void SetKillCount(int k)
     {
-        if(parentPawn.GetPawnSO().starCount == 3)
+        if(starCount == 3)
         {
             if (k >= 15)
             {
@@ -144,7 +152,7 @@ public class PawnStats : MonoBehaviour
                 killCount = k;
             }
         }
-        else if(parentPawn.GetPawnSO().starCount == 2)
+        else if(starCount == 2)
         {
             if (k >= 10)
             {
@@ -176,7 +184,7 @@ public class PawnStats : MonoBehaviour
             currentHealth += 1 * killCountHealthModifier;
         }
 
-        GetComponent<Pawn>().GetVisual().SetKillCountText(killCount);
+        parentPawn.GetVisual().SetKillCountText(killCount);
     }
 
     public void SetKillCountDamageModifier(float m)
@@ -193,13 +201,30 @@ public class PawnStats : MonoBehaviour
     {
         //print("stats calculate");
         PawnSO SO = parentPawn.GetPawnSO();
-        
 
-        health = SO.health;
+        switch (starCount)
+        { 
+            case 1:
+                health = SO.health;
+                damage = SO.damage;
+                attackTime = SO.attackTime;
+                range = SO.range;
+                break;
+            case 2:
+                health = SO.health2;
+                damage = SO.damage2;
+                attackTime = SO.attackTime2;
+                range = SO.range2;
+                break;
+            case 3:
+                health = SO.health3;
+                damage = SO.damage3;
+                attackTime = SO.attackTime3;
+                range = SO.range3;
+                break;
+        }
+
        
-        damage = SO.damage;
-        attackTime = SO.attackTime;
-        range = SO.range;
 
         for (int i = 0; i < killCount; i++)
         {

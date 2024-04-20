@@ -68,7 +68,7 @@ public class DeathMode : GameMode
             step++;
             if (step > stepMax || step == 0)
             {
-                step = Step.CombatStart;
+                step = Step.TurnStart;
             }
 
             switch (step)

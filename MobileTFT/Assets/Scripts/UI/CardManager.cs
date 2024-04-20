@@ -22,7 +22,7 @@ public class CardManager : MonoBehaviour
         foreach(PawnSO so in pawnPool) 
         {
             for(int i = 0; i < 12; i++)
-            AddPawnToDeck(so);
+            AddPawnToDeck(so, 1);
         }
     }
     public void ReRollPawns()
@@ -35,7 +35,7 @@ public class CardManager : MonoBehaviour
             PawnSO removedPawnSO = slot.RemovePawn();
             if (removedPawnSO != null)
             {
-                AddPawnToDeck(removedPawnSO);
+                AddPawnToDeck(removedPawnSO, 1);
             }
 
 
@@ -176,7 +176,7 @@ public class CardManager : MonoBehaviour
     {
         if (Player.Instance.GetPlayerStats().RemoveCash(shopPawn.GetPawnSO().cost))
         {
-            pawnStorage.FillSlot(shopPawn.GetPawnSO(), 0, 0);
+            pawnStorage.FillSlot(shopPawn.GetPawnSO(), 0, 0, 1);
             return true;
         }
        return false;
@@ -184,44 +184,41 @@ public class CardManager : MonoBehaviour
     }
 
 
-    public void AddPawnToDeck(PawnSO SO)
+    public void AddPawnToDeck(PawnSO SO, int starCount)
     {
-        PawnSO realSO = SO;
         int amount = 1;
-        if(SO.starCount == 3)
+        if(starCount == 3)
         {
-            realSO = SO.prevStarPawnSO.prevStarPawnSO;
             amount = 9;
         }
-        else if(SO.starCount == 2)
+        else if(starCount == 2)
         {
-            realSO = SO.prevStarPawnSO;
             amount = 3;
         }
 
-        int cost = realSO.cost;
+        int cost = SO.cost;
         for(int i = 0; i < amount; i++) 
         {
             switch (cost)
             {
                 case 1:
-                    OneCostPool.Add(realSO);
+                    OneCostPool.Add(SO);
 
                     break;
                 case 2:
-                    TwoCostPool.Add(realSO);
+                    TwoCostPool.Add(SO);
 
                     break;
                 case 3:
-                    ThreeCostPool.Add(realSO);
+                    ThreeCostPool.Add(SO);
 
                     break;
                 case 4:
-                    FourCostPool.Add(realSO);
+                    FourCostPool.Add(SO);
 
                     break;
                 case 5:
-                    FiveCostPool.Add(realSO);
+                    FiveCostPool.Add(SO);
 
                     break;
             }

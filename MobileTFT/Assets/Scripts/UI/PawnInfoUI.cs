@@ -57,24 +57,7 @@ public class PawnInfoUI : MonoBehaviour
 
 
         PawnSO SO = pStats.GetComponent<Pawn>().GetPawnSO();
-        int pCost = 1;
-
-        if (SO.starCount >= 2)
-        {
-            if (SO.prevStarPawnSO.starCount >= 2)
-            {
-                pCost = SO.prevStarPawnSO.prevStarPawnSO.cost;
-            }
-            else
-            {
-                pCost = SO.prevStarPawnSO.cost;
-            }
-        }
-        else
-        {
-            pCost = SO.cost;
-        }
-
+        int pCost = SO.cost;
 
         switch (pCost)
         {
