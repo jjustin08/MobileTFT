@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
     
     [SerializeField] private HealthUI healthUI;
     [SerializeField] private CashUI cashUI;
+    [SerializeField] private LevelUI levelUI;
 
     [SerializeField] private int maxPawnAmount = 3;
     [SerializeField] private int currentPawnAmount = 0;

@@ -9,7 +9,8 @@ public class DeathMode : GameMode
     [SerializeField] private CardManager cardManager;
     [SerializeField] private BotLoader botLoader;
     [SerializeField] private RoundDisplayUI UI;
-    [SerializeField] private LevelUI levelManager;
+
+    private bool isGameRunning = false;
 
     private float timer = 0;
     private float timerMax = 0;
@@ -19,19 +20,21 @@ public class DeathMode : GameMode
 
     private int round = 0;
 
-    private bool isGameRunning = false;
-
     private void Start()
     {
+        // TODO: server
         StartGame();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) && step == 1)
+        // debug input to skip planning step
+        if (Input.GetKeyDown(KeyCode.W) && step == Step.TurnStart)
         {
             timer = timerMax;
         }
+
+
         if (isGameRunning)
         {
             UpdateGame();
@@ -43,48 +46,46 @@ public class DeathMode : GameMode
     {
         isGameRunning = true;
         GridUtil.Instance.ToggleGridInteraction(false, false);
-        GridUtil.Instance.ToggleGridInteraction(true, false);
     }
 
     protected override void UpdateGame()
     {
-        // only run in combat
-        if (combat.IsCombatOver())
+        if(step == Step.CombatStart)
         {
-            timer = timerMax;
+            if (combat.IsCombatOver())
+            {
+                timer = timerMax;
+            }
         }
-
+        
 
         timer += Time.deltaTime;
         UI.UpdateTimer(timer, timerMax);
 
-
-
         if (timer > timerMax)
         {
             timer = 0;
-            // Activate next step
             step++;
             if (step > stepMax || step == 0)
             {
-                step = 1;
+                step = Step.CombatStart;
             }
 
             switch (step)
             {
-                case 1:
+                case Step.TurnStart:
                     StartTurn();
-                    timerMax = 40;
+                    timerMax = 20;
                     break;
-                case 2:
+                case Step.TurnEnd:
                     EndTurn();
                     timerMax = 1.0f;
                     break;
-                case 3:
+                case Step.CombatStart:
                     StartCombat();
-                    timerMax = 25;
+                    timerMax = 20;
                     break;
-                case 4:
+                case Step.CombatEnd:
                     EndCombat();
                     timerMax = 2.0f;
                     break;
@@ -95,7 +96,8 @@ public class DeathMode : GameMode
     protected override void StartTurn()
     {
         round++;
-        
+
+        Player.Instance.GetPlayerStats().GainCash(10);
         cardManager.ReRollPawns();
 
         switch (round)
@@ -139,9 +141,7 @@ public class DeathMode : GameMode
 
     protected override void EndTurn()
     {
-        GridUtil.Instance.ToggleGridInteraction(true, false);
         UI.UpdateText("");
-
 
         switch (round)
         {
@@ -175,30 +175,26 @@ public class DeathMode : GameMode
 
     protected override void StartCombat()
     {
+        //TODO do something about combat bools
         combat.StartCombat();
         GridUtil.Instance.SetInCombat(true);
     }
 
     protected override void EndCombat()
     {
-        levelManager.GainExp(2);
-
-        switch (combat.CheckCombatState())
+        switch (combat.GetCombatEndState())
         {
             //win
             case 1:
                 UI.UpdateText("Win");
-                Player.Instance.GetPlayerStats().GainCash(10);
                 break;
             //lose
             case 2:
                 UI.UpdateText("Lose");
-                Player.Instance.GetPlayerStats().GainCash(6);
                 break;
             //tie
             case 3:
                 UI.UpdateText("Tie");
-                Player.Instance.GetPlayerStats().GainCash(8);
                 break;
             default:
                 break;
@@ -247,16 +243,12 @@ public class DeathMode : GameMode
             EndGame();
             return;
         }
-
-        
     }
-
-
 
     public override void EndGame()
     {
         isGameRunning = false;
-        //end the game somehow
+        
         if (Player.Instance.GetPlayerStats().GetPlayerHealth() > 0)
         {
             //win
@@ -264,7 +256,7 @@ public class DeathMode : GameMode
         }
         else
         {
-            //lose??
+            //lose
             UI.UpdateText("You Lost the Game");
         }
     }
@@ -272,4 +264,10 @@ public class DeathMode : GameMode
 }
 
 
-
+static public class Step
+{
+    public const int TurnStart = 1;
+    public const int TurnEnd = 2;
+    public const int CombatStart = 3;
+    public const int CombatEnd = 4;
+}

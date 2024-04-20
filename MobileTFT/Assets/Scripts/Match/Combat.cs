@@ -12,9 +12,6 @@ public class Combat : MonoBehaviour
     [SerializeField] private TypeSO undeadType;
     public bool IsCombatOver()
     {
-        if (!pawnManager.InCombat) return false;
-        if (pawns.Count == 0) return false;
-
         int aliveFriendly = 0;
         int aliveEnemy = 0;
 
@@ -38,18 +35,11 @@ public class Combat : MonoBehaviour
         return false;
     }
 
-    public int CheckCombatState()
+    public int GetCombatEndState()
     {
         int aliveFriendly = 0;
         int aliveEnemy = 0;
-
-        if (pawns.Count <= 0)
-        {
-            print("no pawns??");
-            return -1;
-        }
-            
-
+        
         foreach(Pawn p in pawns) 
         { 
             if(p.IsEnemy() && p.gameObject.activeSelf)

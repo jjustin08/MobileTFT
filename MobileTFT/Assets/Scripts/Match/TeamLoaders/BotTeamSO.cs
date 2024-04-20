@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BotTeam", menuName = "BotTeam/BotTeam")]
-public class BotSavedTeam : ScriptableObject
+public class BotTeamSO : ScriptableObject
 {
     public List<PawnSO> savedPawnSOs = new List<PawnSO>();
     public List<Vector2Int> savedSlotPositions = new List<Vector2Int>();
