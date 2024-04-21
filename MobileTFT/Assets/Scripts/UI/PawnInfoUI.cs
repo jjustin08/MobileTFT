@@ -9,7 +9,6 @@ public class PawnInfoUI : MonoBehaviour
     public static PawnInfoUI Instance;
 
     [SerializeField] private GameObject toggleGameObject;
-    private bool isUIActive = false;
 
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private TextMeshProUGUI healthText;
@@ -25,13 +24,18 @@ public class PawnInfoUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        toggleGameObject.SetActive(isUIActive);
+        toggleGameObject.SetActive(false);
+    }
+
+
+    public GameObject GetToggle()
+    {
+        return toggleGameObject;
     }
 
     public void ToggleUI()
     {
-        isUIActive = !isUIActive;
-        toggleGameObject.SetActive(isUIActive);
+        toggleGameObject.SetActive(!toggleGameObject.activeSelf);
     }
 
 
