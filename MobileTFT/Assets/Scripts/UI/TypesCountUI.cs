@@ -66,6 +66,7 @@ public class TypesCountUI : MonoBehaviour
             this.typeCounts[i].text = tCount[i].ToString();
 
             TypeSO tempType = types[i];
+            typeIcons[i].GetComponent<Button>().onClick.RemoveAllListeners();
             typeIcons[i].GetComponent<Button>().onClick.AddListener(() => {
                 typeInfoUI.ToggleUI();
                 typeInfoUI.UpdateUI(tempType);

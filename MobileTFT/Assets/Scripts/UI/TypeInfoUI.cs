@@ -48,7 +48,7 @@ public class TypeInfoUI : MonoBehaviour
                 amountTexts[i].gameObject.SetActive(true);
                 amountDescriptinsTexts[i].gameObject.SetActive(true);
 
-                amountTexts[i].text = type.amounts[i].ToString();
+                amountTexts[i].text = type.amounts[i].ToString() + ":";
                 amountDescriptinsTexts[i].text = type.amountDescriptions[i];
             }
             else
@@ -66,7 +66,7 @@ public class TypeInfoUI : MonoBehaviour
             {
                 otherPawns[i].gameObject.SetActive(true);
 
-                otherPawns[i].text = type.pawnsWithType[i];
+                otherPawns[i].text = type.pawnsWithType[i].name;
             }
             else
             {

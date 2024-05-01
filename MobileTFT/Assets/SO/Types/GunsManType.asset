@@ -19,6 +19,10 @@ MonoBehaviour:
   amountDescriptions:
   - 20%
   - 40%
-  pawnsWithType: []
+  pawnsWithType:
+  - {fileID: 11400000, guid: ff1c40d34dbb4ec4b8df8061404dd186, type: 2}
+  - {fileID: 11400000, guid: c9d1be056dceaf644ad476de434d642d, type: 2}
+  - {fileID: 11400000, guid: af1398b8149056b4ea0999b902e819e1, type: 2}
+  - {fileID: 11400000, guid: ceb2c3a4539e29f449c556879c60a0dc, type: 2}
   AttackTimePerc2: 0.8
   AttackTimePerc4: 0.6

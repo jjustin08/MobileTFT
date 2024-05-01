@@ -19,6 +19,10 @@ MonoBehaviour:
   amountDescriptions:
   - 1
   - 2
-  pawnsWithType: []
+  pawnsWithType:
+  - {fileID: 11400000, guid: 01e43bbe2d0632b4c88629005e31dfef, type: 2}
+  - {fileID: 11400000, guid: 142daf3db25e5074f89469a1797e72cb, type: 2}
+  - {fileID: 11400000, guid: c018a0e9a41fd964fba6d87e731a2b61, type: 2}
+  - {fileID: 11400000, guid: 3c351ea2096904b4face080ece16d418, type: 2}
   deathBonusPerc2: 1
   deathBonusPerc4: 2

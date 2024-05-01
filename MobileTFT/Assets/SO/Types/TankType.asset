@@ -20,7 +20,13 @@ MonoBehaviour:
   - 30%
   - 60%
   - 100%
-  pawnsWithType: []
+  pawnsWithType:
+  - {fileID: 11400000, guid: 6aa44feee9b2ab14f8c01748b4a7cfd4, type: 2}
+  - {fileID: 11400000, guid: aafcf308a9f962848972a5be7cab3553, type: 2}
+  - {fileID: 11400000, guid: 2c7d15597a01065489124e8d6783b593, type: 2}
+  - {fileID: 11400000, guid: 3c351ea2096904b4face080ece16d418, type: 2}
+  - {fileID: 11400000, guid: 89901cc064c9e384e9c398e5dfd38e1c, type: 2}
+  - {fileID: 11400000, guid: e2f174d10876dff4690375cf5190a486, type: 2}
   HealthPerc2: 1.3
   HealthPerc4: 1.6
   HealthPerc6: 2

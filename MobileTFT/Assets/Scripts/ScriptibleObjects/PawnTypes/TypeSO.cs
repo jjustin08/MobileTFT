@@ -15,7 +15,7 @@ public class TypeSO : ScriptableObject
     public List<int> amounts; 
     public List<string> amountDescriptions;
 
-    public List<string> pawnsWithType;
+    public List<PawnSO> pawnsWithType;
     public virtual void AffectStats(Pawn pawn, int amount)
     {
         //Debug.Log(name + " Amount: "+amount);

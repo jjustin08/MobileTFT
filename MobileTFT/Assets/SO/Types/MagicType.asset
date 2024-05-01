@@ -20,7 +20,12 @@ MonoBehaviour:
   - 50%
   - 100%
   - 150%
-  pawnsWithType: []
+  pawnsWithType:
+  - {fileID: 11400000, guid: ab045fe8bdd6ea048b21c3b4f5afa873, type: 2}
+  - {fileID: 11400000, guid: c6923da911bb9d54c923bd45b562ad25, type: 2}
+  - {fileID: 11400000, guid: b8e77996c877e0e42acbd03be3251e67, type: 2}
+  - {fileID: 11400000, guid: f746b56d7681c7548abf2c8dad78f971, type: 2}
+  - {fileID: 11400000, guid: 39c56504fe721264ea1e59135686979e, type: 2}
   AttackPerc2: 1.5
   AttackPerc4: 2
   AttackPerc6: 2.5
