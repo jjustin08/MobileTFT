@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: GoblinType
   m_EditorClassIdentifier: 
   typeName: Goblin
-  description: 'Goblins Move Faster 3: 20$ 5: 50%'
+  description: Goblins Move Faster
   icon: {fileID: 2037556719, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  amounts: 0300000005000000
+  amountDescriptions:
+  - 20%
+  - 50%
+  pawnsWithType: []
   moveTimePerc3: 0.8
   moveTimePerc5: 0.5

@@ -9,10 +9,9 @@ public class TypesCountUI : MonoBehaviour
 {
     // probably should make this a script
     [SerializeField] private List<Image> typeIcons;
-    [SerializeField] private List<TextMeshProUGUI> typeCount;
-    [SerializeField] private List<TextMeshProUGUI> typeDescription;
-
-
+    [SerializeField] private List<TextMeshProUGUI> typeCounts;
+    [SerializeField] private List<TypeDescriptionUI> typeDescriptions;
+    [SerializeField] private TypeInfoUI typeInfoUI;
 
     private void Start()
     {
@@ -64,8 +63,13 @@ public class TypesCountUI : MonoBehaviour
         {
             typeIcons[i].gameObject.SetActive(true);
             typeIcons[i].sprite = types[i].icon;
-            typeDescription[i].text = types[i].description;
-            this.typeCount[i].text = tCount[i].ToString();
+            this.typeCounts[i].text = tCount[i].ToString();
+
+            TypeSO tempType = types[i];
+            typeIcons[i].GetComponent<Button>().onClick.AddListener(() => {
+                typeInfoUI.ToggleUI();
+                typeInfoUI.UpdateUI(tempType);
+            });
         }
 
     }

@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: SwordsManType
   m_EditorClassIdentifier: 
   typeName: SwordsMan
-  description: 'Gain Attack Damage 2: 30% 4: 60% 6: 100%'
+  description: Gain Attack Damage
   icon: {fileID: -2037864949, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  amounts: 020000000400000006000000
+  amountDescriptions:
+  - 30%
+  - 60%
+  - 100%
+  pawnsWithType: []
   AttackPerc2: 1.3
   AttackPerc4: 1.6
   AttackPerc6: 2

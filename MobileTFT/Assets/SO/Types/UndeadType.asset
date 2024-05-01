@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: UndeadType
   m_EditorClassIdentifier: 
   typeName: Undead
-  description: 'Will always respawn and gain a kill each time undead die 2: 1 4:
-    2'
+  description: Will always respawn and gain a kill each time undead die
   icon: {fileID: -1031698347, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  amounts: 0200000004000000
+  amountDescriptions:
+  - 1
+  - 2
+  pawnsWithType: []
   deathBonusPerc2: 1
   deathBonusPerc4: 2

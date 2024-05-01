@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: GunsManType
   m_EditorClassIdentifier: 
   typeName: GunsMan
-  description: 'Gain attack speed 2: 20% 4: 40%'
+  description: Gain attack speed
   icon: {fileID: 1306019125, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  amounts: 0200000004000000
+  amountDescriptions:
+  - 20%
+  - 40%
+  pawnsWithType: []
   AttackTimePerc2: 0.8
   AttackTimePerc4: 0.6

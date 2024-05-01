@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: DynastyType
   m_EditorClassIdentifier: 
   typeName: Dynasty
-  description: 'Gain more kill bonus 3: 50% 5: 100%'
+  description: Gain more kill bonus
   icon: {fileID: 1440901455, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  amounts: 0300000005000000
+  amountDescriptions:
+  - 50%
+  - 100%
+  pawnsWithType: []
   AttackTimePerc3: 1.5
   AttackTimePerc5: 2

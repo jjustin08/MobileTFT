@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: MagicType
   m_EditorClassIdentifier: 
   typeName: Magic
-  description: 'Gain Attack Dmage 2: 50% 4: 100% 6: 150%'
+  description: Gain Attack Dmage
   icon: {fileID: 378274924, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  amounts: 020000000400000006000000
+  amountDescriptions:
+  - 50%
+  - 100%
+  - 150%
+  pawnsWithType: []
   AttackPerc2: 1.5
   AttackPerc4: 2
   AttackPerc6: 2.5

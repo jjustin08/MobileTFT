@@ -6,16 +6,21 @@ using UnityEngine.UI;
 
 public class TypeDescriptionUI : MonoBehaviour
 {
-    [SerializeField] private GameObject descriptionText;
-    private bool toggle;
+    private TypeSO type;
+    [SerializeField] TypeInfoUI typeInfoUI;
 
-    private void Awake()
+    private void Start()
     {
-        descriptionText.SetActive(false);
-        GetComponent<Button>().onClick.AddListener(() =>
-        {
-            toggle = !toggle;
-            descriptionText.SetActive(toggle);
-        });
+        //GetComponent<Button>().onClick.AddListener(() =>
+        //{
+        //    print("Hello");
+        //    typeInfoUI.ToggleUI();
+        //    typeInfoUI.UpdateUI(type);
+        //});
+    }
+
+    public void SetType(TypeSO newType)
+    {
+        type  = newType;
     }
 }

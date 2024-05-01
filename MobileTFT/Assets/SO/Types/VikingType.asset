@@ -13,7 +13,12 @@ MonoBehaviour:
   m_Name: VikingType
   m_EditorClassIdentifier: 
   typeName: Viking
-  description: 'Chance to gain gold on kill 3: 20% 5: 50%'
+  description: Chance to gain gold on kill
   icon: {fileID: 819695100, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  amounts: 0300000005000000
+  amountDescriptions:
+  - 20%
+  - 50%
+  pawnsWithType: []
   AttackPerc3: 20
   AttackPerc5: 50

@@ -7,6 +7,7 @@ public class OverlayUI : MonoBehaviour
 {
     [SerializeField] private Button cancelButton;
     [SerializeField] private PawnInfoUI pawnInfoUI;
+    [SerializeField] private TypeInfoUI typeInfoUI;
     [SerializeField] private TypesCountUI typesCountUI;
     
 
@@ -28,6 +29,12 @@ public class OverlayUI : MonoBehaviour
             {
                 isUIActive = true;
                 activeUI = pawnInfoUI.GetToggle();
+            }
+            
+            if (typeInfoUI.GetToggle().activeSelf)
+            {
+                isUIActive = true;
+                activeUI = typeInfoUI.GetToggle();
             }
 
 

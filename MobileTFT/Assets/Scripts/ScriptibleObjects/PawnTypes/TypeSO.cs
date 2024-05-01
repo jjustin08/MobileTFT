@@ -12,7 +12,10 @@ public class TypeSO : ScriptableObject
 
     public Sprite icon;
 
+    public List<int> amounts; 
+    public List<string> amountDescriptions;
 
+    public List<string> pawnsWithType;
     public virtual void AffectStats(Pawn pawn, int amount)
     {
         //Debug.Log(name + " Amount: "+amount);
