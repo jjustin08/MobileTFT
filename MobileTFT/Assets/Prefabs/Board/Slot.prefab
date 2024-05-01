@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2568332961165100229}
   - component: {fileID: 4236080726820741095}
   - component: {fileID: 8937710119222768191}
+  - component: {fileID: 6277709182879916748}
   m_Layer: 0
   m_Name: Slot
   m_TagString: Untagged
@@ -65,7 +66,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65dc793223df1424482b04350d3e0fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotInteraction: {fileID: 3770914602375726802}
+  placedPawn: {fileID: 0}
+--- !u!114 &6277709182879916748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2674318684588374606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e93bf40301e8384c99cb18b02324df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: b17d492aeded98b4bb50d9131846d340, type: 2}
+  selectedMaterial: {fileID: 2100000, guid: 605591d55f5b610499ac1c42461d3e02, type: 2}
+  mesh: {fileID: 4086525678663557581}
 --- !u!1001 &3420436456540372297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -206,6 +222,12 @@ MeshCollider:
 --- !u!4 &2953637502140750498 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 66422d4b62f0ea540bb5e09b3e45a782,
+    type: 3}
+  m_PrefabInstance: {fileID: 3420436456540372297}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4086525678663557581 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 66422d4b62f0ea540bb5e09b3e45a782,
     type: 3}
   m_PrefabInstance: {fileID: 3420436456540372297}
   m_PrefabAsset: {fileID: 0}

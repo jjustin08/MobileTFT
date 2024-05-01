@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7452526184377660702}
   - component: {fileID: 3091852378997378601}
+  - component: {fileID: 6008599113206245546}
   m_Layer: 0
   m_Name: StorageSlot
   m_TagString: Untagged
@@ -45,7 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65dc793223df1424482b04350d3e0fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slotInteraction: {fileID: 4480296245656406685}
+  placedPawn: {fileID: 0}
+--- !u!114 &6008599113206245546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3349543777878595384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e93bf40301e8384c99cb18b02324df3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaterial: {fileID: 2100000, guid: b17d492aeded98b4bb50d9131846d340, type: 2}
+  selectedMaterial: {fileID: 2100000, guid: 605591d55f5b610499ac1c42461d3e02, type: 2}
+  mesh: {fileID: 5357992395282425586}
 --- !u!1 &9147713190587921963
 GameObject:
   m_ObjectHideFlags: 0

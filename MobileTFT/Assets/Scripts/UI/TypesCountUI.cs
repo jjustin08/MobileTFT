@@ -10,7 +10,6 @@ public class TypesCountUI : MonoBehaviour
     // probably should make this a script
     [SerializeField] private List<Image> typeIcons;
     [SerializeField] private List<TextMeshProUGUI> typeCounts;
-    [SerializeField] private List<TypeDescriptionUI> typeDescriptions;
     [SerializeField] private TypeInfoUI typeInfoUI;
 
     private void Start()

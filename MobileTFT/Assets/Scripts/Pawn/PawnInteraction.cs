@@ -14,6 +14,16 @@ public class PawnInteraction : Interaction
 
         Player.Instance.SetHoldingPawn(pawn);
         followCursor.ToggleDraggin(true);
+
+        GameObject hoverObject = Player.Instance.GetPlayerInput().TestCardTileIntercept();
+
+        if (hoverObject != null)
+        {
+            if (hoverObject.GetComponent<SlotInteraction>() != null)
+            {
+                hoverObject.GetComponentInParent<SlotVisual>().ToggleSelect(true);
+            }
+        }
     }
 
     protected override void OnDragCanceled()
