@@ -97,7 +97,7 @@ public class DeathMode : GameMode
     {
         round++;
 
-        Player.Instance.GetPlayerStats().GainCash(10);
+        Player.Instance.GetPlayerStats().SetCash(10);
         cardManager.ReRollPawns();
 
         switch (round)

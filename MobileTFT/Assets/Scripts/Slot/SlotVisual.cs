@@ -8,8 +8,11 @@ public class SlotVisual : MonoBehaviour
     [SerializeField] private Material selectedMaterial;
     [SerializeField] private MeshRenderer mesh;
 
+
+
     private void Update()
     {
+        // this is not great
         ToggleSelect(false);
     }
 

@@ -532,7 +532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &43216768
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1246,8 +1246,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75
-  m_fontSizeBase: 75
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 0
@@ -2648,7 +2648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelIcon: {fileID: 171124196}
-  levelSlider: {fileID: 43216769}
+  levelCostText: {fileID: 99171897}
 --- !u!114 &278468143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2829,7 +2829,7 @@ RectTransform:
   m_Father: {fileID: 1283241875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8649,7 +8649,7 @@ RectTransform:
   m_Father: {fileID: 452303241}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9894,7 +9894,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pawnShop: {fileID: 278468140}
-  levelManager: {fileID: 278468142}
 --- !u!114 &1296974529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10059,9 +10058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthUI: {fileID: 1866664396}
   cashUI: {fileID: 278468143}
-  levelUI: {fileID: 0}
-  maxPawnAmount: 3
-  currentPawnAmount: 0
+  levelUI: {fileID: 278468142}
 --- !u!1 &1302160679
 GameObject:
   m_ObjectHideFlags: 0

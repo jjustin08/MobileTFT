@@ -137,7 +137,17 @@ public class Combat : MonoBehaviour
                 else
                 {
                     cardManager.AddPawnToDeck(p.GetPawnSO(), p.GetStats().GetStarCount());
-                    Player.Instance.GetPlayerStats().GainCash(p.GetPawnSO().cost);
+                    int pawnCost = 0;
+                    pawnCost = p.GetPawnSO().cost;
+                    if (p.GetStats().GetStarCount() == 2)
+                    {
+                        pawnCost = p.GetPawnSO().cost * 3;
+                    }
+                    else if (p.GetStats().GetStarCount() == 3)
+                    {
+                        pawnCost = p.GetPawnSO().cost * 9;
+                    }
+                    Player.Instance.GetPlayerStats().GainCash(pawnCost);
                     p.SelfDestruct();
                 }
                

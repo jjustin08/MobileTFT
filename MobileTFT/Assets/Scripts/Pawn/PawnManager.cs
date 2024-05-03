@@ -30,7 +30,7 @@ public class PawnManager : MonoBehaviour
         { return; }
 
         UpdatePawns();
-        levelUi.UIUpdate();
+        levelUi.UIUpdate(Player.Instance.GetPlayerStats().GetPlayerLevel());
     }
     public void UpdatePawns()
     {

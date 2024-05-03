@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    
+    // Health
     [SerializeField] private HealthUI healthUI;
-    [SerializeField] private CashUI cashUI;
-    [SerializeField] private LevelUI levelUI;
-
-    [SerializeField] private int maxPawnAmount = 3;
-    [SerializeField] private int currentPawnAmount = 0;
-
-
-
-    private int level = 1;
     private int health = 15;
+
+    // Cash
+    [SerializeField] private CashUI cashUI;
     private int currentCash = 10;
 
-    
+    // Level
+    [SerializeField] private LevelUI levelUI;
+    private int maxPawnAmount = 1;
+    private int currentPawnAmount = 0;
+    private int level = 1;
+
+    private int costToLevelUp = 10;
+
 
     private void Start()
     {
@@ -26,11 +27,34 @@ public class PlayerStats : MonoBehaviour
         healthUI.SetHealthText(health);
     }
 
+    // Health
+    public void SetPlayerHealth(int h)
+    {
+        health = h;
+        healthUI.SetHealthText(health);
+    }
 
+    public void TakeDamage(int amount)
+    {
+        health -= amount;
+        healthUI.SetHealthText(health);
+    }
 
+    public int GetPlayerHealth()
+    {
+        return health;
+    }
+
+    // Cash
     public void GainCash(int amount)
     {
         currentCash += amount;
+        cashUI.CashUIUpdate(currentCash);
+    }
+    
+    public void SetCash(int amount)
+    {
+        currentCash = amount;
         cashUI.CashUIUpdate(currentCash);
     }
     public bool RemoveCash(int amount)
@@ -53,20 +77,29 @@ public class PlayerStats : MonoBehaviour
         return currentCash;
     }
 
-
-    public void SetPlayerHealth(int h)
+    // Level
+    public void LevelUpButtonPress()
     {
-        health = h;
-        healthUI.SetHealthText(health);
+        if(costToLevelUp <= currentCash)
+        {
+            RemoveCash(costToLevelUp);
+            level++;
+            ChangeMaxPawnAmount(level);
+
+
+            levelUI.UIUpdate(level);
+            levelUI.SetLevelCostUI(costToLevelUp);
+        }
+
+        // give msg
     }
 
-    public void TakeDamage(int amount)
+    public int GetPlayerLevel()
     {
-        health -= amount;
-        healthUI.SetHealthText(health);
+        return level;
     }
 
-
+    // Max Pawn
     public void ChangeMaxPawnAmount(int newMax)
     {
         maxPawnAmount = newMax;
@@ -80,33 +113,5 @@ public class PlayerStats : MonoBehaviour
     {
         GridUtil.Instance.UpdateMaxPawnsOnBoard();
         return currentPawnAmount >= maxPawnAmount;
-    }
-    public void AddPawnAmount()
-    {
-        currentPawnAmount += maxPawnAmount;
-    }
-
-    public void RemovePawnAmount() 
-    { 
-        currentPawnAmount -= maxPawnAmount;
-    }
-
-    public void SetPlayerLevel(int lvl)
-    {
-        level = lvl;
-
-
-        //move this somewhere else
-        ChangeMaxPawnAmount(lvl);
-    }
-
-    public int GetPlayerLevel() 
-    { 
-        return level;
-    }
-
-    public int GetPlayerHealth()
-    {
-        return health;
     }
 }

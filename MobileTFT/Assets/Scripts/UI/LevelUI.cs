@@ -7,39 +7,23 @@ using UnityEngine.UI;
 public class LevelUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI levelIcon;
-    [SerializeField] private Slider levelSlider;
-
+    [SerializeField] private TextMeshProUGUI levelCostText;
 
     bool inCombat = false;
 
-
-    // put this inside player instead
-    private int maxExp = 10;
-    private int maxMaxExp = 60;
-    private int currentExp = 0;
-
     private void Start()
     {
-        UIUpdate();
+        UIUpdate(1);
     }
 
-    public void UIUpdate()
+    public void SetLevelCostUI(int cost)
     {
-        int level = 1;
-        float tempExp = currentExp;
-        while(tempExp >= maxExp)
-        {
-            level++;
-            tempExp -= maxExp;
-        }
-        
-        levelSlider.value = (tempExp/maxExp);
+        levelCostText.text = cost.ToString();   
+    }
 
-        Player.Instance.GetPlayerStats().SetPlayerLevel(level);
-
-        //levelIcon.text = level.ToString();
-        // lets do it for how many pawns you can have/
-        // also need to turn off while in combat...
+    public void UIUpdate(int newLevel)
+    {
+        int level = newLevel;
 
         if(!inCombat)
         {
@@ -52,40 +36,16 @@ public class LevelUI : MonoBehaviour
 
     }
 
-    public void GainExp(int amount)
-    {
-        if(currentExp + amount <= maxMaxExp)
-        {
-            if (Player.Instance.GetPlayerStats().RemoveCash(amount))
-            {
-                currentExp += amount;
-                UIUpdate();
-            }
-        }
-        else
-        {
-            int tempCash = maxMaxExp - currentExp;
-            if (Player.Instance.GetPlayerStats().RemoveCash(tempCash))
-            {
-                currentExp += tempCash;
-                UIUpdate();
-            }
-        }
-    }
-
     public void ToggleCombat(bool toggle)
     {
         inCombat = toggle;
         if (!toggle)
         {
             levelIcon.gameObject.SetActive(true);
-            UIUpdate();
         }
         else
         {
             levelIcon.gameObject.SetActive(false);
         }
     }
-
-
 }
