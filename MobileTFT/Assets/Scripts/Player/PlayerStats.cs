@@ -90,6 +90,10 @@ public class PlayerStats : MonoBehaviour
             levelUI.UIUpdate(level);
             levelUI.SetLevelCostUI(costToLevelUp);
         }
+        else
+        {
+            HelperUI.Instance.ActivateHelperText("Not Enough Gold");
+        }
 
         // give msg
     }

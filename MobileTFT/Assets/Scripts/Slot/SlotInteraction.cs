@@ -36,6 +36,7 @@ public class SlotInteraction : Interaction
                
                 oldSlot.PlacePawn(tempPawn);
                 Player.Instance.SetHoldingPawn(null);
+                HelperUI.Instance.ActivateHelperText("Board Is Full");
                 return;
 
             }

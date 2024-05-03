@@ -14,6 +14,10 @@ public class ReRollButtonUI : MonoBehaviour
             {
                 pawnShop.ReRollPawns();
             }
+            else
+            {
+                HelperUI.Instance.ActivateHelperText("Not Enough Gold");
+            }
         });
     }
 

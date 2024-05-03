@@ -181,6 +181,15 @@ public class CardManager : MonoBehaviour
                 pawnStorage.FillSlot(shopPawn.GetPawnSO(), 0, 0, 1);
                 return true;
             }
+            else
+            {
+                HelperUI.Instance.ActivateHelperText("Not Enough Gold");
+            }
+
+        }
+        else
+        {
+            HelperUI.Instance.ActivateHelperText("Pawn Storage Full");
         }
         
        return false;
