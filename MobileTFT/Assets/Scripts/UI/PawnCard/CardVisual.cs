@@ -20,12 +20,7 @@ public class CardVisual : MonoBehaviour
     {
         pawnName.text = SO.name;
 
-        string co = "";
-        for(int i = 0; i < SO.cost; i++)
-        {
-            co += "*";
-        }
-        cost.text = co;
+        cost.text = SO.cost.ToString();
 
         for(int i = 0;i < SO.types.Count;i++)
         {
