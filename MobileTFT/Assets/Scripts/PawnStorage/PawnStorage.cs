@@ -33,6 +33,19 @@ public class PawnStorage : MonoBehaviour
         }
     }
 
+    public bool IsStorageFull()
+    {
+        bool isFull = true;
+        foreach(Slot s in slots)
+        {
+            if(!s.HasPawn()) 
+            {
+                isFull = false;
+                continue;
+            }
+        }
+        return isFull;
+    }
 
     public bool FillSlot(PawnSO SO, int killCount, int deathCount, int starCount)
     {
