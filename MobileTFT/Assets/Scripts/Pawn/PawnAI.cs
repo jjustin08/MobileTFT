@@ -6,9 +6,9 @@ public class PawnAI : MonoBehaviour
 {
     private Pawn parentPawn;
 
-  
-
     private bool isCombatMode = false;
+
+    private Pawn lastTargetPawn = null;
 
     // Timers
     private float moveTimerMax = 0.5f;
@@ -38,10 +38,34 @@ public class PawnAI : MonoBehaviour
     {
         SlotPosition slotToAttack;
         
-        slotToAttack = 
+
+        if(lastTargetPawn == null)
+        {
+            slotToAttack =
             GridUtil.Instance.GetTargetInRange(
             parentPawn.GetStats().GetRange()
-            ,parentPawn.GetMovement().GetSlot()); 
+            , parentPawn.GetMovement().GetSlot());
+        }
+        else
+        {
+            if (GridUtil.Instance.IsSlotInRange(parentPawn.GetStats().GetRange()
+            , parentPawn.GetMovement().GetSlot(), lastTargetPawn.GetMovement().GetSlot()) &&
+            lastTargetPawn.GetStats().GetCurrentHealth() > 0)
+            {
+                slotToAttack = lastTargetPawn.GetMovement().GetSlot().GetSlotPos();
+                
+            }
+            else
+            {
+                lastTargetPawn = null;
+                slotToAttack =
+                GridUtil.Instance.GetTargetInRange(
+                parentPawn.GetStats().GetRange()
+                , parentPawn.GetMovement().GetSlot());
+            }
+            
+        }
+        
 
         if (slotToAttack != null)
         {
@@ -59,8 +83,8 @@ public class PawnAI : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(direction);
             }
 
-
-            parentPawn.GetCombat().DealDamage(slotToAttack.GetSlot().GetPawn());
+            lastTargetPawn = slotToAttack.GetSlot().GetPawn();
+            parentPawn.GetCombat().DealDamage(lastTargetPawn);
             return true;
         }
         else

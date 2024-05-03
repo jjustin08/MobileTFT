@@ -3265,7 +3265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_EventMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 51
   m_MaxRayIntersections: 0
 --- !u!1 &337353934
 GameObject:
@@ -3342,7 +3342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 350197721}
   - component: {fileID: 350197722}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: HelpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7758,7 +7758,7 @@ GameObject:
   - component: {fileID: 969045361}
   - component: {fileID: 969045363}
   - component: {fileID: 969045362}
-  m_Layer: 5
+  m_Layer: 2
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7781,7 +7781,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 267}
   m_SizeDelta: {x: 1000, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &969045362

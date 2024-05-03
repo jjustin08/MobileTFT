@@ -164,6 +164,15 @@ public class GridUtil : MonoBehaviour
         return allPawns;
     }
 
+    public bool IsSlotInRange(int range, Slot startSlot, Slot targetSlot)
+    {
+        int distance = startSlot.GetSlotPos().GetTileDistanceAway(targetSlot.GetSlotPos(), range);
+        if(distance <= range && distance != 0)
+        {
+            return true;
+        }
+        return false;
+    }
     public SlotPosition GetTargetInRange(int range, Slot slot)
     {
         SlotPosition currentTile = slot.GetSlotPos();

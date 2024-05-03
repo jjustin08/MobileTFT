@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: BotTeam 7
   m_EditorClassIdentifier: 
   savedPawnSOs:
-  - {fileID: 11400000, guid: b88412f5934261949bf25b428a1fcaee, type: 2}
-  - {fileID: 11400000, guid: acf6b205350ab964faf539d7a0e7a597, type: 2}
-  - {fileID: 11400000, guid: acf6b205350ab964faf539d7a0e7a597, type: 2}
+  - {fileID: 11400000, guid: e4cd5b05ca6c5784bbc0023f32e5e6c6, type: 2}
+  - {fileID: 11400000, guid: aafcf308a9f962848972a5be7cab3553, type: 2}
+  - {fileID: 11400000, guid: aafcf308a9f962848972a5be7cab3553, type: 2}
   savedSlotPositions:
   - {x: 0, y: 0}
   - {x: 2, y: 3}
