@@ -16,6 +16,7 @@ public class BotTeamSO : ScriptableObject
             newPawn.SetPawnSO(savedPawnSOs[i]);
             newPawn.SetEnemy(true);
             newPawn.transform.Rotate(0f, 180f, 0f);
+            newPawn.GetStats().CalculateStats(true);
             GridUtil.Instance.GetSlotPositionFromVector2(savedSlotPositions[i]).GetSlot().PlacePawn(newPawn);
         }
     }

@@ -9,6 +9,7 @@ public class DeathMode : GameMode
     [SerializeField] private CardManager cardManager;
     [SerializeField] private BotLoader botLoader;
     [SerializeField] private RoundDisplayUI UI;
+    [SerializeField] private MapManager mapManager;
 
     private bool isGameRunning = false;
 
@@ -95,11 +96,52 @@ public class DeathMode : GameMode
 
     protected override void StartTurn()
     {
+        switch (round)
+        {
+            case 1:
+                combat.EndCombat();
+                break;
+            case 2:
+                combat.EndCombat();
+                break;
+            case 3:
+                combat.EndCombatDeath();
+                break;
+            case 4:
+                combat.EndCombatDeath();
+                break;
+            case 5:
+                combat.EndCombat();
+                break;
+            case 6:
+
+                combat.EndCombat();
+                break;
+            case 7:
+                combat.EndCombatDeath();
+                break;
+            case 8:
+                combat.EndCombatDeath();
+                break;
+            case 9:
+                combat.EndCombatDeath();
+                round = 0;
+                break;
+        }
+
+
+        if (Player.Instance.GetPlayerStats().GetPlayerHealth() <= 0)
+        {
+            EndGame();
+            return;
+        }
+
+        //load bot teams
         round++;
 
+        mapManager.ChangeMap(0);
         Player.Instance.GetPlayerStats().SetCash(10);
         cardManager.ReRollPawns();
-
         switch (round)
         {
             case 1:
@@ -143,6 +185,8 @@ public class DeathMode : GameMode
     {
         UI.UpdateText("");
 
+
+
         switch (round)
         {
             case 1:
@@ -152,9 +196,11 @@ public class DeathMode : GameMode
 
                 break;
             case 3:
+                mapManager.ChangeMap(1);
                 botLoader.LoadBotTeam(2);
                 break;
             case 4:
+                mapManager.ChangeMap(1);
                 botLoader.LoadBotTeam(3);
                 break;
             case 5:
@@ -162,12 +208,15 @@ public class DeathMode : GameMode
             case 6:
                 break;
             case 7:
+                mapManager.ChangeMap(1);
                 botLoader.LoadBotTeam(6);
                 break;
             case 8:
+                mapManager.ChangeMap(1);
                 botLoader.LoadBotTeam(7);
                 break;
             case 9:
+                mapManager.ChangeMap(1);
                 botLoader.LoadBotTeam(8);
                 break;
         }
@@ -175,9 +224,12 @@ public class DeathMode : GameMode
 
     protected override void StartCombat()
     {
+
+
         //TODO do something about combat bools
         combat.StartCombat();
         GridUtil.Instance.SetInCombat(true);
+
     }
 
     protected override void EndCombat()
@@ -203,46 +255,7 @@ public class DeathMode : GameMode
         }
         GridUtil.Instance.SetInCombat(false);
 
-        switch (round)
-        {
-            case 1:
-                combat.EndCombat();
-                break;
-            case 2:
-                combat.EndCombat();
-                break;
-            case 3:
-   
-                combat.EndCombatDeath();
-                break;
-            case 4:
-                combat.EndCombatDeath();
-                break;
-            case 5:
-                combat.EndCombat();
-                break;
-            case 6:
-                
-                combat.EndCombat();
-                break;
-            case 7:
-                combat.EndCombatDeath();
-                break;
-            case 8:
-                combat.EndCombatDeath();
-                break;
-            case 9:
-                combat.EndCombatDeath();
-                round = 0;
-                break;
-        }
-
-
-        if (Player.Instance.GetPlayerStats().GetPlayerHealth() <= 0)
-        {
-            EndGame();
-            return;
-        }
+       
     }
 
     public override void EndGame()
