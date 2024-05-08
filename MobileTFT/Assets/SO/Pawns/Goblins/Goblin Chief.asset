@@ -18,7 +18,7 @@ MonoBehaviour:
     type: 3}
   cardVisual: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035,
     type: 3}
-  cost: 4
+  cost: 3
   types:
   - {fileID: 11400000, guid: 5c0f6d157413b0b4eab7303dd62b7aeb, type: 2}
   - {fileID: 11400000, guid: d5340b6101399e1469ec87a7d7e053ac, type: 2}
@@ -26,11 +26,11 @@ MonoBehaviour:
   damage: 4
   attackTime: 0.8
   range: 1
-  health2: 0
-  damage2: 0
-  attackTime2: 0
-  range2: 0
-  health3: 0
-  damage3: 0
-  attackTime3: 0
-  range3: 0
+  health2: 25
+  damage2: 8
+  attackTime2: 0.8
+  range2: 1
+  health3: 40
+  damage3: 12
+  attackTime3: 0.8
+  range3: 1

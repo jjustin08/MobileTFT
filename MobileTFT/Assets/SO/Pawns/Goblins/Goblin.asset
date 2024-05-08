@@ -25,11 +25,11 @@ MonoBehaviour:
   damage: 2
   attackTime: 1
   range: 1
-  health2: 0
-  damage2: 0
-  attackTime2: 0
-  range2: 0
-  health3: 0
-  damage3: 0
-  attackTime3: 0
-  range3: 0
+  health2: 20
+  damage2: 4
+  attackTime2: 0.8
+  range2: 1
+  health3: 30
+  damage3: 6
+  attackTime3: 0.7
+  range3: 1
