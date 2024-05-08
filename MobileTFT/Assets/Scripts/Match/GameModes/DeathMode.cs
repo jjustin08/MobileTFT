@@ -138,9 +138,13 @@ public class DeathMode : GameMode
 
         //load bot teams
         round++;
-
+        
         mapManager.ChangeMap(0);
-        Player.Instance.GetPlayerStats().SetCash(10);
+        int cashAmount = 1 + round;
+        if(cashAmount > 10) { cashAmount = 10; }
+
+        Player.Instance.GetPlayerStats().SetCash(cashAmount);
+        Player.Instance.GetPlayerStats().ReduceCostToLevelUp(1);
         cardManager.ReRollPawns();
         switch (round)
         {

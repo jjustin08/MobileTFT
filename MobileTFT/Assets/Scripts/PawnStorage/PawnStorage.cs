@@ -58,6 +58,7 @@ public class PawnStorage : MonoBehaviour
                 slot.PlacePawn(newPawn);
                 newPawn.GetStats().SetKillCount(killCount);
                 newPawn.GetStats().SetDeathCount(deathCount);
+                newPawn.GetStats().SetStarCount(starCount);
                 CheckForTriple(SO, newPawn.GetStats().GetStarCount());
                 return true;
             }
@@ -90,8 +91,11 @@ public class PawnStorage : MonoBehaviour
         {
             if(pawn.GetPawnSO() == SO)
             {
-                counter++;
-                countedPawns.Add(pawn);
+                if (pawn.GetStats().GetStarCount() == starCount)
+                {
+                    counter++;
+                    countedPawns.Add(pawn);
+                }
             }
         }
 
@@ -112,6 +116,8 @@ public class PawnStorage : MonoBehaviour
 
             countedPawns[1].SelfDestruct();
             countedPawns[2].SelfDestruct();
+
+            CheckForTriple(SO, starCount + 1);
         }
 
     }

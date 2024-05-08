@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerStats : MonoBehaviour
 
     // Cash
     [SerializeField] private CashUI cashUI;
-    private int currentCash = 10;
+    private int currentCash = 2;
 
     // Level
     [SerializeField] private LevelUI levelUI;
@@ -18,13 +19,14 @@ public class PlayerStats : MonoBehaviour
     private int currentPawnAmount = 0;
     private int level = 1;
 
-    private int costToLevelUp = 10;
+    private int costToLevelUp = 4;
 
 
     private void Start()
     {
         cashUI.CashUIUpdate(currentCash);
         healthUI.SetHealthText(health);
+        levelUI.SetLevelCostUI(costToLevelUp);
     }
 
     // Health
@@ -78,6 +80,12 @@ public class PlayerStats : MonoBehaviour
     }
 
     // Level
+    public void ReduceCostToLevelUp(int num)
+    {
+        costToLevelUp -= num;
+        levelUI.SetLevelCostUI(costToLevelUp);
+    }
+
     public void LevelUpButtonPress()
     {
         if(costToLevelUp <= currentCash)
@@ -86,7 +94,7 @@ public class PlayerStats : MonoBehaviour
             level++;
             ChangeMaxPawnAmount(level);
 
-
+            costToLevelUp = 3 + ((level-1) * 2);
             levelUI.UIUpdate(level);
             levelUI.SetLevelCostUI(costToLevelUp);
         }
@@ -94,8 +102,6 @@ public class PlayerStats : MonoBehaviour
         {
             HelperUI.Instance.ActivateHelperText("Not Enough Gold");
         }
-
-        // give msg
     }
 
     public int GetPlayerLevel()
