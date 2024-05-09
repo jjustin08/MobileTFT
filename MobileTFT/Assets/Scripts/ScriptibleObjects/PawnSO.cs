@@ -12,6 +12,7 @@ public class PawnSO : ScriptableObject
 
     [Header("Common")]
     public int cost;
+    public PawnAbilitySO ability;
     public List<TypeSO> types;
 
     [Header("1 Star stats")]

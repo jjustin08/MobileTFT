@@ -35,12 +35,12 @@ public class PawnAI : MonoBehaviour
         MovementUpdate();   
     }
 
-    private bool AttackUpdate()
+    public SlotPosition GetTarget()
     {
         SlotPosition slotToAttack;
-        
 
-        if(lastTargetPawn == null)
+
+        if (lastTargetPawn == null)
         {
             slotToAttack =
             GridUtil.Instance.GetTargetInRange(
@@ -54,7 +54,7 @@ public class PawnAI : MonoBehaviour
             lastTargetPawn.GetStats().GetCurrentHealth() > 0)
             {
                 slotToAttack = lastTargetPawn.GetMovement().GetSlot().GetSlotPos();
-                
+
             }
             else
             {
@@ -64,46 +64,67 @@ public class PawnAI : MonoBehaviour
                 parentPawn.GetStats().GetRange()
                 , parentPawn.GetMovement().GetSlot());
             }
-            
+
         }
-        
+
+        return slotToAttack;
+    }
+
+    public void Attack(SlotPosition slotToAttack)
+    {
+        // its a bit funky would be nice to add lerp here too
+        Vector3 direction = (slotToAttack.transform.position - transform.position).normalized;
+
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
+
+        lastTargetPawn = slotToAttack.GetSlot().GetPawn();
+        parentPawn.GetCombat().DealDamage(lastTargetPawn);
+    }
+
+    private bool AttackUpdate()
+    {
+        SlotPosition slotToAttack = GetTarget();
 
         if (slotToAttack != null)
         {
-            
-
-            if (Timer(ref attackTimerMax, ref attackTimerCurrent))
-                return true;
-
-
-            // its a bit funky would be nice to add lerp here too
-            Vector3 direction = (slotToAttack.transform.position - transform.position).normalized;
-
-            if (direction != Vector3.zero)
-            {
-                transform.rotation = Quaternion.LookRotation(direction);
-            }
-
-            lastTargetPawn = slotToAttack.GetSlot().GetPawn();
-            parentPawn.GetCombat().DealDamage(lastTargetPawn);
-            parentPawn.GetStats().AddMana();
-            if(parentPawn.GetStats().IsManaFull())
+            if (parentPawn.GetStats().IsManaFull())
             {
                 //activate ability
                 parentPawn.GetStats().SetCurrentMana(0);
+                parentPawn.GetPawnSO().ability.Ability(parentPawn);
+                return true;
             }
+        }
+
+
+        slotToAttack = GetTarget();
+        if (slotToAttack != null) 
+        {
+            if (Timer(attackTimerMax, ref attackTimerCurrent))
+                return true;
+
+            Attack(slotToAttack);
+            parentPawn.GetStats().AddMana();
+
+
             return true;
         }
         else
         {
             attackTimerCurrent = attackTimerMax;
         }
+
+        
         return false;
     }
 
+
     private void MovementUpdate()
     {
-        if (Timer(ref moveTimerMax, ref moveTimerCurrent))
+        if (Timer(moveTimerMax, ref moveTimerCurrent))
             return;
 
         SlotPosition tileToMove;
@@ -133,7 +154,7 @@ public class PawnAI : MonoBehaviour
         moveTimerMax = parentPawn.GetStats().GetMoveTime();
     }
 
-    public bool Timer(ref float max,ref float current)
+    public bool Timer(float max, ref float current)
     {
         current -= Time.deltaTime;
         if (current <= 0)

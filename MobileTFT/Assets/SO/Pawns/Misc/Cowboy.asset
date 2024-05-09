@@ -19,10 +19,11 @@ MonoBehaviour:
   cardVisual: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035,
     type: 3}
   cost: 1
+  ability: {fileID: 11400000, guid: d4e1c5d16b6cdf147abd7120a3f3023f, type: 2}
   types:
   - {fileID: 11400000, guid: 76cd45d5e260fed4bbba8dd4f5da0985, type: 2}
   health: 10
-  mana: 10
+  mana: 3
   damage: 2
   attackTime: 0.9
   range: 4

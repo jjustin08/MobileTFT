@@ -20,6 +20,7 @@ public class DeathMode : GameMode
     private int stepMax = 4;
 
     private int round = 0;
+    private int realRound = 0;
 
     private void Start()
     {
@@ -139,9 +140,11 @@ public class DeathMode : GameMode
 
         //load bot teams
         round++;
-        
+        realRound++;
+
+
         mapManager.ChangeMap(0);
-        int cashAmount = 1 + round;
+        int cashAmount = 1 + realRound;
         if(cashAmount > 10) { cashAmount = 10; }
 
         Player.Instance.GetPlayerStats().SetCash(cashAmount);

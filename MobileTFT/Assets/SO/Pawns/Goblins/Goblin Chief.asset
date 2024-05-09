@@ -19,6 +19,7 @@ MonoBehaviour:
   cardVisual: {fileID: 478290466736516452, guid: f4f97490fbbdc3f4786fa31f08c88035,
     type: 3}
   cost: 3
+  ability: {fileID: 11400000, guid: d4e1c5d16b6cdf147abd7120a3f3023f, type: 2}
   types:
   - {fileID: 11400000, guid: 5c0f6d157413b0b4eab7303dd62b7aeb, type: 2}
   - {fileID: 11400000, guid: d5340b6101399e1469ec87a7d7e053ac, type: 2}
