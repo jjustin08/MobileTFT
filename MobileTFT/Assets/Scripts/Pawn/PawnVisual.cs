@@ -12,6 +12,11 @@ public class PawnVisual : MonoBehaviour
         healthBar.UpdateHealthBar(max, current);
     }
 
+    public void UpdateManaBar(float max, float current)
+    {
+        healthBarAttached.UpdateManaBar(max,current);
+    }
+
     public void SetVisual(GameObject vis)
     {
         visual = vis;

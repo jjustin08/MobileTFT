@@ -9,12 +9,16 @@ public class PawnStats : MonoBehaviour
 
     private int killCount;
     private float health;
+    private float mana;
+    private float currentMana;
     private float currentHealth;
     private float damage;
     private float attackTime;
     private int range;
 
     private float moveTime = 0.5f;
+
+    private float manaGain = 1f;
 
     private int deathCount;
 
@@ -65,6 +69,7 @@ public class PawnStats : MonoBehaviour
         if (!toggle)
         {
             SetCurrentHealth(health);
+            SetCurrentMana(0);
         }
     }
     public void SetCurrentHealth(float newHealth)
@@ -74,6 +79,34 @@ public class PawnStats : MonoBehaviour
         // error here
         parentPawn.GetVisual().UpdateHealthBar(health,currentHealth);
     }
+
+    public void SetCurrentMana(float newMana)
+    {
+        currentMana = newMana;
+
+        parentPawn.GetVisual().UpdateManaBar(mana,currentMana);
+    }
+
+    public void AddMana()
+    {
+        currentMana += manaGain;
+
+        parentPawn.GetVisual().UpdateManaBar(mana, currentMana);
+    }
+    public bool IsManaFull()
+    {
+        if (currentMana > mana)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public float GetCurrentMana()
+    {
+        return currentMana;
+    }
+
 
     public void SetDamage(float newDamage)
     {
@@ -206,18 +239,21 @@ public class PawnStats : MonoBehaviour
         { 
             case 1:
                 health = SO.health;
+                mana = SO.mana;
                 damage = SO.damage;
                 attackTime = SO.attackTime;
                 range = SO.range;
                 break;
             case 2:
                 health = SO.health2;
+                mana = SO.mana2;
                 damage = SO.damage2;
                 attackTime = SO.attackTime2;
                 range = SO.range2;
                 break;
             case 3:
                 health = SO.health3;
+                mana = SO.mana3;
                 damage = SO.damage3;
                 attackTime = SO.attackTime3;
                 range = SO.range3;

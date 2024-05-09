@@ -10,6 +10,7 @@ public class PawnAI : MonoBehaviour
 
     private Pawn lastTargetPawn = null;
 
+
     // Timers
     private float moveTimerMax = 0.5f;
     private float moveTimerCurrent = 0;
@@ -85,6 +86,12 @@ public class PawnAI : MonoBehaviour
 
             lastTargetPawn = slotToAttack.GetSlot().GetPawn();
             parentPawn.GetCombat().DealDamage(lastTargetPawn);
+            parentPawn.GetStats().AddMana();
+            if(parentPawn.GetStats().IsManaFull())
+            {
+                //activate ability
+                parentPawn.GetStats().SetCurrentMana(0);
+            }
             return true;
         }
         else

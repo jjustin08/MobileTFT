@@ -11,6 +11,14 @@ public class HealthBarAttachedUI : MonoBehaviour
     [SerializeField] private Image starImage2;
     [SerializeField] private Image starImage3;
 
+    [SerializeField] private Image abilityBar;
+
+
+
+    public void UpdateManaBar(float max, float current)
+    {
+        abilityBar.fillAmount = current / max;
+    }
 
     public void SetKillCountText(int count)
     {

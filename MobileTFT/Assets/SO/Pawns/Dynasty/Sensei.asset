@@ -23,14 +23,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86aa38603726ddc48a3c42b40cd0a5ba, type: 2}
   - {fileID: 11400000, guid: d5340b6101399e1469ec87a7d7e053ac, type: 2}
   health: 30
+  mana: 10
   damage: 10
   attackTime: 0.8
   range: 3
   health2: 35
+  mana2: 9
   damage2: 12
   attackTime2: 0.7
   range2: 4
   health3: 45
+  mana3: 8
   damage3: 15
   attackTime3: 0.5
   range3: 4
