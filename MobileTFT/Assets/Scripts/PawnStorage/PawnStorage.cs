@@ -72,6 +72,18 @@ public class PawnStorage : MonoBehaviour
         int counter = 0;
         List<Pawn> countedPawns = new List<Pawn>();
 
+        foreach (Pawn pawn in GridUtil.Instance.GetAllPawns(true))
+        {
+            if (pawn.GetPawnSO() == SO)
+            {
+                if (pawn.GetStats().GetStarCount() == starCount)
+                {
+                    counter++;
+                    countedPawns.Add(pawn);
+                }
+            }
+        }
+
         foreach (Slot slot in slots) 
         { 
             if(slot.HasPawn()) 
@@ -87,17 +99,7 @@ public class PawnStorage : MonoBehaviour
             }
         }
 
-        foreach(Pawn pawn in GridUtil.Instance.GetAllPawns(true))
-        {
-            if(pawn.GetPawnSO() == SO)
-            {
-                if (pawn.GetStats().GetStarCount() == starCount)
-                {
-                    counter++;
-                    countedPawns.Add(pawn);
-                }
-            }
-        }
+        
 
         if(counter == 3)
         {
