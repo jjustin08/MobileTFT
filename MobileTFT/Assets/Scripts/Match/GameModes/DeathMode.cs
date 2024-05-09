@@ -96,6 +96,7 @@ public class DeathMode : GameMode
 
     protected override void StartTurn()
     {
+        cardManager.gameObject.SetActive(true);
         switch (round)
         {
             case 1:
@@ -228,12 +229,10 @@ public class DeathMode : GameMode
 
     protected override void StartCombat()
     {
-
-
         //TODO do something about combat bools
         combat.StartCombat();
         GridUtil.Instance.SetInCombat(true);
-
+        cardManager.gameObject.SetActive(false);
     }
 
     protected override void EndCombat()
