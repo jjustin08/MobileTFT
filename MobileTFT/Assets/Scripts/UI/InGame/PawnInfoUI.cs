@@ -15,6 +15,9 @@ public class PawnInfoUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI damageText;
     [SerializeField] private TextMeshProUGUI atkSpdText;
     [SerializeField] private TextMeshProUGUI rangeText;
+    [SerializeField] private TextMeshProUGUI manaText;
+
+    [SerializeField] private TextMeshProUGUI abilityDescriptionText;
 
 
     [SerializeField] private Image background;
@@ -46,6 +49,8 @@ public class PawnInfoUI : MonoBehaviour
         damageText.text = pStats.GetDamage().ToString();
         atkSpdText.text = pStats.GetAttackTime().ToString();
         rangeText.text = pStats.GetRange().ToString();
+        manaText.text = pStats.GetMana().ToString();
+        abilityDescriptionText.text = pStats.GetComponent<Pawn>().GetPawnSO().ability.description;
 
 
         foreach (Image type in types)

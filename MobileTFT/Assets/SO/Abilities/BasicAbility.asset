@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f624eaf2a6fe94297423100e984bbf, type: 3}
   m_Name: BasicAbility
   m_EditorClassIdentifier: 
+  description: Another basic attack when mana full

@@ -82,8 +82,11 @@ public class PlayerStats : MonoBehaviour
     // Level
     public void ReduceCostToLevelUp(int num)
     {
-        costToLevelUp -= num;
-        levelUI.SetLevelCostUI(costToLevelUp);
+        if(costToLevelUp > 0)
+        {
+            costToLevelUp -= num;
+            levelUI.SetLevelCostUI(costToLevelUp);
+        }
     }
 
     public void LevelUpButtonPress()

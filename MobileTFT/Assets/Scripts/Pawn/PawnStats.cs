@@ -41,6 +41,7 @@ public class PawnStats : MonoBehaviour
     public float GetCurrentHealth() { return currentHealth;}
     public float GetDamage() { return damage;}
     public int GetRange() { return range; }
+    public float GetMana() { return mana; }
     public float GetMoveTime() { return moveTime;}
 
     public int GetDeathCount() {  return deathCount; }
