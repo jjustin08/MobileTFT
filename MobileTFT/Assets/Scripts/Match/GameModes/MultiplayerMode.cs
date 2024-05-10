@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class DeathMode : GameMode
+public class MultiplayerMode : GameMode
 {
     [SerializeField] private Combat combat;
     [SerializeField] private CardManager cardManager;
@@ -22,11 +21,6 @@ public class DeathMode : GameMode
     private int round = 0;
     private int realRound = 0;
 
-    private void Start()
-    {
-        // TODO: server
-        StartGame();
-    }
 
     private void Update()
     {
@@ -52,14 +46,14 @@ public class DeathMode : GameMode
 
     protected override void UpdateGame()
     {
-        if(step == Step.CombatStart)
+        if (step == Step.CombatStart)
         {
             if (combat.IsCombatOver())
             {
                 timer = timerMax;
             }
         }
-        
+
 
         timer += Time.deltaTime;
         UI.UpdateTimer(timer, timerMax);
@@ -145,7 +139,7 @@ public class DeathMode : GameMode
 
         mapManager.ChangeMap(0);
         int cashAmount = 1 + realRound;
-        if(cashAmount > 10) { cashAmount = 10; }
+        if (cashAmount > 10) { cashAmount = 10; }
 
         Player.Instance.GetPlayerStats().SetCash(cashAmount);
         Player.Instance.GetPlayerStats().ReduceCostToLevelUp(1);
@@ -181,7 +175,7 @@ public class DeathMode : GameMode
                 break;
             case 8:
                 UI.UpdateText("Death Round");
-                
+
                 break;
             case 9:
                 UI.UpdateText("Death Round");
@@ -261,13 +255,13 @@ public class DeathMode : GameMode
         }
         GridUtil.Instance.SetInCombat(false);
 
-       
+
     }
 
     public override void EndGame()
     {
         isGameRunning = false;
-        
+
         if (Player.Instance.GetPlayerStats().GetPlayerHealth() > 0)
         {
             //win
@@ -279,14 +273,4 @@ public class DeathMode : GameMode
             UI.UpdateText("You Lost the Game");
         }
     }
-
-}
-
-
-static public class Step
-{
-    public const int TurnStart = 1;
-    public const int TurnEnd = 2;
-    public const int CombatStart = 3;
-    public const int CombatEnd = 4;
 }

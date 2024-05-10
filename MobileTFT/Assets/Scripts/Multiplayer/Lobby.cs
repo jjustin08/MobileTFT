@@ -21,8 +21,8 @@ public class Lobby : MonoBehaviour
         }
     }
         public void LoadGame()
-    {
-        multiplayerSystem.LoadGame();
-    }
+        {
+            multiplayerSystem.LoadGame();
+        }
 
 }

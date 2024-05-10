@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameMode : MonoBehaviour
 {
-    virtual protected void StartGame(){}
+    virtual public void StartGame(){}
 
     protected virtual void UpdateGame() { }
 
