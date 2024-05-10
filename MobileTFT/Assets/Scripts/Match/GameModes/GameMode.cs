@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GameMode : MonoBehaviour
 {
-    virtual public void StartGame(){}
+    virtual public void RecieveServerMsg(string msg) { }
+    virtual protected void StartGame(){}
 
-    protected virtual void UpdateGame() { }
+    virtual protected void UpdateGame() { }
 
     virtual protected void StartTurn(){}
 
@@ -16,5 +17,5 @@ public class GameMode : MonoBehaviour
 
     virtual protected void EndCombat(){}
 
-    virtual public void EndGame(){}
+    virtual protected void EndGame(){}
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class MultiplayerMode : GameMode
 {
@@ -21,6 +22,45 @@ public class MultiplayerMode : GameMode
     private int round = 0;
     private int realRound = 0;
 
+    private void Start()
+    {
+        NetworkClientProcessing.SetGameMode(this);
+
+        string msg = ClientToServerSignifiers.GameLoaded.ToString();
+        NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
+    }
+
+    override public void RecieveServerMsg(string msg)
+    {
+        string[] csv = msg.Split(',');
+        int signifier = int.Parse(csv[1]);
+
+        switch (signifier)
+        {
+            case ServerToClientGameModeSignifiers.StartGame:
+                StartGame();
+                break; 
+            case ServerToClientGameModeSignifiers.StartTurn:
+
+                break; 
+            case ServerToClientGameModeSignifiers.EndTurn:
+
+                break; 
+            case ServerToClientGameModeSignifiers.StartCombat:
+
+                break;
+            case ServerToClientGameModeSignifiers.EndCombat:
+
+                break;
+            case ServerToClientGameModeSignifiers.EndGame:
+
+                break;
+            default:
+                Debug.Log("Invalid signifier");
+                break;
+        }
+    }
+
 
     private void Update()
     {
@@ -38,7 +78,7 @@ public class MultiplayerMode : GameMode
 
     }
 
-    public override void StartGame()
+    protected override void StartGame()
     {
         isGameRunning = true;
         GridUtil.Instance.ToggleGridInteraction(false, false);
@@ -46,6 +86,7 @@ public class MultiplayerMode : GameMode
 
     protected override void UpdateGame()
     {
+        // SERVER
         if (step == Step.CombatStart)
         {
             if (combat.IsCombatOver())
@@ -258,7 +299,7 @@ public class MultiplayerMode : GameMode
 
     }
 
-    public override void EndGame()
+    protected override void EndGame()
     {
         isGameRunning = false;
 
@@ -274,3 +315,23 @@ public class MultiplayerMode : GameMode
         }
     }
 }
+
+
+#region Protocol Signifiers
+static public class ClientToServerGameModeSignifiers
+{
+    public const int JoinLobby = 1;
+}
+
+static public class ServerToClientGameModeSignifiers
+{
+    public const int StartGame = 1;
+    public const int StartTurn = 2;
+    public const int EndTurn = 3;
+    public const int StartCombat = 4;
+    public const int EndCombat = 5;
+    public const int EndGame = 6;
+
+}
+
+#endregion

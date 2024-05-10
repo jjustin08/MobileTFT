@@ -44,7 +44,7 @@ public class DeathMode : GameMode
 
     }
 
-    public override void StartGame()
+    protected override void StartGame()
     {
         isGameRunning = true;
         GridUtil.Instance.ToggleGridInteraction(false, false);
@@ -264,7 +264,7 @@ public class DeathMode : GameMode
        
     }
 
-    public override void EndGame()
+    protected override void EndGame()
     {
         isGameRunning = false;
         

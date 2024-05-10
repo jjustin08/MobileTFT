@@ -18,9 +18,11 @@ static public class NetworkClientProcessing
 
         switch (signifier)
         {
-            case ServerToClientSignifiers.StartGame:
-                //Debug.Log("StartGame");
+            case ServerToClientSignifiers.LoadGame:
                 lobby.LoadGame();
+                break; 
+            case ServerToClientSignifiers.Gamemode:
+                gamemode.RecieveServerMsg(msg);
                 break;
             case 0:
                // Debug.Log("All good");
@@ -80,6 +82,13 @@ static public class NetworkClientProcessing
         lobby = lob;
     }
 
+    static GameMode gamemode;
+
+    static public void SetGameMode(GameMode gm)
+    {
+        gamemode = gm;
+    }
+
     #endregion
 
 }
@@ -88,18 +97,14 @@ static public class NetworkClientProcessing
 static public class ClientToServerSignifiers
 {
     public const int JoinLobby = 1;
-
-}
-
-static public class InGameClientToServerSignifiers
-{
-    public const int RequestToPlay = 11;
-
+    public const int GameLoaded = 2;
 }
 
 static public class ServerToClientSignifiers
 {
-    public const int StartGame = 1;
+    public const int LoadGame = 1;
+    public const int Gamemode = 2;
 }
+
 
 #endregion

@@ -14,15 +14,12 @@ public class Lobby : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-
             NetworkClientProcessing.SendMessageToServer(ClientToServerSignifiers.JoinLobby.ToString(), TransportPipeline.ReliableAndInOrder);
-            NetworkClientProcessing.SendMessageToServer(InGameClientToServerSignifiers.RequestToPlay.ToString(), TransportPipeline.ReliableAndInOrder);
-
         }
     }
-        public void LoadGame()
-        {
-            multiplayerSystem.LoadGame();
-        }
+    public void LoadGame()
+    {
+        multiplayerSystem.LoadGame();
+    }
 
 }

@@ -1725,7 +1725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &229246054
 Transform:
   m_ObjectHideFlags: 0
@@ -2978,6 +2978,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff75cb0bd15ae944b180e4976d77708, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  combat: {fileID: 1892439726}
+  cardManager: {fileID: 744847061}
+  botLoader: {fileID: 1892439724}
+  UI: {fileID: 894028839}
+  mapManager: {fileID: 1789856082}
 --- !u!1 &437773832
 GameObject:
   m_ObjectHideFlags: 0
@@ -3464,7 +3469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &540191112
 Transform:
   m_ObjectHideFlags: 0
@@ -3481,6 +3486,7 @@ Transform:
   - {fileID: 1564222730}
   - {fileID: 1912263771}
   - {fileID: 167507577}
+  - {fileID: 1664247689}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &540191113
@@ -4861,7 +4867,7 @@ RectTransform:
   m_Father: {fileID: 1667633702}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9681,6 +9687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lobby: {fileID: 540191111}
   game: {fileID: 229246053}
+  gameMode: {fileID: 0}
 --- !u!1 &1519688973
 GameObject:
   m_ObjectHideFlags: 0
@@ -10901,12 +10908,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664247686}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -565.0232, y: -1228.8307, z: -5.8175197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 540191112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1664436474
 GameObject:
@@ -14311,7 +14318,7 @@ RectTransform:
   m_Father: {fileID: 342872690}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15160,4 +15167,3 @@ SceneRoots:
   - {fileID: 1511078627}
   - {fileID: 540191112}
   - {fileID: 229246054}
-  - {fileID: 1664247689}

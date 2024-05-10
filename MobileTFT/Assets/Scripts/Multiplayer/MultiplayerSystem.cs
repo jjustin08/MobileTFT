@@ -13,8 +13,6 @@ public class MultiplayerSystem : MonoBehaviour
     {
         lobby.SetActive(false);
         game.SetActive(true);
-
-        gameMode.StartGame();
     }
 
 }
