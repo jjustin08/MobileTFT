@@ -18,8 +18,12 @@ static public class NetworkClientProcessing
 
         switch (signifier)
         {
-            case ServerToClientSignifiers.Hello:
-                Debug.Log("Hello");
+            case ServerToClientSignifiers.StartGame:
+                //Debug.Log("StartGame");
+                lobby.LoadGame();
+                break;
+            case 0:
+               // Debug.Log("All good");
                 break;
             default:
                 Debug.Log("Invalid signifier");
@@ -70,6 +74,12 @@ static public class NetworkClientProcessing
         return networkClient;
     }
 
+    static Lobby lobby;
+    static public void SetLobby(Lobby lob)
+    {
+        lobby = lob;
+    }
+
     #endregion
 
 }
@@ -77,13 +87,19 @@ static public class NetworkClientProcessing
 #region Protocol Signifiers
 static public class ClientToServerSignifiers
 {
-    public const int Hello = 1;
+    public const int JoinLobby = 1;
+
+}
+
+static public class InGameClientToServerSignifiers
+{
+    public const int RequestToPlay = 11;
+
 }
 
 static public class ServerToClientSignifiers
 {
-    public const int Hello = 1;
-
+    public const int StartGame = 1;
 }
 
 #endregion
