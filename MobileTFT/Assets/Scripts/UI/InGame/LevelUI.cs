@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class LevelUI : MonoBehaviour
 {
@@ -47,5 +48,7 @@ public class LevelUI : MonoBehaviour
         {
             levelIcon.gameObject.SetActive(false);
         }
+
+        UIUpdate(Player.Instance.GetPlayerStats().GetPlayerLevel());
     }
 }

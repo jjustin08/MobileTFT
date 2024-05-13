@@ -97,7 +97,7 @@ public class PlayerStats : MonoBehaviour
             level++;
             ChangeMaxPawnAmount(level);
 
-            costToLevelUp = 3 + ((level-1) * 2);
+            costToLevelUp = 3 + ((level-1) * 3);
             levelUI.UIUpdate(level);
             levelUI.SetLevelCostUI(costToLevelUp);
         }

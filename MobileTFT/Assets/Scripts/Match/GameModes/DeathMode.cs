@@ -97,6 +97,7 @@ public class DeathMode : GameMode
 
     protected override void StartTurn()
     {
+        Player.Instance.GetPlayerStats().SetCash(0);
         cardManager.gameObject.SetActive(true);
         switch (round)
         {
@@ -147,7 +148,7 @@ public class DeathMode : GameMode
         int cashAmount = 1 + realRound;
         if(cashAmount > 10) { cashAmount = 10; }
 
-        Player.Instance.GetPlayerStats().SetCash(cashAmount);
+        Player.Instance.GetPlayerStats().GainCash(cashAmount);
         Player.Instance.GetPlayerStats().ReduceCostToLevelUp(1);
         cardManager.ReRollPawns();
         switch (round)

@@ -20,5 +20,5 @@ MonoBehaviour:
   killCount: 010000000200000000000000
   slotPositions:
   - {x: 2, y: 3}
-  - {x: 3, y: 2}
+  - {x: 0, y: 3}
   - {x: 4, y: 3}
