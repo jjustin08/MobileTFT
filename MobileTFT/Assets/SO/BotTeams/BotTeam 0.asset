@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1709acfdc1b640847b79f86b1d4c062a, type: 3}
   m_Name: BotTeam 0
   m_EditorClassIdentifier: 
-  savedPawnSOs:
+  pawnSOs:
   - {fileID: 11400000, guid: 498250135ed2c084eba682ec606d5507, type: 2}
-  savedSlotPositions:
+  triple: 01000000
+  killCount: 00000000
+  slotPositions:
   - {x: 3, y: 2}

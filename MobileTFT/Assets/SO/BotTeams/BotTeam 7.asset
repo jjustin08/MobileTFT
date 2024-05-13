@@ -12,11 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1709acfdc1b640847b79f86b1d4c062a, type: 3}
   m_Name: BotTeam 7
   m_EditorClassIdentifier: 
-  savedPawnSOs:
-  - {fileID: 11400000, guid: e4cd5b05ca6c5784bbc0023f32e5e6c6, type: 2}
-  - {fileID: 11400000, guid: aafcf308a9f962848972a5be7cab3553, type: 2}
-  - {fileID: 11400000, guid: aafcf308a9f962848972a5be7cab3553, type: 2}
-  savedSlotPositions:
-  - {x: 0, y: 0}
-  - {x: 2, y: 3}
-  - {x: 4, y: 3}
+  pawnSOs:
+  - {fileID: 11400000, guid: 498250135ed2c084eba682ec606d5507, type: 2}
+  - {fileID: 11400000, guid: d922d05e68c4c4e43bf91420f58edc2d, type: 2}
+  - {fileID: 11400000, guid: 6aa44feee9b2ab14f8c01748b4a7cfd4, type: 2}
+  - {fileID: 11400000, guid: c6923da911bb9d54c923bd45b562ad25, type: 2}
+  - {fileID: 11400000, guid: 0a09f7ce86c7e87489dc199c510f15d1, type: 2}
+  triple: 0200000002000000010000000200000001000000
+  killCount: 0100000002000000010000000300000000000000
+  slotPositions:
+  - {x: 5, y: 3}
+  - {x: 3, y: 3}
+  - {x: 1, y: 3}
+  - {x: 2, y: 0}
+  - {x: 4, y: 0}

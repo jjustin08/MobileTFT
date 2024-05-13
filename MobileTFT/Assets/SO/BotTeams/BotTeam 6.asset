@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1709acfdc1b640847b79f86b1d4c062a, type: 3}
   m_Name: BotTeam 6
   m_EditorClassIdentifier: 
-  savedPawnSOs:
+  pawnSOs:
+  - {fileID: 11400000, guid: ef69043a26feb514b81a3e88e2315554, type: 2}
   - {fileID: 11400000, guid: 142daf3db25e5074f89469a1797e72cb, type: 2}
-  - {fileID: 11400000, guid: 3c351ea2096904b4face080ece16d418, type: 2}
-  - {fileID: 11400000, guid: 3c351ea2096904b4face080ece16d418, type: 2}
-  - {fileID: 11400000, guid: 3c351ea2096904b4face080ece16d418, type: 2}
-  savedSlotPositions:
-  - {x: 1, y: 2}
-  - {x: 2, y: 2}
-  - {x: 3, y: 2}
-  - {x: 4, y: 2}
+  - {fileID: 11400000, guid: b8e77996c877e0e42acbd03be3251e67, type: 2}
+  triple: 020000000100000002000000
+  killCount: 030000000100000005000000
+  slotPositions:
+  - {x: 4, y: 3}
+  - {x: 2, y: 3}
+  - {x: 3, y: 0}
