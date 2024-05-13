@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static System.Net.Mime.MediaTypeNames;
 
 public class TypeFlipBook : MonoBehaviour
 {
@@ -11,7 +13,7 @@ public class TypeFlipBook : MonoBehaviour
     [SerializeField] private Button prevButton;
 
     [SerializeField] private TypeInfoUI typeInfo;
-
+    [SerializeField] private TextMeshProUGUI text;
     private int index = 0;
 
     private void Awake()
@@ -19,7 +21,7 @@ public class TypeFlipBook : MonoBehaviour
         nextButton.onClick.AddListener(NextButtonClick);
         prevButton.onClick.AddListener(PrevButtonClick);
         typeInfo.UpdateUI(types[0]);
-
+        text.text = index+1 + "/" + types.Count;
     }
 
     private void NextButtonClick()
@@ -28,7 +30,7 @@ public class TypeFlipBook : MonoBehaviour
         {
             index++;
             typeInfo.UpdateUI(types[index]);
-           
+            text.text = index + 1 + "/" + types.Count;
 
         }
     }
@@ -38,7 +40,7 @@ public class TypeFlipBook : MonoBehaviour
         {
             index--;
             typeInfo.UpdateUI(types[index]);
-            
+            text.text = index + 1 + "/" + types.Count;
         }
     }
 }

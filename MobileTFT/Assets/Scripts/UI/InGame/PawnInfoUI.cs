@@ -27,7 +27,7 @@ public class PawnInfoUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        toggleGameObject.SetActive(false);
+        //toggleGameObject.SetActive(false);
     }
 
 
@@ -41,32 +41,32 @@ public class PawnInfoUI : MonoBehaviour
         toggleGameObject.SetActive(!toggleGameObject.activeSelf);
     }
 
-
-    public void UpdateUI(PawnStats pStats)
+    public void UpdateUI(PawnSO pawnSO)
     {
-        nameText.text = pStats.GetComponent<Pawn>().GetPawnSO().name;
-        healthText.text = pStats.GetCurrentHealth().ToString();
-        damageText.text = pStats.GetDamage().ToString();
-        atkSpdText.text = pStats.GetAttackTime().ToString();
-        rangeText.text = pStats.GetRange().ToString();
-        manaText.text = pStats.GetMana().ToString();
-        abilityDescriptionText.text = pStats.GetComponent<Pawn>().GetPawnSO().ability.description;
+        nameText.text = pawnSO.name;
+
+        healthText.text = pawnSO.health.ToString();
+        damageText.text = pawnSO.damage.ToString();
+        atkSpdText.text = pawnSO.attackTime.ToString();
+        rangeText.text = pawnSO.range.ToString();
+        manaText.text = pawnSO.mana.ToString();
+
+
+        abilityDescriptionText.text = pawnSO.ability.description;
 
 
         foreach (Image type in types)
         {
             type.gameObject.SetActive(false);
         }
-
-        for (int i = 0; i < pStats.GetComponent<Pawn>().GetPawnSO().types.Count; i++)
+        for (int i = 0; i < pawnSO.types.Count; i++)
         {
             types[i].gameObject.SetActive(true);
-            types[i].sprite = pStats.GetComponent<Pawn>().GetPawnSO().types[i].icon;
+            types[i].sprite = pawnSO.types[i].icon;
         }
 
-
-        PawnSO SO = pStats.GetComponent<Pawn>().GetPawnSO();
-        int pCost = SO.cost;
+        
+        int pCost = pawnSO.cost;
 
         switch (pCost)
         {
@@ -88,5 +88,16 @@ public class PawnInfoUI : MonoBehaviour
 
 
         }
+    }
+
+    public void UpdateUI(PawnStats pStats)
+    {
+        UpdateUI(pStats.GetComponent<Pawn>().GetPawnSO());
+
+        healthText.text = pStats.GetCurrentHealth().ToString();
+        damageText.text = pStats.GetDamage().ToString();
+        atkSpdText.text = pStats.GetAttackTime().ToString();
+        rangeText.text = pStats.GetRange().ToString();
+        manaText.text = pStats.GetMana().ToString();
     }
 }
