@@ -281,7 +281,7 @@ public class PawnStats : MonoBehaviour
             //get how many of this type
             int amount = 0;
             List<PawnSO> countedPawns = new List<PawnSO>();
-            foreach (Pawn p in GridUtil.Instance.GetAllPawns(true))
+            foreach (Pawn p in GridUtil.Instance.GetAllPawns(!parentPawn.IsEnemy()))
             {
                 if (countedPawns.Contains(p.GetPawnSO()))
                 {
