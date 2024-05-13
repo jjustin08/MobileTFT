@@ -20,7 +20,7 @@ public class TypeInfoUI : MonoBehaviour
 
     private void Awake()
     {
-        toggleGameObject.SetActive(false);
+        //toggleGameObject.SetActive(false);
     }
 
 
