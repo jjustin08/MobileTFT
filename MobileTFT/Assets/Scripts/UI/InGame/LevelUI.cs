@@ -17,9 +17,9 @@ public class LevelUI : MonoBehaviour
         UIUpdate(1);
     }
 
-    public void SetLevelCostUI(int cost)
+    public void SetLevelCostUI(string cost)
     {
-        levelCostText.text = cost.ToString();   
+        levelCostText.text = cost;   
     }
 
     public void UIUpdate(int newLevel)

@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
     {
         cashUI.CashUIUpdate(currentCash);
         healthUI.SetHealthText(health);
-        levelUI.SetLevelCostUI(costToLevelUp);
+        levelUI.SetLevelCostUI(costToLevelUp.ToString());
     }
 
     // Health
@@ -85,12 +85,19 @@ public class PlayerStats : MonoBehaviour
         if(costToLevelUp > 0)
         {
             costToLevelUp -= num;
-            levelUI.SetLevelCostUI(costToLevelUp);
+            levelUI.SetLevelCostUI(costToLevelUp.ToString());
+            if (level == 6) { levelUI.SetLevelCostUI("X"); }
         }
     }
 
     public void LevelUpButtonPress()
     {
+        if (level >= 6)
+        {
+            return;
+        }
+            
+
         if(costToLevelUp <= currentCash)
         {
             RemoveCash(costToLevelUp);
@@ -99,7 +106,8 @@ public class PlayerStats : MonoBehaviour
 
             costToLevelUp = 3 + ((level-1) * 3);
             levelUI.UIUpdate(level);
-            levelUI.SetLevelCostUI(costToLevelUp);
+            levelUI.SetLevelCostUI(costToLevelUp.ToString());
+            if(level == 6) { levelUI.SetLevelCostUI("X"); }
         }
         else
         {
