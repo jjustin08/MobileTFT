@@ -14,12 +14,31 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject tutorialScreen;
     [SerializeField] private Button tutorialBackButton;
 
+    [SerializeField] private GameObject basicsScreen;
+    [SerializeField] private Button basicsButton;
+    [SerializeField] private GameObject typesScreen;
+    [SerializeField] private Button typesButton;
+    [SerializeField] private GameObject pawnsScreen;
+    [SerializeField] private Button pawnsButton;
+
+    [SerializeField] private Button pawnsBackButton;
+    [SerializeField] private Button typesBackButton;
+    [SerializeField] private Button basicsBackButton;
+
     private void Start()
     {
         singleplayerButton.onClick.AddListener(singleplayerButtonCLick);
         multiplayerButton.onClick.AddListener(multplayerplayerButtonCLick);
         tutorialButton.onClick.AddListener(TutorialButtonCLick);
-        tutorialBackButton.onClick.AddListener(TutorialBackButtonCLick);
+        tutorialBackButton.onClick.AddListener(BackButtonToMainMenuClick);
+
+        basicsButton.onClick.AddListener(BasicsButtonClick);
+        typesButton.onClick.AddListener(TypesButtonClick);
+        pawnsButton.onClick.AddListener(PawnsButtonClick);
+
+        pawnsBackButton.onClick.AddListener(BackButtonToTutorialClick);
+        typesBackButton.onClick.AddListener(BackButtonToTutorialClick);
+        basicsBackButton.onClick.AddListener(BackButtonToTutorialClick);
     }
 
     private void singleplayerButtonCLick()
@@ -38,9 +57,33 @@ public class MainMenu : MonoBehaviour
         tutorialScreen.SetActive(true);
     }
     
-    private void TutorialBackButtonCLick()
+    private void BackButtonToMainMenuClick()
     {
         items.SetActive(true);
         tutorialScreen.SetActive(false);
+    }
+    
+    private void BackButtonToTutorialClick()
+    {
+        tutorialScreen.SetActive(true);
+        basicsScreen.SetActive(false);
+        typesScreen.SetActive(false);
+        pawnsScreen.SetActive(false);
+    }
+
+    private void BasicsButtonClick()
+    {
+        tutorialScreen.SetActive(false);
+        basicsScreen.SetActive(true);
+    }
+    private void TypesButtonClick()
+    {
+        tutorialScreen.SetActive(false);
+        typesScreen.SetActive(true);
+    }
+    private void PawnsButtonClick()
+    {
+        tutorialScreen.SetActive(false);
+        pawnsScreen.SetActive(true);
     }
 }
