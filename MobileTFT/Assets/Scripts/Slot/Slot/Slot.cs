@@ -33,9 +33,9 @@ public class Slot : MonoBehaviour
         if(oldSlot != null && GridUtil.Instance.GetAllSlots().Contains(oldSlot) && GridUtil.Instance.GetAllSlots().Contains(this) && GridUtil.Instance.GetInCombat()) 
         {
             LerpingMovement lerpingMovement = p.gameObject.AddComponent<LerpingMovement>();
-            lerpingMovement.oldSlot = oldSlot.transform;
-            lerpingMovement.newSlot = newSlot;
-            lerpingMovement.pawn = p.transform;
+            lerpingMovement.oldPosition = oldSlot.transform;
+            lerpingMovement.newPosition = newSlot;
+            lerpingMovement.obj = p.transform;
         }
         else
         {

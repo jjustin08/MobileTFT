@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
-public class DeathMode : GameMode
+public class NormalMode : GameMode
 {
     [SerializeField] private Combat combat;
     [SerializeField] private CardManager cardManager;
@@ -16,32 +16,58 @@ public class DeathMode : GameMode
     private float timer = 0;
     private float timerMax = 0;
 
-    private int step = 0;
-    private int stepMax = 4;
+    //private int step = 0;
+    //private int stepMax = 4;
 
     private int round = 0;
     private int realRound = 0;
 
     private void Start()
     {
-        // TODO: server
-        StartGame();
+        NetworkClientProcessing.SetGameMode(this);
+
+        string msg = ClientToServerSignifiers.GameLoaded.ToString();
+        NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
     }
+
+    override public void RecieveServerMsg(string msg)
+    {
+        string[] csv = msg.Split(',');
+        int signifier = int.Parse(csv[1]);
+
+        switch (signifier)
+        {
+            case ServerToClientGameModeSignifiers.StartGame:
+                StartGame();
+                break; 
+            case ServerToClientGameModeSignifiers.StartTurn:
+                StartTurn();
+                break; 
+            case ServerToClientGameModeSignifiers.EndTurn:
+                EndTurn();
+                break; 
+            case ServerToClientGameModeSignifiers.StartCombat:
+                StartCombat();
+                break;
+            case ServerToClientGameModeSignifiers.EndCombat:
+                EndCombat();
+                break;
+            case ServerToClientGameModeSignifiers.EndGame:
+                EndGame();
+                break;
+            default:
+                Debug.Log("Invalid signifier");
+                break;
+        }
+    }
+
 
     private void Update()
     {
-        // debug input to skip planning step
-        if (Input.GetKeyDown(KeyCode.W) && step == Step.TurnStart)
-        {
-            timer = timerMax;
-        }
-
-
         if (isGameRunning)
         {
             UpdateGame();
         }
-
     }
 
     protected override void StartGame()
@@ -52,52 +78,15 @@ public class DeathMode : GameMode
 
     protected override void UpdateGame()
     {
-        if(step == Step.CombatStart)
-        {
-            if (combat.IsCombatOver())
-            {
-                timer = timerMax;
-            }
-        }
-        
-
         timer += Time.deltaTime;
-        UI.UpdateTimer(timer, timerMax);
 
-        if (timer > timerMax)
-        {
-            timer = 0;
-            step++;
-            if (step > stepMax || step == 0)
-            {
-                step = Step.TurnStart;
-            }
-
-            switch (step)
-            {
-                case Step.TurnStart:
-                    StartTurn();
-                    timerMax = 20;
-                    break;
-                case Step.TurnEnd:
-                    EndTurn();
-                    timerMax = 1.0f;
-                    break;
-                case Step.CombatStart:
-                    StartCombat();
-                    timerMax = 20;
-                    break;
-                case Step.CombatEnd:
-                    EndCombat();
-                    timerMax = 2.0f;
-                    break;
-            }
-        }
+        UI.UpdateTimer(timer, timerMax);  
     }
 
     protected override void StartTurn()
     {
-        Player.Instance.GetPlayerStats().SetCash(0);
+        timer = 0;
+        timerMax = 20;
         cardManager.gameObject.SetActive(true);
         switch (round)
         {
@@ -146,9 +135,9 @@ public class DeathMode : GameMode
 
         mapManager.ChangeMap(0);
         int cashAmount = 1 + realRound;
-        if(cashAmount > 10) { cashAmount = 10; }
+        if (cashAmount > 10) { cashAmount = 10; }
 
-        Player.Instance.GetPlayerStats().GainCash(cashAmount);
+        Player.Instance.GetPlayerStats().SetCash(cashAmount);
         Player.Instance.GetPlayerStats().ReduceCostToLevelUp(1);
         cardManager.ReRollPawns();
         switch (round)
@@ -182,7 +171,7 @@ public class DeathMode : GameMode
                 break;
             case 8:
                 UI.UpdateText("Death Round");
-                
+
                 break;
             case 9:
                 UI.UpdateText("Death Round");
@@ -192,6 +181,8 @@ public class DeathMode : GameMode
 
     protected override void EndTurn()
     {
+        timer = 0;
+        timerMax = 1.0f;
         UI.UpdateText("");
 
 
@@ -233,6 +224,8 @@ public class DeathMode : GameMode
 
     protected override void StartCombat()
     {
+        timer = 0;
+        timerMax = 20;
         //TODO do something about combat bools
         combat.StartCombat();
         GridUtil.Instance.SetInCombat(true);
@@ -241,6 +234,8 @@ public class DeathMode : GameMode
 
     protected override void EndCombat()
     {
+        timer = 0;
+        timerMax = 2.0f;
         switch (combat.GetCombatEndState())
         {
             //win
@@ -262,13 +257,13 @@ public class DeathMode : GameMode
         }
         GridUtil.Instance.SetInCombat(false);
 
-       
+
     }
 
     protected override void EndGame()
     {
         isGameRunning = false;
-        
+
         if (Player.Instance.GetPlayerStats().GetPlayerHealth() > 0)
         {
             //win
@@ -280,8 +275,24 @@ public class DeathMode : GameMode
             UI.UpdateText("You Lost the Game");
         }
     }
-
 }
 
 
+#region Protocol Signifiers
+static public class ClientToServerGameModeSignifiers
+{
+    public const int JoinLobby = 1;
+}
 
+static public class ServerToClientGameModeSignifiers
+{
+    public const int StartGame = 1;
+    public const int StartTurn = 2;
+    public const int EndTurn = 3;
+    public const int StartCombat = 4;
+    public const int EndCombat = 5;
+    public const int EndGame = 6;
+
+}
+
+#endregion

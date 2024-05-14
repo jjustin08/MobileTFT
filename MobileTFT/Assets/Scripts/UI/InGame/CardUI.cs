@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CardVisual : MonoBehaviour
+public class CardUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI pawnName;
     [SerializeField] private TextMeshProUGUI cost; // will change this to not text

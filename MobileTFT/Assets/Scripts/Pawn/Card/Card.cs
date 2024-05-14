@@ -5,12 +5,12 @@ using UnityEngine;
 public class Card : MonoBehaviour
 {
     private PawnSO pawnSO;
-    private CardVisual cardVisual;
+    private CardUI cardVisual;
 
 
     private void Awake()
     {
-        cardVisual = GetComponent<CardVisual>();
+        cardVisual = GetComponent<CardUI>();
     }
     public void SetPawnSO(PawnSO SO)
     {
