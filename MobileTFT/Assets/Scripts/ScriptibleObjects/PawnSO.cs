@@ -11,6 +11,7 @@ public class PawnSO : ScriptableObject
     public Card cardVisual;
 
     [Header("Common")]
+    public string pawnName;
     public int cost;
     public PawnAbilitySO ability;
     public List<TypeSO> types;
