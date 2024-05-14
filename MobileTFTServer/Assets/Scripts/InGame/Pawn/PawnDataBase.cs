@@ -7,17 +7,17 @@ public class PawnDataBase
 {
     public List<PawnData> GetCharactersByCost(int cost)
     {
-        return pawns.Where(character => character.cost == cost).ToList();
+        return pawns.Values.Where(pawn => pawn.cost == cost).ToList();
     }
-
-
-    public static List<PawnData> pawns = new List<PawnData>()
+    public static Dictionary<PawnEnum, PawnData> pawns { get; } = new Dictionary<PawnEnum, PawnData>
     {
-        new PawnData(
-            pawnName: "Character1",
-            cost: 10,
-            ability: new AbilityData(),
-            types: new List<TypeData>(),
+        {
+            PawnEnum.Pawn1,
+            new PawnData(
+            pawnName: "Pawn1",
+            cost: 1,
+            ability: AbilityDataBase.Abilities[AbilityEnum.Ability1],
+            types: new List<TypeData>() {TypeDataBase.Types[TypeEnum.Type1]},
             health: 100,
             mana: 50,
             damage: 20,
@@ -32,14 +32,15 @@ public class PawnDataBase
             mana3: 100,
             damage3: 40,
             attackTime3: 1.0f,
-            range3: 10
-        ),
-        // Add more predefined characters here
-        new PawnData(
-            pawnName: "Character2",
-            cost: 15,
-            ability: new AbilityData(),
-            types: new List<TypeData>() {},
+            range3: 10) 
+        },
+        { 
+            PawnEnum.Pawn2, 
+            new PawnData(
+            pawnName: "Pawn2",
+            cost: 2,
+            ability: AbilityDataBase.Abilities[AbilityEnum.Ability2],
+            types: new List<TypeData>() {TypeDataBase.Types[TypeEnum.Type1]},
             health: 120,
             mana: 60,
             damage: 25,
@@ -54,8 +55,13 @@ public class PawnDataBase
             mana3: 120,
             damage3: 45,
             attackTime3: 0.8f,
-            range3: 12
-        )
-        // Add more predefined characters here
+            range3: 12) 
+        }
     };
+}
+
+public enum PawnEnum
+{
+    Pawn1,
+    Pawn2,
 }

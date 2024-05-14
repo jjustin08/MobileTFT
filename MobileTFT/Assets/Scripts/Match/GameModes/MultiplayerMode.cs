@@ -16,8 +16,8 @@ public class MultiplayerMode : GameMode
     private float timer = 0;
     private float timerMax = 0;
 
-    private int step = 0;
-    private int stepMax = 4;
+    //private int step = 0;
+    //private int stepMax = 4;
 
     private int round = 0;
     private int realRound = 0;

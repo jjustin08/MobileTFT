@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class AbilityData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public string abilityName;
 
-    // Update is called once per frame
-    void Update()
+    public AbilityData(string abilityName)
     {
-        
+        this.abilityName = abilityName;
     }
 }

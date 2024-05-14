@@ -5,6 +5,7 @@ using UnityEngine;
 public class PawnData
 {
     // Common properties
+    public PawnEnum pawnEnum;
     public string pawnName;
     public int cost;
     public AbilityData ability;

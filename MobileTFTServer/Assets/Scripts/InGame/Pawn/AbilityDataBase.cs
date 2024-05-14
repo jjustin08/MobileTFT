@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityDataBase : MonoBehaviour
+public class AbilityDataBase
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Dictionary<AbilityEnum, AbilityData> Abilities { get; } = new Dictionary<AbilityEnum, AbilityData>
     {
-        
-    }
+        { AbilityEnum.Ability1, new AbilityData("Ability1") },
+        { AbilityEnum.Ability2, new AbilityData("Ability2") }
+    };
+}
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public enum AbilityEnum
+{
+    Ability1,
+    Ability2,
 }
