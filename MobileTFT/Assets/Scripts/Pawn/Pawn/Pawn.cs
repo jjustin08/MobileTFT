@@ -10,6 +10,7 @@ using UnityEngine;
 [RequireComponent(typeof(PawnVisual))]
 public class Pawn : MonoBehaviour
 {
+    [SerializeField] private PawnVisual pVisual;
     [SerializeField] private PawnSO pawnSO;
     [SerializeField] private bool isEnemy;
     private PawnStats stats;
@@ -17,7 +18,7 @@ public class Pawn : MonoBehaviour
     private PawnCombat combat;
     private PawnInteraction interaction;
     private PawnAI aI;
-    private PawnVisual pVisual;
+   
 
 
     private void Update()
@@ -31,7 +32,6 @@ public class Pawn : MonoBehaviour
     public void SetPawnSO(PawnSO SO)
     {
         pawnSO = SO;
-        pVisual.SetVisual(Instantiate(SO.placedVisual, transform));
     }
 
     public void SelfDestruct()

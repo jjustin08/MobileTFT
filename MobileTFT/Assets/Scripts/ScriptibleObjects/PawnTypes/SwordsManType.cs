@@ -9,19 +9,19 @@ public class SwordsManType : TypeSO
     public float AttackPerc4 = 1.6f;
     public float AttackPerc6 = 2.0f;
 
-    public override void AffectStats(Pawn pawn, int amount)
-    {
-        if (amount >= 6)
-        {
-            pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() * AttackPerc6);
-        }
-        else if (amount >= 4)
-        {
-            pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() * AttackPerc4);
-        }
-        else if (amount >= 2)
-        {
-            pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() * AttackPerc2);
-        }
-    }
+    //public override void AffectStats(Pawn pawn, int amount)
+    //{
+    //    if (amount >= 6)
+    //    {
+    //        pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() * AttackPerc6);
+    //    }
+    //    else if (amount >= 4)
+    //    {
+    //        pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() * AttackPerc4);
+    //    }
+    //    else if (amount >= 2)
+    //    {
+    //        pawn.GetStats().SetDamage(pawn.GetStats().GetDamage() * AttackPerc2);
+    //    }
+    //}
 }

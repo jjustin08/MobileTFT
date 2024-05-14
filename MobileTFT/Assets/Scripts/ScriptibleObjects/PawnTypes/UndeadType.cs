@@ -11,17 +11,17 @@ public class UndeadType : TypeSO
     public int deathBonusPerc2 = 1;
     public int deathBonusPerc4 = 2;
 
-    public override void AffectStats(Pawn pawn, int amount)
-    {
-        int deathCount = pawn.GetStats().GetDeathCount();
+    //public override void AffectStats(Pawn pawn, int amount)
+    //{
+    //    int deathCount = pawn.GetStats().GetDeathCount();
 
-        if (amount >= 4)
-        {
-            pawn.GetStats().SetKillCount(pawn.GetStats().GetKillCount() + (deathCount * deathBonusPerc4));
-        }
-        else if (amount >= 2)
-        {
-            pawn.GetStats().SetKillCount(pawn.GetStats().GetKillCount() + (deathCount * deathBonusPerc2));
-        }
-    }
+    //    if (amount >= 4)
+    //    {
+    //        pawn.GetStats().SetKillCount(pawn.GetStats().GetKillCount() + (deathCount * deathBonusPerc4));
+    //    }
+    //    else if (amount >= 2)
+    //    {
+    //        pawn.GetStats().SetKillCount(pawn.GetStats().GetKillCount() + (deathCount * deathBonusPerc2));
+    //    }
+    //}
 }

@@ -10,16 +10,16 @@ public class VikingType : TypeSO
 
     public int AttackPerc3 = 20;
     public int AttackPerc5 = 50;
-    public override void AffectStats(Pawn pawn, int amount)
-    {
-        if (amount >= 5)
-        {
-            pawn.GetStats().SetKillCountCashBonus(AttackPerc5);
-        }
-        else if (amount >= 3)
-        {
-            pawn.GetStats().SetKillCountCashBonus(AttackPerc3);
-        }
+    //public override void AffectStats(Pawn pawn, int amount)
+    //{
+    //    if (amount >= 5)
+    //    {
+    //        pawn.GetStats().SetKillCountCashBonus(AttackPerc5);
+    //    }
+    //    else if (amount >= 3)
+    //    {
+    //        pawn.GetStats().SetKillCountCashBonus(AttackPerc3);
+    //    }
 
-    }
+    //}
 }

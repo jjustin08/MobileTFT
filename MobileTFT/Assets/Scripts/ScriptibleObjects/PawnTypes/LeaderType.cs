@@ -10,31 +10,31 @@ public class LeaderType : TypeSO
     public float bonusStatPerc2 = 1.4f;
     public float bonusStatPerc4 = 1.6f;
 
-    public override void AffectStats(Pawn pawn, int amount)
-    {
-        if (amount >= 4)
-        {
-            foreach(Pawn p in GridUtil.Instance.GetAllPawns(true))
-            {
-                p.GetStats().SetCurrentHealth(p.GetStats().GetCurrentHealth() * bonusStatPerc4);
-            }
+    //public override void AffectStats(Pawn pawn, int amount)
+    //{
+    //    if (amount >= 4)
+    //    {
+    //        foreach(Pawn p in GridUtil.Instance.GetAllPawns(true))
+    //        {
+    //            p.GetStats().SetCurrentHealth(p.GetStats().GetCurrentHealth() * bonusStatPerc4);
+    //        }
             
-        }
-        else if (amount >= 2)
-        {
-            foreach (Pawn p in GridUtil.Instance.GetAllPawns(true))
-            {
-                p.GetStats().SetCurrentHealth(p.GetStats().GetCurrentHealth() * bonusStatPerc2);
-            }
+    //    }
+    //    else if (amount >= 2)
+    //    {
+    //        foreach (Pawn p in GridUtil.Instance.GetAllPawns(true))
+    //        {
+    //            p.GetStats().SetCurrentHealth(p.GetStats().GetCurrentHealth() * bonusStatPerc2);
+    //        }
 
-        }
-        else if(amount >= 1)
-        {
-            foreach (Pawn p in GridUtil.Instance.GetAllPawns(true))
-            {
-                p.GetStats().SetCurrentHealth(p.GetStats().GetCurrentHealth() * bonusStatPerc1);
-            }
+    //    }
+    //    else if(amount >= 1)
+    //    {
+    //        foreach (Pawn p in GridUtil.Instance.GetAllPawns(true))
+    //        {
+    //            p.GetStats().SetCurrentHealth(p.GetStats().GetCurrentHealth() * bonusStatPerc1);
+    //        }
 
-        }
-    }
+    //    }
+    //}
 }
