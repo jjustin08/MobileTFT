@@ -41,19 +41,19 @@ public class MultiplayerMode : GameMode
                 StartGame();
                 break; 
             case ServerToClientGameModeSignifiers.StartTurn:
-
+                StartTurn();
                 break; 
             case ServerToClientGameModeSignifiers.EndTurn:
-
+                EndTurn();
                 break; 
             case ServerToClientGameModeSignifiers.StartCombat:
-
+                StartCombat();
                 break;
             case ServerToClientGameModeSignifiers.EndCombat:
-
+                EndCombat();
                 break;
             case ServerToClientGameModeSignifiers.EndGame:
-
+                EndGame();
                 break;
             default:
                 Debug.Log("Invalid signifier");
@@ -64,18 +64,10 @@ public class MultiplayerMode : GameMode
 
     private void Update()
     {
-        // debug input to skip planning step
-        if (Input.GetKeyDown(KeyCode.W) && step == Step.TurnStart)
-        {
-            timer = timerMax;
-        }
-
-
         if (isGameRunning)
         {
             UpdateGame();
         }
-
     }
 
     protected override void StartGame()
@@ -86,52 +78,15 @@ public class MultiplayerMode : GameMode
 
     protected override void UpdateGame()
     {
-        // SERVER
-        if (step == Step.CombatStart)
-        {
-            if (combat.IsCombatOver())
-            {
-                timer = timerMax;
-            }
-        }
-
-
         timer += Time.deltaTime;
-        UI.UpdateTimer(timer, timerMax);
 
-        if (timer > timerMax)
-        {
-            timer = 0;
-            step++;
-            if (step > stepMax || step == 0)
-            {
-                step = Step.TurnStart;
-            }
-
-            switch (step)
-            {
-                case Step.TurnStart:
-                    StartTurn();
-                    timerMax = 20;
-                    break;
-                case Step.TurnEnd:
-                    EndTurn();
-                    timerMax = 1.0f;
-                    break;
-                case Step.CombatStart:
-                    StartCombat();
-                    timerMax = 20;
-                    break;
-                case Step.CombatEnd:
-                    EndCombat();
-                    timerMax = 2.0f;
-                    break;
-            }
-        }
+        UI.UpdateTimer(timer, timerMax);  
     }
 
     protected override void StartTurn()
     {
+        timer = 0;
+        timerMax = 20;
         cardManager.gameObject.SetActive(true);
         switch (round)
         {
@@ -226,6 +181,8 @@ public class MultiplayerMode : GameMode
 
     protected override void EndTurn()
     {
+        timer = 0;
+        timerMax = 1.0f;
         UI.UpdateText("");
 
 
@@ -267,6 +224,8 @@ public class MultiplayerMode : GameMode
 
     protected override void StartCombat()
     {
+        timer = 0;
+        timerMax = 20;
         //TODO do something about combat bools
         combat.StartCombat();
         GridUtil.Instance.SetInCombat(true);
@@ -275,6 +234,8 @@ public class MultiplayerMode : GameMode
 
     protected override void EndCombat()
     {
+        timer = 0;
+        timerMax = 2.0f;
         switch (combat.GetCombatEndState())
         {
             //win

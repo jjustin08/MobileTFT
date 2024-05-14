@@ -9687,7 +9687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lobby: {fileID: 540191111}
   game: {fileID: 229246053}
-  gameMode: {fileID: 0}
+  gameMode: {fileID: 425398835}
 --- !u!1 &1519688973
 GameObject:
   m_ObjectHideFlags: 0

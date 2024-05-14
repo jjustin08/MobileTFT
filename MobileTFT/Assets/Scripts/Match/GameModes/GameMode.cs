@@ -19,3 +19,11 @@ public class GameMode : MonoBehaviour
 
     virtual protected void EndGame(){}
 }
+
+static public class Step
+{
+    public const int TurnStart = 1;
+    public const int TurnEnd = 2;
+    public const int CombatStart = 3;
+    public const int CombatEnd = 4;
+}
