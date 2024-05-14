@@ -27,6 +27,8 @@ public class CardManager : MonoBehaviour
     }
     public void ReRollPawns()
     {
+
+
         int level = Player.Instance.GetPlayerStats().GetPlayerLevel();
 
 

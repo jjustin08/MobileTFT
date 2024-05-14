@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Type", menuName = "Types/GunsManType")]
+[CreateAssetMenu(fileName = "Type", menuName = "Pawn/PawnTypes/GunsManType")]
 public class GunsManType : TypeSO
 {
     public float AttackTimePerc2 = 0.8f;

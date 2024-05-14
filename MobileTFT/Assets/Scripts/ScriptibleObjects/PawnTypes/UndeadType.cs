@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Type", menuName = "Types/UndeadType")]
+[CreateAssetMenu(fileName = "Type", menuName = "Pawn/PawnTypes/UndeadType")]
 public class UndeadType : TypeSO
 {
     // special ability does not die\

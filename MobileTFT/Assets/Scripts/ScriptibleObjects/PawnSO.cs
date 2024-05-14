@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Pawn")]
+[CreateAssetMenu(fileName = "PawnSO", menuName = "Pawn/PawnSO")]
 public class PawnSO : ScriptableObject
 {
     [Header("Prefabs")]

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Type", menuName = "Types/LeaderType")]
+[CreateAssetMenu(fileName = "Type", menuName = "Pawn/PawnTypes/LeaderType")]
 public class LeaderType : TypeSO
 {
     // give stats to everyone or something

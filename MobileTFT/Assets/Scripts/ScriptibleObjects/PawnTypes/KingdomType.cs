@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Type", menuName = "Types/KingdomType")]
+[CreateAssetMenu(fileName = "Type", menuName = "Pawn/PawnTypes/KingdomType")]
 public class KingdomType : TypeSO
 {
     //more gold the more stats

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Type", menuName = "Types/MagicType")]
+[CreateAssetMenu(fileName = "Type", menuName = "Pawn/PawnTypes/MagicType")]
 public class MagicType : TypeSO
 {
     public float AttackPerc2 = 1.5f;

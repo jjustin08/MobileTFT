@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Type", menuName = "Types/TankType")]
+[CreateAssetMenu(fileName = "Type", menuName = "Pawn/PawnTypes/TankType")]
 public class TankType : TypeSO
 {
     public float HealthPerc2 = 1.3f;

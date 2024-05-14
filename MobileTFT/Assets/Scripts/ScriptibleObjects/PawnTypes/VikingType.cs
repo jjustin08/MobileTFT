@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Type", menuName = "Types/VikingType")]
+[CreateAssetMenu(fileName = "Type", menuName = "Pawn/PawnTypes/VikingType")]
 public class VikingType : TypeSO
 {
     // gain gold per kill
