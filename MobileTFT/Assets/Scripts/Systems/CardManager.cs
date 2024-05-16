@@ -16,19 +16,33 @@ public class CardManager : MonoBehaviour
 
     public void RecieveServerMessage(string msg)
     {
+        string[] csv = msg.Split(',');
+        int signifier = int.Parse(csv[1]);
 
-        //int.Parse(csv[1]) != 0, int.Parse(csv[2]), csv[3]
+        switch (signifier) 
+        {
+            case CardManagerSignifyers.ReRoll:
+                RecieveNewCards(int.Parse(csv[2]) != 0, int.Parse(csv[3]), int.Parse(csv[4]), int.Parse(csv[5]), int.Parse(csv[6]), int.Parse(csv[7]));
+                break;
+            case CardManagerSignifyers.BuyPawn:
+                RecieveBuyPawn(int.Parse(csv[2]) != 0, int.Parse(csv[3]), csv[4]);
+                break;
+        }
     }
 
     public void RequestCardReRoll()
     {
         //send message to server to reroll cards
-        string msg = "";
+        string msg = ClientToServerSignifiers.CardManager + "," + CardManagerSignifyers.ReRoll;
         NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
     }
 
-    private void RecieveNewCards(int card1, int card2, int card3, int card4, int card5)
+    private void RecieveNewCards(bool allowed, int card1, int card2, int card3, int card4, int card5)
     {
+        if(!allowed) 
+        {
+            return;
+        }
         shopPawnsSlots[0].PlaceCard(PawnDataBase.pawns[card1]);
         shopPawnsSlots[1].PlaceCard(PawnDataBase.pawns[card2]);
         shopPawnsSlots[2].PlaceCard(PawnDataBase.pawns[card3]);
@@ -42,8 +56,13 @@ public class CardManager : MonoBehaviour
         {
             if (Player.Instance.GetPlayerStats().GetCash() >= cardSlot.GetCard().GetPawnData().cost)
             {
-                //send message to server
                 int slotIndex = shopPawnsSlots.IndexOf(cardSlot);
+                //send message to server
+                string msg = ClientToServerSignifiers.CardManager + "," + CardManagerSignifyers.BuyPawn + ","+
+                    slotIndex;
+                NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
+
+                
             }
             else
             {

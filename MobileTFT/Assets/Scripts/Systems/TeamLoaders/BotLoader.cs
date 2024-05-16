@@ -19,7 +19,7 @@ public class BotLoader : MonoBehaviour
     public void LoadBotTeam(int index)
     {
         ClearEnemyPawns();
-        teams[index].LoadTeam();
+        //teams[index].LoadTeam();
     }
 
 }

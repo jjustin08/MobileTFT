@@ -9,7 +9,7 @@ public class Combat : MonoBehaviour
     private List<Pawn> pawns = new List<Pawn>();
 
     //temp
-    [SerializeField] private TypeSO undeadType;
+    //[SerializeField] private TypeSO undeadType;
     public bool IsCombatOver()
     {
         int aliveFriendly = 0;
@@ -107,57 +107,57 @@ public class Combat : MonoBehaviour
         pawnManager.UpdatePawns();
     }
 
-    public void EndCombatDeath()
-    {
-        foreach (Pawn p in pawns)
-        {
+    //public void EndCombatDeath()
+    //{
+    //    foreach (Pawn p in pawns)
+    //    {
           
-            //clear enemies
-            if (p.IsEnemy())
-            {
-                p.SelfDestruct();
-                continue;
-            }
+    //        //clear enemies
+    //        if (p.IsEnemy())
+    //        {
+    //            p.SelfDestruct();
+    //            continue;
+    //        }
 
-            //reset player's pawns
-            if (p.gameObject.activeSelf)
-            {
-                p.ToggleCombat(false);
-            }
-            else
-            {
-                //hard coding this
-                if (p.GetPawnSO().types.Contains(undeadType))
-                {
-                    p.gameObject.SetActive(true);
-                    p.ToggleCombat(false);
-                    p.GetStats().SetDeathCount(p.GetStats().GetDeathCount() + 1);
+    //        //reset player's pawns
+    //        if (p.gameObject.activeSelf)
+    //        {
+    //            p.ToggleCombat(false);
+    //        }
+    //        else
+    //        {
+    //            //hard coding this
+    //            if (p.GetPawnSO().types.Contains(undeadType))
+    //            {
+    //                p.gameObject.SetActive(true);
+    //                p.ToggleCombat(false);
+    //                p.GetStats().SetDeathCount(p.GetStats().GetDeathCount() + 1);
  
-                }
-                else
-                {
-                    cardManager.AddPawnToDeck(p.GetPawnSO(), p.GetStats().GetStarCount());
-                    int pawnCost = 0;
-                    pawnCost = p.GetPawnSO().cost;
-                    if (p.GetStats().GetStarCount() == 2)
-                    {
-                        pawnCost = p.GetPawnSO().cost * 3;
-                    }
-                    else if (p.GetStats().GetStarCount() == 3)
-                    {
-                        pawnCost = p.GetPawnSO().cost * 9;
-                    }
-                    Player.Instance.GetPlayerStats().GainCash(pawnCost);
-                    p.SelfDestruct();
-                }
+    //            }
+    //            else
+    //            {
+    //                cardManager.AddPawnToDeck(p.GetPawnSO(), p.GetStats().GetStarCount());
+    //                int pawnCost = 0;
+    //                pawnCost = p.GetPawnSO().cost;
+    //                if (p.GetStats().GetStarCount() == 2)
+    //                {
+    //                    pawnCost = p.GetPawnSO().cost * 3;
+    //                }
+    //                else if (p.GetStats().GetStarCount() == 3)
+    //                {
+    //                    pawnCost = p.GetPawnSO().cost * 9;
+    //                }
+    //                Player.Instance.GetPlayerStats().GainCash(pawnCost);
+    //                p.SelfDestruct();
+    //            }
                
-            }
+    //        }
 
-        }
+    //    }
 
 
-        pawns.Clear();
-        pawnManager.ToggleCombat(false);
-        pawnManager.UpdatePawns();
-    }
+    //    pawns.Clear();
+    //    pawnManager.ToggleCombat(false);
+    //    pawnManager.UpdatePawns();
+    //}
 }

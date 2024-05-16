@@ -22,23 +22,23 @@ public class SellInteraction : MonoBehaviour
 
     public void SellPawn()
     {
-        Pawn p = Player.Instance.GetHoldingPawn();
-        p.GetMovement().GetSlot().RemovePawn();
+        //Pawn p = Player.Instance.GetHoldingPawn();
+        //p.GetMovement().GetSlot().RemovePawn();
 
 
-        CardManager.AddPawnToDeck(p.GetPawnSO(), p.GetStats().GetStarCount());
+        //CardManager.AddPawnToDeck(p.GetPawnSO(), p.GetStats().GetStarCount());
 
-        int pawnCost = 0;
-        pawnCost = p.GetPawnSO().cost;
-        if (p.GetStats().GetStarCount() == 2) 
-        {
-            pawnCost = p.GetPawnSO().cost * 3;
-        }
-        else if(p.GetStats().GetStarCount() == 3)
-        {
-            pawnCost = p.GetPawnSO().cost * 9;
-        }
-        Player.Instance.GetPlayerStats().GainCash(pawnCost);
-        Destroy(p.gameObject);
+        //int pawnCost = 0;
+        //pawnCost = p.GetPawnSO().cost;
+        //if (p.GetStats().GetStarCount() == 2) 
+        //{
+        //    pawnCost = p.GetPawnSO().cost * 3;
+        //}
+        //else if(p.GetStats().GetStarCount() == 3)
+        //{
+        //    pawnCost = p.GetPawnSO().cost * 9;
+        //}
+        //Player.Instance.GetPlayerStats().GainCash(pawnCost);
+        //Destroy(p.gameObject);
     }
 }

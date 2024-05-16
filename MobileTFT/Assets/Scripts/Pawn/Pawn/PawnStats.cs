@@ -234,68 +234,68 @@ public class PawnStats : MonoBehaviour
     public void CalculateStats(bool affectCurrentHealth)
     {
         //print("stats calculate");
-        PawnSO SO = parentPawn.GetPawnSO();
+        //PawnSO SO = parentPawn.GetPawnSO();
 
-        switch (starCount)
-        { 
-            case 1:
-                health = SO.health;
-                mana = SO.mana;
-                damage = SO.damage;
-                attackTime = SO.attackTime;
-                range = SO.range;
-                break;
-            case 2:
-                health = SO.health2;
-                mana = SO.mana2;
-                damage = SO.damage2;
-                attackTime = SO.attackTime2;
-                range = SO.range2;
-                break;
-            case 3:
-                health = SO.health3;
-                mana = SO.mana3;
-                damage = SO.damage3;
-                attackTime = SO.attackTime3;
-                range = SO.range3;
-                break;
-        }
+        //switch (starCount)
+        //{ 
+        //    case 1:
+        //        health = SO.health;
+        //        mana = SO.mana;
+        //        damage = SO.damage;
+        //        attackTime = SO.attackTime;
+        //        range = SO.range;
+        //        break;
+        //    case 2:
+        //        health = SO.health2;
+        //        mana = SO.mana2;
+        //        damage = SO.damage2;
+        //        attackTime = SO.attackTime2;
+        //        range = SO.range2;
+        //        break;
+        //    case 3:
+        //        health = SO.health3;
+        //        mana = SO.mana3;
+        //        damage = SO.damage3;
+        //        attackTime = SO.attackTime3;
+        //        range = SO.range3;
+        //        break;
+        //}
 
        
 
-        for (int i = 0; i < killCount; i++)
-        {
-            // this will change depending on what type etc
-            damage += 1 * killCountDamageModifier;
-            health += 1 * killCountHealthModifier;
-        }
+        //for (int i = 0; i < killCount; i++)
+        //{
+        //    // this will change depending on what type etc
+        //    damage += 1 * killCountDamageModifier;
+        //    health += 1 * killCountHealthModifier;
+        //}
 
 
-        if (affectCurrentHealth)
-        {
-            currentHealth = health;
-        }
+        //if (affectCurrentHealth)
+        //{
+        //    currentHealth = health;
+        //}
 
-        foreach (TypeSO type in SO.types)
-        {
-            //get how many of this type
-            int amount = 0;
-            List<PawnSO> countedPawns = new List<PawnSO>();
-            foreach (Pawn p in GridUtil.Instance.GetAllPawns(!parentPawn.IsEnemy()))
-            {
-                if (countedPawns.Contains(p.GetPawnSO()))
-                {
-                    continue;
-                }
+        //foreach (TypeSO type in SO.types)
+        //{
+        //    //get how many of this type
+        //    int amount = 0;
+        //    List<PawnSO> countedPawns = new List<PawnSO>();
+        //    foreach (Pawn p in GridUtil.Instance.GetAllPawns(!parentPawn.IsEnemy()))
+        //    {
+        //        if (countedPawns.Contains(p.GetPawnSO()))
+        //        {
+        //            continue;
+        //        }
 
-                countedPawns.Add(p.GetPawnSO());
-                if (p.GetPawnSO().types.Contains(type))
-                {
-                    amount++;
-                }
-            }
+        //        countedPawns.Add(p.GetPawnSO());
+        //        if (p.GetPawnSO().types.Contains(type))
+        //        {
+        //            amount++;
+        //        }
+        //    }
 
-            type.AffectStats(parentPawn, amount);
-        }
+        //    type.AffectStats(parentPawn, amount);
+        //}
     }
 }

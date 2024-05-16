@@ -94,10 +94,10 @@ public class NormalMode : GameMode
                 combat.EndCombat();
                 break;
             case 3:
-                combat.EndCombatDeath();
+                //combat.EndCombatDeath();
                 break;
             case 4:
-                combat.EndCombatDeath();
+                //combat.EndCombatDeath();
                 break;
             case 5:
                 combat.EndCombat();
@@ -107,13 +107,13 @@ public class NormalMode : GameMode
                 combat.EndCombat();
                 break;
             case 7:
-                combat.EndCombatDeath();
+               // combat.EndCombatDeath();
                 break;
             case 8:
-                combat.EndCombatDeath();
+               // combat.EndCombatDeath();
                 break;
             case 9:
-                combat.EndCombatDeath();
+               // combat.EndCombatDeath();
                 round = 0;
                 break;
         }

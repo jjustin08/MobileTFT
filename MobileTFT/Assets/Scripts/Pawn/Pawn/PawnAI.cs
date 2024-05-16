@@ -94,7 +94,7 @@ public class PawnAI : MonoBehaviour
             {
                 //activate ability
                 parentPawn.GetStats().SetCurrentMana(0);
-                parentPawn.GetPawnSO().ability.Ability(parentPawn);
+               // parentPawn.GetPawnSO().ability.Ability(parentPawn);
                 return true;
             }
         }

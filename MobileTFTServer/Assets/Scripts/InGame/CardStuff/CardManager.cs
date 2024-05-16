@@ -1,9 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
+    private void Start()
+    {
+        NetworkServerProcessing.SetCardManager(this);
+    }
+    public void RecieveMessage(string msg, int clientID)
+    {
+        string[] csv = msg.Split(',');
+        int signifier = int.Parse(csv[1]);
+
+        switch (signifier)
+        {
+            case CardManagerSignifyers.ReRoll:
+                RequestReRoll(clientID);
+                //RecieveNewCards(int.Parse(csv[2]), int.Parse(csv[3]), int.Parse(csv[4]), int.Parse(csv[5]), int.Parse(csv[6]));
+                break;
+            case CardManagerSignifyers.BuyPawn:
+                RequestBuyPawn(clientID, int.Parse(csv[2]));
+                //RecieveBuyPawn(int.Parse(csv[2]) != 0, int.Parse(csv[3]), csv[4]);
+                break;
+        }
+
+    }
+
+    private void RequestReRoll(int clientID)
+    {
+        string msg = ServerToClientSignifiers.CardManager + "," + CardManagerSignifyers.ReRoll + "," +
+            1 + "," + 1 + "," + 1 + "," + 1 + "," + 1 + "," + 1;
+        NetworkServerProcessing.SendMessageToClient(msg, clientID, TransportPipeline.ReliableAndInOrder);
+    }
+
+
+    private void RequestBuyPawn(int clientID, int slotIndex)
+    {
+        string msg = ServerToClientSignifiers.CardManager + "," + CardManagerSignifyers.BuyPawn + "," +
+            1 + "," + slotIndex + "," + "allgood";
+        NetworkServerProcessing.SendMessageToClient(msg, clientID, TransportPipeline.ReliableAndInOrder);
+
+    }
+
     //    int level = Player.Instance.GetPlayerStats().GetPlayerLevel();
 
 
@@ -138,4 +178,10 @@ public class CardManager : MonoBehaviour
     //    }
 
     //}
+}
+
+static public class CardManagerSignifyers
+{
+    public const int ReRoll = 1;
+    public const int BuyPawn = 2;
 }

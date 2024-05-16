@@ -30,7 +30,7 @@ public class TypeDataBase
     public static Dictionary<int, TypeData> Types { get; } = new Dictionary<int, TypeData>
     {
         {
-            PawnIndex.Type1,
+            TypeIndex.Type1,
             new TypeData(null,
                 typeName : "Type1",
                 description: "Type1 Description",
@@ -38,7 +38,7 @@ public class TypeDataBase
                 amountDescriptions:new List<string>() {"des"})
         },
         {
-            PawnIndex.Type2,
+            TypeIndex.Type2,
             new TypeData( null,
                 typeName : "Type2",
                 description: "Type2 Description",
@@ -51,7 +51,7 @@ public class TypeDataBase
 }
 
 
-static public class PawnIndex
+static public class TypeIndex
 {
     public const int Type1 = 0;
     public const int Type2 = 1;

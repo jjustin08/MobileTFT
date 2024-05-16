@@ -11,7 +11,7 @@ using UnityEngine;
 public class Pawn : MonoBehaviour
 {
     [SerializeField] private PawnVisual pVisual;
-    [SerializeField] private PawnSO pawnSO;
+   // [SerializeField] private PawnSO pawnSO;
     [SerializeField] private bool isEnemy;
     private PawnStats stats;
     private PawnMovement movement;
@@ -29,10 +29,10 @@ public class Pawn : MonoBehaviour
             GetMovement().GetSlot().PlacePawn(this);
         }
     }
-    public void SetPawnSO(PawnSO SO)
-    {
-        pawnSO = SO;
-    }
+    //public void SetPawnSO(PawnSO SO)
+    //{
+    //    pawnSO = SO;
+    //}
 
     public void SelfDestruct()
     {
@@ -64,7 +64,7 @@ public class Pawn : MonoBehaviour
     public PawnAI GetAI() { return aI; }
     public PawnVisual GetVisual() { return pVisual; }
     public PawnInteraction GetInteraction() { return interaction; }
-    public PawnSO GetPawnSO() { return pawnSO; }
+    //public PawnSO GetPawnSO() { return pawnSO; }
     public bool IsEnemy() { return isEnemy; }
     public void SetEnemy(bool enemy) { isEnemy = enemy; interaction.ToggleInteraction(!enemy); }
 

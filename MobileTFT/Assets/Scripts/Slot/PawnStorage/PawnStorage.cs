@@ -36,7 +36,8 @@ public class PawnStorage : MonoBehaviour
     public bool IsStorageFull()
     {
         bool isFull = true;
-        foreach(Slot s in slots)
+        isFull = false;
+        foreach (Slot s in slots)
         {
             if(!s.HasPawn()) 
             {
@@ -55,12 +56,12 @@ public class PawnStorage : MonoBehaviour
             {
                 GameObject pawnObject = Instantiate(data.placedPawn);
                 Pawn newPawn = pawnObject.GetComponent<Pawn>();
-                newPawn.SetPawnSO(data);
+                //newPawn.SetPawnSO(data);
                 slot.PlacePawn(newPawn);
                 newPawn.GetStats().SetKillCount(killCount);
                 newPawn.GetStats().SetDeathCount(deathCount);
                 newPawn.GetStats().SetStarCount(starCount);
-                CheckForTriple(SO, newPawn.GetStats().GetStarCount());
+                //CheckForTriple(SO, newPawn.GetStats().GetStarCount());
                 return true;
             }
         }
@@ -68,61 +69,61 @@ public class PawnStorage : MonoBehaviour
         return false;
     }
 
-    private void CheckForTriple(PawnSO SO, int starCount)
-    {
-        int counter = 0;
-        List<Pawn> countedPawns = new List<Pawn>();
+    //private void CheckForTriple(PawnSO SO, int starCount)
+    //{
+    //    int counter = 0;
+    //    List<Pawn> countedPawns = new List<Pawn>();
 
-        foreach (Pawn pawn in GridUtil.Instance.GetAllPawns(true))
-        {
-            if (pawn.GetPawnSO() == SO)
-            {
-                if (pawn.GetStats().GetStarCount() == starCount)
-                {
-                    counter++;
-                    countedPawns.Add(pawn);
-                }
-            }
-        }
+    //    foreach (Pawn pawn in GridUtil.Instance.GetAllPawns(true))
+    //    {
+    //        if (pawn.GetPawnSO() == SO)
+    //        {
+    //            if (pawn.GetStats().GetStarCount() == starCount)
+    //            {
+    //                counter++;
+    //                countedPawns.Add(pawn);
+    //            }
+    //        }
+    //    }
 
-        foreach (Slot slot in slots) 
-        { 
-            if(slot.HasPawn()) 
-            { 
-                if(slot.GetPawn().GetPawnSO() == SO)
-                {
-                    if(slot.GetPawn().GetStats().GetStarCount() == starCount)
-                    {
-                        counter++;
-                        countedPawns.Add(slot.GetPawn());
-                    } 
-                }
-            }
-        }
+    //    foreach (Slot slot in slots) 
+    //    { 
+    //        if(slot.HasPawn()) 
+    //        { 
+    //            if(slot.GetPawn().GetPawnSO() == SO)
+    //            {
+    //                if(slot.GetPawn().GetStats().GetStarCount() == starCount)
+    //                {
+    //                    counter++;
+    //                    countedPawns.Add(slot.GetPawn());
+    //                } 
+    //            }
+    //        }
+    //    }
 
         
 
-        if(counter == 3)
-        {
-            int killCount = 0;
-            int deathCount = 0;
-            foreach(Pawn pawn in countedPawns)
-            {
-                killCount += pawn.GetStats().GetKillCount();
-                deathCount += pawn.GetStats().GetDeathCount();
-            }
+    //    if(counter == 3)
+    //    {
+    //        int killCount = 0;
+    //        int deathCount = 0;
+    //        foreach(Pawn pawn in countedPawns)
+    //        {
+    //            killCount += pawn.GetStats().GetKillCount();
+    //            deathCount += pawn.GetStats().GetDeathCount();
+    //        }
 
-            countedPawns[0].GetStats().SetStarCount(starCount + 1);
-            countedPawns[0].GetStats().SetDeathCount(deathCount);
-            countedPawns[0].GetStats().SetKillCount(killCount);
+    //        countedPawns[0].GetStats().SetStarCount(starCount + 1);
+    //        countedPawns[0].GetStats().SetDeathCount(deathCount);
+    //        countedPawns[0].GetStats().SetKillCount(killCount);
             
 
-            countedPawns[1].SelfDestruct();
-            countedPawns[2].SelfDestruct();
+    //        countedPawns[1].SelfDestruct();
+    //        countedPawns[2].SelfDestruct();
 
-            CheckForTriple(SO, starCount + 1);
-        }
+    //        CheckForTriple(SO, starCount + 1);
+    //    }
 
-    }
+    //}
    
 }
