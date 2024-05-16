@@ -102,7 +102,7 @@ public class PawnDataBase
         {
             PawnIndex.Pawn2,
             new PawnData(
-            placedPawn: Resources.Load<GameObject>("PlacedPawns/1"),
+            placedPawn: Resources.Load<GameObject>("PlacedPawns/0"),
             cardVisual: Resources.Load<GameObject>("CardVisual/Pawn1"),
             pawnName: "Pawn2",
             cost: 2,

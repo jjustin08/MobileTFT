@@ -48,25 +48,23 @@ public class PawnStorage : MonoBehaviour
         return isFull;
     }
 
-    public bool FillSlot(PawnData data, int killCount, int deathCount, int starCount)
+    public void FillSlot(PawnData data, int killCount, int deathCount, int starCount)
     {
         foreach (Slot slot in slots) 
-        { 
-            if(!slot.HasPawn())
+        {
+            if (!slot.HasPawn())
             {
                 GameObject pawnObject = Instantiate(data.placedPawn);
                 Pawn newPawn = pawnObject.GetComponent<Pawn>();
-                //newPawn.SetPawnSO(data);
+                newPawn.SetPawnData(data);
                 slot.PlacePawn(newPawn);
                 newPawn.GetStats().SetKillCount(killCount);
                 newPawn.GetStats().SetDeathCount(deathCount);
                 newPawn.GetStats().SetStarCount(starCount);
                 //CheckForTriple(SO, newPawn.GetStats().GetStarCount());
-                return true;
+                continue;
             }
         }
-
-        return false;
     }
 
     //private void CheckForTriple(PawnSO SO, int starCount)

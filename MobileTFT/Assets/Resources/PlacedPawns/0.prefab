@@ -16,17 +16,17 @@ PrefabInstance:
     - target: {fileID: 6073632614680335115, guid: 8e2523ec80f0e71429b95b22c65217ea,
         type: 3}
       propertyPath: m_Name
-      value: Cowboy
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7131459343043647301, guid: 8e2523ec80f0e71429b95b22c65217ea,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -160.21329
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7131459343043647301, guid: 8e2523ec80f0e71429b95b22c65217ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1220.7483
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7131459343043647301, guid: 8e2523ec80f0e71429b95b22c65217ea,
         type: 3}

@@ -11,7 +11,6 @@ public class Slot : MonoBehaviour
 
     public event EventHandler OnPawnChange;
 
-
     private void Awake()
     {
         slotInteraction = GetComponentInChildren<SlotInteraction>();

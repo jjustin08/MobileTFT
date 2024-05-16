@@ -7,8 +7,6 @@ public class CardManager : MonoBehaviour
     [SerializeField] private List<CardSlotUI> shopPawnsSlots;
 
     [SerializeField] private PawnStorage pawnStorage;
-
-
     private void Start()
     {
         NetworkClientProcessing.SetCardManager(this);

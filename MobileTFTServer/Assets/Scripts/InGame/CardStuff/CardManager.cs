@@ -18,11 +18,9 @@ public class CardManager : MonoBehaviour
         {
             case CardManagerSignifyers.ReRoll:
                 RequestReRoll(clientID);
-                //RecieveNewCards(int.Parse(csv[2]), int.Parse(csv[3]), int.Parse(csv[4]), int.Parse(csv[5]), int.Parse(csv[6]));
                 break;
             case CardManagerSignifyers.BuyPawn:
                 RequestBuyPawn(clientID, int.Parse(csv[2]));
-                //RecieveBuyPawn(int.Parse(csv[2]) != 0, int.Parse(csv[3]), csv[4]);
                 break;
         }
 
@@ -38,10 +36,12 @@ public class CardManager : MonoBehaviour
 
     private void RequestBuyPawn(int clientID, int slotIndex)
     {
+        //check if pawn storage is full
+        // check if enough money
+        // check if there is actually a card to buy
         string msg = ServerToClientSignifiers.CardManager + "," + CardManagerSignifyers.BuyPawn + "," +
             1 + "," + slotIndex + "," + "allgood";
         NetworkServerProcessing.SendMessageToClient(msg, clientID, TransportPipeline.ReliableAndInOrder);
-
     }
 
     //    int level = Player.Instance.GetPlayerStats().GetPlayerLevel();
