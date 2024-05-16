@@ -16,9 +16,6 @@ public class NormalMode : GameMode
     private float timer = 0;
     private float timerMax = 0;
 
-    //private int step = 0;
-    //private int stepMax = 4;
-
     private int round = 0;
     private int realRound = 0;
 
@@ -122,24 +119,24 @@ public class NormalMode : GameMode
         }
 
 
+        //SERVER
         if (Player.Instance.GetPlayerStats().GetPlayerHealth() <= 0)
         {
             EndGame();
             return;
         }
 
-        //load bot teams
         round++;
         realRound++;
 
-
+        //SERVER
         mapManager.ChangeMap(0);
         int cashAmount = 1 + realRound;
         if (cashAmount > 10) { cashAmount = 10; }
 
         Player.Instance.GetPlayerStats().SetCash(cashAmount);
         Player.Instance.GetPlayerStats().ReduceCostToLevelUp(1);
-        cardManager.ReRollPawns();
+        cardManager.RequestCardReRoll();
         switch (round)
         {
             case 1:

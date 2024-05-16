@@ -1,38 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class TypeData
 {
+    //icon is null on server
     public Sprite icon;
+    public string typeName = "Default";
+    public string description = "Default";
 
-    public TypeData(Sprite icon)
+    public List<int> amounts;
+    public List<string> amountDescriptions;
+
+    // Constructor
+    public TypeData(Sprite icon, string typeName, string description, List<int> amounts, List<string> amountDescriptions)
     {
         this.icon = icon;
+        this.typeName = typeName;
+        this.description = description;
+        this.amounts = amounts;
+        this.amountDescriptions = amountDescriptions;
     }
 }
 
-
-public static class TypeDataBase
+public class TypeDataBase
 {
-    public static Dictionary<TypeEnum, TypeData> pawns { get; } = new Dictionary<TypeEnum, TypeData>
+    public static Dictionary<int, TypeData> Types { get; } = new Dictionary<int, TypeData>
     {
         {
-            TypeEnum.Type1,
-            new TypeData(
-            icon: Resources.Load<Sprite>("TypeIcons/1"))
+            PawnIndex.Type1,
+            new TypeData(null,
+                typeName : "Type1",
+                description: "Type1 Description",
+                amounts: new List<int>() {0},
+                amountDescriptions:new List<string>() {"des"})
         },
         {
-            TypeEnum.Type2,
-            new TypeData(
-            icon: Resources.Load<Sprite>("TypeIcons/2"))
+            PawnIndex.Type2,
+            new TypeData( null,
+                typeName : "Type2",
+                description: "Type2 Description",
+                amounts: new List<int>() {0},
+                amountDescriptions:new List<string>() {"des"})
         }
     };
+
+
 }
 
 
-public enum TypeEnum
+static public class PawnIndex
 {
-    Type1,
-    Type2,
+    public const int Type1 = 0;
+    public const int Type2 = 1;
 }

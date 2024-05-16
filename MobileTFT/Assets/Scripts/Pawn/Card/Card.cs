@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    private PawnSO pawnSO;
+    private PawnData pawnData;
     private CardUI cardVisual;
 
 
@@ -12,11 +12,11 @@ public class Card : MonoBehaviour
     {
         cardVisual = GetComponent<CardUI>();
     }
-    public void SetPawnSO(PawnSO SO)
+    public void SetPawnData(PawnData data)
     {
-        pawnSO = SO;
-        cardVisual.UpdateVisual(SO);
+        pawnData = data;
+        cardVisual.UpdateVisual(data);
     }
 
-    public PawnSO GetPawnSO() { return pawnSO; }
+    public PawnData GetPawnData() { return pawnData; }
 }

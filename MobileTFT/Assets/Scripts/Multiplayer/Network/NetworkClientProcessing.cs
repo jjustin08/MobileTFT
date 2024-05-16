@@ -24,6 +24,9 @@ static public class NetworkClientProcessing
             case ServerToClientSignifiers.Gamemode:
                 gamemode.RecieveServerMsg(msg);
                 break;
+            case ServerToClientSignifiers.CardManager:
+                cardManager.RecieveServerMessage(msg);
+                break;
             case 0:
                // Debug.Log("All good");
                 break;
@@ -76,6 +79,8 @@ static public class NetworkClientProcessing
         return networkClient;
     }
 
+
+    // TODO: refactor all of this junk:
     static Lobby lobby;
     static public void SetLobby(Lobby lob)
     {
@@ -89,6 +94,13 @@ static public class NetworkClientProcessing
         gamemode = gm;
     }
 
+    static CardManager cardManager;
+
+    static public void SetCardManager(CardManager cm)
+    {
+        cardManager = cm;
+    }
+
     #endregion
 
 }
@@ -98,12 +110,14 @@ static public class ClientToServerSignifiers
 {
     public const int JoinLobby = 1;
     public const int GameLoaded = 2;
+    public const int CardManager = 3;
 }
 
 static public class ServerToClientSignifiers
 {
     public const int LoadGame = 1;
     public const int Gamemode = 2;
+    public const int CardManager = 3;
 }
 
 

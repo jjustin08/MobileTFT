@@ -12,7 +12,7 @@ public class ReRollButtonUI : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(() => {
             if(Player.Instance.GetPlayerStats().RemoveCash(1))
             {
-                pawnShop.ReRollPawns();
+                pawnShop.RequestCardReRoll();
             }
             else
             {

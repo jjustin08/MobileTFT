@@ -16,19 +16,19 @@ public class CardUI : MonoBehaviour
 
 
 
-    public void UpdateVisual(PawnSO SO)
+    public void UpdateVisual(PawnData data)
     {
-        pawnName.text = SO.name;
+        pawnName.text = data.pawnName;
 
-        cost.text = SO.cost.ToString();
+        cost.text = data.cost.ToString();
 
-        for(int i = 0;i < SO.types.Count;i++)
+        for(int i = 0;i < data.types.Count;i++)
         {
             types[i].gameObject.SetActive(true);
-            types[i].sprite = SO.types[i].icon;
+            types[i].sprite = data.types[i].icon;
         }
 
-        int pCost = SO.cost;
+        int pCost = data.cost;
 
         switch (pCost) 
         {

@@ -6,237 +6,76 @@ public class CardManager : MonoBehaviour
 {
     [SerializeField] private List<CardSlotUI> shopPawnsSlots;
 
-    //shared pool of pawns
-    [SerializeField] private List<PawnSO> pawnPool;
-    private List<PawnSO> OneCostPool = new List<PawnSO>();
-    private List<PawnSO> TwoCostPool = new List<PawnSO>();
-    private List<PawnSO> ThreeCostPool = new List<PawnSO>();
-    private List<PawnSO> FourCostPool = new List<PawnSO>();
-    private List<PawnSO> FiveCostPool = new List<PawnSO>();
-
     [SerializeField] private PawnStorage pawnStorage;
 
 
     private void Start()
     {
-        foreach(PawnSO so in pawnPool) 
-        {
-            for(int i = 0; i < 12; i++)
-            AddPawnToDeck(so, 1);
-        }
+        NetworkClientProcessing.SetCardManager(this);
     }
-    public void ReRollPawns()
+
+    public void RecieveServerMessage(string msg)
     {
 
-
-        int level = Player.Instance.GetPlayerStats().GetPlayerLevel();
-
-
-        foreach (CardSlotUI slot in shopPawnsSlots)
-        {
-            PawnSO removedPawnSO = slot.RemovePawn();
-            if (removedPawnSO != null)
-            {
-                AddPawnToDeck(removedPawnSO, 1);
-            }
-
-
-            // TODO: refactor?
-            int perc = Random.Range(0, 100);
-            switch (level)
-            {
-                case 1:
-                    // only 1 cost 
-                    DrawCardFromPool(OneCostPool, slot);
-                break; case 2:
-                    if(perc > 80)
-                    {
-                        DrawCardFromPool(TwoCostPool, slot);
-                    }
-                    else if(perc >= 0)
-                    {
-                        DrawCardFromPool(OneCostPool, slot);
-                    }
-
-                break; case 3:
-                    if (perc > 90)
-                    {
-                        DrawCardFromPool(ThreeCostPool, slot);
-                    }
-                    else if(perc > 60)
-                    {
-                        DrawCardFromPool(TwoCostPool, slot);
-                    }
-                    else if(perc >= 0)
-                    {
-                        DrawCardFromPool(OneCostPool, slot);
-                    }
-
-                break; case 4:
-                    if (perc > 95)
-                    {
-                        DrawCardFromPool(FourCostPool, slot);
-                    }
-                    else if (perc > 60)
-                    {
-                        DrawCardFromPool(ThreeCostPool, slot);
-                    }
-                    else if(perc > 30)
-                    {
-                        DrawCardFromPool(TwoCostPool, slot);
-                    }
-                    else if(perc >= 0)
-                    {
-                        DrawCardFromPool(OneCostPool, slot);
-                    }
-
-                break; case 5:
-                    if (perc > 95)
-                    {
-                        DrawCardFromPool(FiveCostPool, slot);
-                    }
-                    else if (perc > 85)
-                    {
-                        DrawCardFromPool(FourCostPool, slot);
-                    }
-                    else if (perc > 60)
-                    {
-                        DrawCardFromPool(ThreeCostPool, slot);
-                    }
-                    else if (perc > 30)
-                    {
-                        DrawCardFromPool(TwoCostPool, slot);
-                    }
-                    else if (perc >= 0)
-                    {
-                        DrawCardFromPool(OneCostPool, slot);
-                    }
-
-                    break; case 6:
-                    if (perc > 80)
-                    {
-                        DrawCardFromPool(FiveCostPool, slot);
-                    }
-                    else if (perc > 50)
-                    {
-                        DrawCardFromPool(FourCostPool, slot);
-                    }
-                    else if (perc > 30)
-                    {
-                        DrawCardFromPool(ThreeCostPool, slot);
-                    }
-                    else if (perc > 15)
-                    {
-                        DrawCardFromPool(TwoCostPool, slot);
-                    }
-                    else if (perc >= 0)
-                    {
-                        DrawCardFromPool(OneCostPool, slot);
-                    }
-
-                    break; case 7:
-                    if (perc > 70)
-                    {
-                        DrawCardFromPool(FiveCostPool, slot);
-                    }
-                    else if (perc > 35)
-                    {
-                        DrawCardFromPool(FourCostPool, slot);
-                    }
-                    else if (perc > 20)
-                    {
-                        DrawCardFromPool(ThreeCostPool, slot);
-                    }
-                    else if (perc > 10)
-                    {
-                        DrawCardFromPool(TwoCostPool, slot);
-                    }
-                    else if (perc >= 0)
-                    {
-                        DrawCardFromPool(OneCostPool, slot);
-                    }
-                    break;
-            }
-
-
-
-        }
-        
+        //int.Parse(csv[1]) != 0, int.Parse(csv[2]), csv[3]
     }
 
-    private void DrawCardFromPool(List<PawnSO> pool, CardSlotUI slot)
+    public void RequestCardReRoll()
     {
-        if (pool.Count > 0)
-        {
-            PawnSO newPawnSO = pool[Random.Range(0, pool.Count - 1)];
-            slot.PlaceShopPawn(newPawnSO);
-            pool.Remove(newPawnSO);
-        }
+        //send message to server to reroll cards
+        string msg = "";
+        NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
     }
 
-    public bool BuyPawn(Card shopPawn)
+    private void RecieveNewCards(int card1, int card2, int card3, int card4, int card5)
+    {
+        shopPawnsSlots[0].PlaceCard(PawnDataBase.pawns[card1]);
+        shopPawnsSlots[1].PlaceCard(PawnDataBase.pawns[card2]);
+        shopPawnsSlots[2].PlaceCard(PawnDataBase.pawns[card3]);
+        shopPawnsSlots[3].PlaceCard(PawnDataBase.pawns[card4]);
+        shopPawnsSlots[4].PlaceCard(PawnDataBase.pawns[card5]);
+    }
+
+    public void RequestBuyPawn(CardSlotUI cardSlot)
     {
         if(!pawnStorage.IsStorageFull())
         {
-            if (Player.Instance.GetPlayerStats().RemoveCash(shopPawn.GetPawnSO().cost))
+            if (Player.Instance.GetPlayerStats().GetCash() >= cardSlot.GetCard().GetPawnData().cost)
             {
-                pawnStorage.FillSlot(shopPawn.GetPawnSO(), 0, 0, 1);
-                return true;
+                //send message to server
+                int slotIndex = shopPawnsSlots.IndexOf(cardSlot);
             }
             else
             {
                 HelperUI.Instance.ActivateHelperText("Not Enough Gold");
             }
-
         }
         else
         {
             HelperUI.Instance.ActivateHelperText("Pawn Storage Full");
-        }
-        
-       return false;
-        
+        } 
     }
 
-
-    public void AddPawnToDeck(PawnSO SO, int starCount)
+    private void RecieveBuyPawn(bool allowed,int slotIndex, string message)
     {
-        int amount = 1;
-        if(starCount == 3)
+        if(allowed) 
         {
-            amount = 9;
+            PawnData pawnData = shopPawnsSlots[(int)slotIndex].GetCard().GetPawnData();
+
+            Player.Instance.GetPlayerStats().RemoveCash(pawnData.cost);
+            pawnStorage.FillSlot(pawnData, 0, 0, 1);
+
+            shopPawnsSlots[(int)slotIndex].RemoveCard();
         }
-        else if(starCount == 2)
+        else
         {
-            amount = 3;
-        }
-
-        int cost = SO.cost;
-        for(int i = 0; i < amount; i++) 
-        {
-            switch (cost)
-            {
-                case 1:
-                    OneCostPool.Add(SO);
-
-                    break;
-                case 2:
-                    TwoCostPool.Add(SO);
-
-                    break;
-                case 3:
-                    ThreeCostPool.Add(SO);
-
-                    break;
-                case 4:
-                    FourCostPool.Add(SO);
-
-                    break;
-                case 5:
-                    FiveCostPool.Add(SO);
-
-                    break;
-            }
+            HelperUI.Instance.ActivateHelperText(message);
         }
     }
+}
+
+static public class CardManagerSignifyers
+{
+    public const int ReRoll = 1;
+    public const int BuyPawn = 2;
 }
