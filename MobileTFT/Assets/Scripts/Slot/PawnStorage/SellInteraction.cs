@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SellInteraction : MonoBehaviour
@@ -20,25 +21,16 @@ public class SellInteraction : MonoBehaviour
         }
     }
 
-    public void SellPawn()
+    public void RequestSellPawn(PawnData pawnData, int triple)
     {
-        //Pawn p = Player.Instance.GetHoldingPawn();
-        //p.GetMovement().GetSlot().RemovePawn();
+        string msg = ClientToServerSignifiers.CardManager +"," + CardManagerSignifyers.SellPawn + "," + pawnData.index + "," + triple;
 
-
-        //CardManager.AddPawnToDeck(p.GetPawnSO(), p.GetStats().GetStarCount());
-
-        //int pawnCost = 0;
-        //pawnCost = p.GetPawnSO().cost;
-        //if (p.GetStats().GetStarCount() == 2) 
-        //{
-        //    pawnCost = p.GetPawnSO().cost * 3;
-        //}
-        //else if(p.GetStats().GetStarCount() == 3)
-        //{
-        //    pawnCost = p.GetPawnSO().cost * 9;
-        //}
-        //Player.Instance.GetPlayerStats().GainCash(pawnCost);
-        //Destroy(p.gameObject);
+        NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
+    }
+    public void RecieveSellPawn()
+    {
+        Pawn p = Player.Instance.GetHoldingPawn();
+        p.GetMovement().GetSlot().RemovePawn();
+        Destroy(p.gameObject);
     }
 }

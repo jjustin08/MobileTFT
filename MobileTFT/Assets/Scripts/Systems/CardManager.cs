@@ -95,4 +95,5 @@ static public class CardManagerSignifyers
 {
     public const int ReRoll = 1;
     public const int BuyPawn = 2;
+    public const int SellPawn = 2;
 }

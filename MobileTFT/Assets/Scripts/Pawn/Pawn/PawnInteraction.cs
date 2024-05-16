@@ -42,7 +42,7 @@ public class PawnInteraction : Interaction
             }
             if(hoverObject.GetComponent<SellInteraction>() != null)
             {
-                hoverObject.GetComponent<SellInteraction>().SellPawn();
+                hoverObject.GetComponent<SellInteraction>().RequestSellPawn(pawn.GetPawnData(), pawn.GetStats().GetStarCount());
             }
         }
 

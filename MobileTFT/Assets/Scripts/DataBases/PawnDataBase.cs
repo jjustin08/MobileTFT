@@ -9,6 +9,7 @@ public class PawnData
     public GameObject placedPawn;
     public GameObject cardVisual;
     // Common properties
+    public int index;
     public string pawnName;
     public int cost;
     public AbilityData ability;
@@ -37,11 +38,12 @@ public class PawnData
 
     // Constructor
     public PawnData(GameObject placedPawn, GameObject cardVisual,
-                         string pawnName, int cost, AbilityData ability, List<TypeData> types,
+                         int index, string pawnName, int cost, AbilityData ability, List<TypeData> types,
                          float health, float mana, float damage, float attackTime, int range,
                          float health2, float mana2, float damage2, float attackTime2, int range2,
                          float health3, float mana3, float damage3, float attackTime3, int range3)
     {
+        this.index = index;
         this.placedPawn = placedPawn;
         this.cardVisual = cardVisual;
         this.pawnName = pawnName;
@@ -78,7 +80,8 @@ public class PawnDataBase
             PawnIndex.Pawn1,
             new PawnData(
             placedPawn: Resources.Load<GameObject>("PlacedPawns/0"),
-            cardVisual: Resources.Load<GameObject>("CardVisual/Pawn1"),
+            cardVisual: Resources.Load<GameObject>("CardVisual/0"),
+            PawnIndex.Pawn1,
             pawnName: "Pawn1",
             cost: 1,
             ability: AbilityDataBase.Abilities[AbilityIndex.Ability1],
@@ -102,8 +105,9 @@ public class PawnDataBase
         {
             PawnIndex.Pawn2,
             new PawnData(
-            placedPawn: Resources.Load<GameObject>("PlacedPawns/0"),
-            cardVisual: Resources.Load<GameObject>("CardVisual/Pawn1"),
+            placedPawn: Resources.Load<GameObject>("PlacedPawns/1"),
+            cardVisual: Resources.Load<GameObject>("CardVisual/1"),
+            PawnIndex.Pawn2,
             pawnName: "Pawn2",
             cost: 2,
             ability: AbilityDataBase.Abilities[AbilityIndex.Ability2],

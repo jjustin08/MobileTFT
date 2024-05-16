@@ -42,6 +42,7 @@ public class CardManager : MonoBehaviour
         string msg = ServerToClientSignifiers.CardManager + "," + CardManagerSignifyers.BuyPawn + "," +
             1 + "," + slotIndex + "," + "allgood";
         NetworkServerProcessing.SendMessageToClient(msg, clientID, TransportPipeline.ReliableAndInOrder);
+        //add this pawn to a playerstats
     }
 
     //    int level = Player.Instance.GetPlayerStats().GetPlayerLevel();
