@@ -12,29 +12,34 @@ public class CardSlotUI : MonoBehaviour
         GetComponent<Button>().onClick.AddListener(() => {
             if(card != null) 
             {
-                pawnShop.RequestBuyPawn(this);
+                if(pawnShop.BuyPawn(card))
+                {
+                    Destroy(card.gameObject);
+                    card = null;
+                }
+
             }
         });
     }
 
-    public void PlaceCard(PawnData newPawnData)
+    public void PlaceShopPawn(PawnSO newPawnSO)
     {
-        GameObject cardObject = Instantiate(newPawnData.cardVisual, transform);
-        card = cardObject.GetComponent<Card>();
-        card.SetPawnData(newPawnData);
+        card = Instantiate(newPawnSO.cardVisual, transform);
+        card.SetPawnSO(newPawnSO);
     }
 
-    public void RemoveCard()
+    public PawnSO RemovePawn()
     {
         if(card != null ) 
         {
+            PawnSO tempSO = card.GetPawnSO();
+
             Destroy(card.gameObject);
             card = null;
+            return tempSO;
         }
-    }
 
-    public Card GetCard()
-    {
-        return card;
+
+        return null;
     }
 }

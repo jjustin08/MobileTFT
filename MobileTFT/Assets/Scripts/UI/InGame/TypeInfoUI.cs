@@ -35,47 +35,47 @@ public class TypeInfoUI : MonoBehaviour
     }
 
 
-    //public void UpdateUI(TypeSO type)
-    //{
-    //    typeNameText.text = type.typeName;
-    //    descriptionText.text = type.description;
+    public void UpdateUI(TypeSO type)
+    {
+        typeNameText.text = type.typeName;
+        descriptionText.text = type.description;
 
 
-    //    for(int i = 0; i < amountTexts.Count; i++)
-    //    {
-    //        if (type.amounts.Count > i)
-    //        {
-    //            amountTexts[i].gameObject.SetActive(true);
-    //            amountDescriptinsTexts[i].gameObject.SetActive(true);
+        for(int i = 0; i < amountTexts.Count; i++)
+        {
+            if (type.amounts.Count > i)
+            {
+                amountTexts[i].gameObject.SetActive(true);
+                amountDescriptinsTexts[i].gameObject.SetActive(true);
 
-    //            amountTexts[i].text = type.amounts[i].ToString() + ":";
-    //            amountDescriptinsTexts[i].text = type.amountDescriptions[i];
-    //        }
-    //        else
-    //        {
-    //            amountTexts[i].gameObject.SetActive(false);
-    //            amountDescriptinsTexts[i].gameObject.SetActive(false);
-    //        }
-    //    }
+                amountTexts[i].text = type.amounts[i].ToString() + ":";
+                amountDescriptinsTexts[i].text = type.amountDescriptions[i];
+            }
+            else
+            {
+                amountTexts[i].gameObject.SetActive(false);
+                amountDescriptinsTexts[i].gameObject.SetActive(false);
+            }
+        }
 
-    //    for(int i = 0;i < otherPawns.Count;i++)
-    //    {
+        for(int i = 0;i < otherPawns.Count;i++)
+        {
             
 
-    //        if (type.pawnsWithType.Count > i)
-    //        {
-    //            otherPawns[i].gameObject.SetActive(true);
+            if (type.pawnsWithType.Count > i)
+            {
+                otherPawns[i].gameObject.SetActive(true);
 
-    //            otherPawns[i].text = type.pawnsWithType[i].name;
-    //        }
-    //        else
-    //        {
-    //            otherPawns[i].gameObject.SetActive(false);
-    //        }
+                otherPawns[i].text = type.pawnsWithType[i].name;
+            }
+            else
+            {
+                otherPawns[i].gameObject.SetActive(false);
+            }
             
-    //    }
+        }
         
 
        
-    //}
+    }
 }

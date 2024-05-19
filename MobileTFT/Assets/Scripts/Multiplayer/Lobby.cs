@@ -9,8 +9,7 @@ public class Lobby : MonoBehaviour
     void Start()
     {
         NetworkClientProcessing.SetLobby(this);
-    }
-
+ }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
