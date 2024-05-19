@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Michsky.LSS;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -25,6 +26,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button typesBackButton;
     [SerializeField] private Button basicsBackButton;
 
+    [SerializeField] private LSS_Manager LssManager;
+
     private void Start()
     {
         singleplayerButton.onClick.AddListener(singleplayerButtonCLick);
@@ -43,12 +46,14 @@ public class MainMenu : MonoBehaviour
 
     private void singleplayerButtonCLick()
     {
-        SceneManager.LoadScene("SinglePlayer");
+        //SceneManager.LoadScene("SinglePlayer");
+        LssManager.LoadScene("SinglePlayer");
     }
     
     private void multplayerplayerButtonCLick()
     {
-        SceneManager.LoadScene("Multiplayer");
+        //SceneManager.LoadScene("Multiplayer");
+        LssManager.LoadScene("Multiplayer");
     }
     
     private void TutorialButtonCLick()
