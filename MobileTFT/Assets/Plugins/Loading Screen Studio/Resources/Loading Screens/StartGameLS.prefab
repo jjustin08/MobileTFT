@@ -3098,7 +3098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -87.5, y: 372}
+  m_AnchoredPosition: {x: -87.5, y: 442}
   m_SizeDelta: {x: -325, y: 500}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1173958522840565674
@@ -3923,7 +3923,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 2, z: 0, w: 0}
+  m_margin: {x: 0, y: 2, z: 0, w: -201.92032}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5147,14 +5147,9 @@ MonoBehaviour:
   hintTimerValue: 4.5
   hintList:
   - Getting 3 of same pawn will combine them
-  - 'each pawn has different types
-
-    having multiple of same type will give bonus
-    stats'
-  - 'leveling up will give you more pawns slot of board (max pawns = level)
-
-    and
-    will show different pawns in the shop'
+  - each pawn has different types having multiple of same type will give bonus stats
+  - leveling up will give you more pawns slot of board and will show different pawns
+    in the shop
   - Losing a fight will damage your player health
   - create different combinations of pawns for different winning strategies
   - you can click on left side icons to get type info
@@ -5184,7 +5179,7 @@ MonoBehaviour:
   setTimeScale: 1
   enablePressAnyKey: 1
   customSceneActivation: 0
-  fadeSpeed: 4
+  fadeSpeed: 2
   backgroundFadeSpeed: 2
   contentFadeSpeed: 2
   projectorCamera: {fileID: 0}
