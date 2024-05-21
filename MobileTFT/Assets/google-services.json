@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "274409845318",
+    "project_id": "mobile-tft-a8212",
+    "storage_bucket": "mobile-tft-a8212.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274409845318:android:f1b824f83cfe4214939047",
+        "android_client_info": {
+          "package_name": "com.FiniteGameStudio.MobileTFT"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274409845318-eo29bafolkl2ujh4knoq4l9466a83784.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLyd1Eo9BGhvZxhAHHe8ZxFDNV37_gvBI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274409845318-eo29bafolkl2ujh4knoq4l9466a83784.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
