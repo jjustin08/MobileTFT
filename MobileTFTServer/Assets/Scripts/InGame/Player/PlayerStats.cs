@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerStats
 {
-    private List<InGamePawn> pawns = new List<InGamePawn>();
+    private List<Pawn> pawns = new List<Pawn>();
     private int cash;
     private int health;
     private int level;
@@ -12,9 +12,9 @@ public class PlayerStats
 
     public void AddPawn(PawnData PD, Vector2 pos)
     {
-        pawns.Add(new InGamePawn(PD,pos,pawns.Count-1));
+        pawns.Add(new Pawn(PD,pos,pawns.Count-1));
     }
-    public List<InGamePawn> GetInGamePawns() { return pawns; }
+    public List<Pawn> GetInGamePawns() { return pawns; }
 
     public void SetCash(int c)
     {
@@ -41,16 +41,3 @@ public class PlayerStats
 }
 
 
-public class InGamePawn
-{
-    public int index;
-    public PawnData pawnData;
-    public Vector2 vector2;
-
-    public InGamePawn(PawnData pwn, Vector2 vec, int index)
-    {
-        pawnData = pwn;
-        vector2 = vec;
-        this.index = index;
-    }
-}

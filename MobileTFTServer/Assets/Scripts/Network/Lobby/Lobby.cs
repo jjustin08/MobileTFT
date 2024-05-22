@@ -3,39 +3,34 @@ using UnityEngine;
 using UnityEngine.Playables;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class Lobby : MonoBehaviour
+static public class Lobby
 {
     // I want to have max players / this will change depending on gamemode
     // I want a min players
     // a timer to wait for new players or not
     // I want a list of players and whether they are ready or not
+    static private List<Player> players = new List<Player>();
 
-    private List<Player> players = new List<Player>();
+    static private int minPlayers = 2;
+    static private int maxPlayers = 8;
 
-    private int minPlayers = 2;
+    static private GameMode gameMode = new BasicGameMode();
 
-    [SerializeField] private GameMode gameMode;
-
-    private void Start()
-    {
-        NetworkServerProcessing.SetLobby(this);
-    }
-
-    private void CheckIfEnoughPlayers()
+    static private void CheckIfEnoughPlayers()
     {
         if (players.Count >= minPlayers)
         {
             foreach (Player player in players)
-                NetworkServerProcessing.SendMessageToClient(ServerToClientSignifiers.LoadGame.ToString(), player.clientId, TransportPipeline.ReliableAndInOrder);
+                NetworkServerProcessing.SendMessageToClient(ServerToClientSignifiers.LoadGame.ToString(), player.getId(), TransportPipeline.ReliableAndInOrder);
         }
     }
 
-    private void CheckIfAllPlayerLoaded()
+    static private void CheckIfAllPlayerLoaded()
     {
         bool allPlayersReady = true;
         foreach (Player player in players)
         {
-            if (player.isLoaded == false)
+            if (!player.IsLoaded())
             {
                 allPlayersReady = false;
             }
@@ -47,57 +42,36 @@ public class Lobby : MonoBehaviour
            
         }
     }
-    public void PlayerLeave(int clientId)
+    static public void PlayerLeave(int clientId)
     {
-        Player playerState = new Player(clientId, false);
-        Player playerState2 = new Player(clientId, true);
-
-        if(players.Contains(playerState))
+        foreach (Player player in players)
         {
-            players.Remove(playerState);
+            if(player.getId() == clientId)
+            {
+                players.Remove(player);
+            }
         }
-        else if(players.Contains(playerState2))
-        {
-            players.Remove(playerState2);
-        }
-
     }
-    public void PlayerJoin(int clientId)
+    static public void PlayerJoin(int clientId)
     {
-        Player playerState = new Player(clientId, false);
-        players.Add(playerState);
+        players.Add(new Player(clientId));
         CheckIfEnoughPlayers();
     }
 
-    public void PlayersGameLoaded(int clientId)
+    static public void PlayersGameLoaded(int clientId)
     {
-        // this is a mess
-        Player playerState = new Player(clientId, false);
-        if (players.Contains(playerState))
+        foreach (Player player in players)
         {
-            int index = players.IndexOf(playerState);
-            playerState.isLoaded = true;
-            players[index] = playerState;
+            if (player.getId() == clientId)
+            {
+                player.SetIsLoaded(true);
+            }
         }
-
         CheckIfAllPlayerLoaded();
     }
 
-    public List<Player> GetPlayers()
+    static public List<Player> GetPlayers()
     {
         return players;
-    }
-}
-
-public struct Player
-{
-    public int clientId;
-    public bool isLoaded;
-
-    // Constructor to initialize the struct
-    public Player(int intValue, bool boolValue)
-    {
-        this.clientId = intValue;
-        this.isLoaded = boolValue;
     }
 }

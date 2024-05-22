@@ -24,12 +24,8 @@ static public class NetworkServerProcessing
 
         switch (signifier)
         {
-            case ClientToServerSignifiers.JoinLobby:
-                lobby.PlayerJoin(clientConnectionID);
-                
-                break;
             case ClientToServerSignifiers.GameLoaded:
-                lobby.PlayersGameLoaded(clientConnectionID);
+                Lobby.PlayersGameLoaded(clientConnectionID);
                 break;
             case ClientToServerSignifiers.CardManager:
                 cardManager.RecieveMessage(msg, clientConnectionID);
@@ -53,6 +49,7 @@ static public class NetworkServerProcessing
     static public void ConnectionEvent(int clientConnectionID)
     {
         //clientManager.AddUser(clientConnectionID);
+        Lobby.PlayerJoin(clientConnectionID);
         Debug.Log("Client connection, ID == " + clientConnectionID);
     }
     static public void DisconnectionEvent(int clientConnectionID)
@@ -60,6 +57,7 @@ static public class NetworkServerProcessing
         //LobbyManager.Instance.LeaveLobby(clientConnectionID);
         //clientManager.RemoveUser(clientConnectionID);
         // remove from lobbies
+        Lobby.PlayerLeave(clientConnectionID);
         Debug.Log("Client disconnection, ID == " + clientConnectionID);
     }
 
@@ -84,14 +82,6 @@ static public class NetworkServerProcessing
         return networkServer;
     }
 
-    static Lobby lobby;
-    static public void SetLobby(Lobby newLobby)
-    {
-        lobby = newLobby;
-    }
-
-    static public Lobby GetLobby() { return lobby; }
-
     static CardManager cardManager;
     static public void SetCardManager(CardManager cm)
     { 
@@ -106,9 +96,8 @@ static public class NetworkServerProcessing
 
 static public class ClientToServerSignifiers
 {
-    public const int JoinLobby = 1;
-    public const int GameLoaded = 2;
-    public const int CardManager = 3;
+    public const int GameLoaded = 1;
+    public const int CardManager = 2;
 }
 
 static public class ServerToClientSignifiers

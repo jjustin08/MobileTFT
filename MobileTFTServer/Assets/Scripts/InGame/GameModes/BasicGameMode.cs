@@ -72,7 +72,7 @@ public class BasicGameMode :GameMode
     {
         isGameRunning=true;
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.StartGame;
-        foreach (Player id in lobby.GetPlayers())
+        foreach (PlayerState id in lobby.GetPlayers())
         {
             NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
         }
@@ -83,7 +83,7 @@ public class BasicGameMode :GameMode
         round++;
         realRound++;
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.StartTurn;
-        foreach(Player id in lobby.GetPlayers())
+        foreach(PlayerState id in lobby.GetPlayers())
         {
             NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
         }
@@ -92,7 +92,7 @@ public class BasicGameMode :GameMode
     protected override void EndTurn()
     {
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndTurn;
-        foreach (Player id in lobby.GetPlayers())
+        foreach (PlayerState id in lobby.GetPlayers())
         {
             NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
         }
@@ -101,7 +101,7 @@ public class BasicGameMode :GameMode
     protected override void StartCombat()
     {
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.StartCombat;
-        foreach (Player id in lobby.GetPlayers())
+        foreach (PlayerState id in lobby.GetPlayers())
         {
             NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
         }
@@ -110,7 +110,7 @@ public class BasicGameMode :GameMode
     protected override void EndCombat()
     {
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndCombat;
-        foreach (Player id in lobby.GetPlayers())
+        foreach (PlayerState id in lobby.GetPlayers())
         {
             NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
         }

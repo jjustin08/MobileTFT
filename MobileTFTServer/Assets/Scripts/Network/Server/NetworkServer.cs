@@ -74,7 +74,7 @@ public class NetworkServer : MonoBehaviour
             if (!networkConnections[i].IsCreated)
             {
                 //int connectionID = connectionToIDLookup[networkConnections[i]];
-                NetworkServerProcessing.GetLobby().PlayerLeave(i);
+                
 
                 networkConnections.RemoveAtSwapBack(i);
                 i--;
