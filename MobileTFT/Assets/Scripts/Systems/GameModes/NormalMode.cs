@@ -23,7 +23,7 @@ public class NormalMode : GameMode
     {
         NetworkClientProcessing.SetGameMode(this);
 
-        string msg = ClientToServerSignifiers.GameLoaded.ToString();
+        string msg = ClientToServerSignifiers.Lobby + "," + LobbySignifiers.LoadGame;
         NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
     }
 

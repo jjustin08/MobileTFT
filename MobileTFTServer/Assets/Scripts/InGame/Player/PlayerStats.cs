@@ -5,16 +5,34 @@ using UnityEngine;
 public class PlayerStats
 {
     private List<Pawn> pawns = new List<Pawn>();
+    private List<PawnData> cards = new List<PawnData>();
     private int cash;
     private int health;
     private int level;
     private int costTolevelUp;
 
+
+    public List<PawnData> GetCards()
+    {
+        return cards;
+    }
+
+    public void SetCards(List<PawnData> cards)
+    {
+       this.cards = cards;
+    }
+
     public void AddPawn(PawnData PD, Vector2 pos)
     {
         pawns.Add(new Pawn(PD,pos,pawns.Count-1));
+        Debug.Log("yo we added a pawn bro");
     }
     public List<Pawn> GetInGamePawns() { return pawns; }
+
+    public void AddCash(int c)
+    {
+        cash += c;
+    }
 
     public void SetCash(int c)
     {

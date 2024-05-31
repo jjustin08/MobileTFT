@@ -19,23 +19,21 @@ static public class NetworkServerProcessing
         string[] csv = msg.Split(sepchar);
         int signifier = int.Parse(csv[0]);
 
-
-        string returnMessage = "0";
-
         switch (signifier)
         {
-            case ClientToServerSignifiers.GameLoaded:
-                Lobby.PlayersGameLoaded(clientConnectionID);
+            case ClientToServerSignifiers.Lobby:
+                Lobby.RevieceMessage(msg, clientConnectionID);
                 break;
             case ClientToServerSignifiers.CardManager:
-                cardManager.RecieveMessage(msg, clientConnectionID);
+                CardManager.RecieveMessage(msg, clientConnectionID);
+                break;
+            case ClientToServerSignifiers.Player:
+                CardManager.RecieveMessage(msg, clientConnectionID);
                 break;
             default:
                 Debug.Log("Invalid signifier");
                 break;
         }
-
-        SendMessageToClient(returnMessage, clientConnectionID, TransportPipeline.ReliableAndInOrder);
     }
     static public void SendMessageToClient(string msg, int clientConnectionID, TransportPipeline pipeline)
     {
@@ -82,11 +80,6 @@ static public class NetworkServerProcessing
         return networkServer;
     }
 
-    static CardManager cardManager;
-    static public void SetCardManager(CardManager cm)
-    { 
-        cardManager = cm;
-    }
 
     #endregion
 }
@@ -96,15 +89,17 @@ static public class NetworkServerProcessing
 
 static public class ClientToServerSignifiers
 {
-    public const int GameLoaded = 1;
+    public const int Lobby = 1;
     public const int CardManager = 2;
+    public const int Player = 3;
 }
 
 static public class ServerToClientSignifiers
 {
-    public const int LoadGame = 1;
-    public const int Gamemode = 2;
-    public const int CardManager = 3;
+    public const int Lobby = 1;
+    public const int CardManager = 2;
+    public const int Player = 3;
+    public const int Gamemode = 4;
 }
 
 

@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 
-public class CardManager : MonoBehaviour
+static public class CardManager
 {
-    private void Start()
-    {
-        NetworkServerProcessing.SetCardManager(this);
-    }
-    public void RecieveMessage(string msg, int clientID)
+    static public void RecieveMessage(string msg, int clientID)
     {
         string[] csv = msg.Split(',');
         int signifier = int.Parse(csv[1]);
@@ -26,15 +22,26 @@ public class CardManager : MonoBehaviour
 
     }
 
-    private void RequestReRoll(int clientID)
+    static private void RequestReRoll(int clientID)
     {
+        Player tempPlayer = Lobby.GetPlayerById(clientID);
+
+        List<PawnData> tempCardList = new List<PawnData>();
+        tempCardList.Add(PawnDataBase.pawns[1]);
+        tempCardList.Add(PawnDataBase.pawns[1]);
+        tempCardList.Add(PawnDataBase.pawns[1]);
+        tempCardList.Add(PawnDataBase.pawns[1]);
+        tempCardList.Add(PawnDataBase.pawns[1]);
+        tempPlayer.GetPlayerStats().SetCards(tempCardList);
+       
+
         string msg = ServerToClientSignifiers.CardManager + "," + CardManagerSignifyers.ReRoll + "," +
             1 + "," + 1 + "," + 1 + "," + 1 + "," + 1 + "," + 1;
         NetworkServerProcessing.SendMessageToClient(msg, clientID, TransportPipeline.ReliableAndInOrder);
     }
 
 
-    private void RequestBuyPawn(int clientID, int slotIndex)
+    static private void RequestBuyPawn(int clientID, int slotIndex)
     {
         //check if pawn storage is full
         // check if enough money
@@ -42,6 +49,17 @@ public class CardManager : MonoBehaviour
         string msg = ServerToClientSignifiers.CardManager + "," + CardManagerSignifyers.BuyPawn + "," +
             1 + "," + slotIndex + "," + "allgood";
         NetworkServerProcessing.SendMessageToClient(msg, clientID, TransportPipeline.ReliableAndInOrder);
+
+        Player tempPlayer = Lobby.GetPlayerById(clientID);
+
+        if(tempPlayer != null) 
+        {
+            PawnData tempData = tempPlayer.GetPlayerStats().GetCards()[slotIndex];
+
+            tempPlayer.GetPlayerStats().AddPawn(tempData, new Vector2(-1,-1));
+        }
+        //string playerMsg = ;
+        //Player.RevieceMessage();
         //add this pawn to a playerstats
     }
 

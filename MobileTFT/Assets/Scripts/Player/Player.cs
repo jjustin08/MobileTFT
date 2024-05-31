@@ -23,3 +23,9 @@ public class Player : MonoBehaviour
     public void SetHoldingPawn(Pawn Pawn) { holdingPawn = Pawn; }
     public Pawn GetHoldingPawn() { return holdingPawn; }
 }
+static public class PlayerSignifiers
+{
+    public const int BuyPawn = 1;
+    public const int MovePawn = 2;
+    public const int SellPawn = 3;
+}

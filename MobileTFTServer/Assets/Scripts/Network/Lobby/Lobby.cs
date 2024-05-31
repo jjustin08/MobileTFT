@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 static public class Lobby
 {
@@ -12,16 +11,31 @@ static public class Lobby
     static private List<Player> players = new List<Player>();
 
     static private int minPlayers = 2;
-    static private int maxPlayers = 8;
+    //static private int maxPlayers = 8;
 
     static private GameMode gameMode = new BasicGameMode();
 
+    static public void RevieceMessage(string msg, int playerId)
+    {
+        char sepchar = ',';
+        string[] csv = msg.Split(sepchar);
+        int signifier = int.Parse(csv[1]);
+        switch (signifier)
+        {
+            case LobbySignifiers.LoadGame:
+                PlayersGameLoaded(playerId);
+                break;
+            default:
+                Debug.Log("Invalid signifier");
+                break;
+        }
+    }
     static private void CheckIfEnoughPlayers()
     {
         if (players.Count >= minPlayers)
         {
             foreach (Player player in players)
-                NetworkServerProcessing.SendMessageToClient(ServerToClientSignifiers.LoadGame.ToString(), player.getId(), TransportPipeline.ReliableAndInOrder);
+                NetworkServerProcessing.SendMessageToClient(LobbySignifiers.LoadGame.ToString(), player.getId(), TransportPipeline.ReliableAndInOrder);
         }
     }
 
@@ -36,17 +50,17 @@ static public class Lobby
             }
         }
 
-        if(allPlayersReady) 
+        if (allPlayersReady)
         {
             gameMode.StartGame();
-           
+
         }
     }
     static public void PlayerLeave(int clientId)
     {
         foreach (Player player in players)
         {
-            if(player.getId() == clientId)
+            if (player.getId() == clientId)
             {
                 players.Remove(player);
             }
@@ -74,4 +88,21 @@ static public class Lobby
     {
         return players;
     }
+
+    static public Player GetPlayerById(int playerId)
+    {
+        Player templayer = null;
+        foreach (Player player in players)
+        {
+            if (player.getId() == playerId) { templayer = player; break; }
+        }
+        return templayer;
+    }
+
+}
+
+
+static public class LobbySignifiers
+{
+    public const int LoadGame = 1;
 }

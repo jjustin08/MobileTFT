@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BasicGameMode :GameMode
 {
-    [SerializeField]private Lobby lobby;
     private bool isGameRunning = false;
 
     private float timer = 0;
@@ -72,9 +71,10 @@ public class BasicGameMode :GameMode
     {
         isGameRunning=true;
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.StartGame;
-        foreach (PlayerState id in lobby.GetPlayers())
+        foreach (Player player in Lobby.GetPlayers())
         {
-            NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
+            int id = player.getId();
+            NetworkServerProcessing.SendMessageToClient(msg, id, TransportPipeline.ReliableAndInOrder);
         }
     }
 
@@ -83,47 +83,42 @@ public class BasicGameMode :GameMode
         round++;
         realRound++;
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.StartTurn;
-        foreach(PlayerState id in lobby.GetPlayers())
+        foreach (Player player in Lobby.GetPlayers())
         {
-            NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
+            int id = player.getId();
+            NetworkServerProcessing.SendMessageToClient(msg, id, TransportPipeline.ReliableAndInOrder);
         }
     }
 
     protected override void EndTurn()
     {
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndTurn;
-        foreach (PlayerState id in lobby.GetPlayers())
+        foreach (Player player in Lobby.GetPlayers())
         {
-            NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
+            int id = player.getId();
+            NetworkServerProcessing.SendMessageToClient(msg, id, TransportPipeline.ReliableAndInOrder);
         }
     }
 
     protected override void StartCombat()
     {
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.StartCombat;
-        foreach (PlayerState id in lobby.GetPlayers())
+        foreach (Player player in Lobby.GetPlayers())
         {
-            NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
+            int id = player.getId();
+            NetworkServerProcessing.SendMessageToClient(msg, id, TransportPipeline.ReliableAndInOrder);
         }
     }
 
     protected override void EndCombat()
     {
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndCombat;
-        foreach (PlayerState id in lobby.GetPlayers())
+        foreach (Player player in Lobby.GetPlayers())
         {
-            NetworkServerProcessing.SendMessageToClient(msg, id.clientId, TransportPipeline.ReliableAndInOrder);
+            int id = player.getId();
+            NetworkServerProcessing.SendMessageToClient(msg, id, TransportPipeline.ReliableAndInOrder);
         }
     }
-
-
-
-    public void SetLobby(Lobby lob)
-    {
-        lobby = lob;
-    }
-
-
 }
 
 

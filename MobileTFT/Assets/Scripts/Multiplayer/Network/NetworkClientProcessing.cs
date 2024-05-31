@@ -18,8 +18,9 @@ static public class NetworkClientProcessing
 
         switch (signifier)
         {
-            case ServerToClientSignifiers.LoadGame:
-                lobby.LoadGame();
+            case ServerToClientSignifiers.Lobby:
+
+                lobby.RevieceMessage(msg);
                 break; 
             case ServerToClientSignifiers.Gamemode:
                 gamemode.RecieveServerMsg(msg);
@@ -108,16 +109,17 @@ static public class NetworkClientProcessing
 #region Protocol Signifiers
 static public class ClientToServerSignifiers
 {
-    public const int JoinLobby = 1;
-    public const int GameLoaded = 2;
-    public const int CardManager = 3;
+    public const int Lobby = 1;
+    public const int CardManager = 2;
+    public const int Player = 3;
 }
 
 static public class ServerToClientSignifiers
 {
-    public const int LoadGame = 1;
-    public const int Gamemode = 2;
-    public const int CardManager = 3;
+    public const int Lobby = 1;
+    public const int CardManager = 2;
+    public const int Player = 3;
+    public const int Gamemode = 4;
 }
 
 
