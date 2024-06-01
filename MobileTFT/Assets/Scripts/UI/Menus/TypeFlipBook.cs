@@ -14,7 +14,7 @@ public class TypeFlipBook : MonoBehaviour
 
     [SerializeField] private TypeInfoUI typeInfo;
     [SerializeField] private TextMeshProUGUI text;
-    private int index = 0;
+   // private int index = 0;
 
     //private void Awake()
     //{

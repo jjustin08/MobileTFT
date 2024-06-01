@@ -55,17 +55,18 @@ static public class MatchMaker
             }
         }
 
-        string message = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndTurn + ",";
+        string message = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndTurn;
 
         if( opponent != null )
         {
             foreach(Pawn p in opponent.GetPlayerStats().GetInGamePawns())
             {
- 
+                if (p.position.x == -1)
+                    continue;
                 //TODO add extra pawn data here
                 Vector2 convertedPos = new Vector2(5 - p.position.x, 7 - p.position.y);
                 
-                message += p.pawnData.index + "," + convertedPos.x + "," + convertedPos.y;
+                message +=  "," + p.pawnData.index + "," + convertedPos.x + "," + convertedPos.y ;
             }
         }
        

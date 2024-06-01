@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,15 +8,21 @@ static public class TeamLoader
 {
     static public void LoadTeam(string msg)
     {
+        foreach (Pawn pawn in GridUtil.Instance.GetAllPawns(false))
+        {
+            pawn.SelfDestruct();
+        }
+
         int msgIndex = 1;
         string[] csv = msg.Split(',');
 
-        while(csv[msgIndex++] != null)
+        while (csv.Length > msgIndex + 1)
         {
+            ++msgIndex;
             PawnData data = PawnDataBase.pawns[int.Parse(csv[msgIndex])];
-            msgIndex++;
+            ++msgIndex;
             int xPos = int.Parse(csv[msgIndex]);
-            msgIndex++;
+            ++msgIndex;
             int yPos = int.Parse(csv[msgIndex]);
             Vector2Int position = new Vector2Int(xPos, yPos);
 

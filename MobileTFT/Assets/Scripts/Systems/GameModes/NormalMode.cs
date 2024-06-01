@@ -7,7 +7,6 @@ public class NormalMode : GameMode
 {
     [SerializeField] private Combat combat;
     [SerializeField] private CardManager cardManager;
-    [SerializeField] private BotLoader botLoader;
     [SerializeField] private RoundDisplayUI UI;
     [SerializeField] private MapManager mapManager;
 
@@ -141,11 +140,9 @@ public class NormalMode : GameMode
         {
             case 1:
                 UI.UpdateText("Safe Round");
-                botLoader.LoadBotTeam(0);
                 break;
             case 2:
                 UI.UpdateText("Safe Round");
-                botLoader.LoadBotTeam(1);
                 break;
             case 3:
                 //player round
@@ -156,12 +153,10 @@ public class NormalMode : GameMode
                 break;
             case 5:
                 UI.UpdateText("Safe Round");
-                botLoader.LoadBotTeam(4);
                 break;
             case 6:
                 // player round
                 UI.UpdateText("Safe Round");
-                botLoader.LoadBotTeam(5);
                 break;
             case 7:
                 UI.UpdateText("Death Round");
@@ -194,11 +189,9 @@ public class NormalMode : GameMode
                 break;
             case 3:
                 mapManager.ChangeMap(1);
-                botLoader.LoadBotTeam(2);
                 break;
             case 4:
                 mapManager.ChangeMap(1);
-                botLoader.LoadBotTeam(3);
                 break;
             case 5:
                 break;
@@ -206,15 +199,12 @@ public class NormalMode : GameMode
                 break;
             case 7:
                 mapManager.ChangeMap(1);
-                botLoader.LoadBotTeam(6);
                 break;
             case 8:
                 mapManager.ChangeMap(1);
-                botLoader.LoadBotTeam(7);
                 break;
             case 9:
                 mapManager.ChangeMap(1);
-                botLoader.LoadBotTeam(8);
                 break;
         }
 

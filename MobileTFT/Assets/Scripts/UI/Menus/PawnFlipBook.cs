@@ -14,7 +14,7 @@ public class PawnFlipBook : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI text;
 
-    private int index = 0;
+    //private int index = 0;
 
     //private void Awake()
     //{
