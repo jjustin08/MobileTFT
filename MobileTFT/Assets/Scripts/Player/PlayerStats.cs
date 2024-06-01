@@ -111,6 +111,9 @@ public class PlayerStats : MonoBehaviour
             levelUI.UIUpdate(level);
             levelUI.SetLevelCostUI(costToLevelUp.ToString());
             if(level == 6) { levelUI.SetLevelCostUI("X"); }
+
+            string msg = ClientToServerSignifiers.Player +","+ PlayerSignifiers.levelUp;
+            NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
         }
         else
         {

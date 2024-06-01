@@ -16,6 +16,8 @@ static public class CardManager
                 RequestReRoll(clientID);
                 break;
             case CardManagerSignifyers.BuyPawn:
+                //this might want to be in player
+                // need to update cash
                 RequestBuyPawn(clientID, int.Parse(csv[2]));
                 break;
         }

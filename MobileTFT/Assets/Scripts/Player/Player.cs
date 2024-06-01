@@ -55,4 +55,5 @@ static public class PlayerSignifiers
 {
     public const int MovePawn = 1;
     public const int SellPawn = 2;
+    public const int levelUp = 3;
 }

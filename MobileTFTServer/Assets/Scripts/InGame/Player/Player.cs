@@ -44,6 +44,10 @@ public class Player
                 string returnMessage = ServerToClientSignifiers.Player + "," + PlayerSignifiers.SellPawn + "," + csv[2];
                 NetworkServerProcessing.SendMessageToClient(returnMessage, connectionId, TransportPipeline.ReliableAndInOrder);
                 break;
+            case PlayerSignifiers.levelUp:
+                // need to check stuff here
+                stats.SetLevel(stats.GetLevel()+1);
+                break;
             default:
                 Debug.Log("Invalid signifier");
                 break;
@@ -58,4 +62,5 @@ static public class PlayerSignifiers
 {
     public const int MovePawn = 1;
     public const int SellPawn = 2;
+    public const int levelUp = 3;
 }
