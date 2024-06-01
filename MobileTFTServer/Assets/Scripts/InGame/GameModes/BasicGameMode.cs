@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BasicGameMode : GameMode
@@ -15,6 +16,11 @@ public class BasicGameMode : GameMode
     private int round = 0;
     private int realRound = 0;
 
+    private void Awake()
+    {
+        Lobby.SetGameMode(this);
+    }
+
     private void Update()
     {
         if (isGameRunning)
@@ -25,6 +31,7 @@ public class BasicGameMode : GameMode
 
     protected override void UpdateGame()
     {
+        
         // SERVER
         if (step == Step.CombatStart)
         {
@@ -69,7 +76,7 @@ public class BasicGameMode : GameMode
 
     public override void StartGame()
     {
-        isGameRunning=true;
+        isGameRunning = true;
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.StartGame;
         foreach (Player player in Lobby.GetPlayers())
         {
@@ -119,17 +126,4 @@ public class BasicGameMode : GameMode
             NetworkServerProcessing.SendMessageToClient(msg, id, TransportPipeline.ReliableAndInOrder);
         }
     }
-}
-
-
-
-static public class GameModeSignifiers
-{
-    public const int StartGame = 1;
-    public const int StartTurn = 2;
-    public const int EndTurn = 3;
-    public const int StartCombat = 4;
-    public const int EndCombat = 5;
-    public const int EndGame = 6;
-
 }

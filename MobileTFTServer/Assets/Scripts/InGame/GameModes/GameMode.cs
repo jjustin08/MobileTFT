@@ -26,3 +26,17 @@ static public class Step
     public const int CombatStart = 3;
     public const int CombatEnd = 4;
 }
+
+#region Protocol Signifiers
+static public class GameModeSignifiers
+{
+    public const int StartGame = 1;
+    public const int StartTurn = 2;
+    public const int EndTurn = 3;
+    public const int StartCombat = 4;
+    public const int EndCombat = 5;
+    public const int EndGame = 6;
+
+}
+
+#endregion

@@ -13,7 +13,12 @@ static public class Lobby
     static private int minPlayers = 2;
     //static private int maxPlayers = 8;
 
-    static private GameMode gameMode = new BasicGameMode();
+    static private GameMode gameMode;
+
+    static public void SetGameMode(GameMode gm)
+    {
+        gameMode = gm;
+    }
 
     static public void RevieceMessage(string msg, int playerId)
     {
@@ -34,8 +39,10 @@ static public class Lobby
     {
         if (players.Count >= minPlayers)
         {
+
+            string msg = ServerToClientSignifiers.Lobby + "," + LobbySignifiers.LoadGame;
             foreach (Player player in players)
-                NetworkServerProcessing.SendMessageToClient(LobbySignifiers.LoadGame.ToString(), player.getId(), TransportPipeline.ReliableAndInOrder);
+                NetworkServerProcessing.SendMessageToClient(msg, player.getId(), TransportPipeline.ReliableAndInOrder);
         }
     }
 
@@ -53,7 +60,6 @@ static public class Lobby
         if (allPlayersReady)
         {
             gameMode.StartGame();
-
         }
     }
     static public void PlayerLeave(int clientId)

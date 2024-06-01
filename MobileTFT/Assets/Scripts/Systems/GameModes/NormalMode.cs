@@ -34,22 +34,22 @@ public class NormalMode : GameMode
 
         switch (signifier)
         {
-            case ServerToClientGameModeSignifiers.StartGame:
+            case GameModeSignifiers.StartGame:
                 StartGame();
                 break; 
-            case ServerToClientGameModeSignifiers.StartTurn:
+            case GameModeSignifiers.StartTurn:
                 StartTurn();
                 break; 
-            case ServerToClientGameModeSignifiers.EndTurn:
+            case GameModeSignifiers.EndTurn:
                 EndTurn();
                 break; 
-            case ServerToClientGameModeSignifiers.StartCombat:
+            case GameModeSignifiers.StartCombat:
                 StartCombat();
                 break;
-            case ServerToClientGameModeSignifiers.EndCombat:
+            case GameModeSignifiers.EndCombat:
                 EndCombat();
                 break;
-            case ServerToClientGameModeSignifiers.EndGame:
+            case GameModeSignifiers.EndGame:
                 EndGame();
                 break;
             default:
@@ -275,21 +275,3 @@ public class NormalMode : GameMode
 }
 
 
-#region Protocol Signifiers
-static public class ClientToServerGameModeSignifiers
-{
-    public const int JoinLobby = 1;
-}
-
-static public class ServerToClientGameModeSignifiers
-{
-    public const int StartGame = 1;
-    public const int StartTurn = 2;
-    public const int EndTurn = 3;
-    public const int StartCombat = 4;
-    public const int EndCombat = 5;
-    public const int EndGame = 6;
-
-}
-
-#endregion
