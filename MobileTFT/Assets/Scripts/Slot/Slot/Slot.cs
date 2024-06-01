@@ -17,6 +17,8 @@ public class Slot : MonoBehaviour
     }
     public void PlacePawn(Pawn p)
     {
+
+
         Slot oldSlot = null;
         Transform newSlot = transform;
         
@@ -43,6 +45,27 @@ public class Slot : MonoBehaviour
         placedPawn = p;
         
         OnPawnChange?.Invoke(this, EventArgs.Empty);
+
+        //TODO find better way of doing this
+        if (Player.Instance.GetPlayerStats().GetPawnList().Contains(p))
+        {
+            Vector2 slotPos;
+            if (GetSlotPos() != null)
+            {
+                slotPos = GetSlotPos().GetHexCoordinate();
+            }
+            else
+            {
+                slotPos = new Vector2(-1, -1);
+            }
+
+            string message = ClientToServerSignifiers.Player + "," + PlayerSignifiers.MovePawn + "," + Player.Instance.GetPlayerStats().GetPawnList().IndexOf(p) + "," + slotPos.x + "," + slotPos.y;
+
+            NetworkClientProcessing.SendMessageToServer(message, TransportPipeline.ReliableAndInOrder);
+        }
+        // does not have to wait for server to move unit (change this or have server correction if something went wrong)
+
+
     }
 
     public void RemovePawn()
