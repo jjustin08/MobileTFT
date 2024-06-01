@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7209685447363629584, guid: 8e2523ec80f0e71429b95b22c65217ea,
+        type: 3}
+      propertyPath: parentPawn
+      value: 
+      objectReference: {fileID: 7599380195057096270}
     - target: {fileID: 9118991581727918180, guid: 8e2523ec80f0e71429b95b22c65217ea,
         type: 3}
       propertyPath: m_Enabled
@@ -93,6 +98,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3669246914301669834}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7599380195057096270 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6601613665552721796, guid: 8e2523ec80f0e71429b95b22c65217ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 3669246914301669834}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f52b699fd1608b4ba986c04f18feb90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6487830754172210872
 PrefabInstance:
   m_ObjectHideFlags: 0

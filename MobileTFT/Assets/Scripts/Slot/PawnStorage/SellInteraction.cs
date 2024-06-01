@@ -21,16 +21,12 @@ public class SellInteraction : MonoBehaviour
         }
     }
 
-    public void RequestSellPawn(PawnData pawnData, int triple)
+    public void RequestSellPawn(Pawn pawn, int triple)
     {
-        string msg = ClientToServerSignifiers.CardManager +"," + CardManagerSignifyers.SellPawn + "," + pawnData.index + "," + triple;
+        int index = Player.Instance.GetPlayerStats().GetPawnList().IndexOf(pawn);
+
+        string msg = ClientToServerSignifiers.Player +"," + PlayerSignifiers.SellPawn + "," + index + "," + triple;
 
         NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
-    }
-    public void RecieveSellPawn()
-    {
-        Pawn p = Player.Instance.GetHoldingPawn();
-        p.GetMovement().GetSlot().RemovePawn();
-        Destroy(p.gameObject);
     }
 }

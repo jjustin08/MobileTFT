@@ -28,7 +28,7 @@ static public class NetworkServerProcessing
                 CardManager.RecieveMessage(msg, clientConnectionID);
                 break;
             case ClientToServerSignifiers.Player:
-                CardManager.RecieveMessage(msg, clientConnectionID);
+                Lobby.GetPlayerById(clientConnectionID).RevieceMessage(msg);
                 break;
             default:
                 Debug.Log("Invalid signifier");

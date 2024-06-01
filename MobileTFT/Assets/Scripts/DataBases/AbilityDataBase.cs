@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class AbilityData : MonoBehaviour
+public class AbilityData
 {
     public string abilityName;
 
@@ -12,7 +12,7 @@ public class AbilityData : MonoBehaviour
         this.abilityName = abilityName;
     }
 }
-public class AbilityDataBase : MonoBehaviour
+public class AbilityDataBase
 {
     public static Dictionary<int, AbilityData> Abilities { get; } = new Dictionary<int, AbilityData>
     {

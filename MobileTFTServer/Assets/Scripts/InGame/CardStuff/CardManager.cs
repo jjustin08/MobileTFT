@@ -58,9 +58,6 @@ static public class CardManager
 
             tempPlayer.GetPlayerStats().AddPawn(tempData, new Vector2(-1,-1));
         }
-        //string playerMsg = ;
-        //Player.RevieceMessage();
-        //add this pawn to a playerstats
     }
 
     //    int level = Player.Instance.GetPlayerStats().GetPlayerLevel();

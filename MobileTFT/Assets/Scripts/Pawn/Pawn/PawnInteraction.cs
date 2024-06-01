@@ -6,13 +6,13 @@ using UnityEngine;
 public class PawnInteraction : Interaction
 {
     [SerializeField] private FollowCursor followCursor;
-    [SerializeField] private Pawn pawn;
+    [SerializeField] private Pawn parentPawn;
 
     protected override void OnDrag()
     {
         if (!allowInteraction) return;
 
-        Player.Instance.SetHoldingPawn(pawn);
+        Player.Instance.SetHoldingPawn(parentPawn);
         followCursor.ToggleDraggin(true);
 
         GameObject hoverObject = Player.Instance.GetPlayerInput().TestCardTileIntercept();
@@ -42,7 +42,7 @@ public class PawnInteraction : Interaction
             }
             if(hoverObject.GetComponent<SellInteraction>() != null)
             {
-                hoverObject.GetComponent<SellInteraction>().RequestSellPawn(pawn.GetPawnData(), pawn.GetStats().GetStarCount());
+                hoverObject.GetComponent<SellInteraction>().RequestSellPawn(parentPawn, parentPawn.GetStats().GetStarCount());
             }
         }
 
@@ -52,7 +52,7 @@ public class PawnInteraction : Interaction
     protected override void OnClick()
     {
         PawnInfoUI.Instance.ToggleUI();
-        PawnInfoUI.Instance.UpdateUI(pawn.GetStats());
+        PawnInfoUI.Instance.UpdateUI(parentPawn.GetStats());
     }
 
 

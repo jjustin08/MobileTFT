@@ -80,9 +80,12 @@ public class CardManager : MonoBehaviour
             PawnData pawnData = shopPawnsSlots[(int)slotIndex].GetCard().GetPawnData();
 
             Player.Instance.GetPlayerStats().RemoveCash(pawnData.cost);
-            pawnStorage.FillSlot(pawnData, 0, 0, 1);
+            Pawn pawnRef = pawnStorage.FillSlot(pawnData, 0, 0, 1);
 
             shopPawnsSlots[(int)slotIndex].RemoveCard();
+
+            if(pawnRef != null)
+            Player.Instance.GetPlayerStats().GetPawnList().Add(pawnRef);
         }
         else
         {
@@ -95,5 +98,4 @@ static public class CardManagerSignifyers
 {
     public const int ReRoll = 1;
     public const int BuyPawn = 2;
-    public const int SellPawn = 2;
 }

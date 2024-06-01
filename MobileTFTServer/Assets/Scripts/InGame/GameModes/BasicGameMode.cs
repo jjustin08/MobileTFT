@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicGameMode :GameMode
+public class BasicGameMode : GameMode
 {
     private bool isGameRunning = false;
 

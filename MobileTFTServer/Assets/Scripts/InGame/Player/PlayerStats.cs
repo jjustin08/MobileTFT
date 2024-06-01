@@ -25,7 +25,6 @@ public class PlayerStats
     public void AddPawn(PawnData PD, Vector2 pos)
     {
         pawns.Add(new Pawn(PD,pos,pawns.Count-1));
-        Debug.Log("yo we added a pawn bro");
     }
     public List<Pawn> GetInGamePawns() { return pawns; }
 

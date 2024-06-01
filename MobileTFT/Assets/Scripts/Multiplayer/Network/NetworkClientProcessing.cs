@@ -19,7 +19,6 @@ static public class NetworkClientProcessing
         switch (signifier)
         {
             case ServerToClientSignifiers.Lobby:
-
                 lobby.RevieceMessage(msg);
                 break; 
             case ServerToClientSignifiers.Gamemode:
@@ -28,8 +27,8 @@ static public class NetworkClientProcessing
             case ServerToClientSignifiers.CardManager:
                 cardManager.RecieveServerMessage(msg);
                 break;
-            case 0:
-               // Debug.Log("All good");
+            case ServerToClientSignifiers.Player:
+                Player.Instance.RecieveMessage(msg);
                 break;
             default:
                 Debug.Log("Invalid signifier");

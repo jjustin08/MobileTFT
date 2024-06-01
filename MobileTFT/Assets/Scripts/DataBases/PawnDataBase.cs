@@ -83,7 +83,7 @@ public class PawnDataBase
             cardVisual: Resources.Load<GameObject>("CardVisual/0"),
             PawnIndex.Pawn1,
             pawnName: "Pawn1",
-            cost: 1,
+            cost: 0,
             ability: AbilityDataBase.Abilities[AbilityIndex.Ability1],
             types: new List<TypeData>() {TypeDataBase.Types[TypeIndex.Type1]},
             health: 100,
@@ -105,11 +105,11 @@ public class PawnDataBase
         {
             PawnIndex.Pawn2,
             new PawnData(
-            placedPawn: Resources.Load<GameObject>("PlacedPawns/1"),
-            cardVisual: Resources.Load<GameObject>("CardVisual/1"),
+            placedPawn: Resources.Load<GameObject>("PlacedPawns/0"),
+            cardVisual: Resources.Load<GameObject>("CardVisual/0"),
             PawnIndex.Pawn2,
             pawnName: "Pawn2",
-            cost: 2,
+            cost: 0,
             ability: AbilityDataBase.Abilities[AbilityIndex.Ability2],
             types: new List<TypeData>() {TypeDataBase.Types[TypeIndex.Type1]},
             health: 120,
