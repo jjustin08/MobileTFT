@@ -41,7 +41,7 @@ public class NormalMode : GameMode
                 StartTurn();
                 break; 
             case GameModeSignifiers.EndTurn:
-                EndTurn();
+                EndTurn(msg);
                 break; 
             case GameModeSignifiers.StartCombat:
                 StartCombat();
@@ -176,7 +176,7 @@ public class NormalMode : GameMode
         }
     }
 
-    protected override void EndTurn()
+    protected override void EndTurn(string msg)
     {
         timer = 0;
         timerMax = 1.0f;
@@ -217,6 +217,8 @@ public class NormalMode : GameMode
                 botLoader.LoadBotTeam(8);
                 break;
         }
+
+        TeamLoader.LoadTeam(msg);
     }
 
     protected override void StartCombat()

@@ -99,9 +99,10 @@ public class BasicGameMode : GameMode
 
     protected override void EndTurn()
     {
-        string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndTurn;
+        MatchMaker.MatchMake();
         foreach (Player player in Lobby.GetPlayers())
         {
+            string msg = MatchMaker.GetOppenonts(player);
             int id = player.getId();
             NetworkServerProcessing.SendMessageToClient(msg, id, TransportPipeline.ReliableAndInOrder);
         }

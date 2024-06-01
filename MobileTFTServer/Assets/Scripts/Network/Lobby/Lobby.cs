@@ -69,6 +69,7 @@ static public class Lobby
             if (player.getId() == clientId)
             {
                 players.Remove(player);
+                return;
             }
         }
     }

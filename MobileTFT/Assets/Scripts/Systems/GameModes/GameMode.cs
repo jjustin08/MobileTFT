@@ -11,7 +11,7 @@ public class GameMode : MonoBehaviour
 
     virtual protected void StartTurn(){}
 
-    virtual protected void EndTurn(){}
+    virtual protected void EndTurn(string msg) {}
 
     virtual protected void StartCombat(){}
 
