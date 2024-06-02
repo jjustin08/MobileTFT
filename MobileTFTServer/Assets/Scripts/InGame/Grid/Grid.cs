@@ -134,52 +134,41 @@ public class Grid
         }
         return false;
     }
-    public Vector2Int GetTargetInRange(int range, Vector2Int startSlot, List<Pawn> allPawns)
+    public Pawn GetTargetInRange(int range, Pawn attackingPawn, List<Pawn> allPawns)
     {
-        Vector2Int nearestTarget = FindNearestTarget(startSlot);
-        int distance = GetTileDistanceAway(startSlot, nearestTarget, range);
+        Pawn nearestTarget = FindNearestTarget(attackingPawn, allPawns);
+        int distance = GetTileDistanceAway(attackingPawn.position, nearestTarget.position, range);
 
         if (distance != 0)
         {
             return nearestTarget;
         }
 
-        return new Vector2Int(-1,-1);
+        return null;
     }
 
-    public Vector2Int FindNearestTarget(Vector2Int startTile, List<Pawn> allPawns)
+    public Pawn FindNearestTarget(Pawn attackingPawn, List<Pawn> allPawns)
     {
-        List<Vector2Int> tilesWithEnemeyPawns = new List<Vector2Int>();
-        foreach (Vector2Int nei in GetNeighboursInRange(15,startTile))
-        {
-            if (nei.GetSlot().HasPawn())
-            {
-                if (tile.GetSlot().GetPawn().IsEnemy())
-                {
-                    if (!nei.GetSlot().GetPawn().IsEnemy())
-                    {
-                        tilesWithEnemeyPawns.Add(nei);
-                    }
-                }
-                else
-                {
-                    if (nei.GetSlot().GetPawn().IsEnemy())
-                    {
-                        tilesWithEnemeyPawns.Add(nei);
-                    }
-                }
+        Vector2Int startTile = attackingPawn.position;
+        int playerID = attackingPawn.ownerID;
 
+        List<Pawn> enemyPawns = new List<Pawn>();
+        foreach (Pawn p in allPawns) 
+        { 
+            if(p.ownerID != playerID)
+            {
+                enemyPawns.Add(p);
             }
         }
 
-        SlotPosition nearestTarget = null;
+        Pawn nearestTarget = null;
         int nearestDistance = 2000;
-        foreach (SlotPosition nei in tilesWithEnemeyPawns)
+        foreach (Pawn enemy in enemyPawns)
         {
-            int neiDistance = tile.GetTileDistanceAway(nei, 15);
+            int neiDistance = GetTileDistanceAway(startTile,enemy.position, 15);
             if (neiDistance < nearestDistance)
             {
-                nearestTarget = nei;
+                nearestTarget = enemy;
                 nearestDistance = neiDistance;
             }
         }
