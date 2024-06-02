@@ -6,6 +6,8 @@ using UnityEngine;
 static public class MatchMaker
 {
     static private List<List<Player>> matches;
+
+    static public List<List<Player>> GetMatches(){ return matches; }
     static public void MatchMake()
     {
         List<Player> availablePlayers = Lobby.GetPlayers();

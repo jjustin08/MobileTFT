@@ -110,6 +110,8 @@ public class BasicGameMode : GameMode
 
     protected override void StartCombat()
     {
+        //I want to run combat here quickly to get results
+        Combat.RunCombat();
         string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.StartCombat;
         foreach (Player player in Lobby.GetPlayers())
         {
@@ -120,7 +122,8 @@ public class BasicGameMode : GameMode
 
     protected override void EndCombat()
     {
-        string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndCombat;
+        //string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndCombat
+        string msg = Combat.GetCombatResults();
         foreach (Player player in Lobby.GetPlayers())
         {
             int id = player.getId();
