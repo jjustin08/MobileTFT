@@ -4,17 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Grid
+static public class Grid
 {
-    private Vector2Int[] gridPositions;
-
-    Grid() 
-    {
-        LayoutHexGrid(6,8);
-    }
+    static private Vector2Int[] gridPositions;
 
 
-    private void LayoutHexGrid(int xSize, int ySize)
+
+    static private void LayoutHexGrid(int xSize, int ySize)
     {
         gridPositions = new Vector2Int[xSize * ySize];
 
@@ -30,7 +26,7 @@ public class Grid
         }
     }
 
-    public Vector2Int[] GetNeighbours(Vector2Int pos)
+    static public Vector2Int[] GetNeighbours(Vector2Int pos)
     {
         Vector2Int[] neighbours = new Vector2Int[6];
 
@@ -72,7 +68,7 @@ public class Grid
         return neighbours;
     }
 
-    public Vector2Int[] GetNeighboursInRange(int range, Vector2Int startSlot)
+    static public Vector2Int[] GetNeighboursInRange(int range, Vector2Int startSlot)
     {
         List<Vector2Int> realNeighbours = new List<Vector2Int>();
 
@@ -81,7 +77,7 @@ public class Grid
         return realNeighbours.ToArray();
     }
 
-    private void AddNeighboursInRange(IEnumerable<Vector2Int> neighbours, int range, List<Vector2Int> realNeighbours)
+    static private void AddNeighboursInRange(IEnumerable<Vector2Int> neighbours, int range, List<Vector2Int> realNeighbours)
     {
         if (range <= 0)
             return;
@@ -104,7 +100,7 @@ public class Grid
 
         AddNeighboursInRange(nextNeighbours, range - 1, realNeighbours);
     }
-    public int GetTileDistanceAway(Vector2Int startPos,Vector2Int TargetPos, int maxRange)
+    static public int GetTileDistanceAway(Vector2Int startPos,Vector2Int TargetPos, int maxRange)
     {
         if (GetNeighbours(startPos).Contains<Vector2Int>(TargetPos))
         {
@@ -125,7 +121,7 @@ public class Grid
         return 0;
     }
 
-    public bool IsSlotInRange(int range, Vector2Int startSlot, Vector2Int targetSlot)
+    static public bool IsSlotInRange(int range, Vector2Int startSlot, Vector2Int targetSlot)
     {
         int distance = GetTileDistanceAway(startSlot, targetSlot, range);
         if (distance <= range && distance != 0)
@@ -134,10 +130,10 @@ public class Grid
         }
         return false;
     }
-    public Pawn GetTargetInRange(int range, Pawn attackingPawn, List<Pawn> allPawns)
+    static public Pawn GetTargetInRange(int range, Pawn attackingPawn, List<Pawn> allPawns)
     {
         Pawn nearestTarget = FindNearestTarget(attackingPawn, allPawns);
-        int distance = GetTileDistanceAway(attackingPawn.position, nearestTarget.position, range);
+        int distance = GetTileDistanceAway(attackingPawn.combatPosition, nearestTarget.combatPosition, range);
 
         if (distance != 0)
         {
@@ -147,9 +143,9 @@ public class Grid
         return null;
     }
 
-    public Pawn FindNearestTarget(Pawn attackingPawn, List<Pawn> allPawns)
+    static public Pawn FindNearestTarget(Pawn attackingPawn, List<Pawn> allPawns)
     {
-        Vector2Int startTile = attackingPawn.position;
+        Vector2Int startTile = attackingPawn.combatPosition;
         int playerID = attackingPawn.ownerID;
 
         List<Pawn> enemyPawns = new List<Pawn>();
@@ -165,7 +161,7 @@ public class Grid
         int nearestDistance = 2000;
         foreach (Pawn enemy in enemyPawns)
         {
-            int neiDistance = GetTileDistanceAway(startTile,enemy.position, 15);
+            int neiDistance = GetTileDistanceAway(startTile,enemy.combatPosition, 15);
             if (neiDistance < nearestDistance)
             {
                 nearestTarget = enemy;

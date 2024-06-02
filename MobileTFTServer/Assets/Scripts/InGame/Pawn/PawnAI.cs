@@ -31,13 +31,14 @@ public class PawnAI
         MovementUpdate();
     }
 
-    public Vector2Int GetTarget()
+    public Pawn GetTarget(Pawn attackingPawn, List<Pawn> allPawns)
     {
-        Vector2Int slotToAttack;
+        Pawn pawnToAttack = null;
 
 
         if (lastTargetPawn == null)
         {
+            pawnToAttack = Grid.GetTargetInRange(pawnToAttack.pawnStats.GetRange(),pawnToAttack,allPawns);
             slotToAttack =
             GridUtil.Instance.GetTargetInRange(
             parentPawn.GetStats().GetRange()
@@ -63,7 +64,7 @@ public class PawnAI
 
         }
 
-        return slotToAttack;
+        return pawnToAttack;
     }
 
     public void Attack(Vector2Int slotToAttack)
