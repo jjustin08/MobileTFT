@@ -32,7 +32,7 @@ public class Player
         {
             case PlayerSignifiers.MovePawn:
                 Pawn tempPawn = stats.GetInGamePawns()[int.Parse(csv[2])];
-                tempPawn.position = new Vector2(int.Parse(csv[3]), int.Parse(csv[4]));
+                tempPawn.position = new Vector2Int(int.Parse(csv[3]), int.Parse(csv[4]));
                 break;
             case PlayerSignifiers.SellPawn:
                 //int index = 

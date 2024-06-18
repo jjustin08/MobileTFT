@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a9752b0c8e144801967e6897679604b, type: 3}
+  m_Name: vHierarchy Data
+  m_EditorClassIdentifier: 
+  sceneDatasByGuid:
+    keys:
+    - 4a2eb94d0c81db449b933feccf54bac3
+    - 99c9720ab356a0642a771bea13969a05
+    - 687cc4eb9b1f9174d889d4da254f15a4
+    - 
+    - 0f54387bcaa74cb4c8533673993a44bf
+    values:
+    - goDatasByGlobalId:
+        keys:
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1379097636-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-227119499-0
+        values:
+        - iColor: 9
+          icon: 
+        - iColor: 8
+          icon: Settings Icon
+      goDatasByInstanceId:
+        keys: 2c87000026850000fc1e0100f41c0100243d01001e3b0100
+        values:
+        - iColor: 9
+          icon: 
+        - iColor: 8
+          icon: Settings Icon
+        - iColor: 9
+          icon: 
+        - iColor: 8
+          icon: Settings Icon
+        - iColor: 9
+          icon: 
+        - iColor: 8
+          icon: Settings Icon
+    - goDatasByGlobalId:
+        keys: []
+        values: []
+      goDatasByInstanceId:
+        keys: 
+        values: []
+    - goDatasByGlobalId:
+        keys: []
+        values: []
+      goDatasByInstanceId:
+        keys: 
+        values: []
+    - goDatasByGlobalId:
+        keys: []
+        values: []
+      goDatasByInstanceId:
+        keys: 
+        values: []
+    - goDatasByGlobalId:
+        keys:
+        - GlobalObjectId_V1-2-0f54387bcaa74cb4c8533673993a44bf-1063288975-0
+        values:
+        - iColor: 8
+          icon: Settings Icon
+      goDatasByInstanceId:
+        keys: 7689fcff
+        values:
+        - iColor: 8
+          icon: Settings Icon

@@ -5129,7 +5129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 744847057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ae45a8eda849484ba6de4208a3037c1, type: 3}
+  m_Script: {fileID: 11500000, guid: a1a7906b625af074c8b514e9a9f85bfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shopPawnsSlots:

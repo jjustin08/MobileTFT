@@ -58,7 +58,7 @@ static public class CardManager
         {
             PawnData tempData = tempPlayer.GetPlayerStats().GetCards()[slotIndex];
 
-            tempPlayer.GetPlayerStats().AddPawn(tempData, new Vector2(-1,-1));
+            tempPlayer.GetPlayerStats().AddPawn(tempData, new Vector2Int(-1,-1),clientID);
         }
     }
 

@@ -22,9 +22,9 @@ public class PlayerStats
        this.cards = cards;
     }
 
-    public void AddPawn(PawnData PD, Vector2 pos)
+    public void AddPawn(PawnData PD, Vector2Int pos, int clientID)
     {
-        pawns.Add(new Pawn(PD,pos,pawns.Count-1));
+        pawns.Add(new Pawn(PD,pos,pawns.Count-1,0));
     }
     public List<Pawn> GetInGamePawns() { return pawns; }
 

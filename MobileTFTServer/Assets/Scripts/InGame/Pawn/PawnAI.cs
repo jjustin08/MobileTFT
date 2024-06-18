@@ -36,83 +36,83 @@ public class PawnAI
         Pawn pawnToAttack = null;
 
 
-        if (lastTargetPawn == null)
-        {
-            pawnToAttack = Grid.GetTargetInRange(pawnToAttack.pawnStats.GetRange(),pawnToAttack,allPawns);
-            slotToAttack =
-            GridUtil.Instance.GetTargetInRange(
-            parentPawn.GetStats().GetRange()
-            , parentPawn.GetMovement().GetSlot());
-        }
-        else
-        {
-            if (GridUtil.Instance.IsSlotInRange(parentPawn.GetStats().GetRange()
-            , parentPawn.GetMovement().GetSlot(), lastTargetPawn.GetMovement().GetSlot()) &&
-            lastTargetPawn.GetStats().GetCurrentHealth() > 0)
-            {
-                slotToAttack = lastTargetPawn.GetMovement().GetSlot().GetSlotPos();
+        //if (lastTargetPawn == null)
+        //{
+        //    pawnToAttack = Grid.GetTargetInRange(pawnToAttack.pawnStats.GetRange(),pawnToAttack,allPawns);
+        //    slotToAttack =
+        //    GridUtil.Instance.GetTargetInRange(
+        //    parentPawn.GetStats().GetRange()
+        //    , parentPawn.GetMovement().GetSlot());
+        //}
+        //else
+        //{
+        //    if (GridUtil.Instance.IsSlotInRange(parentPawn.GetStats().GetRange()
+        //    , parentPawn.GetMovement().GetSlot(), lastTargetPawn.GetMovement().GetSlot()) &&
+        //    lastTargetPawn.GetStats().GetCurrentHealth() > 0)
+        //    {
+        //        slotToAttack = lastTargetPawn.GetMovement().GetSlot().GetSlotPos();
 
-            }
-            else
-            {
-                lastTargetPawn = null;
-                slotToAttack =
-                GridUtil.Instance.GetTargetInRange(
-                parentPawn.GetStats().GetRange()
-                , parentPawn.GetMovement().GetSlot());
-            }
+        //    }
+        //    else
+        //    {
+        //        lastTargetPawn = null;
+        //        slotToAttack =
+        //        GridUtil.Instance.GetTargetInRange(
+        //        parentPawn.GetStats().GetRange()
+        //        , parentPawn.GetMovement().GetSlot());
+        //    }
 
-        }
+        //}
 
         return pawnToAttack;
     }
 
     public void Attack(Vector2Int slotToAttack)
     {
-        // its a bit funky would be nice to add lerp here too
-        Vector3 direction = (slotToAttack.transform.position - transform.position).normalized;
+        //// its a bit funky would be nice to add lerp here too
+        //Vector3 direction = (slotToAttack.transform.position - transform.position).normalized;
 
-        if (direction != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(direction);
-        }
+        //if (direction != Vector3.zero)
+        //{
+        //    transform.rotation = Quaternion.LookRotation(direction);
+        //}
 
-        lastTargetPawn = slotToAttack.GetSlot().GetPawn();
-        parentPawn.GetCombat().DealDamage(lastTargetPawn);
+        //lastTargetPawn = slotToAttack.GetSlot().GetPawn();
+        //parentPawn.GetCombat().DealDamage(lastTargetPawn);
     }
 
     private bool AttackUpdate()
     {
-        Vector2Int slotToAttack = GetTarget();
+        //Vector2Int slotToAttack = GetTarget();
 
-        if (slotToAttack != null)
-        {
-            if (parentPawn.GetStats().IsManaFull())
-            {
-                //activate ability
-                parentPawn.GetStats().SetCurrentMana(0);
-                // parentPawn.GetPawnSO().ability.Ability(parentPawn);
-                return true;
-            }
-        }
-
-
-        slotToAttack = GetTarget();
-        if (slotToAttack != null)
-        {
-            if (Timer(attackTimerMax, ref attackTimerCurrent))
-                return true;
-
-            Attack(slotToAttack);
-            parentPawn.GetStats().AddMana();
+        //if (slotToAttack != null)
+        //{
+        //    if (parentPawn.GetStats().IsManaFull())
+        //    {
+        //        //activate ability
+        //        parentPawn.GetStats().SetCurrentMana(0);
+        //        // parentPawn.GetPawnSO().ability.Ability(parentPawn);
+        //        return true;
+        //    }
+        //}
 
 
-            return true;
-        }
-        else
-        {
-            attackTimerCurrent = attackTimerMax;
-        }
+        //slotToAttack = GetTarget();
+        //if (slotToAttack != null)
+        //{
+        //    if (Timer(attackTimerMax, ref attackTimerCurrent))
+        //        return true;
+
+        //    Attack(slotToAttack);
+        //    parentPawn.GetStats().AddMana();
+
+
+        //    return true;
+        //}
+        //else
+        //{
+        //    attackTimerCurrent = attackTimerMax;
+        //}
 
 
         return false;
@@ -121,20 +121,20 @@ public class PawnAI
 
     private void MovementUpdate()
     {
-        if (Timer(moveTimerMax, ref moveTimerCurrent))
-            return;
+        //if (Timer(moveTimerMax, ref moveTimerCurrent))
+        //    return;
 
-        SlotPosition tileToMove;
-        tileToMove = GridUtil.Instance.AStarNextMoveTile(parentPawn.GetMovement().GetSlot());
+        //SlotPosition tileToMove;
+        //tileToMove = GridUtil.Instance.AStarNextMoveTile(parentPawn.GetMovement().GetSlot());
 
-        if (tileToMove != null)
-        {
-            parentPawn.GetMovement().MoveToSlot(tileToMove.GetSlot());
-        }
-        else
-        {
-            moveTimerCurrent = moveTimerMax;
-        }
+        //if (tileToMove != null)
+        //{
+        //    parentPawn.GetMovement().MoveToSlot(tileToMove.GetSlot());
+        //}
+        //else
+        //{
+        //    moveTimerCurrent = moveTimerMax;
+        //}
     }
 
 
