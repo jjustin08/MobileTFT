@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class LerpingMovement :MonoBehaviour
 {
-    public Transform oldSlot;
-    public Transform newSlot;
-    public Transform pawn;
+    public Transform oldPosition;
+    public Transform newPosition;
+    public Transform obj;
 
     private float lerpSpeed = 2f;
     private float currentLerpTime = 0f;
@@ -30,21 +30,21 @@ public class LerpingMovement :MonoBehaviour
 
         float t = currentLerpTime / totalLerpTime;
 
-        pawn.position = Vector3.Lerp(oldSlot.position, newSlot.position, t);
+        obj.position = Vector3.Lerp(oldPosition.position, newPosition.position, t);
 
 
-        Vector3 direction = (newSlot.position - oldSlot.position).normalized;
+        Vector3 direction = (newPosition.position - oldPosition.position).normalized;
 
         if (direction != Vector3.zero)
         {
             Quaternion targetRotation = Quaternion.LookRotation(direction);
-            pawn.rotation = Quaternion.Lerp(pawn.rotation, targetRotation, t);
+            obj.rotation = Quaternion.Lerp(obj.rotation, targetRotation, t);
         }
 
 
         if (currentLerpTime >= totalLerpTime)
         {
-            pawn.SetParent(newSlot);
+            obj.SetParent(newPosition);
             Destroy(this);
         }
     }

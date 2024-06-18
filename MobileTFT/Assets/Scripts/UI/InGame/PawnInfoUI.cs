@@ -41,58 +41,58 @@ public class PawnInfoUI : MonoBehaviour
         toggleGameObject.SetActive(!toggleGameObject.activeSelf);
     }
 
-    public void UpdateUI(PawnSO pawnSO)
-    {
-        nameText.text = pawnSO.name;
+    //public void UpdateUI(PawnSO pawnSO)
+    //{
+    //    nameText.text = pawnSO.name;
 
-        healthText.text = pawnSO.health.ToString();
-        damageText.text = pawnSO.damage.ToString();
-        atkSpdText.text = pawnSO.attackTime.ToString();
-        rangeText.text = pawnSO.range.ToString();
-        manaText.text = pawnSO.mana.ToString();
-
-
-        abilityDescriptionText.text = pawnSO.ability.description;
+    //    healthText.text = pawnSO.health.ToString();
+    //    damageText.text = pawnSO.damage.ToString();
+    //    atkSpdText.text = pawnSO.attackTime.ToString();
+    //    rangeText.text = pawnSO.range.ToString();
+    //    manaText.text = pawnSO.mana.ToString();
 
 
-        foreach (Image type in types)
-        {
-            type.gameObject.SetActive(false);
-        }
-        for (int i = 0; i < pawnSO.types.Count; i++)
-        {
-            types[i].gameObject.SetActive(true);
-            types[i].sprite = pawnSO.types[i].icon;
-        }
+    //    abilityDescriptionText.text = pawnSO.ability.description;
+
+
+    //    foreach (Image type in types)
+    //    {
+    //        type.gameObject.SetActive(false);
+    //    }
+    //    for (int i = 0; i < pawnSO.types.Count; i++)
+    //    {
+    //        types[i].gameObject.SetActive(true);
+    //        types[i].sprite = pawnSO.types[i].icon;
+    //    }
 
         
-        int pCost = pawnSO.cost;
+    //    int pCost = pawnSO.cost;
 
-        switch (pCost)
-        {
-            case 1:
-                background.color = Color.grey;
-                break;
-            case 2:
-                background.color = Color.green;
-                break;
-            case 3:
-                background.color = Color.blue;
-                break;
-            case 4:
-                background.color = Color.red;
-                break;
-            case 5:
-                background.color = Color.yellow;
-                break;
+    //    switch (pCost)
+    //    {
+    //        case 1:
+    //            background.color = Color.grey;
+    //            break;
+    //        case 2:
+    //            background.color = Color.green;
+    //            break;
+    //        case 3:
+    //            background.color = Color.blue;
+    //            break;
+    //        case 4:
+    //            background.color = Color.red;
+    //            break;
+    //        case 5:
+    //            background.color = Color.yellow;
+    //            break;
 
 
-        }
-    }
+    //    }
+    //}
 
     public void UpdateUI(PawnStats pStats)
     {
-        UpdateUI(pStats.GetComponent<Pawn>().GetPawnSO());
+       // UpdateUI(pStats.GetComponent<Pawn>().GetPawnSO());
 
         healthText.text = pStats.GetCurrentHealth().ToString();
         damageText.text = pStats.GetDamage().ToString();

@@ -10,7 +10,7 @@ public class PawnManager : MonoBehaviour
     //have all friendly pawns
     private List<Pawn> pawnList = new List<Pawn>();
     // have count of all types
-    private List<TypeSO> types = new List<TypeSO>();
+   // private List<TypeSO> types = new List<TypeSO>();
     private List<int> typeCount = new List<int>();
     // only update stats outside of combat
     private bool inCombat = false;
@@ -45,7 +45,7 @@ public class PawnManager : MonoBehaviour
             pawnList.Add(p);
         }
         //count types
-        CountTypes();
+       // CountTypes();
 
         //calculate stats
         foreach (Pawn p in pawnList)
@@ -54,37 +54,37 @@ public class PawnManager : MonoBehaviour
         }
     }
 
-    private void CountTypes()
-    {
-        // temp fix required visual to be same
-        List<GameObject> countedPawns = new List<GameObject>();
-        types.Clear();
-        typeCount.Clear();
-        foreach (Pawn p in pawnList)
-        {
+    //private void CountTypes()
+    //{
+    //    // temp fix required visual to be same
+    //    List<GameObject> countedPawns = new List<GameObject>();
+    //    types.Clear();
+    //    typeCount.Clear();
+    //    foreach (Pawn p in pawnList)
+    //    {
             
-            if(countedPawns.Contains(p.GetPawnSO().placedVisual))
-            {
-                continue;
-            }
+    //        if(countedPawns.Contains(p.GetPawnSO().placedVisual))
+    //        {
+    //            continue;
+    //        }
 
-            countedPawns.Add(p.GetPawnSO().placedVisual);
+    //        countedPawns.Add(p.GetPawnSO().placedVisual);
 
-            foreach (TypeSO t in p.GetPawnSO().types)
-            {
-                if (!types.Contains(t))
-                {
-                    types.Add(t);
-                    typeCount.Add(1);
-                }
-                else
-                {
-                    int index = types.IndexOf(t);
-                    typeCount[index] += 1;
-                }
-            }
-        }
-    }
+    //        foreach (TypeSO t in p.GetPawnSO().types)
+    //        {
+    //            if (!types.Contains(t))
+    //            {
+    //                types.Add(t);
+    //                typeCount.Add(1);
+    //            }
+    //            else
+    //            {
+    //                int index = types.IndexOf(t);
+    //                typeCount[index] += 1;
+    //            }
+    //        }
+    //    }
+    //}
 
 
     public void ToggleCombat(bool toggle)

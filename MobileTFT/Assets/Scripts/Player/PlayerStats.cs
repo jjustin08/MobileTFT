@@ -5,6 +5,7 @@ using static Cinemachine.DocumentationSortingAttribute;
 
 public class PlayerStats : MonoBehaviour
 {
+    private List<Pawn> pawnList = new List<Pawn>();
     // Health
     [SerializeField] private HealthUI healthUI;
     private int health = 15;
@@ -28,6 +29,8 @@ public class PlayerStats : MonoBehaviour
         healthUI.SetHealthText(health);
         levelUI.SetLevelCostUI(costToLevelUp.ToString());
     }
+
+    public List<Pawn> GetPawnList() { return pawnList; }
 
     // Health
     public void SetPlayerHealth(int h)
@@ -108,6 +111,9 @@ public class PlayerStats : MonoBehaviour
             levelUI.UIUpdate(level);
             levelUI.SetLevelCostUI(costToLevelUp.ToString());
             if(level == 6) { levelUI.SetLevelCostUI("X"); }
+
+            string msg = ClientToServerSignifiers.Player +","+ PlayerSignifiers.levelUp;
+            NetworkClientProcessing.SendMessageToServer(msg, TransportPipeline.ReliableAndInOrder);
         }
         else
         {
