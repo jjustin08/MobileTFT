@@ -23,7 +23,7 @@ public class FollowCursor : MonoBehaviour
         isDraging = toggle;
         if (!toggle)
         {
-            rb.velocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
 
             transform.localRotation = Quaternion.Euler(0, 0, 0);
 
@@ -47,8 +47,8 @@ public class FollowCursor : MonoBehaviour
 
         Vector3 difference = newWorldPos - transform.position;
 
-        rb.velocity = difference * speed;
-        Quaternion rotate = Quaternion.Euler(rb.velocity.z, 0, -rb.velocity.x);
+        rb.linearVelocity = difference * speed;
+        Quaternion rotate = Quaternion.Euler(rb.linearVelocity.z, 0, -rb.linearVelocity.x);
         rb.rotation = rotate;
 
     }
