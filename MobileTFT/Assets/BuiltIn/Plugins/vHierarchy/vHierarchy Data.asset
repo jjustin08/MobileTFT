@@ -19,23 +19,92 @@ MonoBehaviour:
     - 687cc4eb9b1f9174d889d4da254f15a4
     - 
     - 0f54387bcaa74cb4c8533673993a44bf
+    - b8ba699843d563e4baa440890557df32
     values:
     - goDatasByGlobalId:
         keys:
         - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1379097636-0
         - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-227119499-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-434248474-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1716560826-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1750990927-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1409795327-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-514225151-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1778161044-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1295443584-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-987982511-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-669388337-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1517768394-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1477706560-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1762414931-0
         values:
         - iColor: 9
           icon: 
         - iColor: 8
           icon: Settings Icon
+        - iColor: 0
+          icon: 
+        - iColor: 0
+          icon: 
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: ScriptableObject Icon
+        - iColor: 0
+          icon: ScriptableObject Icon
+        - iColor: 0
+          icon: ScriptableObject Icon
+        - iColor: 0
+          icon: 
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: 
       goDatasByInstanceId:
-        keys: f4040200ee020200
+        keys: 1acd000014cb0000144701000e45010010b301000ab1010060b10100acb301009009ffffb86effffd244ffff9c3ffffff69cfdff9a43fdffb839fdff4e39fdff7af3fcffe2c1fcff
         values:
         - iColor: 9
           icon: 
         - iColor: 8
           icon: Settings Icon
+        - iColor: 9
+          icon: 
+        - iColor: 8
+          icon: Settings Icon
+        - iColor: 9
+          icon: 
+        - iColor: 8
+          icon: Settings Icon
+        - iColor: 0
+          icon: 
+        - iColor: 0
+          icon: 
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: ScriptableObject Icon
+        - iColor: 0
+          icon: ScriptableObject Icon
+        - iColor: 0
+          icon: ScriptableObject Icon
+        - iColor: 0
+          icon: 
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: StandaloneInputModule Icon
+        - iColor: 0
+          icon: 
     - goDatasByGlobalId:
         keys: []
         values: []
@@ -60,6 +129,12 @@ MonoBehaviour:
         values:
         - iColor: 8
           icon: Settings Icon
+      goDatasByInstanceId:
+        keys: 
+        values: []
+    - goDatasByGlobalId:
+        keys: []
+        values: []
       goDatasByInstanceId:
         keys: 
         values: []
