@@ -40,7 +40,7 @@ public class PawnAI
 
         if (lastTargetPawn == null)
         {
-            pawnToAttack = Grid.GetTargetInRange(pawnToAttack.pawnStats.GetRange(), pawnToAttack, allPawns);
+            pawnToAttack = Grid.GetTargetInRange(parentPawn.pawnStats.GetRange(), parentPawn, allPawns);
         }
         else
         {
@@ -115,7 +115,7 @@ public class PawnAI
         Vector2Int tileToMove;
         tileToMove = Grid.AStarNextMoveTile(parentPawn);
 
-        if (tileToMove != null)
+        if (tileToMove != new Vector2Int(-1,-1))
         {
             // moving
             // TODO make this a function

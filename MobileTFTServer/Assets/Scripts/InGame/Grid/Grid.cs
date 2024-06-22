@@ -7,10 +7,7 @@ using UnityEngine;
 static public class Grid
 {
     static private Vector2Int[] gridPositions;
-
-
-
-    static private void LayoutHexGrid(int xSize, int ySize)
+    static public void LayoutHexGrid(int xSize, int ySize)
     {
         gridPositions = new Vector2Int[xSize * ySize];
 
@@ -133,13 +130,14 @@ static public class Grid
     static public Pawn GetTargetInRange(int range, Pawn attackingPawn, List<Pawn> allPawns)
     {
         Pawn nearestTarget = FindNearestTarget(attackingPawn);
-        int distance = GetTileDistanceAway(attackingPawn.combatPosition, nearestTarget.combatPosition, range);
-
-        if (distance != 0)
+        if(nearestTarget != null)
         {
-            return nearestTarget;
+            int distance = GetTileDistanceAway(attackingPawn.combatPosition, nearestTarget.combatPosition, range);
+            if (distance != 0)
+            {
+                return nearestTarget;
+            }
         }
-
         return null;
     }
 

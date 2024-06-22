@@ -8,6 +8,7 @@ static public class Combat
     static public List<Pawn> allPawns;
     static public void RunCombat()
     {
+        
         // I need to simulate the whole combat
         // Do i just create a virtual equezilent version of the singleplayer??
         foreach(List<Player> match in MatchMaker.GetMatches())
@@ -26,7 +27,7 @@ static public class Combat
                 pawn.InitPawnAI();
             }
 
-            while(CombatUpdate(allPawns))
+            while (CombatUpdate(allPawns))
             {
 
             }
@@ -41,7 +42,7 @@ static public class Combat
             pawn.pawnAI.AIUpdate(allPawns);
         }
 
-        if(IsCombatOver(allPawns))
+        if(!IsCombatOver(allPawns))
         {
             return false;
         }
@@ -84,7 +85,9 @@ static public class Combat
 
     static public string GetCombatResults()
     {
-        return null;
+        //TODO properly send results
+        string resultsMsg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndCombat + ",";
+        return resultsMsg;
     }
 
     public static void Shuffle<T>(IList<T> list)

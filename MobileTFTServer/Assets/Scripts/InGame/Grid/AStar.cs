@@ -21,7 +21,7 @@ public class AStar
 
         foreach (Vector2Int nei in Grid.GetNeighbours(startTile))
         {
-            if (nei != null)
+            if (nei != new Vector2Int(-1, -1))
                 if (!Grid.DoesSlotHavePawn(nei))
                     searchers.Add(new Searcher(this, targetTile, nei, null));
         }
@@ -90,7 +90,7 @@ public class Searcher
        
         foreach (Vector2Int nei in Grid.GetNeighbours(spawnTile))
         {
-            if (nei != null)
+            if (nei != new Vector2Int(-1, -1))
             {
                 if (!aStar.GetAllVisitedTiles().Contains(nei))
                 {

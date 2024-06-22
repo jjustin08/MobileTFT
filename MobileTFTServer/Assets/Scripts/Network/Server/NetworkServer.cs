@@ -20,6 +20,7 @@ public class NetworkServer : MonoBehaviour
 
     void Start()
     {
+        Grid.LayoutHexGrid(8, 8);
         if (NetworkServerProcessing.GetNetworkServer() == null)
         {
             NetworkServerProcessing.SetNetworkServer(this);
