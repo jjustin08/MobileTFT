@@ -7,6 +7,7 @@ public class Pawn
     public int index;
     public PawnData pawnData;
     public PawnStats pawnStats;
+    public PawnAI pawnAI;
     public Vector2Int position;
     public Vector2Int combatPosition;
     public int ownerID;
@@ -19,5 +20,10 @@ public class Pawn
         this.index = index;
         this.ownerID = ownerID;
         pawnStats = new PawnStats(pwn);
+    }
+
+    public void InitPawnAI()
+    {
+        pawnAI = new PawnAI(this);
     }
 }

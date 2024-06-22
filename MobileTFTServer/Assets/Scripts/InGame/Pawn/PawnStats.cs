@@ -105,4 +105,34 @@ public class PawnStats
     {
         return range;
     }
+    public float GetDamage()
+    {
+        return damage;
+    }
+    public float GetHealth()
+    { return health; }
+
+    public void SetHealth(float newHealth)
+    {
+        health = newHealth;
+    }
+
+    public bool IsManaFull()
+    {
+        if (currentMana > mana)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void SetCurrentMana(float newMana)
+    {
+        currentMana = newMana;
+    }
+
+    public void AddMana(float addAmount)
+    {
+        currentMana += addAmount;   
+    }
 }

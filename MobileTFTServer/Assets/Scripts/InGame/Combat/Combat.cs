@@ -4,13 +4,15 @@ using UnityEngine;
 
 static public class Combat
 {
+
+    static public List<Pawn> allPawns;
     static public void RunCombat()
     {
         // I need to simulate the whole combat
         // Do i just create a virtual equezilent version of the singleplayer??
         foreach(List<Player> match in MatchMaker.GetMatches())
         {
-            List<Pawn> allPawns = new List<Pawn>();
+            allPawns = new List<Pawn>();
             
             foreach(Player p in match) 
             {
@@ -21,10 +23,63 @@ static public class Combat
 
             foreach (Pawn pawn in allPawns) 
             { 
-                //update each pawn AI
+                pawn.InitPawnAI();
             }
-            
+
+            while(CombatUpdate(allPawns))
+            {
+
+            }
+            Debug.Log("Combat is over!!!!!!!!!!!!!");
         }
+    }
+
+    static public bool CombatUpdate(List<Pawn> allPawns)
+    {
+        foreach (Pawn pawn in allPawns)
+        {
+            pawn.pawnAI.AIUpdate(allPawns);
+        }
+
+        if(IsCombatOver(allPawns))
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    static private bool IsCombatOver(List<Pawn> allPawns)
+    {
+        int playerID = 0;
+        bool counterIndex = false;
+        int aliveOne = 0;
+        int aliveTwo = 0;
+        foreach (Pawn pawn in allPawns)
+        {
+
+            if (playerID != pawn.ownerID)
+            {
+                counterIndex = !counterIndex;
+                playerID = pawn.ownerID;
+            }
+            if (counterIndex)
+            {
+                if (pawn.pawnStats.GetHealth() > 0)
+                    aliveOne++;
+            }
+            else
+            {
+                if (pawn.pawnStats.GetHealth() > 0)
+                    aliveTwo++;
+            }
+        }
+        if (aliveOne == 0 || aliveTwo == 0)
+        {
+            return false;
+        }
+
+        return true;
     }
 
     static public string GetCombatResults()
@@ -45,5 +100,10 @@ static public class Combat
             list[k] = list[n];
             list[n] = value;
         }
+    }
+
+    public static void KillPawn(Pawn pawnToKill)
+    {
+        allPawns.Remove(pawnToKill);
     }
 }

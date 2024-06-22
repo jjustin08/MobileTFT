@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class PawnAI
 {
@@ -16,103 +17,90 @@ public class PawnAI
     private float attackTimerMax = 1;
     private float attackTimerCurrent = 0;
 
-    PawnAI()
+    public PawnAI(Pawn parent)
     {
+        parentPawn = parent;
         //attackTimerMax = parentPawn.GetStats().GetAttackTime();
        // moveTimerMax = parentPawn.GetStats().GetMoveTime();
     }
 
 
-    private void AIUpdate()
+    public void AIUpdate(List<Pawn> allPawns)
     {
-        if (AttackUpdate())
+        if (AttackUpdate(allPawns))
             return;
 
         MovementUpdate();
     }
 
-    public Pawn GetTarget(Pawn attackingPawn, List<Pawn> allPawns)
+    public Pawn GetTarget(List<Pawn> allPawns)
     {
         Pawn pawnToAttack = null;
 
 
-        //if (lastTargetPawn == null)
-        //{
-        //    pawnToAttack = Grid.GetTargetInRange(pawnToAttack.pawnStats.GetRange(),pawnToAttack,allPawns);
-        //    slotToAttack =
-        //    GridUtil.Instance.GetTargetInRange(
-        //    parentPawn.GetStats().GetRange()
-        //    , parentPawn.GetMovement().GetSlot());
-        //}
-        //else
-        //{
-        //    if (GridUtil.Instance.IsSlotInRange(parentPawn.GetStats().GetRange()
-        //    , parentPawn.GetMovement().GetSlot(), lastTargetPawn.GetMovement().GetSlot()) &&
-        //    lastTargetPawn.GetStats().GetCurrentHealth() > 0)
-        //    {
-        //        slotToAttack = lastTargetPawn.GetMovement().GetSlot().GetSlotPos();
+        if (lastTargetPawn == null)
+        {
+            pawnToAttack = Grid.GetTargetInRange(pawnToAttack.pawnStats.GetRange(), pawnToAttack, allPawns);
+        }
+        else
+        {
+            if (Grid.IsSlotInRange(parentPawn.pawnStats.GetRange(), parentPawn.combatPosition, lastTargetPawn.combatPosition)
+                && lastTargetPawn.pawnStats.GetHealth() > 0)
+            {
+                pawnToAttack = lastTargetPawn;
+            }
+            else
+            {
+                pawnToAttack = Grid.GetTargetInRange(pawnToAttack.pawnStats.GetRange(), pawnToAttack, allPawns);
+            }
+        }
 
-        //    }
-        //    else
-        //    {
-        //        lastTargetPawn = null;
-        //        slotToAttack =
-        //        GridUtil.Instance.GetTargetInRange(
-        //        parentPawn.GetStats().GetRange()
-        //        , parentPawn.GetMovement().GetSlot());
-        //    }
-
-        //}
-
+        lastTargetPawn = pawnToAttack;
         return pawnToAttack;
     }
 
-    public void Attack(Vector2Int slotToAttack)
+    public void Attack(Pawn pawnToAttack)
     {
-        //// its a bit funky would be nice to add lerp here too
-        //Vector3 direction = (slotToAttack.transform.position - transform.position).normalized;
+        //posbile make a seperate scritp for this
+        pawnToAttack.pawnStats.SetHealth(pawnToAttack.pawnStats.GetHealth() - parentPawn.pawnStats.GetDamage());
 
-        //if (direction != Vector3.zero)
-        //{
-        //    transform.rotation = Quaternion.LookRotation(direction);
-        //}
-
-        //lastTargetPawn = slotToAttack.GetSlot().GetPawn();
-        //parentPawn.GetCombat().DealDamage(lastTargetPawn);
+        if(pawnToAttack.pawnStats.GetHealth() <= 0)
+        {
+            //kill the pawn
+            lastTargetPawn = null;
+            Combat.KillPawn(pawnToAttack);
+        }
+        parentPawn.pawnStats.AddMana(1);
     }
 
-    private bool AttackUpdate()
+    private bool AttackUpdate(List<Pawn> allPawns)
     {
-        //Vector2Int slotToAttack = GetTarget();
+        Pawn pawnToAttack = GetTarget(allPawns); ;
 
-        //if (slotToAttack != null)
-        //{
-        //    if (parentPawn.GetStats().IsManaFull())
-        //    {
-        //        //activate ability
-        //        parentPawn.GetStats().SetCurrentMana(0);
-        //        // parentPawn.GetPawnSO().ability.Ability(parentPawn);
-        //        return true;
-        //    }
-        //}
+        if (pawnToAttack != null)
+        {
+            if (parentPawn.pawnStats.IsManaFull())
+            {
+                //activate ability
+                parentPawn.pawnStats.SetCurrentMana(0);
+                // parentPawn.GetPawnSO().ability.Ability(parentPawn);
+                return true;
+            }
+        }
 
+        pawnToAttack = GetTarget(allPawns); ;
+        if (pawnToAttack != null)
+        {
+            if (Timer(attackTimerMax, ref attackTimerCurrent))
+                return true;
 
-        //slotToAttack = GetTarget();
-        //if (slotToAttack != null)
-        //{
-        //    if (Timer(attackTimerMax, ref attackTimerCurrent))
-        //        return true;
-
-        //    Attack(slotToAttack);
-        //    parentPawn.GetStats().AddMana();
-
-
-        //    return true;
-        //}
-        //else
-        //{
-        //    attackTimerCurrent = attackTimerMax;
-        //}
+            Attack(pawnToAttack);
+            return true;
+        }
+        else
+        {
+            attackTimerCurrent = attackTimerMax;
+        }
 
 
         return false;
@@ -121,26 +109,30 @@ public class PawnAI
 
     private void MovementUpdate()
     {
-        //if (Timer(moveTimerMax, ref moveTimerCurrent))
-        //    return;
+        if (Timer(moveTimerMax, ref moveTimerCurrent))
+            return;
 
-        //SlotPosition tileToMove;
-        //tileToMove = GridUtil.Instance.AStarNextMoveTile(parentPawn.GetMovement().GetSlot());
+        Vector2Int tileToMove;
+        tileToMove = Grid.AStarNextMoveTile(parentPawn);
 
-        //if (tileToMove != null)
-        //{
-        //    parentPawn.GetMovement().MoveToSlot(tileToMove.GetSlot());
-        //}
-        //else
-        //{
-        //    moveTimerCurrent = moveTimerMax;
-        //}
+        if (tileToMove != null)
+        {
+            // moving
+            // TODO make this a function
+            parentPawn.combatPosition = tileToMove;
+        }
+        else
+        {
+            moveTimerCurrent = moveTimerMax;
+        }
     }
 
 
     public bool Timer(float max, ref float current)
     {
-        current -= Time.deltaTime;
+        //TODO rework this for server
+        //current -= Time.deltaTime;
+        current -= 0.1f;
         if (current <= 0)
         {
             current = max;

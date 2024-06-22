@@ -132,7 +132,7 @@ static public class Grid
     }
     static public Pawn GetTargetInRange(int range, Pawn attackingPawn, List<Pawn> allPawns)
     {
-        Pawn nearestTarget = FindNearestTarget(attackingPawn, allPawns);
+        Pawn nearestTarget = FindNearestTarget(attackingPawn);
         int distance = GetTileDistanceAway(attackingPawn.combatPosition, nearestTarget.combatPosition, range);
 
         if (distance != 0)
@@ -143,13 +143,26 @@ static public class Grid
         return null;
     }
 
-    static public Pawn FindNearestTarget(Pawn attackingPawn, List<Pawn> allPawns)
+    static public Vector2Int AStarNextMoveTile(Pawn pawn)
+    {
+        Pawn targetPawn = FindNearestTarget(pawn);
+        if (targetPawn == null)
+            return new Vector2Int(-1,-1);
+
+        Vector2Int nextMoveTile = new Vector2Int(-1, -1);
+        AStar aStar = new AStar();
+        nextMoveTile = aStar.DoThing(gridPositions, pawn.combatPosition, targetPawn.combatPosition);
+
+        return nextMoveTile;
+    }
+
+    static public Pawn FindNearestTarget(Pawn attackingPawn)
     {
         Vector2Int startTile = attackingPawn.combatPosition;
         int playerID = attackingPawn.ownerID;
 
         List<Pawn> enemyPawns = new List<Pawn>();
-        foreach (Pawn p in allPawns) 
+        foreach (Pawn p in Combat.allPawns) 
         { 
             if(p.ownerID != playerID)
             {
@@ -178,4 +191,16 @@ static public class Grid
 
     }
 
+    static public bool DoesSlotHavePawn(Vector2Int slot)
+    {
+        foreach(Pawn p in Combat.allPawns)
+        {
+            if(p.combatPosition == slot)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
