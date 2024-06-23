@@ -13,5 +13,6 @@ namespace FiniteGameStudio
         public int price;
 
         public Sprite icon;
+        public Sprite defaultIcon;
     }
 }
