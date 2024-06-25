@@ -31,10 +31,6 @@ public class PawnStats : MonoBehaviour
     {
         parentPawn = GetComponent<Pawn>();
     }
-    private void Start()
-    {
-        CalculateStats(true);
-    }
 
     public int GetStarCount() {  return starCount; }
     public float GetAttackTime(){return attackTime;}
@@ -233,69 +229,70 @@ public class PawnStats : MonoBehaviour
 
     public void CalculateStats(bool affectCurrentHealth)
     {
-        //print("stats calculate");
-        //PawnSO SO = parentPawn.GetPawnSO();
+        // TODO: refactor this
+        PawnData data = parentPawn.GetPawnData();
 
-        //switch (starCount)
-        //{ 
-        //    case 1:
-        //        health = SO.health;
-        //        mana = SO.mana;
-        //        damage = SO.damage;
-        //        attackTime = SO.attackTime;
-        //        range = SO.range;
-        //        break;
-        //    case 2:
-        //        health = SO.health2;
-        //        mana = SO.mana2;
-        //        damage = SO.damage2;
-        //        attackTime = SO.attackTime2;
-        //        range = SO.range2;
-        //        break;
-        //    case 3:
-        //        health = SO.health3;
-        //        mana = SO.mana3;
-        //        damage = SO.damage3;
-        //        attackTime = SO.attackTime3;
-        //        range = SO.range3;
-        //        break;
-        //}
-
-       
-
-        //for (int i = 0; i < killCount; i++)
-        //{
-        //    // this will change depending on what type etc
-        //    damage += 1 * killCountDamageModifier;
-        //    health += 1 * killCountHealthModifier;
-        //}
+        switch (starCount)
+        {
+            case 1:
+                health = data.health;
+                mana = data.mana;
+                damage = data.damage;
+                attackTime = data.attackTime;
+                range = data.range;
+                break;
+            case 2:
+                health = data.health2;
+                mana = data.mana2;
+                damage = data.damage2;
+                attackTime = data.attackTime2;
+                range = data.range2;
+                break;
+            case 3:
+                health = data.health3;
+                mana = data.mana3;
+                damage = data.damage3;
+                attackTime = data.attackTime3;
+                range = data.range3;
+                break;
+        }
 
 
-        //if (affectCurrentHealth)
-        //{
-        //    currentHealth = health;
-        //}
 
-        //foreach (TypeSO type in SO.types)
-        //{
-        //    //get how many of this type
-        //    int amount = 0;
-        //    List<PawnSO> countedPawns = new List<PawnSO>();
-        //    foreach (Pawn p in GridUtil.Instance.GetAllPawns(!parentPawn.IsEnemy()))
-        //    {
-        //        if (countedPawns.Contains(p.GetPawnSO()))
-        //        {
-        //            continue;
-        //        }
+        for (int i = 0; i < killCount; i++)
+        {
+            // this will change depending on what type etc
+            damage += 1 * killCountDamageModifier;
+            health += 1 * killCountHealthModifier;
+        }
 
-        //        countedPawns.Add(p.GetPawnSO());
-        //        if (p.GetPawnSO().types.Contains(type))
-        //        {
-        //            amount++;
-        //        }
-        //    }
 
-        //    type.AffectStats(parentPawn, amount);
-        //}
+        if (affectCurrentHealth)
+        {
+            currentHealth = health;
+        }
+
+        foreach (TypeData type in data.types)
+        {
+            //get how many of this type
+            int amount = 0;
+            List<PawnData> countedPawns = new List<PawnData>();
+            foreach (Pawn p in GridUtil.Instance.GetAllPawns(!parentPawn.IsEnemy()))
+            {
+                if (countedPawns.Contains(p.GetPawnData()))
+                {
+                    continue;
+                }
+
+                countedPawns.Add(p.GetPawnData());
+                if (p.GetPawnData().types.Contains(type))
+                {
+                    amount++;
+                }
+            }
+
+            // TODO: refactor stats
+            //type.AffectStats(parentPawn, amount);
+        }
     }
 }

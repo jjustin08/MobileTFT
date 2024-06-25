@@ -48,7 +48,7 @@ public class PawnStorage : MonoBehaviour
         return isFull;
     }
 
-    public Pawn FillSlot(PawnData data, int killCount, int deathCount, int starCount)
+    public Pawn SpawnPawn(PawnData data, int killCount, int deathCount, int starCount)
     {
         foreach (Slot slot in slots) 
         {

@@ -80,7 +80,7 @@ public class CardManager : MonoBehaviour
             PawnData pawnData = shopPawnsSlots[(int)slotIndex].GetCard().GetPawnData();
 
             Player.Instance.GetPlayerStats().RemoveCash(pawnData.cost);
-            Pawn pawnRef = pawnStorage.FillSlot(pawnData, 0, 0, 1);
+            Pawn pawnRef = pawnStorage.SpawnPawn(pawnData, 0, 0, 1);
 
             shopPawnsSlots[(int)slotIndex].RemoveCard();
 

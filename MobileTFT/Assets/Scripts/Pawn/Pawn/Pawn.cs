@@ -32,6 +32,7 @@ public class Pawn : MonoBehaviour
     public void SetPawnData(PawnData data)
     {
         pawnData = data;
+        stats.CalculateStats(true);
     }
 
     public void SelfDestruct()
