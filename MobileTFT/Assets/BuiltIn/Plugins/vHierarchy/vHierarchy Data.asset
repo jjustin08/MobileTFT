@@ -41,7 +41,6 @@ MonoBehaviour:
         - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1793123441-0
         - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1772473964-0
         - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1398031703-0
-        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-61694686-0
         values:
         - iColor: 9
           icon: 
@@ -54,11 +53,11 @@ MonoBehaviour:
         - iColor: 0
           icon: StandaloneInputModule Icon
         - iColor: 0
-          icon: ScriptableObject Icon
+          icon: 
         - iColor: 0
-          icon: ScriptableObject Icon
+          icon: 
         - iColor: 0
-          icon: ScriptableObject Icon
+          icon: 
         - iColor: 0
           icon: 
         - iColor: 0
@@ -79,10 +78,8 @@ MonoBehaviour:
           icon: StandaloneInputModule Icon
         - iColor: 0
           icon: StandaloneInputModule Icon
-        - iColor: 0
-          icon: 
       goDatasByInstanceId:
-        keys: d4cd00002ccb0000aacb0000a2ce0000aece0000facd00000ccc0000cece0000a8cd00001ecd000058cc000024ce00000ece0000bace000082cb0000d6ce0000c2ce0000eecd0000d83ffeff
+        keys: 84e0000024dc0000ecdc0000dce10000f6e10000c0e0000066dd00001ce2000038e0000024df0000e8dd000012e10000fae0000002e20000a0dc00002ae200000ae20000aae00000
         values:
         - iColor: 9
           icon: 
@@ -95,11 +92,11 @@ MonoBehaviour:
         - iColor: 0
           icon: StandaloneInputModule Icon
         - iColor: 0
-          icon: ScriptableObject Icon
+          icon: 
         - iColor: 0
-          icon: ScriptableObject Icon
+          icon: 
         - iColor: 0
-          icon: ScriptableObject Icon
+          icon: 
         - iColor: 0
           icon: 
         - iColor: 0
@@ -120,8 +117,6 @@ MonoBehaviour:
           icon: StandaloneInputModule Icon
         - iColor: 0
           icon: StandaloneInputModule Icon
-        - iColor: 0
-          icon: 
     - goDatasByGlobalId:
         keys: []
         values: []
