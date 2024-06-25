@@ -14,7 +14,7 @@ namespace FiniteGameStudio
         private Image _image;
         private TMP_Text _amountText;
         
-        private float tooltipPositionOffsetX = 150f;
+        private float tooltipPositionOffsetX = 100f;
         private float tooltipPositionOffsetY = 100f;
         void Awake()
         {

@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e97a926fd0a894794939725b675945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvansRectTransform: {fileID: 0}
 --- !u!1 &4529313337124118867
 GameObject:
   m_ObjectHideFlags: 0
