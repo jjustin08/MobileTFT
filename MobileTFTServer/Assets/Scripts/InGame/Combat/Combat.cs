@@ -4,45 +4,30 @@ using UnityEngine;
 
 static public class Combat
 {
-
-    static public List<Pawn> allPawns;
     static public void RunCombat()
     {
-        
         // I need to simulate the whole combat
         // Do i just create a virtual equezilent version of the singleplayer??
-        foreach(List<Player> match in MatchMaker.GetMatches())
+        foreach(Match match in MatchMaker.GetMatches())
         {
-            allPawns = new List<Pawn>();
-            
-            foreach(Player p in match) 
-            {
-                allPawns.AddRange(p.GetPlayerStats().GetInGamePawns());
-            }
-
-            Shuffle(allPawns);
-
-            foreach (Pawn pawn in allPawns) 
-            { 
-                pawn.InitPawnAI();
-            }
-
-            while (CombatUpdate(allPawns))
+            while (CombatUpdate(match))
             {
 
             }
+
             Debug.Log("Combat is over!!!!!!!!!!!!!");
         }
     }
 
-    static public bool CombatUpdate(List<Pawn> allPawns)
+    static public bool CombatUpdate(Match match)
     {
-        foreach (Pawn pawn in allPawns)
+
+        foreach (Pawn pawn in match.GetAllPawns())
         {
-            pawn.pawnAI.AIUpdate(allPawns);
+            pawn.pawnAI.AIUpdate(match.GetAllPawns());
         }
 
-        if(!IsCombatOver(allPawns))
+        if(!IsCombatOver(match))
         {
             return false;
         }
@@ -50,13 +35,13 @@ static public class Combat
         return true;
     }
 
-    static private bool IsCombatOver(List<Pawn> allPawns)
+    static private bool IsCombatOver(Match match)
     {
         int playerID = 0;
         bool counterIndex = false;
-        int aliveOne = 0;
-        int aliveTwo = 0;
-        foreach (Pawn pawn in allPawns)
+        List<Pawn> aliveOne = new List<Pawn>();
+        List<Pawn> aliveTwo = new List<Pawn>();
+        foreach (Pawn pawn in match.GetAllPawns())
         {
 
             if (playerID != pawn.ownerID)
@@ -67,43 +52,46 @@ static public class Combat
             if (counterIndex)
             {
                 if (pawn.pawnStats.GetHealth() > 0)
-                    aliveOne++;
+                    aliveOne.Add(pawn);
             }
             else
             {
                 if (pawn.pawnStats.GetHealth() > 0)
-                    aliveTwo++;
+                    aliveTwo.Add(pawn);
             }
         }
-        if (aliveOne == 0 || aliveTwo == 0)
+        if (aliveOne.Count == 0 || aliveTwo.Count == 0)
         {
+            if(aliveOne.Count == 0) 
+            {
+                match.SetMatchResults(aliveTwo[0].ownerID,aliveTwo);
+            }
+            else if (aliveTwo.Count == 0) 
+            {
+                match.SetMatchResults(aliveOne[0].ownerID,aliveOne);
+            }
+                     
             return false;
         }
 
         return true;
     }
 
-    static public string GetCombatResults()
+    static public string GetCombatResults(int clientID)
     {
-        //TODO properly send results
-        string resultsMsg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndCombat + ",";
+        string resultsMsg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndCombat;
+        foreach (Match m in MatchMaker.GetMatches())
+        {
+            if(m.ContainsPlayerID(clientID))
+            {
+                resultsMsg += "," + m.GetMatchResults();
+                break;
+            }
+        }
         return resultsMsg;
     }
 
-    public static void Shuffle<T>(IList<T> list)
-    {
-        System.Random rng = new System.Random();
-      
-        int n = list.Count;
-        while (n > 1)
-        {
-            n--;
-            int k = rng.Next(n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
-        }
-    }
+   
 
     public static void KillPawn(Pawn pawnToKill)
     {

@@ -123,10 +123,11 @@ public class BasicGameMode : GameMode
     protected override void EndCombat()
     {
         //string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndCombat
-        string msg = Combat.GetCombatResults();
+        
         foreach (Player player in Lobby.GetPlayers())
         {
             int id = player.getId();
+            string msg = Combat.GetCombatResults(id);
             NetworkServerProcessing.SendMessageToClient(msg, id, TransportPipeline.ReliableAndInOrder);
         }
     }

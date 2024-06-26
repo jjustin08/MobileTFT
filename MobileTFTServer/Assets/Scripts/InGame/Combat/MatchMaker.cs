@@ -5,9 +5,9 @@ using UnityEngine;
 
 static public class MatchMaker
 {
-    static private List<List<Player>> matches;
+    static private List<Match> matches;
 
-    static public List<List<Player>> GetMatches(){ return matches; }
+    static public List<Match> GetMatches(){ return matches; }
     static public void MatchMake()
     {
         List<Player> availablePlayers = Lobby.GetPlayers();
@@ -20,14 +20,14 @@ static public class MatchMaker
         }
 
         // Create a list to hold the matches
-        matches = new List<List<Player>>();
+        matches = new List<Match>();
 
         // Loop through the available players and create pairs
         for (int i = 0; i <= lastPlayerIndex; i += 2)
         {
             if (i + 1 <= lastPlayerIndex) // Check if there's a player to pair with
             {
-                List<Player> match = new List<Player> { availablePlayers[i], availablePlayers[i + 1] };
+                Match match = new Match(availablePlayers[i], availablePlayers[i + 1]);
                 matches.Add(match);
             }
             else
@@ -40,18 +40,19 @@ static public class MatchMaker
    static public string GetOppenonts(Player player)
    {
         Player opponent = null;
-        foreach (List<Player> players in matches) 
+        foreach (Match m in matches) 
         { 
-            if(players.Contains(player))
+            List<Player> mPlayers = m.GetPlayers();
+            if(mPlayers.Contains(player))
             {
                 
-                if(players[0] == player)
+                if(mPlayers[0] == player)
                 {
-                    opponent = players[1];
+                    opponent = mPlayers[1];
                 }
                 else
                 {
-                    opponent = players[0];
+                    opponent = mPlayers[0];
                 }
                 continue;
             }
