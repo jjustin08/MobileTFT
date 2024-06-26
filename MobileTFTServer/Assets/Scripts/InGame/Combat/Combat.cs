@@ -24,7 +24,11 @@ static public class Combat
 
         foreach (Pawn pawn in match.GetAllPawns())
         {
-            pawn.pawnAI.AIUpdate(match.GetAllPawns());
+            if(pawn.pawnStats.GetHealth() > 0) 
+            {
+                pawn.pawnAI.AIUpdate(match.GetAllPawns());
+            }
+            
         }
 
         if(!IsCombatOver(match))
@@ -91,10 +95,4 @@ static public class Combat
         return resultsMsg;
     }
 
-   
-
-    public static void KillPawn(Pawn pawnToKill)
-    {
-        allPawns.Remove(pawnToKill);
-    }
 }

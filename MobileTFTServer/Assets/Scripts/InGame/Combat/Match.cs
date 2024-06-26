@@ -57,7 +57,27 @@ public class Match
     public string GetMatchResults()
     {
         string results = null;
-        results = winnerID + "," + ;
+        results = winnerID + "";
+        if (players[0].getId() == winnerID)
+        {
+            int newPlayerhealth = players[1].GetPlayerStats().GetHealth() - alivePawns.Count; 
+            players[1].GetPlayerStats().SetHealth(newPlayerhealth);
+            foreach (Pawn p in alivePawns)
+            {
+                results += "," + players[0].GetPlayerStats().GetInGamePawns().IndexOf(p);
+            }
+        }
+        else if(players[1].getId() == winnerID)
+        {
+            int newPlayerhealth = players[0].GetPlayerStats().GetHealth() - alivePawns.Count;
+            players[0].GetPlayerStats().SetHealth(newPlayerhealth);
+            foreach (Pawn p in alivePawns)
+            {
+                results += "," + players[1].GetPlayerStats().GetInGamePawns().IndexOf(p);
+            }
+            
+        }
+       
         return results;
     }
 

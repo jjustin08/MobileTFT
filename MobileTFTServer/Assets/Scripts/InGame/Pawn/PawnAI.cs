@@ -68,7 +68,6 @@ public class PawnAI
         {
             //kill the pawn
             lastTargetPawn = null;
-            Combat.KillPawn(pawnToAttack);
         }
         parentPawn.pawnStats.AddMana(1);
     }

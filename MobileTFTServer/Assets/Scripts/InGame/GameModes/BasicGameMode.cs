@@ -122,8 +122,6 @@ public class BasicGameMode : GameMode
 
     protected override void EndCombat()
     {
-        //string msg = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndCombat
-        
         foreach (Player player in Lobby.GetPlayers())
         {
             int id = player.getId();
