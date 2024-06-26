@@ -10,7 +10,7 @@ namespace FiniteGameStudio
         private Sprite _defaultSprite;
         [SerializeField] private Sprite _achievedSprite;
         private ItemDataSO _awardItem;
-        private bool _isAchieved;
+        [SerializeField] private bool _isAchieved;
 
         private void Awake()
         {

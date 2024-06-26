@@ -4,6 +4,7 @@ namespace FiniteGameStudio
 {
     public enum ItemType
     {
+        EQUIPMENT,
         USEABLE,
         INGREDIENT,
     }

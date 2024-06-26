@@ -24,15 +24,15 @@ namespace FiniteGameStudio
                 _checkPoints[i].SetAwardItem(GameInstance.Instance.GetUserData().GetBattlePassData().GetAwardItems()[i]);
             }
             
-            UpdatedAchievedCheckPoints();
+            ResetAchievedCheckPoints();
         }
 
         private void OnPointsChanged(int obj)
         {
             UpdatedAchievedCheckPoints();
         }
-
-        private void UpdatedAchievedCheckPoints()
+        
+        private void ResetAchievedCheckPoints()
         {
             int idx = GameInstance.Instance.GetUserData().GetBattlePassData().GetCheckPointIdxByPoints();
             
@@ -42,7 +42,20 @@ namespace FiniteGameStudio
                     _checkPoints[i].SetIsAchieved();
                 else
                     _checkPoints[i].ResetIsAchieved();
-                
+            }
+        }
+
+        private void UpdatedAchievedCheckPoints()
+        {
+            int idx = GameInstance.Instance.GetUserData().GetBattlePassData().GetCheckPointIdxByPoints();
+            
+            for (int i = 0; i <= idx; i++)
+            {
+                if (_checkPoints[i].IsAchieved() == false)
+                {
+                    _checkPoints[i].SetIsAchieved();
+                    GameInstance.Instance.GetUserData().GetInventoryData().StoreItem(_checkPoints[i].GetAwardItem());
+                }
             }
         }
 

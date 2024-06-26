@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 085de6ec2c3990a47810b67f6d144604, type: 3}
-  m_Name: Skull
+  m_Name: 001_Skull
   m_EditorClassIdentifier: 
   ID: 0
   name: Skull
-  type: 0
+  type: 1
   tier: 3
   amount: 99
   price: 999

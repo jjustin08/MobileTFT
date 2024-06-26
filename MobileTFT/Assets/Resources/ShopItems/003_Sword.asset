@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 085de6ec2c3990a47810b67f6d144604, type: 3}
-  m_Name: CrystalSword
+  m_Name: 003_Sword
   m_EditorClassIdentifier: 
-  ID: 5
-  name: CrystalSword
+  ID: 3
+  name: Sword
   type: 0
-  tier: 2
+  tier: 1
   amount: 99
-  price: 20
-  icon: {fileID: 836754035, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  price: 5
+  icon: {fileID: -1417759518, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
   defaultIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}

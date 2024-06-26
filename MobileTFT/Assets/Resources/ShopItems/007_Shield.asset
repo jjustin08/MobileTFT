@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 085de6ec2c3990a47810b67f6d144604, type: 3}
-  m_Name: WoodenSword
+  m_Name: 007_Shield
   m_EditorClassIdentifier: 
-  ID: 2
-  name: WoodenSword
+  ID: 6
+  name: Shield
   type: 0
   tier: 0
   amount: 99
-  price: 3
-  icon: {fileID: 909272643, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  price: 20
+  icon: {fileID: -405356937, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
   defaultIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}

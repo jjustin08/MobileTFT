@@ -51,7 +51,7 @@ namespace FiniteGameStudio
         private void Start()
         {
             //TODO: Test Purpose
-            _userData.GetBattlePassData().SetPoints(150);
+            _userData.GetBattlePassData().SetPoints(300);
         }
 
         public void Initialize()

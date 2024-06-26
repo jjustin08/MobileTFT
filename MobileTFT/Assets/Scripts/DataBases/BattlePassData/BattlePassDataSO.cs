@@ -20,7 +20,14 @@ namespace FiniteGameStudio
         public bool GetIsCompleted() { return _isCompleted; }
         public List<ItemDataSO> GetAwardItems() { return _awardItems; }
 
-
+        private void OnEnable()
+        {
+            _points = 0;
+            _awardItems = new List<ItemDataSO>();
+            ItemDataSO[] itemArr = Resources.LoadAll<ItemDataSO>("BattlePassItems");
+            _awardItems.AddRange(itemArr);
+        }
+        
         public int GetCheckPointIdxByPoints()
         {
             float fNum = (float)_points / _maxPoints;

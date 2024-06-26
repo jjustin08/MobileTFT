@@ -17,11 +17,14 @@ namespace FiniteGameStudio
             _currentUserData = GameInstance.Instance.GetUserData();
             if(_currentUserData == null)
                 Debug.LogError("Incorrectly set User Data - BattlePassUI.cs");
+            
+            _currentUserData.GetBattlePassData().OnPointsChanged += OnPointsChanged;
         }
 
         private void Start()
         {
-            _currentUserData.GetBattlePassData().OnPointsChanged += OnPointsChanged;
+            pointsText.text = _currentUserData.GetBattlePassData().GetPoints().ToString();
+            slider.value = (float)_currentUserData.GetBattlePassData().GetPoints() / _currentUserData.GetBattlePassData().GetMaxPoints();
         }
 
         private void OnPointsChanged(int obj)
