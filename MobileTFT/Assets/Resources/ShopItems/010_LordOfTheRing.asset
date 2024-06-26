@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 085de6ec2c3990a47810b67f6d144604, type: 3}
-  m_Name: DualEdgeAxe
+  m_Name: 010_LordOfTheRing
   m_EditorClassIdentifier: 
-  ID: 1
-  name: DualEdgeAxe
+  ID: 9
+  name: LordOfTheRing
   type: 0
-  tier: 1
-  amount: 1
-  price: 10
-  icon: {fileID: -1757660021, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
+  tier: 3
+  amount: 99
+  price: 999
+  icon: {fileID: 996329386, guid: 75ea8b25e342db84e840ee63d3a1c3e4, type: 3}
   defaultIcon: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}

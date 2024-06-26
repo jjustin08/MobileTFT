@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427479136b64c534597d0d3ad693459e, type: 3}
+  m_Name: TestUserData
+  m_EditorClassIdentifier: 
+  _ID: 123456789
+  _nickName: Hot6
+  _inventoryData: {fileID: 11400000, guid: 9c94559995639c948be897e37db428c0, type: 2}
+  _battlePassData: {fileID: 11400000, guid: 19219fd6f412a8746baa0dad4f6fa032, type: 2}
