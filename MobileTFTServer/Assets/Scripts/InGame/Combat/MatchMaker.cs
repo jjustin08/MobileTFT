@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 static public class MatchMaker
@@ -37,44 +38,70 @@ static public class MatchMaker
         }
     }
 
-   static public string GetOppenonts(Player player)
-   {
-        Player opponent = null;
-        foreach (Match m in matches) 
-        { 
-            List<Player> mPlayers = m.GetPlayers();
-            if(mPlayers.Contains(player))
-            {
-                
-                if(mPlayers[0] == player)
-                {
-                    opponent = mPlayers[1];
-                }
-                else
-                {
-                    opponent = mPlayers[0];
-                }
-                continue;
-            }
-        }
+    static public string GetShuffledPawnList(Player player)
+    {
+        string msg = "";
 
-        string message = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndTurn;
-
-        if( opponent != null )
+        foreach (Match m in matches)
         {
-            foreach(Pawn p in opponent.GetPlayerStats().GetInGamePawns())
+            List<Player> mPlayers = m.GetPlayers();
+            if (mPlayers.Contains(player))
             {
-                if (p.position.x == -1)
-                    continue;
-                //TODO add extra pawn data here
-                Vector2 convertedPos = new Vector2(5 - p.position.x, 7 - p.position.y);
-                
-                message +=  "," + p.pawnData.index + "," + convertedPos.x + "," + convertedPos.y ;
+                foreach (Player p in mPlayers) 
+                { 
+                    for(int i = 0; i < p.GetPlayerStats().GetInGamePawns().Count; i++)
+                    {
+                        msg += p.getId() + "," + i + "," + m.GetAllPawns().IndexOf(p.GetPlayerStats().GetInGamePawns()[i]) + ",";
+                    }                
+                }
+               
             }
+            
+
+            
         }
-       
-        return message;
+
+        return msg;
     }
 
+        static public string GetOppenonts(Player player)
+        {
+            Player opponent = null;
+            foreach (Match m in matches)
+            {
+                List<Player> mPlayers = m.GetPlayers();
+                if (mPlayers.Contains(player))
+                {
 
+                    if (mPlayers[0] == player)
+                    {
+                        opponent = mPlayers[1];
+                    }
+                    else
+                    {
+                        opponent = mPlayers[0];
+                    }
+                    break;
+                }
+            }
+
+            string message = ServerToClientSignifiers.Gamemode + "," + GameModeSignifiers.EndTurn;
+
+            if (opponent != null)
+            {
+                foreach (Pawn p in opponent.GetPlayerStats().GetInGamePawns())
+                {
+                    if (p.position.x == -1)
+                        continue;
+                    //TODO add extra pawn data here
+                    Vector2 convertedPos = new Vector2(5 - p.position.x, 7 - p.position.y);
+
+                    message += "," + p.pawnData.index + "," + convertedPos.x + "," + convertedPos.y;
+                }
+            }
+        message += ",;,";
+        message += GetShuffledPawnList(player);
+
+            return message;
+        }
 }

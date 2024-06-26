@@ -6,8 +6,6 @@ static public class Combat
 {
     static public void RunCombat()
     {
-        // I need to simulate the whole combat
-        // Do i just create a virtual equezilent version of the singleplayer??
         foreach(Match match in MatchMaker.GetMatches())
         {
             while (CombatUpdate(match))

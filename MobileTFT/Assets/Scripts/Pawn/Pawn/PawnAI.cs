@@ -24,7 +24,7 @@ public class PawnAI : MonoBehaviour
         moveTimerMax = parentPawn.GetStats().GetMoveTime();
     }
 
-    private void Update()
+    public void CombatUpdate()
     {
         if (!isCombatMode)
             return;

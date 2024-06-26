@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-
-
-
-
-
     [SerializeField] private CardManager cardManager;
     [SerializeField] private PawnManager pawnManager;
     private List<Pawn> pawns = new List<Pawn>();
+
+    private bool isCombatActive = false;
+
+
+    private void FixedUpdate()
+    {
+        if (!isCombatActive)
+            return;
+
+        //shuffle pawns the same way as server
+        foreach (var pawn in pawns)
+        {
+            pawn.GetAI().CombatUpdate();
+        }
+
+    }
 
     //temp
     //[SerializeField] private TypeSO undeadType;
@@ -74,6 +85,7 @@ public class Combat : MonoBehaviour
 
     public void StartCombat()
     {
+        isCombatActive = true;
         pawnManager.ToggleCombat(true);
         foreach (Pawn p in GridUtil.Instance.GetAllPawns()) 
         {

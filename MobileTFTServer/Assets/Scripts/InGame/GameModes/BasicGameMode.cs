@@ -102,6 +102,10 @@ public class BasicGameMode : GameMode
         MatchMaker.MatchMake();
         foreach (Player player in Lobby.GetPlayers())
         {
+            // send shuffled pawns data to client 
+            // 3 things per pawn
+            // clientID, index in players pawn list, new index in shuffled allpawn list
+
             string msg = MatchMaker.GetOppenonts(player);
             int id = player.getId();
             NetworkServerProcessing.SendMessageToClient(msg, id, TransportPipeline.ReliableAndInOrder);
