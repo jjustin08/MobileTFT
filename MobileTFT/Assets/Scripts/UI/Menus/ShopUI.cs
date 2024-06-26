@@ -23,7 +23,7 @@ namespace FiniteGameStudio
         private void Init()
         {
             _itemSlots = new List<ItemSlot>();
-            _contents = transform.GetChild(0).transform.GetChild(0).gameObject;
+            _contents = transform.GetChild(0).transform.GetChild(0).gameObject; // Contents gameObject
 
             int count = 0;
             for (int i = 0; i < _contents.transform.childCount; i++)

@@ -9,34 +9,26 @@ namespace FiniteGameStudio
     {
         [SerializeField] private TMP_Text pointsText;
         [SerializeField] private Slider slider;
-
-        private int MAX_Points = 1000;
-        private int _points;
         
-        private void Update()
+        private UserDataSO _currentUserData;
+
+        private void Awake()
         {
-            pointsText.text = _points.ToString();
-            slider.value = (float)_points / MAX_Points;
+            _currentUserData = GameInstance.Instance.GetUserData();
+            if(_currentUserData == null)
+                Debug.LogError("Incorrectly set User Data - BattlePassUI.cs");
         }
 
-        public void AddPoints(int point)
+        private void Start()
         {
-            if (point < 0) return;
-            
-            if ((_points + point) < MAX_Points)
-                _points += point;
-            else
-                _points = MAX_Points;
+            _currentUserData.GetBattlePassData().OnPointsChanged += OnPointsChanged;
         }
 
-        public void ChangeMaxPoints(int maxPoint)
+        private void OnPointsChanged(int obj)
         {
-            if (maxPoint < 0) return;
-            
-            if (_points > maxPoint)
-                _points = maxPoint;
-            
-            MAX_Points = maxPoint;
+            pointsText.text = obj.ToString();
+            slider.value = (float)obj / _currentUserData.GetBattlePassData().GetMaxPoints();
         }
+
     }
 }

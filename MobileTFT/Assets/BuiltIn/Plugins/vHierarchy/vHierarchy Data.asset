@@ -41,6 +41,8 @@ MonoBehaviour:
         - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1793123441-0
         - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1772473964-0
         - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1398031703-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1884942273-0
+        - GlobalObjectId_V1-2-4a2eb94d0c81db449b933feccf54bac3-1022794467-0
         values:
         - iColor: 9
           icon: 
@@ -78,8 +80,12 @@ MonoBehaviour:
           icon: StandaloneInputModule Icon
         - iColor: 0
           icon: StandaloneInputModule Icon
+        - iColor: 8
+          icon: Settings Icon
+        - iColor: 8
+          icon: Settings Icon
       goDatasByInstanceId:
-        keys: 84e0000024dc0000ecdc0000dce10000f6e10000c0e0000066dd00001ce2000038e0000024df0000e8dd000012e10000fae0000002e20000a0dc00002ae200000ae20000aae00000
+        keys: 84e0000024dc0000ecdc0000dce10000f6e10000c0e0000066dd00001ce2000038e0000024df0000e8dd000012e10000fae0000002e20000a0dc00002ae200000ae20000aae00000ace20000400ffeff
         values:
         - iColor: 9
           icon: 
@@ -117,6 +123,10 @@ MonoBehaviour:
           icon: StandaloneInputModule Icon
         - iColor: 0
           icon: StandaloneInputModule Icon
+        - iColor: 8
+          icon: Settings Icon
+        - iColor: 8
+          icon: Settings Icon
     - goDatasByGlobalId:
         keys: []
         values: []
