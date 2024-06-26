@@ -11,7 +11,7 @@ namespace FiniteGameStudio
         //TODO: Need to change it once accounting system is done.
         public InventoryDataSO _userInventory;
         
-        void Start()
+        void OnEnable()
         {
             Init();
         }
@@ -23,6 +23,7 @@ namespace FiniteGameStudio
 
         private void Init()
         {
+            GameInstance.Instance.GetUserData().GetBattlePassData().OnPointsChanged += OnPointsChanged;
             _itemSlots = new List<ItemSlot>();
             _contents = transform.GetChild(0).transform.GetChild(0).gameObject;
 
@@ -39,6 +40,16 @@ namespace FiniteGameStudio
             //TODO: Need to change it once accounting system is done.
             //UserInventoryData();
 
+            UpdateInventorySlots();
+        }
+
+        private void OnPointsChanged(int obj)
+        {
+            UpdateInventorySlots();
+        }
+
+        private void UpdateInventorySlots()
+        {
             for (int i = 0; i < _userInventory.items.Count; i++)
             {
                 _itemSlots[i].data = _userInventory.items[i];
