@@ -25,16 +25,17 @@ public class PawnAI
     }
 
 
-    public void AIUpdate(List<Pawn> allPawns)
+    public void AIUpdate()
     {
-        if (AttackUpdate(allPawns))
+        if (AttackUpdate())
             return;
 
         MovementUpdate();
     }
 
-    public Pawn GetTarget(List<Pawn> allPawns)
+    public Pawn GetTarget()
     {
+        List<Pawn> allPawns = Combat.GetCurrentMatch().GetAllPawns();
         Pawn pawnToAttack = null;
 
 
@@ -72,9 +73,9 @@ public class PawnAI
         parentPawn.pawnStats.AddMana(1);
     }
 
-    private bool AttackUpdate(List<Pawn> allPawns)
+    private bool AttackUpdate()
     {
-        Pawn pawnToAttack = GetTarget(allPawns); ;
+        Pawn pawnToAttack = GetTarget(); ;
 
         if (pawnToAttack != null)
         {
@@ -87,7 +88,7 @@ public class PawnAI
             }
         }
 
-        pawnToAttack = GetTarget(allPawns); ;
+        pawnToAttack = GetTarget(); ;
         if (pawnToAttack != null)
         {
             if (Timer(attackTimerMax, ref attackTimerCurrent))

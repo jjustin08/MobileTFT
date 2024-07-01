@@ -61,7 +61,7 @@ static public class MatchMaker
                     }
                     for(int i = 0; i < p.GetPlayerStats().GetInGamePawns().Count; i++)
                     {
-                        msg += friendly + "," + i + "," + m.GetAllPawns().IndexOf(p.GetPlayerStats().GetInGamePawns()[i]) + ",";
+                        msg += "," + friendly + "," + i + "," + m.GetAllPawns().IndexOf(p.GetPlayerStats().GetInGamePawns()[i]) ;
                     }                
                 }
                
@@ -109,7 +109,7 @@ static public class MatchMaker
                     message += "," + p.pawnData.index + "," + convertedPos.x + "," + convertedPos.y;
                 }
             }
-        message += ",;,";
+        message += ",;";
         message += GetShuffledPawnList(player);
 
             return message;

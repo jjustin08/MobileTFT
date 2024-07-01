@@ -58,7 +58,7 @@ public class Slot : MonoBehaviour
             {
                 slotPos = new Vector2(-1, -1);
             }
-
+            
             string message = ClientToServerSignifiers.Player + "," + PlayerSignifiers.MovePawn + "," + Player.Instance.GetPlayerStats().GetPawnList().IndexOf(p) + "," + slotPos.x + "," + slotPos.y;
 
             NetworkClientProcessing.SendMessageToServer(message, TransportPipeline.ReliableAndInOrder);

@@ -206,7 +206,7 @@ public class GridUtil : MonoBehaviour
         List<SlotPosition> tilesWithEnemeyPawns = new List<SlotPosition>();
         foreach(SlotPosition nei in tile.GetNeighboursInRange(15))
         {
-            if(nei.GetSlot().HasPawn())
+            if(nei.GetSlot().HasPawn() && tile.GetSlot().HasPawn())
             {
                 if(tile.GetSlot().GetPawn().IsEnemy())
                 {

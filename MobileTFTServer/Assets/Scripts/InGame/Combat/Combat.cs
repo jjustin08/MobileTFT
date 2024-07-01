@@ -31,7 +31,7 @@ static public class Combat
         {
             if(pawn.pawnStats.GetHealth() > 0) 
             {
-                pawn.pawnAI.AIUpdate(match.GetAllPawns());
+                pawn.pawnAI.AIUpdate();
             }
             
         }

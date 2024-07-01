@@ -17,8 +17,9 @@ public class Combat : MonoBehaviour
             return;
 
         //shuffle pawns the same way as server
-        foreach (var pawn in pawns)
+        foreach (Pawn pawn in pawns)
         {
+            if(pawn.GetStats().GetCurrentHealth() > 0)
             pawn.GetAI().CombatUpdate();
         }
 

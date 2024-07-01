@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using VInspector.Libs;
 
 static public class TeamLoader
 {
@@ -24,7 +23,7 @@ static public class TeamLoader
         int msgIndex = 1;
         string[] csv = msg.Split(',');
 
-        while (csv.Length > msgIndex + 1 || csv[msgIndex] != ";")
+        while (csv.Length > msgIndex + 1 && csv[msgIndex + 1] != ";")
         {
             ++msgIndex;
             PawnData data = PawnDataBase.pawns[int.Parse(csv[msgIndex])];
@@ -49,8 +48,8 @@ static public class TeamLoader
             newPawn.transform.Rotate(0f, 180f, 0f);
             enemyPawns.Add(newPawn);
         }
-
-        while(csv.Length > msgIndex + 1)
+        ++msgIndex;
+        while (csv.Length > msgIndex + 1 && csv[msgIndex + 1] != "")
         {
             ++msgIndex;
             int playerID = int.Parse(csv[msgIndex]);
@@ -59,17 +58,28 @@ static public class TeamLoader
             ++msgIndex;
             int sortedIndex = int.Parse(csv[msgIndex]);
 
+          
 
-            if(playerID == 0) 
+            while (allPawns.Count <= sortedIndex)
             {
-                allPawns[sortedIndex] = (enemyPawns[playerIndex]);
+                allPawns.Add(null); 
+            }
+            Debug.Log("allpawns: " + allPawns.Count);
+            Debug.Log("sortedIndex: " + sortedIndex);
+            Debug.Log("Enemiespawns: " + enemyPawns.Count);
+            Debug.Log("playerspawns: " + Player.Instance.GetPlayerStats().GetPawnList().Count);
+
+
+            if (playerID == 0) 
+            {
+
+                allPawns[sortedIndex]=enemyPawns[playerIndex];
             }
             else
             {
-                allPawns[sortedIndex] = (Player.Instance.GetPlayerStats().GetPawnList()[playerIndex]);
-            }
-           
-            
+                
+                allPawns[sortedIndex] = Player.Instance.GetPlayerStats().GetPawnList()[playerIndex];
+            } 
         }
 
     }
