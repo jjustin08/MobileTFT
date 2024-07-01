@@ -49,10 +49,19 @@ static public class MatchMaker
             if (mPlayers.Contains(player))
             {
                 foreach (Player p in mPlayers) 
-                { 
+                {
+                    int friendly = 0;
+                    if(p == player)
+                    {
+                        friendly = 1;
+                    }
+                    else 
+                    {
+                        friendly = 0;
+                    }
                     for(int i = 0; i < p.GetPlayerStats().GetInGamePawns().Count; i++)
                     {
-                        msg += p.getId() + "," + i + "," + m.GetAllPawns().IndexOf(p.GetPlayerStats().GetInGamePawns()[i]) + ",";
+                        msg += friendly + "," + i + "," + m.GetAllPawns().IndexOf(p.GetPlayerStats().GetInGamePawns()[i]) + ",";
                     }                
                 }
                

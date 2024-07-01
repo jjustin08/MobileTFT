@@ -83,15 +83,17 @@ public class Combat : MonoBehaviour
         }
     }
 
+
+
     public void StartCombat()
     {
         isCombatActive = true;
         pawnManager.ToggleCombat(true);
         foreach (Pawn p in GridUtil.Instance.GetAllPawns()) 
         {
-            pawns.Add(p);
             p.ToggleCombat(true);
         }
+        pawns = TeamLoader.GetSortedPawnsList();
     }
 
     public void EndCombat()

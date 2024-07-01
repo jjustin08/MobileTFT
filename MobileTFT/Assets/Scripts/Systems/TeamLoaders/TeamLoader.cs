@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using VInspector.Libs;
 
 static public class TeamLoader
 {
+    static private List<Pawn> allPawns = new List<Pawn>();
+
+    static public List<Pawn> GetSortedPawnsList()
+    {
+        return allPawns;
+    }
     static public void LoadTeam(string msg)
     {
+        List<Pawn> enemyPawns = new List<Pawn>();
         foreach (Pawn pawn in GridUtil.Instance.GetAllPawns(false))
         {
             pawn.SelfDestruct();
@@ -16,7 +24,7 @@ static public class TeamLoader
         int msgIndex = 1;
         string[] csv = msg.Split(',');
 
-        while (csv.Length > msgIndex + 1)
+        while (csv.Length > msgIndex + 1 || csv[msgIndex] != ";")
         {
             ++msgIndex;
             PawnData data = PawnDataBase.pawns[int.Parse(csv[msgIndex])];
@@ -39,8 +47,32 @@ static public class TeamLoader
             newPawn.GetStats().SetStarCount(0);
             newPawn.SetEnemy(true);
             newPawn.transform.Rotate(0f, 180f, 0f);
+            enemyPawns.Add(newPawn);
         }
-       
+
+        while(csv.Length > msgIndex + 1)
+        {
+            ++msgIndex;
+            int playerID = int.Parse(csv[msgIndex]);
+            ++msgIndex;
+            int playerIndex = int.Parse(csv[msgIndex]);
+            ++msgIndex;
+            int sortedIndex = int.Parse(csv[msgIndex]);
+
+
+            if(playerID == 0) 
+            {
+                allPawns[sortedIndex] = (enemyPawns[playerIndex]);
+            }
+            else
+            {
+                allPawns[sortedIndex] = (Player.Instance.GetPlayerStats().GetPawnList()[playerIndex]);
+            }
+           
+            
+        }
 
     }
+
+   
 }
