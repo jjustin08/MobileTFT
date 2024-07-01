@@ -160,7 +160,7 @@ static public class Grid
         int playerID = attackingPawn.ownerID;
 
         List<Pawn> enemyPawns = new List<Pawn>();
-        foreach (Pawn p in Combat.allPawns) 
+        foreach (Pawn p in Combat.GetCurrentMatch().GetAllPawns()) 
         { 
             if(p.ownerID != playerID)
             {
@@ -191,7 +191,8 @@ static public class Grid
 
     static public bool DoesSlotHavePawn(Vector2Int slot)
     {
-        foreach(Pawn p in Combat.allPawns)
+
+        foreach(Pawn p in Combat.GetCurrentMatch().GetAllPawns())
         {
             if(p.combatPosition == slot)
             {

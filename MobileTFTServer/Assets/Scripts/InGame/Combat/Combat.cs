@@ -4,10 +4,17 @@ using UnityEngine;
 
 static public class Combat
 {
+    static private Match currentMatch = null;
+
+    static public Match GetCurrentMatch()
+    {
+          return currentMatch;
+    }
     static public void RunCombat()
     {
         foreach(Match match in MatchMaker.GetMatches())
         {
+            currentMatch = match;
             while (CombatUpdate(match))
             {
 
